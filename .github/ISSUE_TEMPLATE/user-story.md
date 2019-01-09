@@ -1,31 +1,34 @@
 ---
 name: User Story
-about: Beschrijving van een feature / user story
-title: Als [stakeholder] wil ik [functionaliteit] ...
+about: Description of a feature / user story
+title: As [stakeholder] I want [functionality] ...
 labels: ''
 assignees: ''
 
 ---
 
-... zodat [resultaat].
+... such that [result].
+
+**Acceptance criteria**
+- [ ] ...
 
 **Definition of ready**
-- [ ] Iedereen in het team begrijpt de user story
-- [ ] de gewenste (aanvulling op de) functionaliteit is duidelijk en beschreven
-- [ ] Is klein genoeg (maximaal 1/3 van sprint)
-- [ ] Idee hebben van hoe deze user story kan worden gedemonstreerd
-- [ ] _**Userstory is voorzien van een vooraf analyse (met daarin architectuur, IM, technische beslissingen afgestemd met team)**_
-- [ ] Vastgelegd in Github en geplaatst in kolom ready
+- [ ] Acceptance criteria have been formulated
+- [ ] Everyone on the team understands the story
+- [ ] Desired functionality is clear and described
+- [ ] Is small enough (at most 1/3 of sprint)
+- [ ] The method of demonstration should be clear
+- [ ] User story has been analyzed (with architecture, data model and technical decisions)
+- [ ] Recorded in GitHub and moved to Ready column
 
 **Definition of done**
-- [ ] De implementatie van de story heeft een code review gehad
-- [ ] De story en implementatie wordt zonder problemen automatisch getest
-- [ ] De story is demonstrabel vanuit de master branch
-- [ ] De story is technisch gedocumenteerd
-- [ ] De story is gedocumenteerd in handboek
-- [ ] De implementatie van de story is getoetst op non functional requirements
-- [ ] De implementatie van de story is getoetst op architectuur principes
+- [ ] Story statisfies acceptance criteria
+- [ ] Implementation of story has been code reviewed
+- [ ] Story has been automatically tested
+- [ ] Story can be demonstrated using code on master branch
+- [ ] Story has technical documentation
+- [ ] Relevant functionality has been described in implementation guide
+- [ ] Story implementation has been checked against non-functional requirements (e.g. security)
+- [ ] Story implementation has been checked against architectural principles
 
-**Acceptatiecriteria**
-- [ ] De story voldoet aan definition of done
-- [ ] ...
+
