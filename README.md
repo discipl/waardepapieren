@@ -14,15 +14,19 @@ components:
 - revoke-service
 - waardepapieren-service
 
-these components use the following components from the discipl software stack:
+these components might involve the following components from the discipl software stack:
 
 - discipl-abundance-service
 - discipl-4sacan
 - discipl-expo
 - discipl-rshiny
+- discipl-core
+- discipl-core-restapi
+- discipl-core-node
 - discipl-core-paper
+- discipl-core-nlx
 - discipl-core-iota
 - discipl-core-ipfs
-- discipl-core-nlx
 - discipl-core-irma
-- discipl-core
+
+architectural primer : https://docs.google.com/presentation/d/1sw7xi2UbmxRN3NBwQTn9kWw6-RNhygdRL5kccnZWUyE
