@@ -22,7 +22,7 @@ assignees: ''
 - [ ] Recorded in GitHub and moved to Ready column
 
 **Definition of done**
-- [ ] Story statisfies acceptance criteria
+- [ ] Story satisfies acceptance criteria
 - [ ] Implementation of story has been code reviewed
 - [ ] Story has been automatically tested
 - [ ] Story can be demonstrated using code on master branch
