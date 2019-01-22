@@ -1,5 +1,7 @@
 This project is to demonstrate the use of discipl to issue waardenpapieren from the clerk perspective.
 
+The aim of this project is to provide a reference example of use of discipl components
+
 Because it is for demonstration purposes, the quality standards may be lower than the library components used.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
