@@ -33,28 +33,44 @@ class WaardenpapierenService {
 
   async serveNeed (serviceSsid, need) {
     const core = abundance.getCoreAPI()
-    const personalSsid = core.newSsid('ephemeral')
 
-    const observer = await core.observe(need.ssid, { [BSN_CLAIM_PREDICATE]: null }, true)
+    let did = 'did:discipl:ephemeral:'+need.ssid.pubkey
+
+    console.log('waiting for BSN of ssid: '+did)
+
+    const observer = await core.observe({did:did}, { [BSN_CLAIM_PREDICATE]: null })
 
     observer.subscribe(async (bsnClaim) => {
       const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
+      console.log('service: BSN info found :'+bsn)
       const nlxConnector = await core.getConnector('nlx')
-      let identifier = await nlxConnector.claim(null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': bsn } })
+      //let identifier = await nlxConnector.claim(null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': bsn } })
 
-      let result = await nlxConnector.get(identifier)
+      let result = {woonplaats:'dummy value'}//await nlxConnector.get(identifier)
 
-      const claimLink = await core.claim(personalSsid, result.value)
-      await core.attest(serviceSsid, bsnClaim.ssid.pubkey, claimLink)
+      console.log('NLX result value: '+result.value)
+      let personalSsid = await core.newSsid('ephemeral')
+      console.log('created private channel : '+JSON.stringify(personalSsid))
+      const claimLink = await core.claim(personalSsid, result)
+      // TODO the following line should resolve to the same did as above, but it doesnt?
+      //let did = 'did:discipl:ephemeral:'+bsnClaim.ssid.pubkey
+      console.log('service attesting for client did '+did);
+      await core.attest(serviceSsid, did, claimLink)
     })
-
 
   }
 
 
   stop () {
-    this.ephemeralServer.close()
+    try {
+      this.ephemeralServer.close()
+    } finally {}
   }
+
+  getCoreAPI() {
+    return abundance.getCoreAPI()
+  }
+
 }
 
 export default WaardenpapierenService;
