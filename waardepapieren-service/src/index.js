@@ -6,13 +6,10 @@ const BSN_CLAIM_PREDICATE = 'BSN'
 
 class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
-    console.log("2.1")
+    // Setup server
     this.ephemeralServer = new EphemeralServer(3232)
-    console.log("2.2")
     const core = abundance.getCoreAPI()
-    console.log("2.3")
     const ephemeralConnector = await core.getConnector('ephemeral')
-    console.log("2.4")
     ephemeralConnector.configure(ephemeralEndpoint, ephemeralWebsocketEndpoint)
 
     const nlxConnector = await core.getConnector('nlx')
@@ -25,6 +22,12 @@ class WaardenpapierenService {
     observer.subscribe(async (needClaim) => {
       console.log('Someone is in need!')
       await this.serveNeed(ssid, needClaim)
+    }, (e) => {
+      // If connection is dropped by remote peer, this is fine
+      if (e.code !== 1006) {
+        console.error('Error while listening to need')
+        console.error(e)
+      }
     })
 
     console.log("2.6")
@@ -56,15 +59,24 @@ class WaardenpapierenService {
       //let did = 'did:discipl:ephemeral:'+bsnClaim.ssid.pubkey
       console.log('service attesting for client did '+did);
       await core.attest(serviceSsid, did, claimLink)
+    }, (e) => {
+      // If connection is dropped by remote peer, this is fine
+      if (e.code !== 1006) {
+        console.error('Error while listening to BSN Claim')
+        console.error(e)
+      }
     })
 
   }
 
 
-  stop () {
+  async stop () {
     try {
-      this.ephemeralServer.close()
-    } finally {}
+      await this.ephemeralServer.close()
+    } catch (e) {
+      console.log("Error while closing server")
+      console.log(e)
+    }
   }
 
   getCoreAPI() {
