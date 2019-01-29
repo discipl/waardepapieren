@@ -17,7 +17,6 @@ class WaardenpapierenService {
     let ssid = await abundance.attendTo('ephemeral', BRP_UITTREKSEL)
     let observer = await abundance.observe(ssid.did, 'ephemeral')
     observer.subscribe(async (needClaim) => {
-      console.log('Someone is in need!')
       await this.serveNeed(ssid, needClaim)
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
@@ -35,25 +34,19 @@ class WaardenpapierenService {
 
     let did = 'did:discipl:ephemeral:' + need.ssid.pubkey
 
-    console.log('waiting for BSN of ssid: ' + did)
-
     const observer = await core.observe({ did: did }, { [BSN_CLAIM_PREDICATE]: null })
 
     observer.subscribe(async (bsnClaim) => {
       const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
-      console.log('service: BSN info found :' + bsn)
       const nlxConnector = await core.getConnector('nlx')
       let identifier = await nlxConnector.claim(null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': bsn } })
 
       let result = await nlxConnector.get(identifier)
 
-      console.log('NLX result value: ' + result.value)
       let personalSsid = await core.newSsid('ephemeral')
-      console.log('created private channel : ' + JSON.stringify(personalSsid))
       const claimLink = await core.claim(personalSsid, result)
       // TODO the following line should resolve to the same did as above, but it doesnt?
       // let did = 'did:discipl:ephemeral:'+bsnClaim.ssid.pubkey
-      console.log('service attesting for client did ' + did)
       await core.attest(serviceSsid, did, claimLink)
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
