@@ -44,22 +44,22 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     await timeoutPromise(100)
     let needSsid = await abundance.need('ephemeral', BRP_UITTREKSEL)
     await timeoutPromise(100)
-    let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid, { [needSsid.did]: null })).pipe(take(1)).toPromise()
+    let attestationObserver = (await abundance.getCoreAPI().observe(serviceSsid, { [needSsid.did]: null })).pipe(take(1)).toPromise()
     await timeoutPromise(100)
     await abundance.getCoreAPI().claim(needSsid, { [BSN_CLAIM_PREDICATE]: '123123123' })
     await timeoutPromise(100)
-    let attestLink = await attestLinkObserver
+    let attestation = await attestationObserver
     await timeoutPromise(100)
 
     // Test observations
-    expect(attestLink.claim.data[needSsid.did]).to.be.a('string')
+    expect(attestation.claim.data[needSsid.did]).to.be.a('string')
 
     expect(nlxClaimStub.callCount).to.equal(1)
     expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': '123123123' } }])
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
 
-    let claim = await abundance.getCoreAPI().get(attestLink.claim.data[needSsid.did])
+    let claim = await abundance.getCoreAPI().get(attestation.claim.data[needSsid.did])
     expect(claim.data).to.deep.equal({ 'woonplaats': 'Haarlem' })
 
     await waardenpapierenService.stop()
