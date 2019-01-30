@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import WaardenpapierenService from '../src/index'
+import WaardenpapierenService from '../src/waardepapieren-service'
 import * as abundance from 'discipl-abundance-service'
 
 import { take } from 'rxjs/operators'

@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL } from '../src/index'
+import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL } from '../src/waardepapieren-service'
 import * as abundance from 'discipl-abundance-service'
+import { w3cwebsocket } from 'websocket'
 
 import { take } from 'rxjs/operators'
 import sinon from 'sinon'
@@ -34,7 +35,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     await waardenpapierenService.start(NLX_OUTWAY_ENDPOINT, EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
     await timeoutPromise(100)
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
-    ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
+    ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
     expect(nlxConfigureSpy.callCount).to.equal(1)
     expect(nlxConfigureSpy.args[0]).to.deep.equal([NLX_OUTWAY_ENDPOINT])
