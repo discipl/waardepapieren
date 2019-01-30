@@ -1,5 +1,6 @@
 import * as abundance from 'discipl-abundance-service'
 import { EphemeralServer } from 'discipl-core-ephemeral'
+import { take } from 'rxjs/operators'
 
 const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
 const BSN_CLAIM_PREDICATE = 'BSN'
@@ -32,11 +33,11 @@ class WaardenpapierenService {
   async serveNeed (serviceSsid, need) {
     const core = abundance.getCoreAPI()
 
-    let did = 'did:discipl:ephemeral:' + need.ssid.pubkey
+    let did = need.ssid.did
 
     const observer = await core.observe({ did: did }, { [BSN_CLAIM_PREDICATE]: null })
 
-    observer.subscribe(async (bsnClaim) => {
+    observer.pipe(take(1)).subscribe(async (bsnClaim) => {
       const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
       const nlxConnector = await core.getConnector('nlx')
       let identifier = await nlxConnector.claim(null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': bsn } })
@@ -44,16 +45,10 @@ class WaardenpapierenService {
       let result = await nlxConnector.get(identifier)
 
       let personalSsid = await core.newSsid('ephemeral')
-      const claimLink = await core.claim(personalSsid, result)
-      // TODO the following line should resolve to the same did as above, but it doesnt?
-      // let did = 'did:discipl:ephemeral:'+bsnClaim.ssid.pubkey
-      await core.attest(serviceSsid, did, claimLink)
+      await core.claim(personalSsid, { [BRP_UITTREKSEL]: result })
+      await abundance.match(personalSsid, did)
     }, (e) => {
-      // If connection is dropped by remote peer, this is fine
-      if (e.code !== 1006) {
-        console.error('Error while listening to BSN Claim')
-        console.error(e)
-      }
+      console.error(e)
     })
   }
 
@@ -70,5 +65,5 @@ class WaardenpapierenService {
     return abundance.getCoreAPI()
   }
 }
-
+export { BRP_UITTREKSEL, BSN_CLAIM_PREDICATE }
 export default WaardenpapierenService

@@ -17,7 +17,7 @@
     "discipl-abundance-service": "git+https://github.com/discipl/discipl-abundance-service.git#integration/fixes",
     "discipl-core-ephemeral": "git+https://github.com/discipl/discipl-core-ephemeral.git#integration/fixes",
     "discipl-core-nlx": "git+https://github.com/discipl/discipl-core-nlx.git",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

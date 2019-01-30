@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import WaardenpapierenService from '../src/index'
+import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL } from '../src/index'
 import * as abundance from 'discipl-abundance-service'
 
 import { take } from 'rxjs/operators'
@@ -11,8 +11,6 @@ import sinon from 'sinon'
 const EPHEMERAL_ENDPOINT = 'http://localhost:3232'
 const EPHEMERAL_WEBSOCKET_ENDPOINT = 'ws://localhost:3233'
 const NLX_OUTWAY_ENDPOINT = 'http://localhost:4080'
-const BSN_CLAIM_PREDICATE = 'BSN'
-const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
@@ -33,7 +31,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     // Set up server
     let waardenpapierenService = new WaardenpapierenService()
     await timeoutPromise(100)
-    let serviceSsid = await waardenpapierenService.start(NLX_OUTWAY_ENDPOINT, EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
+    await waardenpapierenService.start(NLX_OUTWAY_ENDPOINT, EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
     await timeoutPromise(100)
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
     ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
@@ -44,23 +42,41 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     await timeoutPromise(100)
     let needSsid = await abundance.need('ephemeral', BRP_UITTREKSEL)
     await timeoutPromise(100)
-    let attestationObserver = (await abundance.getCoreAPI().observe(serviceSsid, { [needSsid.did]: null })).pipe(take(1)).toPromise()
+    let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
     await timeoutPromise(100)
+
     await abundance.getCoreAPI().claim(needSsid, { [BSN_CLAIM_PREDICATE]: '123123123' })
     await timeoutPromise(100)
-    let attestation = await attestationObserver
+    let match = await matchPromise
+
     await timeoutPromise(100)
+    expect(Object.keys(match.claim.data)).to.include(abundance.ABUNDANCE_SERVICE_MATCH_PREDICATE)
 
     // Test observations
-    expect(attestation.claim.data[needSsid.did]).to.be.a('string')
-
     expect(nlxClaimStub.callCount).to.equal(1)
     expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': '123123123' } }])
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
 
-    let claim = await abundance.getCoreAPI().get(attestation.claim.data[needSsid.did])
-    expect(claim.data).to.deep.equal({ 'woonplaats': 'Haarlem' })
+    let personalSsid = match.ssid
+
+    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, { [BRP_UITTREKSEL]: null }, true)).pipe(take(1)).toPromise()
+
+    let brp = await brpPromise
+
+    expect(brp).to.deep.equal({
+      'claim': {
+        'data': {
+          'BRP_UITTREKSEL_NEED': {
+            'woonplaats': 'Haarlem'
+          }
+        },
+        'previous': null
+      },
+      'ssid': {
+        'did': personalSsid.did
+      }
+    })
 
     await waardenpapierenService.stop()
   })
