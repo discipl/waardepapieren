@@ -77,7 +77,7 @@ class NeedWizard extends Component {
 
   render() {
     return (
-      <div className='need-wizard'>
+      <div className="NeedWizard">
         <h1>Behoeftenformulier</h1>
         <h2>Gemeentelijk ambtenaar</h2>
         {this.renderStep()}

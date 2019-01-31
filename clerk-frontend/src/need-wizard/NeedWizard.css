@@ -1,29 +1,29 @@
-.need-wizard {
+.NeedWizard {
     text-align: center;
     margin: auto;
     width: 50%;
     font-size: 24pt;
 }
 
-.need-wizard input {
+.NeedWizard input {
     font-size: 24pt;
     padding: 20px;
     margin: 10px;
 }
 
-.need-wizard button {
+.NeedWizard button {
     font-size: 24pt;
     padding: 20px;
     margin: 10px;
 }
 
-.need-wizard select {
+.NeedWizard select {
     font-size: 24pt;
     padding: 20px;
     margin: 10px;
 }
 
-.need-wizard table {
+.NeedWizard table {
     margin: auto;
     width: 50%;
 }

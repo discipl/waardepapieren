@@ -15,7 +15,9 @@ class App extends Component {
         console.log(new EphemeralConnector().getName())
         await abundance.getCoreAPI().registerConnector('ephemeral', new EphemeralConnector())
         let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
-        ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT, window.WebSocket)
+        let ephemeralEndpoint = process.env.REACT_APP_EPHEMERAL_ENDPOINT != null ? process.env.REACT_APP_EPHEMERAL_ENDPOINT : EPHEMERAL_ENDPOINT
+        let ephemeralWebsocketEndpoint = process.env.REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT != null ? process.env.REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT : EPHEMERAL_WEBSOCKET_ENDPOINT
+        ephemeralConnector.configure(ephemeralEndpoint, ephemeralWebsocketEndpoint, window.WebSocket)
     }
 
     render() {

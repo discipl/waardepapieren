@@ -1,0 +1,21 @@
+version: '3'
+services:
+  waardepapieren-service:
+    build: waardepapieren-service/.
+    ports:
+      - 3232:3232
+      - 3233:3233
+    links:
+      - mock-nlx
+    environment:
+      - NLX_OUTWAY_ENDPOINT=http://mock-nlx:4080
+  clerk-frontend:
+    build: clerk-frontend/
+    links:
+      - waardepapieren-service
+    ports:
+      - 8080:8080
+  mock-nlx:
+    build: mock-nlx/
+    ports:
+      - 4080:4080
