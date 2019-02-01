@@ -1,0 +1,16 @@
+{
+  "name": "mock-nlx",
+  "version": "0.1.0",
+  "description": "Mock outway for NLX",
+  "repository": "https://github.com/discipl/waardenpapieren",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pim Otte",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

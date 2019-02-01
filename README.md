@@ -4,6 +4,15 @@ project for consortium of municipalities digitizing PoE services
 
 the project aims at a W3C verifiable credential compatible (or alike) solution based on discipl core for proving all kinds of facts atested for by an issuer (with a focus on municipalities as issuer).
 
+# Running 
+
+Running the applications is easiest done using docker-compose. Simply run `docker-compose up`.
+This will start 3 applications:
+
+- clerk-frontend
+- waardepapieren-service, with embedded ephemeral-server
+- nlx-mock, which mocks an NLX API, such that development can be done independently
+
 components:
 
 - client-frontend : frontend webapplication (js) embedded in the my-environment provided by the municipality, which connects to a discipl node to retrieve a needed proof.
