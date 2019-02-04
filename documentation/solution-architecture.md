@@ -3,10 +3,9 @@
 
 ## Introduction
 
-The Discipl Waardepapieren solution aims at a W3C Verifiable Credentials compatible solution for
-credentials of citizens or even more generally: any signed information issued by an entity, for instance a municipality. Citizens are not required to have any equipment which implies a credential can be issued to a “paper wallet” being a QR code printed on paper. The solution is based on the Discipl architecture and software stack, open source and free to use. The solution is platform agnostic.
+The Discipl Waardepapieren solution aims at a W3C Verifiable Credentials (see https://w3c-ccg.github.io/) compatible solution for credentials of citizens or even more generally: any signed information issued by an entity, for instance a municipality. Citizens are not to be required to have any equipment which implies a credential still is issued to a “paper wallet” being a QR code printed on paper. The solution is based on the Discipl architecture and software stack, open source and free to use. The solution is platform agnostic.
 
-This project is a follow up on the one in 2018 (github.com/haarlem/digitale-waardepapieren). The main difference is that even no derivations of personal information like peppered hashes are stored in public ledgers like IOTA. This information is signed and given to the citizen and the signed information is enough to validate the information as been signed by the municipality given a official public key is used which is published in public. For this the NLX platform with its key distribution is used following a newly proposed API strategy. Also this project does not aim at a proof of concept or prototype but a real working solution that can be put into production.
+This project is a follow up on the one in 2018 (http://github.com/haarlem/digitale-waardepapieren). The main difference is that even no derivations of personal information like peppered hashes are stored in public ledgers like IOTA as this is never to be considered a safe thing to do in relation to privacy assurance. This information is signed and given to the citizen and the signed information is enough to validate the information as been signed by the municipality given a official public key is used which is the only information published in public. For this the NLX platform with its key distribution is used following a newly proposed API strategy. Also this project does not aim at a proof of concept or prototype but a real working solution that can be put into production.
 
 The initial focus is to use a (legacy) data source through NLX as source of the information to be issued and a custom made 'paper wallet' solution as verifiable credential platform. The architecture prepares for usage of other platforms instead of this in the future like IRMA and minimally prepares for integration into automated needs matching services envisioned within Discipl.
 
@@ -34,16 +33,18 @@ nor any key distribution mechanism which is more dependent on the specific platf
 
 <<picture>>
 
-The following stakeholders and use cases are identified:
+The following stakeholders are identified:
 
-- issuer
-- client
-- validator
-- administrator
+- issuer : automated (abundance) service available at location of issuer and/or through its website
+- clerk : employee that helps a client at location of issuer, services, identifies and authorizes the client manually
+- authorization service : automated service that identifies and authorizes client when client self services him/herself and accesses issuer through website
+- client : person in need of verifiable information required by a validator
+- validator : actor that needs to receive / verify information from client
+- administrator : actor that controls and monitors the automated issuer service
 
 ## Information layer
 
-All information is temporarily held in verifiable claim channels on the so called ephemeral platform (in memory). This platform will enforce access rights denoted by the channel owner through discipl-4sacan, so all channels are only accessible to the channel owner holding a corresponding private key created and temporarily held by the channel owner.
+All information is temporarily held in verifiable claim channels on the so called discipl ephemeral platform (in memory). This platform will enforce access rights denoted by the channel owner through discipl-4sacan, so all channels are only accessible to the channel owner holding a corresponding private key created and temporarily held by the channel owner.
 Of course the party hosting the ephemeral server and it's administrator needs to be trusted also, but as this is the issuer as source of the information it is by definition a party already chosen or forced to be trusted by the client. The following channels will be created using this solution holding the following information (verifiable claims) with what kind of accessibility retention:
 
 <<picture>>
@@ -93,8 +94,7 @@ Validation does not require usage of this server; validators run their own embed
 
 <<picture>>
 
-The solution is hosted on a server in control of the issuer and used by the devices (broad range of desktop computers, mobile phones or tablets)
-in control of citizens, clerks, validators and administrators. The server at the issuer is accessible on the intranet of the issuer and publicly through an existing web server (in a controlled way) that also will serve the different kinds of client side web applications.
+The solution is hosted on a server in control of the issuer and used by the devices (broad range of desktop computers, mobile phones or tablets) in control of citizens, clerks, validators and administrators. The server at the issuer is accessible on the intranet of the issuer and publicly through an existing web server (in a controlled way) that also will serve the different kinds of client side web applications.
 
 ## Key decisions
 
