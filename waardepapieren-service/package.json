@@ -19,8 +19,8 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
-    "discipl-abundance-service": "git+https://github.com/discipl/discipl-abundance-service.git#integration/fixes",
-    "discipl-core-ephemeral": "git+https://github.com/discipl/discipl-core-ephemeral.git#feature/injectable-websocket",
+    "discipl-abundance-service": "git+https://github.com/discipl/discipl-abundance-service.git",
+    "discipl-core-ephemeral": "git+https://github.com/discipl/discipl-core-ephemeral.git#bugfix/deep-clone-external-data",
     "discipl-core-nlx": "git+https://github.com/discipl/discipl-core-nlx.git",
     "rxjs": "^6.4.0",
     "websocket": "^1.0.28"
@@ -31,7 +31,7 @@
     "codecov": "^3.1.0",
     "discipl-core-memory": "git+https://github.com/discipl/discipl-core-memory.git",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "nyc": "^13.2.0",
     "sinon": "^7.2.2",
     "standard": "^12.0.1",
     "ws": "^6.1.3"

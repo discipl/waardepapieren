@@ -10,6 +10,7 @@ class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
     // Setup server
     this.ephemeralServer = new EphemeralServer(3232)
+    this.ephemeralServer.start()
     const core = abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
     ephemeralConnector.configure(ephemeralEndpoint, ephemeralWebsocketEndpoint, w3cwebsocket)
