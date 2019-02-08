@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import NeedWizard from './need-wizard/NeedWizard'
-import * as abundance from 'discipl-abundance-service'
-import EphemeralConnector from 'discipl-core-ephemeral/src/client'
+import * as abundance from '@discipl/abundance-service'
+// Specifically import the subcomponent to prevent the server to be included in the distributable
+import EphemeralConnector from '@discipl/core-ephemeral/src/EphemeralConnector'
 
 const EPHEMERAL_ENDPOINT = 'http://localhost:3000'
 const EPHEMERAL_WEBSOCKET_ENDPOINT = 'ws://localhost:3233'

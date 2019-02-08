@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as abundance from 'discipl-abundance-service'
+import * as abundance from '@discipl/abundance-service'
 import { take } from 'rxjs/operators'
 
 const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'

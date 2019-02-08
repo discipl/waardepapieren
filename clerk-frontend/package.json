@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "discipl-abundance-service": "git+https://github.com/discipl/discipl-abundance-service.git#integration/frontend-fixes",
-    "discipl-core-ephemeral": "git+https://github.com/discipl/discipl-core-ephemeral.git#feature/injectable-websocket",
+    "@discipl/abundance-service": "~0.1.0",
+    "@discipl/core-ephemeral": "~0.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3",
@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!discipl-*)/\"",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3232",

@@ -3,7 +3,7 @@
 
 import { expect } from 'chai'
 import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL } from '../src/waardepapieren-service'
-import * as abundance from 'discipl-abundance-service'
+import * as abundance from '@discipl/abundance-service'
 import { w3cwebsocket } from 'websocket'
 
 import { take } from 'rxjs/operators'
