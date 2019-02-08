@@ -1,5 +1,6 @@
 import * as abundance from '@discipl/abundance-service'
-import { EphemeralServer } from '@discipl/core-ephemeral'
+// Specifically importing the server, because the server is not in the index to ensure browser compatibility
+import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 
