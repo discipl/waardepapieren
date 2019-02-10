@@ -78,7 +78,7 @@
         </div>
         <!-- This is where the app gets injected, before this it is all boilerplate -->
 
-        <router-view></router-view>
+        <div id="form_container"></div>
 
         <!-- This ends where the app is injected, the rest is boilerplate -->
       </div>
@@ -128,6 +128,14 @@
       </footer>
     </div>
     <div id="js-width" style=""></div>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="App.js"></script>
+
   </body>
 </div>
 </html>
