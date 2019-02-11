@@ -78,8 +78,8 @@ class NeedWizard extends Component {
   render() {
     return (
       <div className="NeedWizard">
-        <h1>Behoeftenformulier</h1>
-        <h2>Gemeentelijk ambtenaar</h2>
+        <h2>Verstrekken bewijs inschrijving BRP</h2>
+        <h3>Gemeentelijk ambtenaar</h3>
         {this.renderStep()}
         {this.renderButtons()}
       </div>
