@@ -7,6 +7,7 @@ WORKDIR /app
 RUN npm install
 ADD src /app/src
 ADD public /app/public
+
 RUN npm run build
 
 FROM nginx:1.15.8

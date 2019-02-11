@@ -1,5 +1,6 @@
-import * as abundance from 'discipl-abundance-service'
-import { EphemeralServer } from 'discipl-core-ephemeral'
+import * as abundance from '@discipl/abundance-service'
+// Specifically importing the server, because the server is not in the index to ensure browser compatibility
+import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 
@@ -10,6 +11,7 @@ class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
     // Setup server
     this.ephemeralServer = new EphemeralServer(3232)
+    this.ephemeralServer.start()
     const core = abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
     ephemeralConnector.configure(ephemeralEndpoint, ephemeralWebsocketEndpoint, w3cwebsocket)
