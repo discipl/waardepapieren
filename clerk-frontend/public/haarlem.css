@@ -2525,7 +2525,7 @@ ul.style-2.tabs li.is-selected a {
 
 nav {
   clear: left;
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-nav.png') 50% 0 repeat-y;
+  background: url('./assets/Images/bg/bg-nav.png') 50% 0 repeat-y;
   background: linear-gradient(to right, #eee 0, #eee 21%, #fff 21%, #fff 100%)
 }
 
@@ -2974,7 +2974,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .shortcuts:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black.png') 100% 0 repeat-x;
+  background: url('./assets/Images/bg/bg-lines-black.png') 100% 0 repeat-x;
   content: "";
   display: block;
   height: 10px;
@@ -2990,7 +2990,7 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .shortcuts:before {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black@2x.png');
+    background-image: url('./assets/Images/bg/bg-lines-black@2x.png');
     background-size: 10px auto
   }
 }
@@ -3131,7 +3131,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .slider:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black.png') repeat-x;
+  background: url('./assets/Images/bg/bg-lines-black.png') repeat-x;
   content: "";
   display: block;
   left: 0;
@@ -3144,7 +3144,7 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .slider:before {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black@2x.png');
+    background-image: url('./assets/Images/bg/bg-lines-black@2x.png');
     background-size: 10px auto
   }
 }
@@ -3361,14 +3361,14 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .breadcrumbs:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black.png') 100% 0 repeat-x;
+  background: url('./assets/Images/bg/bg-lines-black.png') 100% 0 repeat-x;
   display: block;
   position: absolute
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .breadcrumbs:before {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black@2x.png');
+    background-image: url('./assets/Images/bg/bg-lines-black@2x.png');
     background-size: 10px auto
   }
 }
@@ -3414,14 +3414,14 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .steps:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black.png') repeat-x;
+  background: url('./assets/Images/bg/bg-lines-black.png') repeat-x;
   display: block;
   position: absolute
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .steps:before {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black@2x.png');
+    background-image: url('./assets/Images/bg/bg-lines-black@2x.png');
     background-size: 10px auto
   }
 }
@@ -3434,7 +3434,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .steps ol {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-white.png') 0 100% repeat-x #da2738;
+  background: url('./assets/Images/bg/bg-lines-white.png') 0 100% repeat-x #da2738;
   display: block;
   margin: 0
 }
@@ -3450,7 +3450,7 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .steps ol {
-    background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-white@2x.png') 0 100% repeat-x #da2738;
+    background: url('./assets/Images/bg/bg-lines-white@2x.png') 0 100% repeat-x #da2738;
     background-size: 10px auto
   }
 }
@@ -4240,12 +4240,12 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .content {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-content-lines.png') 50% 0 no-repeat #fff
+  background: url('./assets/Images/bg/bg-content-lines.png') 50% 0 no-repeat #fff
 }
 
 @media only screen and (max-width:1210px) {
   .content {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-content.png')
+    background-image: url('./assets/Images/bg/bg-content.png')
   }
 }
 
@@ -4279,7 +4279,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .category figure:before, .citydistrict figure:before, .citydistricts figure:before, .detail figure:before, .http-404 figure:before, .lines-list figure:before, .participation figure:before, .service-form figure:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black.png') repeat-x;
+  background: url('./assets/Images/bg/bg-lines-black.png') repeat-x;
   content: "";
   display: block;
   left: 0;
@@ -4292,7 +4292,7 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .category figure:before, .citydistrict figure:before, .citydistricts figure:before, .detail figure:before, .http-404 figure:before, .lines-list figure:before, .participation figure:before, .service-form figure:before {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black@2x.png');
+    background-image: url('./assets/Images/bg/bg-lines-black@2x.png');
     background-size: 10px auto
   }
 }
@@ -4632,7 +4632,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .promo {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-content.png') 50% 0 repeat-y
+  background: url('./assets/Images/bg/bg-content.png') 50% 0 repeat-y
 }
 
 @media only screen and (max-width:520px) {
@@ -4652,7 +4652,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .promo>div:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black.png') 100% 0 repeat-x;
+  background: url('./assets/Images/bg/bg-lines-black.png') 100% 0 repeat-x;
   content: "";
   display: block;
   height: 10px;
@@ -4664,7 +4664,7 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .promo>div:before {
-    background-image: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-black@2x.png');
+    background-image: url('./assets/Images/bg/bg-lines-black@2x.png');
     background-size: 10px auto
   }
 }
@@ -4935,7 +4935,7 @@ nav>ul .tab-citydistricts .sub .more span {
 }
 
 .detail .related:before {
-  background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-white.png') #da2738;
+  background: url('./assets/Images/bg/bg-lines-white.png') #da2738;
   content: "";
   display: block;
   height: 20px;
@@ -4944,7 +4944,7 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @media screen and (-webkit-min-device-pixel-ratio:2), screen and (max-moz-device-pixel-ratio:2) {
   .detail .related:before {
-    background: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Images/bg/bg-lines-white@2x.png') #da2738;
+    background: url('./assets/Images/bg/bg-lines-white@2x.png') #da2738;
     background-size: 20px auto
   }
 }
@@ -6274,16 +6274,16 @@ nav>ul .tab-citydistricts .sub .more span {
 
 @font-face {
   font-family: Rambla;
-  src: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/Rambla-Regular.eot');
-  src: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/Rambla-Regular.eot#iefix') format("embedded-opentype"), url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/Rambla-Regular.svg#RamblaRegular') format("svg"), url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/Rambla-Regular.woff') format("woff"), url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/Rambla-Regular.ttf') format("truetype");
+  src: url('./assets/Fonts/Rambla-Regular.eot');
+  src: url('./assets/Fonts/Rambla-Regular.eot#iefix') format("embedded-opentype"), url('./assets/Fonts/Rambla-Regular.svg#RamblaRegular') format("svg"), url('./assets/Fonts/Rambla-Regular.woff') format("woff"), url('./assets/Fonts/Rambla-Regular.ttf') format("truetype");
   font-weight: 400;
   font-style: normal
 }
 
 @font-face {
   font-family: icons;
-  src: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/icons.eot');
-  src: url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/icons.eot#iefix') format("embedded-opentype"), url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/icons.svg#icons') format("svg"), url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/icons.woff') format("woff"), url('../../typo3conf/ext/alternet_sitepackage/Resources/Public/Fonts/icons.ttf') format("truetype");
+  src: url('./assets/Fonts/icons.eot');
+  src: url('./assets/Fonts/icons.eot#iefix') format("embedded-opentype"), url('./assets/Fonts/icons.svg#icons') format("svg"), url('./assets/Fonts/icons.woff') format("woff"), url('./assets/Fonts/icons.ttf') format("truetype");
   font-weight: 400;
   font-style: normal
 }
