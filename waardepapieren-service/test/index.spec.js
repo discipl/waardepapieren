@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL } from '../src/waardepapieren-service'
+import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL, BRP_UITTREKSEL_ACCEPT, AGREE } from '../src/waardepapieren-service'
 import * as abundance from '@discipl/abundance-service'
 import { w3cwebsocket } from 'websocket'
 
@@ -78,6 +78,27 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
         'did': personalSsid.did
       }
     })
+
+    let agreePromise = (await abundance.getCoreAPI().observe(personalSsid, { [AGREE]: null })).pipe(take(1)).toPromise()
+
+    // Accept and follow references
+    await abundance.getCoreAPI().claim(needSsid, { [BRP_UITTREKSEL_ACCEPT]: '' })
+
+    let agree = await agreePromise
+
+    expect(agree.claim.data[AGREE]).to.be.a('string')
+
+    let attestationLink = agree.claim.data[AGREE]
+
+    let attestation = await abundance.getCoreAPI().get(attestationLink)
+
+    expect(attestation.data[AGREE]).to.be.a('string')
+
+    let brpClaimLink = attestation.data[AGREE]
+
+    let brpClaim = await abundance.getCoreAPI().get(brpClaimLink)
+
+    expect(brp.claim.data).to.deep.equal(brpClaim.data)
 
     await waardenpapierenService.stop()
   })
