@@ -7,7 +7,7 @@ import { w3cwebsocket } from 'websocket'
 const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
 const BSN_CLAIM_PREDICATE = 'BSN'
 const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
-const AGREE = 'AGREE'
+const AGREE = 'Bewijs inschrijving Haarlem'
 
 class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
@@ -55,7 +55,7 @@ class WaardenpapierenService {
       for (let key of Object.keys(result)) {
         resultArray.push({[key]: result[key]})
       }
-      let brpClaim = await core.claim(personalSsid, { [BRP_UITTREKSEL]: resultArray })
+      let brpClaim = await core.claim(personalSsid, resultArray)
       await abundance.match(personalSsid, did)
 
       const acceptObserver = await core.observe({ did: did }, { [BRP_UITTREKSEL_ACCEPT]: null })

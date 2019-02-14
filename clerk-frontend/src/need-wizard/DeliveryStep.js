@@ -4,7 +4,7 @@ import * as paperWallet from '@discipl/paper-wallet'
 import { take } from 'rxjs/operators'
 
 const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
-const AGREE = 'AGREE'
+const AGREE = 'Bewijs inschrijving Haarlem'
 
 class ConfirmStep extends Component {
 
@@ -30,8 +30,9 @@ class ConfirmStep extends Component {
 
     let brpClaimLink = attestation.data[AGREE]
 
+    console.log(brpClaimLink)
 
-    let vc = await paperWallet.issue(brpClaimLink)
+    let vc = await paperWallet.issue(attestationLink)
 
     console.log(vc)
 
