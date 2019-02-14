@@ -50,7 +50,12 @@ class WaardenpapierenService {
       let result = await nlxConnector.get(identifier)
 
       let personalSsid = await core.newSsid('ephemeral')
-      let brpClaim = await core.claim(personalSsid, { [BRP_UITTREKSEL]: result })
+      let resultArray = []
+
+      for (let key of Object.keys(result)) {
+        resultArray.push({[key]: result[key]})
+      }
+      let brpClaim = await core.claim(personalSsid, { [BRP_UITTREKSEL]: resultArray })
       await abundance.match(personalSsid, did)
 
       const acceptObserver = await core.observe({ did: did }, { [BRP_UITTREKSEL_ACCEPT]: null })

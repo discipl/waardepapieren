@@ -68,9 +68,9 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     expect(brp).to.deep.equal({
       'claim': {
         'data': {
-          'BRP_UITTREKSEL_NEED': {
+          'BRP_UITTREKSEL_NEED': [{
             'woonplaats': 'Haarlem'
-          }
+          }]
         },
         'previous': null
       },
