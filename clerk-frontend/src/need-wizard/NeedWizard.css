@@ -1,25 +1,25 @@
 .NeedWizard {
-    text-align: center;
+    text-align: left;
     margin: auto;
     width: 50%;
-    font-size: 24pt;
+    font-size: 16pt;
 }
 
 .NeedWizard input {
-    font-size: 24pt;
-    padding: 20px;
+    font-size: 16pt;
+    padding: 10px;
     margin: 10px;
 }
 
 .NeedWizard button {
-    font-size: 24pt;
-    padding: 20px;
+    font-size: 16pt;
+    padding: 10px;
     margin: 10px;
 }
 
 .NeedWizard select {
-    font-size: 24pt;
-    padding: 20px;
+    font-size: 16pt;
+    padding: 10px;
     margin: 10px;
 }
 
