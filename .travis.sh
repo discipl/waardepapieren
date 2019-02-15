@@ -14,7 +14,7 @@ npm test
 # Integration
 cd ..
 docker-compose build
-docker-compose start
+docker-compose up -d
 
 echo "Waiting for dockers to start"
 while [ -n "$(docker ps -a | grep starting)" ];
