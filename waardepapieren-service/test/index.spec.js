@@ -61,17 +61,16 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
 
     let personalSsid = match.ssid
 
-    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, { [BRP_UITTREKSEL]: null }, true)).pipe(take(1)).toPromise()
+    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, {}, true)).pipe(take(1)).toPromise()
 
     let brp = await brpPromise
 
     expect(brp).to.deep.equal({
       'claim': {
-        'data': {
-          'BRP_UITTREKSEL_NEED': [{
+        'data': [{
             'woonplaats': 'Haarlem'
-          }]
-        },
+        }],
+
         'previous': null
       },
       'ssid': {
