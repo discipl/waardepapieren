@@ -31,21 +31,26 @@ class ConfirmStep extends Component {
 
     let personalSsid = match.ssid
 
-    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, { [BRP_UITTREKSEL]: null }, true)).pipe(take(1)).toPromise()
+    if (this.props.ssidsChanged) {
+      this.props.ssidsChanged(personalSsid, needSsid)
+    }
+
+    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, null, true)).pipe(take(1)).toPromise()
 
     let brp = await brpPromise
 
     this.setState({
       ...this.state,
-      'data': brp.claim.data[BRP_UITTREKSEL]
+      'data': brp.claim.data
     })
   }
 
   renderAttributes() {
     let result = []
     if (this.state.data) {
-      for (let key of Object.keys(this.state.data)) {
-        let value = this.state.data[key]
+      for (let keyValue of this.state.data) {
+        let key = Object.keys(keyValue)[0]
+        let value = keyValue[key]
 
         if (typeof value !==  'string') {
           value = JSON.stringify(value)

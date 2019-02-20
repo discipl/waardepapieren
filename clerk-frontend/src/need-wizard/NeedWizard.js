@@ -3,8 +3,9 @@ import './NeedWizard.css'
 import BSNStep from './BSNStep'
 import NeedStep from './NeedStep'
 import ConfirmStep from './ConfirmStep'
+import DeliveryStep from './DeliveryStep'
 
-const MAX_STEP = 2;
+const MAX_STEP = 3;
 
 class NeedWizard extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class NeedWizard extends Component {
     this._next = this._next.bind(this);
     this.bsnChanged = this.bsnChanged.bind(this);
     this.needChanged = this.needChanged.bind(this);
+    this.ssidsChanged = this.ssidsChanged.bind(this);
   }
 
   _prev() {
@@ -62,6 +64,15 @@ class NeedWizard extends Component {
     })
   }
 
+  ssidsChanged(personalSsid, needSsid) {
+    console.log(this)
+    this.setState({
+      ...this.state,
+      'personalSsid': personalSsid,
+      'needSsid': needSsid
+    })
+  }
+
   renderStep () {
     switch(this.state.step) {
       case 0:
@@ -69,7 +80,9 @@ class NeedWizard extends Component {
       case 1:
         return <NeedStep needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep bsn={this.state.bsn} need={this.state.need}/>
+        return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged}/>
+      case 3:
+        return <DeliveryStep personalSsid={this.state.personalSsid} needSsid={this.state.needSsid} />
       default:
         console.log('Unsupported step')
     }
