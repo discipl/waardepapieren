@@ -69,7 +69,9 @@ class ConfirmStep extends Component {
     return (
       <div className="confirmation-data">
         <table>
-          {this.renderAttributes()}
+          <tbody>
+            {this.renderAttributes()}
+          </tbody>
         </table>
       </div>
     );
