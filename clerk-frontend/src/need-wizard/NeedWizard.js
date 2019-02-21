@@ -48,6 +48,7 @@ class NeedWizard extends Component {
     let nextButton = <button onClick={this._next}>Volgende</button>;
     let wrongInfoButton = <button>Dit klopt niet!</button>;
     let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
+    let downloadButton = <button>Download</button>; // currently still mock
     let appleWalletButton = <button>Download naar Apple Wallet</button>;
     let finishButton = <button onClick={this._first}>Afronden</button>;
 
@@ -60,7 +61,7 @@ class NeedWizard extends Component {
     }
 
     if (this.state.step === MAX_STEP) {
-      return [appleWalletButton, finishButton];
+      return [downloadButton, appleWalletButton, finishButton];
     }
 
     return [prevButton, nextButton];
