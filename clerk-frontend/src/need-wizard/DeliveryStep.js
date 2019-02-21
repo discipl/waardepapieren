@@ -59,7 +59,7 @@ class ConfirmStep extends Component {
     this.canvasRef.current.width = paperWallet.template.canvasWidth
     this.canvasRef.current.height = paperWallet.template.canvasHeight
 
-    await paperWallet.toCanvas(vc, paperWallet.template, this.canvasRef.current)
+    await paperWallet.toCanvas(vc, template, this.canvasRef.current)
   }
 
 
