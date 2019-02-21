@@ -24,3 +24,5 @@ yarn-error.log*
 
 # filled from paper-wallet dependency
 public/images
+
+cypress/videos
