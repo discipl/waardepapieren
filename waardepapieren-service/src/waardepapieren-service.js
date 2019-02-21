@@ -7,7 +7,7 @@ import { w3cwebsocket } from 'websocket'
 const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
 const BSN_CLAIM_PREDICATE = 'BSN'
 const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
-const AGREE = 'Bewijs inschrijving Haarlem'
+const AGREE = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
 
 class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
