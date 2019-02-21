@@ -6,6 +6,26 @@ import { take } from 'rxjs/operators'
 const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
 const AGREE = 'Bewijs inschrijving Haarlem'
 
+let template = {
+  backgroundImage: 'form-assets/template.png',
+  logoImage: 'form-assets/logo.png',
+  logoWidth: 150,
+  logoHeight: 150,
+  canvasWidth: 595, // 8.27 inch @ 72 dpi
+  canvasHeight: 838, // 11.64 inch @ 72 dpi
+  productHeaderFont: 'bold 18px helvetica',
+  claimDataFont: '8px helvetica',
+  productHeaderOffsetX: 125,
+  productHeaderOffsetY: 75,
+  claimDataOffsetX: 25,
+  claimDataOffsetY: 200,
+  claimDataLineSpacing: 10,
+  qrOffsetX: 225,
+  qrOffsetY: 200,
+  qrWidth: 350,
+  qrHeight: 350
+}
+
 class ConfirmStep extends Component {
 
   constructor(props) {
