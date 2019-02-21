@@ -46,16 +46,21 @@ class NeedWizard extends Component {
   renderButtons() {
     let prevButton = <button onClick={this._prev}>Vorige</button>;
     let nextButton = <button onClick={this._next}>Volgende</button>;
-    //let wrongInfoButton = <button onClick={this._next}>Dit klopt niet!</button>;
-    //let appleWalletButton = <button onClick={this._next}>Download naar Apple Wallet</button>;
+    let wrongInfoButton = <button>Dit klopt niet!</button>;
+    let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
+    let appleWalletButton = <button>Download naar Apple Wallet</button>;
     let finishButton = <button onClick={this._first}>Afronden</button>;
 
     if (this.state.step === 0) {
       return nextButton;
     }
 
+    if (this.state.step === 2) {
+      return [prevButton, wrongInfoButton, rightInfoButton];
+    }
+
     if (this.state.step === MAX_STEP) {
-      return finishButton;
+      return [appleWalletButton, finishButton];
     }
 
     return [prevButton, nextButton];
