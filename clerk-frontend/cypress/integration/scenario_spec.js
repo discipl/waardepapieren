@@ -14,7 +14,7 @@ describe('clerk-frontend', () => {
 
     cy.contains('Volgende').click()
 
-    cy.contains('woonplaats')
+    cy.contains('Groot Heiligland')
 
     cy.contains('Volgende').click()
 
