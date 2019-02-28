@@ -12,7 +12,8 @@
 }
 
 .NeedWizard button {
-    font-size: 16pt;
+    background-color: #2255ff;
+    font-size: 12pt;
     padding: 10px;
     margin: 10px;
 }
