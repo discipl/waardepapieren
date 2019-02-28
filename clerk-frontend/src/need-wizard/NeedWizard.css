@@ -12,9 +12,10 @@
 }
 
 .NeedWizard button {
-    font-size: 16pt;
-    padding: 10px;
-    margin: 10px;
+    background-color: #2277ff;
+    font-size: 14pt;
+    padding: 15px;
+    margin: 15px;
 }
 
 .NeedWizard select {
@@ -25,5 +26,5 @@
 
 .NeedWizard table {
     margin: auto;
-    width: 50%;
+    width: 70%;
 }

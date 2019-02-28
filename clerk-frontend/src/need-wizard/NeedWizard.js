@@ -16,6 +16,7 @@ class NeedWizard extends Component {
 
     this._prev = this._prev.bind(this);
     this._next = this._next.bind(this);
+    this._first = this._first.bind(this);
     this.bsnChanged = this.bsnChanged.bind(this);
     this.needChanged = this.needChanged.bind(this);
     this.ssidsChanged = this.ssidsChanged.bind(this);
@@ -35,16 +36,32 @@ class NeedWizard extends Component {
     })
   }
 
+  _first() {
+    this.setState({
+      ...this.state,
+      step: 0
+    })
+  }
+
   renderButtons() {
     let prevButton = <button onClick={this._prev}>Vorige</button>;
     let nextButton = <button onClick={this._next}>Volgende</button>;
+    let wrongInfoButton = <button>Dit klopt niet!</button>;
+    let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
+    let downloadButton = <button>Download</button>; // currently still mock
+    let appleWalletButton = <button>Download naar Apple Wallet</button>;
+    let finishButton = <button onClick={this._first}>Afronden</button>;
 
     if (this.state.step === 0) {
       return nextButton;
     }
 
+    if (this.state.step === 2) {
+      return [prevButton, wrongInfoButton, rightInfoButton];
+    }
+
     if (this.state.step === MAX_STEP) {
-      return prevButton;
+      return [downloadButton, appleWalletButton, finishButton];
     }
 
     return [prevButton, nextButton];
