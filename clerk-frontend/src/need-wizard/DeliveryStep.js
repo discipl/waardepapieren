@@ -7,7 +7,7 @@ const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
 const AGREE = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
 
 let template = {
-  backgroundImage: 'form-assets/template.png',
+  backgroundImage: 'form-assets/newtemplate.png',
   logoImage: 'form-assets/logo.png',
   logoWidth: 230,
   logoHeight: 180,
@@ -17,13 +17,13 @@ let template = {
   claimDataFont: '11.5px helvetica',
   productHeaderOffsetX: 30,
   productHeaderOffsetY: 170,
-  claimDataOffsetX: 30,
+  claimDataOffsetX: 40,
   claimDataOffsetY: 255,
   claimDataLineSpacing: 15,
-  qrOffsetX: 240,
-  qrOffsetY: 250,
-  qrWidth: 350,
-  qrHeight: 350
+  qrOffsetX: 320,
+  qrOffsetY: 420,
+  qrWidth: 250,
+  qrHeight: 250
 }
 
 class ConfirmStep extends Component {
@@ -61,21 +61,11 @@ class ConfirmStep extends Component {
 
     await paperWallet.toCanvas(vc, template, this.canvasRef.current)
     let context = this.canvasRef.current.getContext('2d')
-    //post header text
-    context.fillText('Onderstaande persoon is bij de gemeente Haarlem insgeschreven', 30, 190)
-    //line separating header and content
     context.beginPath();
-    context.moveTo(30, 250);
-    context.lineTo(580, 250);
+    context.moveTo(40, 250);
+    context.lineTo(570, 250);
     context.stroke();
-    //inserted footer information
-    context.fillText('Dit is een automatisch gegenereerd document en daarom niet ondertekend', 70, 750)
-    context.fillText('De authenticiteit van de gegevens zijn vastgelegd en geborgd in NLX', 90, 765)
-    context.fillText('U kunt de echtheid van dit document controleren via een bijbehorende app', 69, 780)
-    context.fillStyle = "#22AAEE";
-    context.fillRect(5, 1, 7, 836)
-    context.fillStyle = "#99DDFF";
-    context.fillRect(588, 1, 7, 836)
+
   }
 
   render() {
