@@ -7,7 +7,7 @@ const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
 const AGREE = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
 
 let template = {
-  backgroundImage: 'form-assets/newtemplate.png',
+  backgroundImage: 'form-assets/another_pdf_template.png',
   logoImage: 'form-assets/logo.png',
   logoWidth: 230,
   logoHeight: 180,
