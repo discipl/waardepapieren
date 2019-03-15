@@ -1,6 +1,6 @@
 {
   "name": "waardenpapieren-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "waardenpapieren-service",
   "main": "src/index.js",
   "repository": "https://github.com/discipl/waardenpapieren",
@@ -18,9 +18,9 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
-    "@discipl/abundance-service": "~0.1.0",
-    "@discipl/core-ephemeral": "~0.2.0",
-    "@discipl/core-nlx": "~0.1.0",
+    "@discipl/abundance-service": "~0.3.0",
+    "@discipl/core-ephemeral": "^0.4.0",
+    "@discipl/core-nlx": "~0.2.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "rxjs": "^6.4.0",
     "websocket": "^1.0.28"
@@ -30,7 +30,7 @@
     "chai": "^4.2.0",
     "codecov": "^3.1.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.2.0",
+    "nyc": "^13.3.0",
     "sinon": "^7.2.2",
     "standard": "^12.0.1",
     "ws": "^6.1.3"

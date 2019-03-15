@@ -29,23 +29,28 @@ class ConfirmStep extends Component {
     await timeoutPromise(100)
     let match = await matchPromise
 
-    let personalSsid = match.ssid
+    let personalDid = match.did
 
-    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, { [BRP_UITTREKSEL]: null }, true)).pipe(take(1)).toPromise()
+    if (this.props.ssidsChanged) {
+      this.props.ssidsChanged(personalDid, needSsid)
+    }
+
+    let brpPromise = (await abundance.getCoreAPI().observe(personalDid, null, true)).pipe(take(1)).toPromise()
 
     let brp = await brpPromise
 
     this.setState({
       ...this.state,
-      'data': brp.claim.data[BRP_UITTREKSEL]
+      'data': brp.claim.data
     })
   }
 
   renderAttributes() {
     let result = []
     if (this.state.data) {
-      for (let key of Object.keys(this.state.data)) {
-        let value = this.state.data[key]
+      for (let keyValue of this.state.data) {
+        let key = Object.keys(keyValue)[0]
+        let value = keyValue[key]
 
         if (typeof value !==  'string') {
           value = JSON.stringify(value)
@@ -64,7 +69,9 @@ class ConfirmStep extends Component {
     return (
       <div className="confirmation-data">
         <table>
-          {this.renderAttributes()}
+          <tbody>
+            {this.renderAttributes()}
+          </tbody>
         </table>
       </div>
     );

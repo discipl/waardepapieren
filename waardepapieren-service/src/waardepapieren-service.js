@@ -6,6 +6,8 @@ import { w3cwebsocket } from 'websocket'
 
 const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
 const BSN_CLAIM_PREDICATE = 'BSN'
+const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
+const AGREE = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
 
 class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
@@ -36,11 +38,11 @@ class WaardenpapierenService {
   async serveNeed (serviceSsid, need) {
     const core = abundance.getCoreAPI()
 
-    let did = need.ssid.did
+    let did = need.did
 
-    const observer = await core.observe({ did: did }, { [BSN_CLAIM_PREDICATE]: null })
+    const observer = await core.observe(did, { [BSN_CLAIM_PREDICATE]: null })
 
-    observer.pipe(take(1)).subscribe(async (bsnClaim) => {
+    await observer.pipe(take(1)).subscribe(async (bsnClaim) => {
       const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
       const nlxConnector = await core.getConnector('nlx')
       let identifier = await nlxConnector.claim(null, { 'path': '/brp/basisregistratiepersonen/ingeschreven_natuurlijke_personen', 'params': { 'burgerservicenummer': bsn } })
@@ -48,8 +50,20 @@ class WaardenpapierenService {
       let result = await nlxConnector.get(identifier)
 
       let personalSsid = await core.newSsid('ephemeral')
-      await core.claim(personalSsid, { [BRP_UITTREKSEL]: result })
+      let resultArray = []
+
+      for (let key of Object.keys(result)) {
+        resultArray.push({[key]: result[key]})
+      }
+      let brpClaim = await core.claim(personalSsid, resultArray)
       await abundance.match(personalSsid, did)
+
+      const acceptObserver = await core.observe(did, { [BRP_UITTREKSEL_ACCEPT]: null })
+
+      acceptObserver.pipe(take(1)).subscribe(async (acceptClaim) => {
+        let attestationLink = await core.attest(serviceSsid, AGREE, brpClaim)
+        await core.attest(personalSsid, AGREE, attestationLink)
+      })
     }, (e) => {
       console.error(e)
     })
@@ -68,5 +82,5 @@ class WaardenpapierenService {
     return abundance.getCoreAPI()
   }
 }
-export { BRP_UITTREKSEL, BSN_CLAIM_PREDICATE }
+export { BRP_UITTREKSEL, BSN_CLAIM_PREDICATE, BRP_UITTREKSEL_ACCEPT, AGREE }
 export default WaardenpapierenService

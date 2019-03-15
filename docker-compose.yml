@@ -13,3 +13,9 @@ services:
       - waardepapieren-service
     ports:
       - 8080:8080
+    healthcheck:
+      test: service nginx status
+  mock-nlx:
+    build: mock-nlx/
+    ports:
+      - 4080:4080
