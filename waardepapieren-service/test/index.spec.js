@@ -55,7 +55,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
 
     // Test observations
     expect(nlxClaimStub.callCount).to.equal(1)
-    expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': '/haarlem/Basisregistratiepersonen/RaadpleegIngeschrevenPersoonNAW', 'params': { 'burgerservicenummer': '123123123' } }])
+    expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': '/brp/basisregistratiepersonen/ingeschreven_natuurlijke_personen', 'params': { 'burgerservicenummer': '123123123' } }])
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
 
