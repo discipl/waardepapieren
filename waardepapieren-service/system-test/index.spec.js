@@ -3,9 +3,10 @@
 
 import { expect } from 'chai'
 import WaardenpapierenService from '../src/waardepapieren-service'
-import * as abundance from 'discipl-abundance-service'
+import * as abundance from '@discipl/abundance-service'
 
 import { take } from 'rxjs/operators'
+import { w3cwebsocket } from 'websocket'
 
 const EPHEMERAL_ENDPOINT = 'http://localhost:3232'
 const EPHEMERAL_WEBSOCKET_ENDPOINT = 'ws://localhost:3233'
@@ -27,12 +28,12 @@ describe('waardenpapieren-service', () => {
     let serviceSsid = await waardenpapierenService.start(NLX_OUTWAY_ENDPOINT, EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
     await timeoutPromise(100)
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
-    ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
+    ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
     await timeoutPromise(100)
     let needSsid = await abundance.need('ephemeral', BRP_UITTREKSEL)
     await timeoutPromise(100)
-    let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid, { [needSsid.did]: null })).pipe(take(1)).toPromise()
+    let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid.did, { [needSsid.did]: null })).pipe(take(1)).toPromise()
     await timeoutPromise(100)
     await abundance.getCoreAPI().claim(needSsid, { [BSN_CLAIM_PREDICATE]: '123123123' })
     await timeoutPromise(100)

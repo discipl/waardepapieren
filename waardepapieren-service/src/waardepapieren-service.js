@@ -38,9 +38,9 @@ class WaardenpapierenService {
   async serveNeed (serviceSsid, need) {
     const core = abundance.getCoreAPI()
 
-    let did = need.ssid.did
+    let did = need.did
 
-    const observer = await core.observe({ did: did }, { [BSN_CLAIM_PREDICATE]: null })
+    const observer = await core.observe(did, { [BSN_CLAIM_PREDICATE]: null })
 
     await observer.pipe(take(1)).subscribe(async (bsnClaim) => {
       const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
@@ -58,7 +58,7 @@ class WaardenpapierenService {
       let brpClaim = await core.claim(personalSsid, resultArray)
       await abundance.match(personalSsid, did)
 
-      const acceptObserver = await core.observe({ did: did }, { [BRP_UITTREKSEL_ACCEPT]: null })
+      const acceptObserver = await core.observe(did, { [BRP_UITTREKSEL_ACCEPT]: null })
 
       acceptObserver.pipe(take(1)).subscribe(async (acceptClaim) => {
         let attestationLink = await core.attest(serviceSsid, AGREE, brpClaim)

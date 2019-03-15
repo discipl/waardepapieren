@@ -19,7 +19,8 @@ const timeoutPromise = (timeoutMillis) => {
   })
 }
 
-describe('waardenpapieren-service, integrated with mocked nlx connector', () => {
+describe('waardenpapieren-service, integrated with mocked nlx connector', function () {
+  this.timeout(5000)
   it('should serve an expressed need for BRP', async () => {
     let nlxConnector = await abundance.getCoreAPI().getConnector('nlx')
 
@@ -34,6 +35,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     await timeoutPromise(100)
     await waardenpapierenService.start(NLX_OUTWAY_ENDPOINT, EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
     await timeoutPromise(100)
+
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
     ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
@@ -42,6 +44,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
 
     await timeoutPromise(100)
     let needSsid = await abundance.need('ephemeral', BRP_UITTREKSEL)
+
     await timeoutPromise(100)
     let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
     await timeoutPromise(100)
@@ -59,9 +62,9 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
 
-    let personalSsid = match.ssid
+    let personalDid = match.did
 
-    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, {}, true)).pipe(take(1)).toPromise()
+    let brpPromise = (await abundance.getCoreAPI().observe(personalDid, {}, true)).pipe(take(1)).toPromise()
 
     let brp = await brpPromise
 
@@ -73,12 +76,10 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', () => 
 
         'previous': null
       },
-      'ssid': {
-        'did': personalSsid.did
-      }
+      'did': personalDid
     })
 
-    let agreePromise = (await abundance.getCoreAPI().observe(personalSsid, { [AGREE]: null })).pipe(take(1)).toPromise()
+    let agreePromise = (await abundance.getCoreAPI().observe(personalDid, { [AGREE]: null })).pipe(take(1)).toPromise()
 
     // Accept and follow references
     await abundance.getCoreAPI().claim(needSsid, { [BRP_UITTREKSEL_ACCEPT]: '' })

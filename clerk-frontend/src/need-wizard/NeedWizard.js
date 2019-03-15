@@ -81,11 +81,11 @@ class NeedWizard extends Component {
     })
   }
 
-  ssidsChanged(personalSsid, needSsid) {
+  ssidsChanged(personalDid, needSsid) {
     console.log(this)
     this.setState({
       ...this.state,
-      'personalSsid': personalSsid,
+      'personalDid': personalDid,
       'needSsid': needSsid
     })
   }
@@ -99,7 +99,7 @@ class NeedWizard extends Component {
       case 2:
         return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged}/>
       case 3:
-        return <DeliveryStep personalSsid={this.state.personalSsid} needSsid={this.state.needSsid} />
+        return <DeliveryStep personalDid={this.state.personalDid} needSsid={this.state.needSsid} />
       default:
         console.log('Unsupported step')
     }

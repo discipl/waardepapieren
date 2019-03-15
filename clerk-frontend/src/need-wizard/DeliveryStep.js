@@ -38,7 +38,7 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     console.log(this.props)
 
-    let agreePromise = (await abundance.getCoreAPI().observe(this.props.personalSsid, { [AGREE]: null })).pipe(take(1)).toPromise()
+    let agreePromise = (await abundance.getCoreAPI().observe(this.props.personalDid, { [AGREE]: null })).pipe(take(1)).toPromise()
 
     // Express acceptance of document
     await abundance.getCoreAPI().claim(this.props.needSsid, { [BRP_UITTREKSEL_ACCEPT]: '' })
