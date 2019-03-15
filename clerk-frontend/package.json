@@ -1,11 +1,11 @@
 {
   "name": "clerk-frontend",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@discipl/abundance-service": "~0.1.0",
-    "@discipl/core-ephemeral": "^0.3.0",
-    "@discipl/paper-wallet": "~0.1.0",
+    "@discipl/abundance-service": "~0.3.0",
+    "@discipl/core-ephemeral": "^0.4.0",
+    "@discipl/paper-wallet": "~0.3.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3",

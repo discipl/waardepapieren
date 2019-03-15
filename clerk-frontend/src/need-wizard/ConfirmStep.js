@@ -29,13 +29,13 @@ class ConfirmStep extends Component {
     await timeoutPromise(100)
     let match = await matchPromise
 
-    let personalSsid = match.ssid
+    let personalDid = match.did
 
     if (this.props.ssidsChanged) {
-      this.props.ssidsChanged(personalSsid, needSsid)
+      this.props.ssidsChanged(personalDid, needSsid)
     }
 
-    let brpPromise = (await abundance.getCoreAPI().observe(personalSsid, null, true)).pipe(take(1)).toPromise()
+    let brpPromise = (await abundance.getCoreAPI().observe(personalDid, null, true)).pipe(take(1)).toPromise()
 
     let brp = await brpPromise
 
