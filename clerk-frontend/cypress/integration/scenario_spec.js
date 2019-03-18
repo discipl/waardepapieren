@@ -6,7 +6,7 @@ describe('clerk-frontend', () => {
     cy.contains('Verstrekken bewijs inschrijving BRP')
 
     cy.get('.bsn-form input')
-      .type('123123123')
+      .type('663678651')
 
     cy.contains('Volgende').click()
 
@@ -14,7 +14,7 @@ describe('clerk-frontend', () => {
 
     cy.contains('Volgende').click()
 
-    cy.contains('Groot Heiligland')
+    cy.contains('Utrecht')
 
     cy.contains('Dit klopt!').click()
 
