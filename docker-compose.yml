@@ -2,11 +2,13 @@ version: '3'
 services:
   waardepapieren-service:
     build: waardepapieren-service/.
+    links:
+      - mock-nlx
     ports:
       - 3232:3232
       - 3233:3233
     environment:
-      - NLX_OUTWAY_ENDPOINT=http://localhost:4080
+      - NLX_OUTWAY_ENDPOINT=http://mock-nlx:80
   clerk-frontend:
     build: clerk-frontend/
     links:
@@ -16,6 +18,14 @@ services:
     healthcheck:
       test: service nginx status
   mock-nlx:
-    build: mock-nlx/
+    image: nlxio/outway:latest
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs
+    environment:
+      - DIRECTORY_INSPECTION_ADDRESS=directory-inspection-api.demo.nlx.io:443
+      - TLS_NLX_ROOT_CERT=/certs/root.crt
+      - TLS_ORG_CERT=/certs/org.crt
+      - TLS_ORG_KEY=/certs/org.key
+      - DISABLE_LOGDB=1
     ports:
-      - 4080:4080
+      - 4080:80

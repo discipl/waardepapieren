@@ -45,7 +45,7 @@ class WaardenpapierenService {
     await observer.pipe(take(1)).subscribe(async (bsnClaim) => {
       const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
       const nlxConnector = await core.getConnector('nlx')
-      let identifier = await nlxConnector.claim(null, { 'path': '/brp/basisregistratiepersonen/ingeschreven_natuurlijke_personen', 'params': { 'burgerservicenummer': bsn } })
+      let identifier = await nlxConnector.claim(null, { 'path': '/brp/basisregistratie/natuurlijke_personen/bsn/'+bsn, 'params': {}})
 
       let result = await nlxConnector.get(identifier)
 
