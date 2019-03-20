@@ -4,5 +4,3 @@ node_js:
   - "lts/*"
 script:
   - ./.travis.sh
-deploy:
-  skip_cleanup: true
