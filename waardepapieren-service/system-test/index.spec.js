@@ -20,7 +20,8 @@ const timeoutPromise = (timeoutMillis) => {
   })
 }
 
-describe('waardenpapieren-service', () => {
+describe('waardenpapieren-service', function () {
+  this.timeout(5000)
   it('should serve an expressed need for BRP', async () => {
     // Set up server
     let waardenpapierenService = new WaardenpapierenService()
@@ -35,13 +36,13 @@ describe('waardenpapieren-service', () => {
     await timeoutPromise(100)
     let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid.did, { [needSsid.did]: null })).pipe(take(1)).toPromise()
     await timeoutPromise(100)
-    await abundance.getCoreAPI().claim(needSsid, { [BSN_CLAIM_PREDICATE]: '123123123' })
-    await timeoutPromise(100)
+    await abundance.getCoreAPI().claim(needSsid, { [BSN_CLAIM_PREDICATE]: '663678651' })
+    await timeoutPromise(1000)
     let attestLink = await attestLinkObserver
     await timeoutPromise(100)
     expect(attestLink.claim.data[needSsid.did]).to.be.a('string')
     let claim = await abundance.getCoreAPI().get(attestLink.claim.data[needSsid.did])
-    expect(claim.data).to.deep.equal({ woonplaats: 'dummy value' })
+    expect(claim.data.burgerservicenummer).to.deep.equal('663678651')
 
     await waardenpapierenService.stop()
   })

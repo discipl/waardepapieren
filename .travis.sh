@@ -13,8 +13,8 @@ npm test
 
 # Integration
 cd ..
-docker-compose build
-docker-compose up -d
+docker-compose -f docker-compose-travis.yml build
+docker-compose -f docker-compose-travis.yml up -d
 
 echo "Waiting for dockers to start"
 while [ -n "$(docker ps -a | grep starting)" ];
