@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import pako from 'pako'
+import { AsyncStorage } from 'react-native'
+
 
 export default class ScanScreen extends React.Component {
   state = {
@@ -12,6 +14,15 @@ export default class ScanScreen extends React.Component {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
     }
+
+  _storeData = async (data) => {
+    try {
+      await AsyncStorage.setItem("Test", data);
+      console.log("ive been here")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   render() {
     const { hasCameraPermission } = this.state;
@@ -34,6 +45,9 @@ export default class ScanScreen extends React.Component {
 
   handleBarCodeScanned = ({ type, data }) => {
     uncompressedData = pako.inflate(data, { 'to': 'string' })
+    console.log(uncompressedData)
+    this._storeData(uncompressedData);
     alert(`Bar code with type ${type} and data ${uncompressedData} has been scanned!`);
+
   }
 }

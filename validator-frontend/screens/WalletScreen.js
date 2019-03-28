@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, FlatList, StyleSheet, TouchableWithoutFeedback, Text, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation'
+import { AsyncStorage } from 'react-native'
 
 export default class App extends React.Component {
   render() {
@@ -39,16 +40,31 @@ class UitrekselScreen extends Component {
   static navigationOptions = {
     headerTitle: 'Uitreksel screen',
   };
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("Test");
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+      }
+      else if (value == null) {
+        console.log("value was null")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <FlatList
           data={[
-            {key: 'Een andere'},
-            {key: 'Lijst met dingen'},
+            {key: 'Uit memory'},
+            {key: 'nog niet'},
           ]}
           renderItem={({item}) => (
-            <TouchableWithoutFeedback onPress={ () => this.actionOnRow(item)}>
+            <TouchableWithoutFeedback onPress={ () => this._retrieveData()}>
 
               <View>
                 <Text style={styles.item}>{item.key}</Text>
