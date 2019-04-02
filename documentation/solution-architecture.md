@@ -47,7 +47,8 @@ The following stakeholders are identified:
 All information is temporarily held in verifiable claim channels on the so called discipl ephemeral platform (in memory). This platform will enforce access rights denoted by the channel owner through discipl-4sacan, so all channels are only accessible to the channel owner holding a corresponding private key created and temporarily held by the channel owner.
 Of course the party hosting the ephemeral server and it's administrator needs to be trusted also, but as this is the issuer as source of the information it is by definition a party already chosen or forced to be trusted by the client. The following channels will be created using this solution holding the following information (verifiable claims) with what kind of accessibility retention:
 
-<<picture>>
+![](vcseq1.png)
+![](vcseq2.png)
 
 1) service channel of issuer, destroyed at service shutdown
   - that a service with some id is attending to needs for what : (ssid, attendTo, what)
