@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import WaardenpapierenService, { BSN_CLAIM_PREDICATE, BRP_UITTREKSEL, BRP_UITTREKSEL_ACCEPT, AGREE } from '../src/waardepapieren-service'
+import WaardenpapierenService, { SOURCE_ARGUMENT, PRODUCT_NEED, PRODUCT_ACCEPT, PRODUCT_NAME, SOURCE_NLX_PATH } from '../src/waardepapieren-service'
 import * as abundance from '@discipl/abundance-service'
 import { w3cwebsocket } from 'websocket'
 
@@ -43,13 +43,13 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     expect(nlxConfigureSpy.args[0]).to.deep.equal([NLX_OUTWAY_ENDPOINT])
 
     await timeoutPromise(100)
-    let needSsid = await abundance.need('ephemeral', BRP_UITTREKSEL)
+    let needSsid = await abundance.need('ephemeral', PRODUCT_NEED)
 
     await timeoutPromise(100)
     let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
     await timeoutPromise(100)
 
-    await abundance.getCoreAPI().claim(needSsid, { [BSN_CLAIM_PREDICATE]: '123123123' })
+    await abundance.getCoreAPI().claim(needSsid, { [SOURCE_ARGUMENT]: '123123123' })
     await timeoutPromise(100)
     let match = await matchPromise
 
@@ -58,7 +58,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     // Test observations
     expect(nlxClaimStub.callCount).to.equal(1)
-    expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': '/brp/basisregistratie/natuurlijke_personen/bsn/123123123', 'params': {} }])
+    expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': [SOURCE_NLX_PATH] + '123123123', 'params': {} }])
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
 
@@ -71,7 +71,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     expect(brp).to.deep.equal({
       'claim': {
         'data': [{
-            'woonplaats': 'Haarlem'
+          'woonplaats': 'Haarlem'
         }],
 
         'previous': null
@@ -79,22 +79,22 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
       'did': personalDid
     })
 
-    let agreePromise = (await abundance.getCoreAPI().observe(personalDid, { [AGREE]: null })).pipe(take(1)).toPromise()
+    let agreePromise = (await abundance.getCoreAPI().observe(personalDid, { [PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
 
     // Accept and follow references
-    await abundance.getCoreAPI().claim(needSsid, { [BRP_UITTREKSEL_ACCEPT]: '' })
+    await abundance.getCoreAPI().claim(needSsid, { [PRODUCT_ACCEPT]: '' })
 
     let agree = await agreePromise
 
-    expect(agree.claim.data[AGREE]).to.be.a('string')
+    expect(agree.claim.data[PRODUCT_NAME]).to.be.a('string')
 
-    let attestationLink = agree.claim.data[AGREE]
+    let attestationLink = agree.claim.data[PRODUCT_NAME]
 
     let attestation = await abundance.getCoreAPI().get(attestationLink)
 
-    expect(attestation.data[AGREE]).to.be.a('string')
+    expect(attestation.data[PRODUCT_NAME]).to.be.a('string')
 
-    let brpClaimLink = attestation.data[AGREE]
+    let brpClaimLink = attestation.data[PRODUCT_NAME]
 
     let brpClaim = await abundance.getCoreAPI().get(brpClaimLink)
 

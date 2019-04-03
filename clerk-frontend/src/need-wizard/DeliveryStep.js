@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import * as abundance from '@discipl/abundance-service'
 import * as paperWallet from '@discipl/paper-wallet'
 import { take } from 'rxjs/operators'
-import { loadImage } from 'canvas'
+import { createCanvas, loadImage } from 'canvas'
 
-const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
-const AGREE = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
+const PRODUCT_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
+const PRODUCT_NAME= 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
 
 let template = {
   // background
@@ -27,7 +27,7 @@ let template = {
   canvasHeight: 838, // 11.64 inch @ 72 dpi
   // header
   productHeaderFont: 'bold 11.5px helvetica',
-  productHeaderText: AGREE,
+  productHeaderText: PRODUCT_NAME,
   productHeaderOffsetX: 40,
   productHeaderOffsetY: 190,
   // subheader
@@ -58,25 +58,34 @@ class ConfirmStep extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      attestationLink : null,
+      canvas : null
+    }
 
     this.canvasRef = React.createRef()
+  }
+
+  deliveryChanged(link,vc) {
+    if (this.props.deliveryChanged) {
+      this.props.deliveryChanged(link,vc)
+    }
   }
 
   async componentDidMount() {
     console.log(this.props)
 
-    let agreePromise = (await abundance.getCoreAPI().observe(this.props.personalDid, { [AGREE]: null })).pipe(take(1)).toPromise()
+    let agreePromise = (await abundance.getCoreAPI().observe(this.props.personalDid, { [PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
 
     // Express acceptance of document
-    await abundance.getCoreAPI().claim(this.props.needSsid, { [BRP_UITTREKSEL_ACCEPT]: '' })
+    await abundance.getCoreAPI().claim(this.props.needSsid, { [PRODUCT_ACCEPT]: '' })
 
     let agree = await agreePromise
     // Get attes
-    let attestationLink = agree.claim.data[AGREE]
+    let attestationLink = agree.claim.data[PRODUCT_NAME]
     let attestation = await abundance.getCoreAPI().get(attestationLink)
 
-    let brpClaimLink = attestation.data[AGREE]
+    let brpClaimLink = attestation.data[PRODUCT_NAME]
 
     console.log(brpClaimLink)
 
@@ -87,8 +96,9 @@ class ConfirmStep extends Component {
     this.canvasRef.current.width = paperWallet.template.canvasWidth
     this.canvasRef.current.height = paperWallet.template.canvasHeight
 
-    await paperWallet.toCanvas(vc, template, this.canvasRef.current)
-    let context = this.canvasRef.current.getContext('2d')
+    let canvas = createCanvas(paperWallet.template.canvasWidth, paperWallet.template.canvasHeight, 'pdf')
+    await paperWallet.toCanvas(vc, template, canvas) //this.canvasRef.current
+    let context = canvas.getContext('2d')
     // Draw logo
     context.drawImage(await loadImage(template.logoImage), template.logoOffsetX, template.logoOffsetY, template.logoWidth, template.logoHeight)
     // draw discipl logo
@@ -110,6 +120,10 @@ class ConfirmStep extends Component {
     context.lineTo(570, 250);
     context.stroke();
 
+    // show pdf preview
+    this.canvasRef.current.getContext('2d').drawImage(canvas, 0, 0)
+
+    this.deliveryChanged(attestationLink, canvas)
   }
 
   render() {

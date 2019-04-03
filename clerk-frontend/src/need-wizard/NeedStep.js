@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
+const PRODUCT_NEED = 'BRP_UITTREKSEL_NEED'
 const NEEDS = [
   {
-    'predicate': BRP_UITTREKSEL,
+    'predicate': PRODUCT_NEED,
     'description': 'Uittreksel Basis Registratie Persoonsgegevens'
   }
 ]

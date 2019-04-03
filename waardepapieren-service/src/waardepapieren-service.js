@@ -4,10 +4,11 @@ import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 
-const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
-const BSN_CLAIM_PREDICATE = 'BSN'
-const BRP_UITTREKSEL_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
-const AGREE = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
+const PRODUCT_NEED = 'BRP_UITTREKSEL_NEED'
+const SOURCE_NLX_PATH = '/brp/basisregistratie/natuurlijke_personen/bsn/'
+const SOURCE_ARGUMENT = 'BSN'
+const PRODUCT_ACCEPT = 'BRP_UITTREKSEL_ACCEPT'
+const PRODUCT_NAME = 'Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)'
 
 class WaardenpapierenService {
   async start (nlxOutwayEndpoint, ephemeralEndpoint, ephemeralWebsocketEndpoint) {
@@ -20,7 +21,7 @@ class WaardenpapierenService {
 
     const nlxConnector = await core.getConnector('nlx')
     nlxConnector.configure(nlxOutwayEndpoint)
-    let ssid = await abundance.attendTo('ephemeral', BRP_UITTREKSEL)
+    let ssid = await abundance.attendTo('ephemeral', PRODUCT_NEED)
     let observer = await abundance.observe(ssid.did, 'ephemeral')
     observer.subscribe(async (needClaim) => {
       await this.serveNeed(ssid, needClaim)
@@ -40,12 +41,12 @@ class WaardenpapierenService {
 
     let did = need.did
 
-    const observer = await core.observe(did, { [BSN_CLAIM_PREDICATE]: null })
+    const observer = await core.observe(did, { [SOURCE_ARGUMENT]: null })
 
     await observer.pipe(take(1)).subscribe(async (bsnClaim) => {
-      const bsn = bsnClaim['claim']['data'][BSN_CLAIM_PREDICATE]
+      const srcarg = bsnClaim['claim']['data'][SOURCE_ARGUMENT]
       const nlxConnector = await core.getConnector('nlx')
-      let identifier = await nlxConnector.claim(null, { 'path': '/brp/basisregistratie/natuurlijke_personen/bsn/'+bsn, 'params': {}})
+      let identifier = await nlxConnector.claim(null, { 'path': [SOURCE_NLX_PATH] + srcarg, 'params': {} })
 
       let result = await nlxConnector.get(identifier)
 
@@ -53,16 +54,16 @@ class WaardenpapierenService {
       let resultArray = []
 
       for (let key of Object.keys(result)) {
-        resultArray.push({[key]: result[key]})
+        resultArray.push({ [key]: result[key] })
       }
       let brpClaim = await core.claim(personalSsid, resultArray)
       await abundance.match(personalSsid, did)
 
-      const acceptObserver = await core.observe(did, { [BRP_UITTREKSEL_ACCEPT]: null })
+      const acceptObserver = await core.observe(did, { [PRODUCT_ACCEPT]: null })
 
       acceptObserver.pipe(take(1)).subscribe(async (acceptClaim) => {
-        let attestationLink = await core.attest(serviceSsid, AGREE, brpClaim)
-        await core.attest(personalSsid, AGREE, attestationLink)
+        let attestationLink = await core.attest(serviceSsid, PRODUCT_NAME, brpClaim)
+        await core.attest(personalSsid, PRODUCT_NAME, attestationLink)
       })
     }, (e) => {
       console.error(e)
@@ -82,5 +83,5 @@ class WaardenpapierenService {
     return abundance.getCoreAPI()
   }
 }
-export { BRP_UITTREKSEL, BSN_CLAIM_PREDICATE, BRP_UITTREKSEL_ACCEPT, AGREE }
+export { PRODUCT_NEED, SOURCE_ARGUMENT, PRODUCT_ACCEPT, PRODUCT_NAME, SOURCE_NLX_PATH }
 export default WaardenpapierenService
