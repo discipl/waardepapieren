@@ -18,9 +18,8 @@ export default class ScanScreen extends React.Component {
   _storeData = async (data) => {
     try {
       await AsyncStorage.setItem("Test", data);
-      console.log("ive been here")
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
     }
   }
 
@@ -44,10 +43,9 @@ export default class ScanScreen extends React.Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    uncompressedData = pako.inflate(data, { 'to': 'string' })
-    console.log(uncompressedData)
-    this._storeData(uncompressedData);
-    alert(`Bar code with type ${type} and data ${uncompressedData} has been scanned!`);
+    console.log(data)
+    this._storeData(data);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
 
   }
 }
