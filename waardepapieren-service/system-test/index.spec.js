@@ -2,15 +2,13 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import WaardenpapierenService, { SOURCE_ARGUMENT, PRODUCT_NEED, PRODUCT_NAME, PRODUCT_ACCEPT } from '../src/waardepapieren-service'
+import WaardenpapierenService from '../src/waardepapieren-service'
 import * as abundance from '@discipl/abundance-service'
 
 import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 
-const EPHEMERAL_ENDPOINT = 'http://localhost:3232'
-const EPHEMERAL_WEBSOCKET_ENDPOINT = 'ws://localhost:3233'
-const NLX_OUTWAY_ENDPOINT = 'http://localhost:4080'
+import CONFIGURATION from '../configuration/wpsvc.json'
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
@@ -23,19 +21,19 @@ describe('waardenpapieren-service', function () {
     // Set up server
     let waardenpapierenService = new WaardenpapierenService()
     await timeoutPromise(100)
-    let serviceSsid = await waardenpapierenService.start(NLX_OUTWAY_ENDPOINT, EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT)
+    let serviceSsid = await waardenpapierenService.start(CONFIGURATION)
     await timeoutPromise(100)
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
-    ephemeralConnector.configure(EPHEMERAL_ENDPOINT, EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
+    ephemeralConnector.configure(CONFIGURATION.EPHEMERAL_ENDPOINT, CONFIGURATION.EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
     await timeoutPromise(100)
-    let needSsid = await abundance.need('ephemeral', PRODUCT_NEED)
+    let needSsid = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
 
     await timeoutPromise(100)
     let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
     await timeoutPromise(100)
 
-    let srcargclaim = await abundance.getCoreAPI().claim(needSsid, { [SOURCE_ARGUMENT]: '663678651' })
+    let srcargclaim = await abundance.getCoreAPI().claim(needSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: '663678651' })
 
     let match = await matchPromise
 
@@ -43,17 +41,17 @@ describe('waardenpapieren-service', function () {
     expect(Object.keys(match.claim.data)).to.include(abundance.ABUNDANCE_SERVICE_MATCH_PREDICATE)
 
     await timeoutPromise(100)
-    let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid.did, { [PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
+    let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid.did, { [CONFIGURATION.PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
     await timeoutPromise(100)
 
     // Accept and follow references
-    await abundance.getCoreAPI().claim(needSsid, { [PRODUCT_ACCEPT]: '' })
+    await abundance.getCoreAPI().claim(needSsid, { [CONFIGURATION.PRODUCT_ACCEPT]: '' })
 
     await timeoutPromise(100)
     let attestLink = await attestLinkObserver
     await timeoutPromise(100)
-    expect(attestLink.claim.data[PRODUCT_NAME]).to.be.a('string')
-    let claim = await abundance.getCoreAPI().get(attestLink.claim.data[PRODUCT_NAME])
+    expect(attestLink.claim.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
+    let claim = await abundance.getCoreAPI().get(attestLink.claim.data[CONFIGURATION.PRODUCT_NAME])
     expect(claim.data[2]).to.deep.equal({burgerservicenummer:'663678651'})
 
     await waardenpapierenService.stop()

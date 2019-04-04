@@ -1,0 +1,60 @@
+{
+  "EPHEMERAL_ENDPOINT" : "http://localhost:3232",
+  "EPHEMERAL_WEBSOCKET_ENDPOINT" : "ws://localhost:3233",
+  "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
+  "SOURCE_ARGUMENT" : "BSN",
+  "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
+  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+  "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
+  "PRODUCT_PURPOSE" : "Bewijs leveren voor verblijfadres in woonplaats",
+  "EXPORT_TYPES" : {
+    "@discipl/paper-wallet" : {
+      "template" : {
+
+        "backgroundImage" : "form-assets/another_pdf_template.png",
+
+        "logoImage": "form-assets/logo.png",
+        "logoWidth": 210,
+        "logoHeight": 160,
+        "logoOffsetX": 0,
+        "logoOffsetY": 0,
+
+        "disciplImage": "form-assets/discipl.png",
+        "disciplWidth": 90,
+        "disciplHeight": 90,
+        "disciplOffsetX": 460,
+        "disciplOffsetY": 35,
+
+        "canvasWidth": 595,
+        "canvasHeight": 838,
+
+        "productHeaderFont": "bold 11.5px helvetica",
+        "productHeaderText": "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+        "productHeaderOffsetX": 40,
+        "productHeaderOffsetY": 190,
+
+        "subheaderFont": "11.5px helvetica",
+        "subheaderText": "Onderstaand persoon is bij de gemeente Haarlem ingeschreven",
+        "subheaderOffsetX": 40,
+        "subheaderOffsetY": 210,
+
+        "claimDataFont": "11.5px helvetica",
+        "prefixAttributes": true,
+        "claimDataOffsetX": 40,
+        "claimDataOffsetY": 255,
+        "claimDataLineSpacing": 15,
+
+        "qrOffsetX": 320,
+        "qrOffsetY": 420,
+        "qrWidth": 250,
+        "qrHeight": 250,
+
+        "footerFont": "10px helvetica",
+        "footerWidth": 500,
+        "footerHeight": 200,
+        "footerOffsetX": 600,
+        "footerOffsetY": 30
+      }
+    }
+  }
+}

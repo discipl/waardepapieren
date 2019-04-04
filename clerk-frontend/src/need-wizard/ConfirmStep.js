@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import * as abundance from '@discipl/abundance-service'
 import { take } from 'rxjs/operators'
 
-const PRODUCT_NEED = 'BRP_UITTREKSEL_NEED'
-const SOURCE_ARGUMENT = 'BSN'
+import CONFIGURATION from '../configuration/wpsvc.json'
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
@@ -20,12 +19,12 @@ class ConfirmStep extends Component {
 
   async componentDidMount() {
     await timeoutPromise(100)
-    let needSsid = await abundance.need('ephemeral', PRODUCT_NEED)
+    let needSsid = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
     await timeoutPromise(100)
     let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
     await timeoutPromise(100)
 
-    await abundance.getCoreAPI().claim(needSsid, { [SOURCE_ARGUMENT]: this.props.bsn })
+    await abundance.getCoreAPI().claim(needSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: this.props.bsn })
     await timeoutPromise(100)
     let match = await matchPromise
 
