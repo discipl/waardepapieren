@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, FlatList, StyleSheet, TouchableWithoutFeedback, Text, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
+import { Octicons } from '@expo/vector-icons';
 
 export default class App extends React.Component {
   render() {
@@ -26,6 +27,8 @@ class WalletScreen extends React.Component {
 
               <View>
                 <Text style={styles.item}>{item.key}</Text>
+                <Octicons name="verified" size={48} color="#33ff33" />
+                <Octicons name="alert" size={48} color="#FF0000" />
               </View>
 
             </TouchableWithoutFeedback>
