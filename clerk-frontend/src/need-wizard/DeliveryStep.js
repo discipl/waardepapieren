@@ -36,14 +36,7 @@ class ConfirmStep extends Component {
 
     let agree = await agreePromise
 
-    // TODO: Replace by functionality from ephemeral that exposes the link in observe
-
-    let exportLD = await abundance.getCoreAPI().exportLD(this.props.personalDid)
-
-    let agreeLink = Object.keys(exportLD[Object.keys(exportLD)[0]][2])[0]
-
-
-    let vc = await paperWallet.issue(agreeLink)
+    let vc = await paperWallet.issue(agree.claim.data[CONFIGURATION.PRODUCT_NAME])
 
 
     this.canvasRef.current.width = template.canvasWidth
