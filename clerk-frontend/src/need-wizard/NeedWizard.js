@@ -44,24 +44,12 @@ class NeedWizard extends Component {
     })
   }
 
-  _download(type) {
-    if(type === 'paperWallet') {
-      let a = document.createElement('a');
-      document.body.appendChild(a);
-      a.download = this.state.personalDid+'.png';
-      a.href = this.state.canvas.toDataURL('image/png')
-      a.click()
-    } else {
-      window.alert('Download option ('+type+') not supported...')
-    }
-  }
-
   renderButtons() {
     let prevButton = <button onClick={this._prev}>Vorige</button>;
     let nextButton = <button onClick={this._next}>Volgende</button>;
     let wrongInfoButton = <button>Dit klopt niet!</button>;
     let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
-    let downloadButton = <button onClick={this._download.bind(this, 'paperWallet')}>Download</button>; // currently still mock
+    let downloadButton = <button>Download</button>; // currently still mock
     let appleWalletButton = <button onClick={this._download.bind(this, 'appleWallet')}>Download naar Apple Wallet</button>;
     let finishButton = <button onClick={this._first}>Afronden</button>;
 
