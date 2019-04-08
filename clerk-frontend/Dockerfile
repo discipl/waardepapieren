@@ -9,7 +9,6 @@ RUN npm install --unsafe-perm
 ADD src /app/src
 RUN npm run build
 
-
 FROM nginx:1.15.8
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=0 /app/build /usr/share/nginx/html
