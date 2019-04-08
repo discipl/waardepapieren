@@ -95,12 +95,13 @@ class NeedWizard extends Component {
   }
 
   ssidsChanged(personalDid, needSsid) {
-    console.log(this)
+
     this.setState({
       ...this.state,
       'personalDid': personalDid,
       'needSsid': needSsid
     })
+    console.log(this)
   }
 
   deliveryChanged(attestationLink, canvas) {

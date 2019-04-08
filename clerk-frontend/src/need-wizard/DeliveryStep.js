@@ -38,16 +38,26 @@ class ConfirmStep extends Component {
 
     console.log(agree.claim.data)
 
-    let vc = await paperWallet.issue(agree.claim.data)
+    // tmp hack
+
+    let exportLD = await abundance.getCoreAPI().exportLD(this.props.personalDid)
+
+    let agreeLink = Object.keys(exportLD[Object.keys(exportLD)[0]][2])[0]
+
+    console.log(agreeLink)
+    console.log(exportLD)
+
+    let vc = await paperWallet.issue(agreeLink)
 
     console.log(vc)
 
-    this.canvasRef.current.width = paperWallet.template.canvasWidth
-    this.canvasRef.current.height = paperWallet.template.canvasHeight
+    this.canvasRef.current.width = template.canvasWidth
+    this.canvasRef.current.height = template.canvasHeight
 
-    let canvas = createCanvas(paperWallet.template.canvasWidth, paperWallet.template.canvasHeight, 'pdf')
-    await paperWallet.toCanvas(vc, template, canvas) //this.canvasRef.current
-    let context = canvas.getContext('2d')
+    console.log("HERE")
+    await paperWallet.toCanvas(vc, template, this.canvasRef.current)
+    console.log("HERE2")
+    let context = this.canvasRef.current.getContext('2d')
     // Draw logo
     context.drawImage(await loadImage(template.logoImage), template.logoOffsetX, template.logoOffsetY, template.logoWidth, template.logoHeight)
     // draw discipl logo
@@ -60,7 +70,7 @@ class ConfirmStep extends Component {
     context.fillText(template.subheaderText, template.subheaderOffsetX, template.subheaderOffsetY)
     // draw footer
     context.font = template.footerFont
-    context.fillText("Dit is een automatisch gegenereerd document en daarom niet ondertekent.", 110, 776)
+    context.fillText("Dit is een automatisch gegenereerd document en daarom niet ondertekend.", 110, 776)
     context.fillText("De gegevens zijn verkregen via NLX en geborgd in de QR-code", 140, 788)
     context.fillText("U kunt de echtheid van dit document controleren via een bijbehorende app of online", 85, 800)
     // draw a line
@@ -69,10 +79,6 @@ class ConfirmStep extends Component {
     context.lineTo(570, 250);
     context.stroke();
 
-    // show pdf preview
-    this.canvasRef.current.getContext('2d').drawImage(canvas, 0, 0)
-
-    this.deliveryChanged(agree.claim.data, canvas)
   }
 
   render() {
