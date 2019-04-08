@@ -19,7 +19,7 @@ class ConfirmStep extends Component {
 
   async componentDidMount() {
     await timeoutPromise(100)
-    console.log(CONFIGURATION)
+
     let needSsid = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
     await timeoutPromise(100)
     let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
@@ -40,7 +40,6 @@ class ConfirmStep extends Component {
 
     let brp = await brpPromise
 
-    console.log(brp)
     this.setState({
       ...this.state,
       'data': brp.claim.data

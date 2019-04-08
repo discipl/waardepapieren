@@ -89,7 +89,6 @@ class NeedWizard extends Component {
       'personalDid': personalDid,
       'needSsid': needSsid
     })
-    console.log(this)
   }
 
   deliveryChanged(attestationLink, canvas) {

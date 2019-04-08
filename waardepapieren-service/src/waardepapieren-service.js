@@ -51,13 +51,11 @@ class WaardenpapierenService {
       let privateSvcSsid = await core.newSsid('ephemeral') // needs signing with NLX key
       let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
 
-      console.log(result)
       for (let field in this.configuration.SOURCE_DATA_SELECTION) {
         let key = Object.keys(this.configuration.SOURCE_DATA_SELECTION[field])[0]
         let path = this.configuration.SOURCE_DATA_SELECTION[field][key]
         let value = jp.query(result, path)
 
-        console.log([key, path, value])
         resultArray.push({ [key]: value[0] })
       }
 
