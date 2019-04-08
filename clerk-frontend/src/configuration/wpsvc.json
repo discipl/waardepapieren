@@ -45,9 +45,9 @@
         "claimDataLineSpacing": 15,
 
         "qrOffsetX": 320,
-        "qrOffsetY": 420,
-        "qrWidth": 250,
-        "qrHeight": 250,
+        "qrOffsetY": 520,
+        "qrWidth": 150,
+        "qrHeight": 150,
 
         "footerFont": "10px helvetica",
         "footerWidth": 500,

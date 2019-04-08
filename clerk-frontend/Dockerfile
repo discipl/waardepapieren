@@ -7,7 +7,6 @@ WORKDIR /app
 ADD public /app/public
 RUN npm install --unsafe-perm
 ADD src /app/src
-ADD configuration /app/src/configuration
 RUN npm run build
 
 FROM nginx:1.15.8

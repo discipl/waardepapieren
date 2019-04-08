@@ -23,7 +23,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     let nlxConnector = await abundance.getCoreAPI().getConnector('nlx')
 
     let nlxClaimStub = sinon.stub(nlxConnector, 'claim').returns('claimId')
-    let nlxGetStub = sinon.stub(nlxConnector, 'get').returns({ 'woonplaats': 'Haarlem' })
+    let nlxGetStub = sinon.stub(nlxConnector, 'get').returns({ 'burgerservicenummer': '123123123', 'verblijfadres': {'adres':'Markt 3', 'woonplaats': 'Haarlem' }})
     let nlxConfigureSpy = sinon.spy(nlxConnector, 'configure')
 
     abundance.getCoreAPI().registerConnector('nlx', nlxConnector)
@@ -68,10 +68,11 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     expect(brp).to.deep.equal({
       'claim': {
-        'data': [{
-          'woonplaats': 'Haarlem'
-        }],
-
+        'data': [
+          {'Doel': 'Bewijs verblijfadres in woonplaats'},
+          {'Burgerservicenummer (BSN)': '123123123'},
+          {'Woonplaats verblijfadres': 'Haarlem'}
+        ],
         'previous': null
       },
       'did': personalDid
@@ -86,13 +87,13 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     expect(agree.claim.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
 
-    let attestationLink = agree.claim.data[CONFIGURATION.PRODUCT_NAME]
+    let brpClaimLink = agree.claim.data[CONFIGURATION.PRODUCT_NAME]
 
-    let attestation = await abundance.getCoreAPI().get(attestationLink)
+    //let attestation = await abundance.getCoreAPI().get(attestationLink)
 
-    expect(attestation.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
+    //expect(attestation.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
 
-    let brpClaimLink = attestation.data[CONFIGURATION.PRODUCT_NAME]
+    //let brpClaimLink = attestation.data[CONFIGURATION.PRODUCT_NAME]
 
     let brpClaim = await abundance.getCoreAPI().get(brpClaimLink)
 

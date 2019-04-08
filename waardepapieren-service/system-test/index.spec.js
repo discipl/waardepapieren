@@ -41,7 +41,7 @@ describe('waardenpapieren-service', function () {
     expect(Object.keys(match.claim.data)).to.include(abundance.ABUNDANCE_SERVICE_MATCH_PREDICATE)
 
     await timeoutPromise(100)
-    let attestLinkObserver = (await abundance.getCoreAPI().observe(serviceSsid.did, { [CONFIGURATION.PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
+    let attestLinkObserver = (await abundance.getCoreAPI().observe(match.did, { [CONFIGURATION.PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
     await timeoutPromise(100)
 
     // Accept and follow references
@@ -50,9 +50,10 @@ describe('waardenpapieren-service', function () {
     await timeoutPromise(100)
     let attestLink = await attestLinkObserver
     await timeoutPromise(100)
+
     expect(attestLink.claim.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
     let claim = await abundance.getCoreAPI().get(attestLink.claim.data[CONFIGURATION.PRODUCT_NAME])
-    expect(claim.data[2]).to.deep.equal({burgerservicenummer:'663678651'})
+    expect(claim.data[1]).to.deep.equal({'Burgerservicenummer (BSN)':'663678651'})
 
     await waardenpapierenService.stop()
   })

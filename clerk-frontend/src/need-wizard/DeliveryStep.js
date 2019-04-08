@@ -35,15 +35,10 @@ class ConfirmStep extends Component {
     await abundance.getCoreAPI().claim(this.props.needSsid, { [CONFIGURATION.PRODUCT_ACCEPT]: '' })
 
     let agree = await agreePromise
-    // Get attes
-    let attestationLink = agree.claim.data[CONFIGURATION.PRODUCT_NAME]
-    let attestation = await abundance.getCoreAPI().get(attestationLink)
 
-    let brpClaimLink = attestation.data[CONFIGURATION.PRODUCT_NAME]
+    console.log(agree.claim.data)
 
-    console.log(brpClaimLink)
-
-    let vc = await paperWallet.issue(attestationLink)
+    let vc = await paperWallet.issue(agree.claim.data)
 
     console.log(vc)
 
@@ -77,7 +72,7 @@ class ConfirmStep extends Component {
     // show pdf preview
     this.canvasRef.current.getContext('2d').drawImage(canvas, 0, 0)
 
-    this.deliveryChanged(attestationLink, canvas)
+    this.deliveryChanged(agree.claim.data, canvas)
   }
 
   render() {

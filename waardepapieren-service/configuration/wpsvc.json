@@ -8,9 +8,9 @@
   "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
   "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
   "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
-  "PRODUCT_PURPOSE" : "Bewijs leveren voor verblijfadres in woonplaats",
+  "PRODUCT_PURPOSE" : "Bewijs verblijfadres in woonplaats",
   "SOURCE_DATA_SELECTION" : [
-    "burgerservicenummer",
-    "verblijfadres.woonplaats"
+    {"Burgerservicenummer (BSN)" : "burgerservicenummer"},
+    {"Woonplaats verblijfadres" : "verblijfadres.woonplaats"}
   ]
 }

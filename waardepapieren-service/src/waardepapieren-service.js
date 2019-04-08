@@ -3,6 +3,7 @@ import * as abundance from '@discipl/abundance-service'
 import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
+import jp from 'jsonpath'
 
 class WaardenpapierenService {
   async start (configuration) {
@@ -47,20 +48,23 @@ class WaardenpapierenService {
 
       let result = await nlxConnector.get(identifier)
 
-      let personalSsid = await core.newSsid('ephemeral')
-      let resultArray = []
+      let privateSvcSsid = await core.newSsid('ephemeral') // needs signing with NLX key
+      let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
 
-      for (let key of Object.keys(result)) {
-        resultArray.push({ [key]: result[key] })
+      for (let field in this.configuration.SOURCE_DATA_SELECTION) {
+        let key = Object.keys(this.configuration.SOURCE_DATA_SELECTION[field])[0]
+        let path = this.configuration.SOURCE_DATA_SELECTION[field][key]
+        let value = jp.query(result, path)
+        resultArray.push({ [key]: value[0] })
       }
-      let productClaim = await core.claim(personalSsid, resultArray)
-      await abundance.match(personalSsid, did)
+
+      let productClaim = await core.claim(privateSvcSsid, resultArray)
+      await abundance.match(privateSvcSsid, did)
 
       const acceptObserver = await core.observe(did, { [this.configuration.PRODUCT_ACCEPT]: null })
 
       acceptObserver.pipe(take(1)).subscribe(async (acceptClaim) => {
-        let attestationLink = await core.attest(serviceSsid, this.configuration.PRODUCT_NAME, productClaim)
-        await core.attest(personalSsid, this.configuration.PRODUCT_NAME, attestationLink)
+        await core.attest(privateSvcSsid, this.configuration.PRODUCT_NAME, productClaim)
       })
     }, (e) => {
       console.error(e)
