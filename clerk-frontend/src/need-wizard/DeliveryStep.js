@@ -38,7 +38,7 @@ class ConfirmStep extends Component {
 
     console.log(agree.claim.data)
 
-    // tmp hack
+    // TODO: Replace by functionality from ephemeral that exposes the link in observe
 
     let exportLD = await abundance.getCoreAPI().exportLD(this.props.personalDid)
 

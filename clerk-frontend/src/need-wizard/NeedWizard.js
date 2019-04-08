@@ -50,7 +50,7 @@ class NeedWizard extends Component {
     let wrongInfoButton = <button>Dit klopt niet!</button>;
     let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
     let downloadButton = <button>Download</button>; // currently still mock
-    let appleWalletButton = <button onClick={this._download.bind(this, 'appleWallet')}>Download naar Apple Wallet</button>;
+    let appleWalletButton = <button>Download naar Apple Wallet</button>;
     let finishButton = <button onClick={this._first}>Afronden</button>;
 
     if (this.state.step === 0) {
