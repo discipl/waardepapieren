@@ -3,9 +3,9 @@
 
 ## Introduction
 
-The Discipl Waardepapieren (in english "Proofs") solution aims at a W3C Verifiable Credentials (see https://w3c-ccg.github.io/) compatible solution for issuing, holding and validation of credentials of citizens or even more generally: any signed information issued by an entity, for instance a municipality. Citizens are not to be required to have any equipment which implies it should still be possible for a credential to be issued to a “paper wallet” being a QR code printed on paper holding the credential data and signature of the issuer. The solution is based on the Discipl (http://discipl.eu) architecture and software stack which is open source and free to use and platform agnostic.
+The Discipl Waardepapieren (in English "Proofs") solution aims at a W3C Verifiable Credentials (see https://w3c-ccg.github.io/) compatible solution for issuing, holding and validation of credentials of citizens or even more generally: any signed information issued by an entity, for instance a municipality. Citizens are not to be required to have any equipment which implies it should still be possible for a credential to be issued to a “paper wallet” being a QR code printed on paper holding the credential data and signature of the issuer. The solution is based on the Discipl (http://discipl.eu) architecture and software stack which is free, open source and platform agnostic.
 
-This project is a follow up on the one in 2018 (http://github.com/haarlem/digitale-waardepapieren). The main difference is that even no derivations of data often containing personal information in the form of peppered hashes are stored in public distributed ledgers like IOTA as this is never to be considered a safe and thing to do in relation to privacy assurance and is prohibited by law. Instead the information is signed and given to the citizen and the signed information is enough to validate the information as been signed by the issuer given that an official public key is used which is officially published in public. For this the official keys issuers can get through the NLX platform (nlx.io) is used for signing. The NLX platform is also used to connect to the sources of the data to be signed. By doing so, the act of requesting data to be issued is logged in relation to a specific purpose of this act and often in relation the person the information is about such that these subjects can get insight into these issuing acts through NLX Insight. Also this project does not aim at a proof of concept or prototype but a real working solution that can be put into production.
+This project is a follow-up on the one in 2018 (http://github.com/haarlem/digitale-waardepapieren). The main difference is that even no derivations of data often containing personal information in the form of peppered hashes are stored in public distributed ledgers like IOTA as this is never to be considered a safe and thing to do in relation to privacy assurance and is prohibited by law. Instead the information is signed and given to the citizen and the signed information is enough to validate the information as been signed by the issuer given that an official public key is used which is officially published in public. For this the official keys issuers can get through the NLX platform (nlx.io) are used for signing. The NLX platform is also used to connect to the sources of the data to be signed. By doing so, the act of requesting data to be issued is logged in relation to a specific purpose of this act and often in relation the person the information is about such that these subjects can get insight into these issuing acts through NLX Insight. Note that this project does not aim at a proof of concept or prototype but a real working solution that can be put into production.
 
 The initial focus is to use a (legacy) data source through NLX as source of the information to be issued and a custom made 'paper wallet' solution as verifiable credential platform. The architecture prepares for usage of other platforms instead of this in the future like IRMA and  prepares for integration into automated needs matching services envisioned within Discipl.
 
@@ -17,7 +17,7 @@ Note: expect this document to change as it is work in progress.
 
 The solution might need to be compliant with the following laws, architectures and regulations:
 
-- NORA / GEMMA, and all implications from this though noteworthy:
+- NORA (http://noraonline.nl) / GEMMA (http://gemmaonline.nl), and all implications from this though noteworthy:
 - EIF/EiDAS
 - GDPR
 - EN 301 549 / WCAG 2.0 (accessibility)
@@ -26,13 +26,13 @@ The solution might need to be compliant with the following laws, architectures a
 - REGULATION (EU) No 910/2014 (as far as applicable)
 
 Note that the core waardepapieren solution itself does not implement or include identification / authentication services for citizens
-nor any key distribution mechanism which is more dependent on it's integration and the specific platforms being used.
+nor any key distribution mechanism which is more dependent on it's integration and the specific platforms being used. It also does not evaluate authorisations of people requesting information about others than themselves. For now all this is done through a clerk at a window representing the issuer or a authentication service behind an existing website utilizing a proper identification method (like DigID).
 
-As for NORA and GEMMA, Discipl aims at a new innovative architecture to be integrated in NORA in the Future, aiming at a society that is facilitated with a hybrid distributed linked data landscape that aligns with concepts like attribute based credentials and self sovereign identity. And something that is called "Common Ground" is a similair innovation program for GEMMA. This is why we take the liberty to aim the solution to adhere to the principles of Discipl and common ground over those articulated in NORA and GEMMA and defer the identification and resolution of possible discrepancies within these principles to the ongoing development of discipl, common ground (including NLX).
+As for NORA and GEMMA, Discipl aims at a new innovative architecture to be integrated in NORA in the Future, aiming at a society that is facilitated with a hybrid distributed linked data landscape that aligns with concepts like attribute based credentials and self sovereign identity. And a movement that is called "Common Ground" (https://vng.nl/samen-organiseren/common-ground), can be seen a similair innovation program for GEMMA. This is why we take the liberty to aim the solution to adhere to the principles of Discipl and common ground over those articulated in NORA and GEMMA and defer the identification and resolution of possible discrepancies within these principles to the ongoing development of discipl, common ground (including NLX).
 
-As NLX aims at conforming to EIF/EiDAS and by having the waardepapieren solution use this platform for information retrieval and the NLX certificates for signing (and validation) and by having it not include the identification / authentication of actors, this solution quite automaticly adheres to EIF/EiDAS.
+As NLX aims at conforming to EIF/EiDAS and by having the waardepapieren solution use this platform for information retrieval and the NLX certificates for signing (and validation) and by externalizing the identification / authentication and partly even authorisation of actors, this solution quite automatically adheres to EIF/EiDAS.
 
-As already mentioned, the solution does not store any personal information on ledgers. All information retrieved through NLX are only held temporarily in memory to be able to issue the information to the holder of the requested credential, often being the subject of the information. Though in practice the holders also can be actors that are allowed to retrieve proofs for subjects other then themselves, for instance notaries, we focus on the case where the holder is the subject itself and defer other types of holders to the integration projects of the waardepapieren solution. The reason for this is that Discipl can easily support these alternative authorizations. By doing so, as long as the issuer and validating actor complies to GDPR in relation to the information subject, so does this solution. The waardepapieren solution helps complying to GDPR by holding information only temporarily and in encrypted state. The software is open source and is to be independently audited on the topic of security.
+As already mentioned, the solution does not store any personal information on ledgers. All information retrieved through NLX are only held temporarily in memory to be able to issue the information to the holder of the requested credential, often being the subject of the information. Though in practice the holders also can be actors that are allowed to retrieve proofs for subjects other then themselves, for instance notaries, we focus on the case where the holder is the subject itself and defer other types of holders to the integration projects of the waardepapieren solution. The reason for this is that Discipl can easily support these alternative authorizations. By doing so, as long as the issuer and validating actor complies to GDPR in relation to the information subject, so does this solution. The waardepapieren solution helps complying to GDPR by holding information only temporarily and through other measures. The software is open source and is to be independently audited on the topic of security.
 
 As for the ETSI TS 103 171 standard we see a need for a similar standard based on JSON and possibly one that better aligns with a data landscape that holds public keys in official distributed ledgers in the open apart from signed data shared privately. Though it is easy to create a XaDES export of any verifiable proof created from the waardepapieren solution, we do not see a direct need for this however for this project in it's current stage and also defer this topic to ongoing development of Discipl.
 
@@ -56,11 +56,11 @@ The following stakeholders are identified:
 An example of the essential conversation between real people as actors that would take place
 in the use cases the waardepapieren solution facilitates is given below:
 
-![](vcseq0.png)
+![](images/vcseq0.png)
 
 In essence this is the very proces that also takes place when retrieving a proof through the waardepapieren solution as can be seen below in the other verifiable claim sequence diagrams.
 
-![](vcseq.png)
+![](images/vcseq.png)
 
 ## Information layer
 
@@ -95,16 +95,16 @@ besides these channels, information is issued and stored in supported verifiable
 
 The solution just presents, signs and issues information as returned as result from the NLX call; for now it does not semantically parses this information. For now, the webservice called through NLX needs to accept a BSN number as argument that identifies the client though these kinds of arguments are configurable. The object of what is needed or attended to is something configured by the issuer like 'Uittreksel-GBA-Haarlem'. All other data results from usage of the abundance service api and discipl core api and the connectors used (ephemeral and NLX for now).
 
-The above is illustrated in so called verifiable claim sequence diagrams below:
+The process for issuing proofs as described above is illustrated in verifiable claim sequence diagrams below:
 
-![](vcseq1.png)
+![](images/vcseq1.png)
 
-![](vcseq2.png)
+![](images/vcseq2.png)
 
 
-![](vcseq3.png)
+![](images/vcseq3.png)
 
-![](vcseq4.png)
+![](images/vcseq4.png)
 
 ## Application layer
 
@@ -122,11 +122,11 @@ Validation does not require usage of this server; validators run their own embed
 
 Below is a more detailed component view:
 
-![](components.png)
+![](images/components.png)
 
 ## Infrastructural layer
 
-![](deployment.png)
+![](images/deployment.png)
 
 The solution is hosted on server(s) in control of the issuer and used by the devices (broad range of desktop computers, mobile phones or tablets) in control of citizens, clerks, validators and administrators. The server at the issuer is accessible on the intranet of the issuer and publicly through an existing web server (in a controlled way through a reverse proxy) that also will serve the client side web application.
 
@@ -146,6 +146,6 @@ is made as minimal as possible.
 The solution is prepared to be used in different kind of situations and set ups and use cases in which other types of platforms can be used instead of ephemeral, NLX or paper wallet. The idea is that it is prepared for usage in automated facilitation in requirement resolving in which for instance when a client needs something that requires a signed proof of some issuer, the proof can be automatically and conveniently requested as need
 and once issued by the issuer to the client provided by the client to the validator, identifying themselves through future self sovereign identity solutions from within all kinds of solutions developed independently from the service provided by the issuer. In that situation the solution is used in the way as denoted in the verifiable sequence diagrams below:
 
-![](vcseq5.png)
+![](images/vcseq5.png)
 
-![](vcseq6.png)
+![](images/vcseq6.png)
