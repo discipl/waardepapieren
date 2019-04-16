@@ -18,10 +18,10 @@ class WaardenpapierenService {
 
     const nlxConnector = await core.getConnector('nlx')
     nlxConnector.configure(this.configuration.NLX_OUTWAY_ENDPOINT)
-    let ssid = await abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED)
-    let observer = await abundance.observe(ssid.did, 'ephemeral')
-    observer.subscribe(async (needClaim) => {
-      await this.serveNeed(ssid, needClaim)
+    let attendResult = await abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
+
+    await attendResult.observableResult.subscribe(async (need) => {
+      await this.serveNeed(need)
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
       if (e.code !== 1006) {
@@ -29,47 +29,43 @@ class WaardenpapierenService {
         console.error(e)
       }
     })
-
-    return ssid
   }
 
-  async serveNeed (serviceSsid, need) {
-    const core = abundance.getCoreAPI()
+  async serveNeed (need) {
+    console.log("Serving need")
+    let core = abundance.getCoreAPI()
 
-    let did = need.did
+    let needDetails = await need
+    console.log("Got needDetails")
+    console.log(needDetails)
+    let argumentClaim = await needDetails.informationPromise
 
-    const observer = await core.observe(did, { [this.configuration.SOURCE_ARGUMENT]: null })
+    console.log("Querying NLX")
 
-    await observer.pipe(take(1)).subscribe(async (argumentClaim) => {
-      const srcarg = argumentClaim['claim']['data'][this.configuration.SOURCE_ARGUMENT]
-      const nlxConnector = await core.getConnector('nlx')
-      let nlxpath = this.configuration.SOURCE_NLX_PATH.replace('{'+this.configuration.SOURCE_ARGUMENT+'}', srcarg)
-      let identifier = await nlxConnector.claim(null, { 'path': nlxpath, 'params': {[this.configuration.SOURCE_ARGUMENT]:srcarg} })
+    let srcarg = argumentClaim['claim']['data'][this.configuration.SOURCE_ARGUMENT]
 
-      let result = await nlxConnector.get(identifier)
+    const nlxConnector = await core.getConnector('nlx')
+    let nlxpath = this.configuration.SOURCE_NLX_PATH.replace('{'+this.configuration.SOURCE_ARGUMENT+'}', srcarg)
+    let identifier = await nlxConnector.claim(null, { 'path': nlxpath, 'params': {[this.configuration.SOURCE_ARGUMENT]:srcarg} })
 
-      let privateSvcSsid = await core.newSsid('ephemeral') // needs signing with NLX key
-      let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
+    let result = await nlxConnector.get(identifier)
 
-      for (let field in this.configuration.SOURCE_DATA_SELECTION) {
-        let key = Object.keys(this.configuration.SOURCE_DATA_SELECTION[field])[0]
-        let path = this.configuration.SOURCE_DATA_SELECTION[field][key]
-        let value = jp.query(result, path)
+    let privateSvcSsid = await core.newSsid('ephemeral') // needs signing with NLX key
+    let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
 
-        resultArray.push({ [key]: value[0] })
-      }
+    for (let field in this.configuration.SOURCE_DATA_SELECTION) {
+      let key = Object.keys(this.configuration.SOURCE_DATA_SELECTION[field])[0]
+      let path = this.configuration.SOURCE_DATA_SELECTION[field][key]
+      let value = jp.query(result, path)
 
-      let productClaim = await core.claim(privateSvcSsid, resultArray)
-      await abundance.match(privateSvcSsid, did)
+      resultArray.push({ [key]: value[0] })
+    }
 
-      const acceptObserver = await core.observe(did, { [this.configuration.PRODUCT_ACCEPT]: null })
+    let productClaim = await core.claim(privateSvcSsid, resultArray)
 
-      acceptObserver.pipe(take(1)).subscribe(async (acceptClaim) => {
-        await core.attest(privateSvcSsid, this.configuration.PRODUCT_NAME, productClaim)
-      })
-    }, (e) => {
-      console.error(e)
-    })
+    await core.allow(privateSvcSsid, productClaim, needDetails.theirPrivateDid)
+
+    await abundance.offer(needDetails.myPrivateSsid, productClaim)
   }
 
   async stop () {
