@@ -43,19 +43,18 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     // Set up need
     let need = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
 
-    let serviceInformation = await need.serviceInformationPromise
-
     console.log("SERV INFO")
-    console.log(serviceInformation)
+    console.log(need.serviceInformation)
     console.log(need)
 
     console.log("Observing offer")
-    let resultPromise = abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
+    let observeOffer = await abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
+    await observeOffer.readyPromise
 
     await abundance.getCoreAPI().claim(need.myPrivateSsid, {[CONFIGURATION.SOURCE_ARGUMENT]: '123123123'})
 
 
-    let result = await resultPromise
+    let result = await observeOffer.resultPromise
 
     expect(result).to.deep.equal({
       "data": [
