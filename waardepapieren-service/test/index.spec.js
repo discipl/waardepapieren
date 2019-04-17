@@ -56,8 +56,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     let result = await observeOffer.resultPromise
 
-    expect(result).to.deep.equal({
-      "data": [
+    expect(result.claim.data).to.deep.equal([
         {
           "Doel": "Bewijs verblijfadres in woonplaats"
         },
@@ -67,9 +66,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
         {
           "Woonplaats verblijfadres": "Haarlem"
         }
-      ],
-      "previous": null
-    })
+      ])
 
     // Test observations
     expect(nlxClaimStub.callCount).to.equal(1)
