@@ -20,7 +20,8 @@ class WaardenpapierenService {
     nlxConnector.configure(this.configuration.NLX_OUTWAY_ENDPOINT)
     let attendResult = await abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
 
-    await attendResult.observableResult.subscribe(async (need) => {
+    // TODO: Refactor to observableResult.subscribe when fix from core propagates
+    await attendResult.observableResult._observable.subscribe(async (need) => {
       await this.serveNeed(need)
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
@@ -29,18 +30,14 @@ class WaardenpapierenService {
         console.error(e)
       }
     })
+    await attendResult.observableResult._readyPromise
   }
 
   async serveNeed (need) {
-    console.log("Serving need")
     let core = abundance.getCoreAPI()
 
     let needDetails = await need
-    console.log("Got needDetails")
-    console.log(needDetails)
     let argumentClaim = await needDetails.informationPromise
-
-    console.log("Querying NLX")
 
     let srcarg = argumentClaim['claim']['data'][this.configuration.SOURCE_ARGUMENT]
 
