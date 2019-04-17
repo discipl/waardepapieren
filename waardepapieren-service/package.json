@@ -19,7 +19,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
     "@discipl/abundance-service": "file:../../../packages/discipl-abundance-service-0.4.1.tgz",
-    "@discipl/core-ephemeral": "file:../../../packages/discipl-core-ephemeral-0.6.1.tgz",
+    "@discipl/core-ephemeral": "^0.6.1",
     "@discipl/core-nlx": "~0.2.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "jsonpath": "^1.0.1",
