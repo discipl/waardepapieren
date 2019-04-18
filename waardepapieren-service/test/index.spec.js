@@ -30,7 +30,6 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     // Set up server
     let waardenpapierenService = new WaardenpapierenService()
-    await timeoutPromise(100)
     await waardenpapierenService.start(CONFIGURATION)
     await timeoutPromise(100)
 
@@ -40,19 +39,30 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     expect(nlxConfigureSpy.callCount).to.equal(1)
     expect(nlxConfigureSpy.args[0]).to.deep.equal([CONFIGURATION.NLX_OUTWAY_ENDPOINT])
 
-    await timeoutPromise(100)
-    let needSsid = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
 
-    await timeoutPromise(100)
-    let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
-    await timeoutPromise(100)
+    // Set up need
+    let need = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
 
-    await abundance.getCoreAPI().claim(needSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: '123123123' })
-    await timeoutPromise(100)
-    let match = await matchPromise
 
-    await timeoutPromise(100)
-    expect(Object.keys(match.claim.data)).to.include(abundance.ABUNDANCE_SERVICE_MATCH_PREDICATE)
+    let observeOffer = await abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
+    await observeOffer.readyPromise
+
+    await abundance.getCoreAPI().claim(need.myPrivateSsid, {[CONFIGURATION.SOURCE_ARGUMENT]: '123123123'})
+
+
+    let result = await observeOffer.resultPromise
+
+    expect(result.claim.data).to.deep.equal([
+        {
+          "Doel": "Bewijs verblijfadres in woonplaats"
+        },
+        {
+          "Burgerservicenummer (BSN)": "123123123"
+        },
+        {
+          "Woonplaats verblijfadres": "Haarlem"
+        }
+      ])
 
     // Test observations
     expect(nlxClaimStub.callCount).to.equal(1)
@@ -60,44 +70,6 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
 
-    let personalDid = match.did
-
-    let brpPromise = (await abundance.getCoreAPI().observe(personalDid, {}, true)).pipe(take(1)).toPromise()
-
-    let brp = await brpPromise
-
-    expect(brp).to.deep.equal({
-      'claim': {
-        'data': [
-          {'Doel': 'Bewijs verblijfadres in woonplaats'},
-          {'Burgerservicenummer (BSN)': '123123123'},
-          {'Woonplaats verblijfadres': 'Haarlem'}
-        ],
-        'previous': null
-      },
-      'did': personalDid
-    })
-
-    let agreePromise = (await abundance.getCoreAPI().observe(personalDid, { [CONFIGURATION.PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
-
-    // Accept and follow references
-    await abundance.getCoreAPI().claim(needSsid, { [CONFIGURATION.PRODUCT_ACCEPT]: '' })
-
-    let agree = await agreePromise
-
-    expect(agree.claim.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
-
-    let brpClaimLink = agree.claim.data[CONFIGURATION.PRODUCT_NAME]
-
-    //let attestation = await abundance.getCoreAPI().get(attestationLink)
-
-    //expect(attestation.data[CONFIGURATION.PRODUCT_NAME]).to.be.a('string')
-
-    //let brpClaimLink = attestation.data[CONFIGURATION.PRODUCT_NAME]
-
-    let brpClaim = await abundance.getCoreAPI().get(brpClaimLink)
-
-    expect(brp.claim.data).to.deep.equal(brpClaim.data)
 
     await waardenpapierenService.stop()
   })

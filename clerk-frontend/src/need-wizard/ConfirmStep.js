@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as abundance from '@discipl/abundance-service'
-import { take } from 'rxjs/operators'
 
 import CONFIGURATION from '../configuration/wpsvc.json'
 
@@ -20,29 +19,27 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     await timeoutPromise(100)
 
-    let needSsid = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
-    await timeoutPromise(100)
-    let matchPromise = (await abundance.observe(needSsid.did, 'ephemeral')).pipe(take(1)).toPromise()
-    await timeoutPromise(100)
+    let need = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
 
-    await abundance.getCoreAPI().claim(needSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: this.props.bsn })
-    await timeoutPromise(100)
-    let match = await matchPromise
+    let observeOffer = await abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
+    await observeOffer.readyPromise
 
-    let personalDid = match.did
+    await abundance.getCoreAPI().claim(need.myPrivateSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: this.props.bsn })
+
+
+    let result = await observeOffer.resultPromise
 
     if (this.props.ssidsChanged) {
-      this.props.ssidsChanged(personalDid, needSsid)
+      this.props.ssidsChanged(need.theirPrivateDid, need.myPrivateSsid)
     }
 
-
-    let brpPromise = (await abundance.getCoreAPI().observe(personalDid, null, true)).pipe(take(1)).toPromise()
-
-    let brp = await brpPromise
+    if (this.props.resultLinkChanged) {
+      this.props.resultLinkChanged(result.link)
+    }
 
     this.setState({
       ...this.state,
-      'data': brp.claim.data
+      'data': result.claim.data
     })
   }
 

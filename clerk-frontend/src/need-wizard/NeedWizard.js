@@ -20,6 +20,7 @@ class NeedWizard extends Component {
     this.bsnChanged = this.bsnChanged.bind(this);
     this.needChanged = this.needChanged.bind(this);
     this.ssidsChanged = this.ssidsChanged.bind(this);
+    this.resultLinkChanged = this.resultLinkChanged.bind(this);
     this.deliveryChanged = this.deliveryChanged.bind(this);
   }
 
@@ -82,12 +83,19 @@ class NeedWizard extends Component {
     })
   }
 
-  ssidsChanged(personalDid, needSsid) {
+  ssidsChanged(personalDid, myPrivateSsid) {
 
     this.setState({
       ...this.state,
       'personalDid': personalDid,
-      'needSsid': needSsid
+      'myPrivateSsid': myPrivateSsid
+    })
+  }
+
+  resultLinkChanged(resultLink) {
+    this.setState({
+      ...this.state,
+      'resultLink': resultLink
     })
   }
 
@@ -106,9 +114,9 @@ class NeedWizard extends Component {
       case 1:
         return <NeedStep needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged}/>
+        return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
       case 3:
-        return <DeliveryStep personalDid={this.state.personalDid} needSsid={this.state.needSsid} deliveryChanged={this.deliveryChanged}/>
+        return <DeliveryStep personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }

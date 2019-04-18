@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import * as abundance from '@discipl/abundance-service'
 import * as paperWallet from '@discipl/paper-wallet'
-import { take } from 'rxjs/operators'
-import { createCanvas, loadImage } from 'canvas'
+import { loadImage } from 'canvas'
 
 import CONFIGURATION from '../configuration/wpsvc.json'
 
@@ -29,15 +27,10 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     console.log(this.props)
 
-    let agreePromise = (await abundance.getCoreAPI().observe(this.props.personalDid, { [CONFIGURATION.PRODUCT_NAME]: null })).pipe(take(1)).toPromise()
 
-    // Express acceptance of document
-    await abundance.getCoreAPI().claim(this.props.needSsid, { [CONFIGURATION.PRODUCT_ACCEPT]: '' })
+    let vc = await paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid)
 
-    let agree = await agreePromise
-
-    let vc = await paperWallet.issue(agree.claim.data[CONFIGURATION.PRODUCT_NAME])
-
+    console.log("Issued")
 
     this.canvasRef.current.width = template.canvasWidth
     this.canvasRef.current.height = template.canvasHeight
