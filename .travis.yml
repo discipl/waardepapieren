@@ -4,6 +4,6 @@ node_js:
   - "lts/*"
 before_script:
   - if [ ! -z "$NLX_KEY" ]; then echo "$NLX_KEY" > ./waardepapieren-service/system-test/certs/org.key; fi
-  - if [ ! -z "$NLX_CERT" ]; then echo "$NLX_CERT" > ./waardepapieren-service/system-test/certs/org.key; fi
+  - if [ ! -z "$NLX_CERT" ]; then echo "$NLX_CERT" > ./waardepapieren-service/system-test/certs/org.cert; fi
 script:
   - ./.travis.sh
