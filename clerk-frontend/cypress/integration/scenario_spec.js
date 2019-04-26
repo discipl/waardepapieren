@@ -14,7 +14,7 @@ describe('clerk-frontend', () => {
 
     cy.contains('Volgende').click()
 
-    cy.contains('Utrecht')
+    cy.contains('td', 'Utrecht', { 'timeout': 30000 })
 
     cy.contains('Dit klopt!').click()
 
@@ -22,7 +22,7 @@ describe('clerk-frontend', () => {
       let canvas = canvasArray[0]
       let context = canvas.getContext('2d')
       // This a pixel just from the top left of the QR code based on the offset
-      let pixel = context.getImageData(320, 420, 1, 1)
+      let pixel = context.getImageData(549, 699, 1, 1)
       expect(pixel.data).to.deep.equal(new Uint8ClampedArray([255, 255, 255, 255]))
     })
 

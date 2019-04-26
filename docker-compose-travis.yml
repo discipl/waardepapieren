@@ -1,6 +1,8 @@
 version: '3'
 services:
   waardepapieren-service:
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs:ro
     build: waardepapieren-service/.
     links:
       - mock-nlx

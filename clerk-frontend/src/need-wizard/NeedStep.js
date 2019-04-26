@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-const BRP_UITTREKSEL = 'BRP_UITTREKSEL_NEED'
+import CONFIGURATION from '../configuration/wpsvc.json'
 const NEEDS = [
   {
-    'predicate': BRP_UITTREKSEL,
+    'predicate': CONFIGURATION.PRODUCT_NEED,
     'description': 'Uittreksel Basis Registratie Persoonsgegevens'
   }
 ]

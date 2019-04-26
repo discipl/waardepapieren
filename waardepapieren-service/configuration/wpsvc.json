@@ -1,0 +1,18 @@
+{
+  "EPHEMERAL_ENDPOINT" : "http://localhost:3232",
+  "EPHEMERAL_WEBSOCKET_ENDPOINT" : "ws://localhost:3233",
+  "NLX_OUTWAY_ENDPOINT" : "http://localhost:4080",
+  "NLX_CERT": "/certs/org.crt",
+  "NLX_KEY": "/certs/org.key",
+  "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
+  "SOURCE_NLX_PATH" : "/brp/basisregistratie/natuurlijke_personen/bsn/{BSN}",
+  "SOURCE_ARGUMENT" : "BSN",
+  "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
+  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+  "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
+  "PRODUCT_PURPOSE" : "Bewijs verblijfadres in woonplaats",
+  "SOURCE_DATA_SELECTION" : [
+    {"Burgerservicenummer (BSN)" : "burgerservicenummer"},
+    {"Woonplaats verblijfadres" : "verblijfadres.woonplaats"}
+  ]
+}

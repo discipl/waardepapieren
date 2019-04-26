@@ -20,6 +20,8 @@ class NeedWizard extends Component {
     this.bsnChanged = this.bsnChanged.bind(this);
     this.needChanged = this.needChanged.bind(this);
     this.ssidsChanged = this.ssidsChanged.bind(this);
+    this.resultLinkChanged = this.resultLinkChanged.bind(this);
+    this.deliveryChanged = this.deliveryChanged.bind(this);
   }
 
   _prev() {
@@ -81,12 +83,27 @@ class NeedWizard extends Component {
     })
   }
 
-  ssidsChanged(personalDid, needSsid) {
-    console.log(this)
+  ssidsChanged(personalDid, myPrivateSsid) {
+
     this.setState({
       ...this.state,
       'personalDid': personalDid,
-      'needSsid': needSsid
+      'myPrivateSsid': myPrivateSsid
+    })
+  }
+
+  resultLinkChanged(resultLink) {
+    this.setState({
+      ...this.state,
+      'resultLink': resultLink
+    })
+  }
+
+  deliveryChanged(attestationLink, canvas) {
+    this.setState({
+      ...this.state,
+      'attestationLink': attestationLink,
+      'canvas': canvas
     })
   }
 
@@ -97,9 +114,9 @@ class NeedWizard extends Component {
       case 1:
         return <NeedStep needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged}/>
+        return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
       case 3:
-        return <DeliveryStep personalDid={this.state.personalDid} needSsid={this.state.needSsid} />
+        return <DeliveryStep personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }
@@ -109,7 +126,7 @@ class NeedWizard extends Component {
     return (
       <div className="NeedWizard">
         <h2>Verstrekken bewijs inschrijving BRP</h2>
-        <h3>Gemeentelijk ambtenaar</h3>
+        <h3>door gemeentelijk ambtenaar</h3>
         {this.renderStep()}
         {this.renderButtons()}
       </div>

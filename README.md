@@ -1,44 +1,26 @@
-# waardepapieren
+# Waardepapieren
 
-project for consortium of municipalities digitizing PoE services
+This project provides a full implementation example of how Discipl components can be used to issue and
+verify claims. In particular, how municipalities can issue
 
-the project aims at a W3C verifiable credential compatible (or alike) solution based on discipl core for proving all kinds of facts atested for by an issuer (with a focus on municipalities as issuer).
+## Running
 
-# Running
+The easiest way to run is using docker-compose:
 
-Running the applications is easiest done using docker-compose. Simply run `docker-compose up`.
 This will start 3 applications:
 
 - clerk-frontend
 - waardepapieren-service, with embedded ephemeral-server
-- nlx-mock, which mocks an NLX API, such that development can be done independently
+- nlx-mock, which is an nlx-outway that provides access to a mock BRP service
 
-components:
+Note that the nlx-mock and waardepapieren-service need a valid certificate for the demo NLX environment.
 
-- client-frontend : frontend webapplication (js) embedded in the my-environment provided by the municipality, which connects to a discipl node to retrieve a needed proof.
-- clerk-frontend : frontend webapplication (js) which connects to a discipl node to retrieve a needed proof of a selected person (by referring to a BSN).
-- authorization-backend : simple serverside authorization script that enables access to the abundance service that delivers certain proofs to a given ssid (authenticated for the my-environment, or being a clerk)
-- validator-frontend : frontend webapplication (js) that can validate a proof
-- dashboard
-- revoke-service
-- waardepapieren-service
+1. Generate certificates as described [here](https://docs.nlx.io/get-started/create-certificates/)
+2. Run `docker-compose up`
 
-these components might involve the following components from the discipl software stack:
+Alternatively, you can use an offline mock, which replicates the NLX environment.
 
-- discipl-abundance-service
-- discipl-4sacan
-- discipl-expo
-- discipl-rshiny
-- discipl-core
-- discipl-core-restapi
-- discipl-core-node
-- discipl-core-paper
-- discipl-core-nlx
-- discipl-core-iota
-- discipl-core-ipfs
-- discipl-core-irma
-
-architectural primer : https://docs.google.com/presentation/d/1sw7xi2UbmxRN3NBwQTn9kWw6-RNhygdRL5kccnZWUyE
+1. Run `docker-compose -f docker-compose-travis.yml up`
 
 # Running validator
 The validator app is made with [Expo](https://expo.io/), which is a free and open-source react-native framework for mobile development. to run this on a mobile device, connect to the same network without firewall restrictions (if all else fails, starting an hotspot on your mobile device and connecting to it usually works). In the folder "validator-frontend", issue the command:
