@@ -48,12 +48,16 @@
         "qrOffsetY": 520,
         "qrWidth": 150,
         "qrHeight": 150,
+        "qrOffsetXright": 550,
+        "qrOffsetYbottom": 700,
+        "qrSizeMin": 150,
 
         "footerFont": "10px helvetica",
-        "footerWidth": 500,
+        "footerText": "Dit is een automatisch gegenereerd document en daarom niet ondertekend. De gegevens zijn verkregen via NLX en geborgd in de QR-code. U kunt de echtheid van dit document controleren via een bijbehorende app of online",
+        "footerWidth": 400,
         "footerHeight": 200,
-        "footerOffsetX": 600,
-        "footerOffsetY": 30
+        "footerOffsetX": 90,
+        "footerOffsetY": 730
       }
     }
   }
