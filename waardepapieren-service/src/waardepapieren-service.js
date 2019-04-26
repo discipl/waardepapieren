@@ -4,6 +4,7 @@ import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 import jp from 'jsonpath'
+import fs from 'fs'
 
 class WaardenpapierenService {
   async start (configuration) {
@@ -16,13 +17,18 @@ class WaardenpapierenService {
     const ephemeralConnector = await core.getConnector('ephemeral')
     ephemeralConnector.configure(this.configuration.EPHEMERAL_ENDPOINT, this.configuration.EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
+    let nlxCert = fs.readFileSync(this.configuration.NLX_CERT)
+    let nlxKey = fs.readFileSync(this.configuration.NLX_KEY)
+
+    let nlxEphemeralIdentity = await ephemeralConnector.newIdentity({ 'cert': nlxCert, 'privkey': nlxKey })
+
     const nlxConnector = await core.getConnector('nlx')
     nlxConnector.configure(this.configuration.NLX_OUTWAY_ENDPOINT)
     let attendResult = await abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
 
     // TODO: Refactor to observableResult.subscribe when fix from core propagates
     await attendResult.observableResult._observable.subscribe(async (need) => {
-      await this.serveNeed(need)
+      await this.serveNeed(need, nlxEphemeralIdentity)
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
       if (e.code !== 1006) {
@@ -33,7 +39,7 @@ class WaardenpapierenService {
     await attendResult.observableResult._readyPromise
   }
 
-  async serveNeed (need) {
+  async serveNeed (need, nlxIdentity) {
     let core = abundance.getCoreAPI()
 
     let needDetails = await need
@@ -47,7 +53,6 @@ class WaardenpapierenService {
 
     let result = await nlxConnector.get(identifier)
 
-    let privateSvcSsid = await core.newSsid('ephemeral') // needs signing with NLX key
     let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
 
     for (let field in this.configuration.SOURCE_DATA_SELECTION) {
@@ -58,9 +63,9 @@ class WaardenpapierenService {
       resultArray.push({ [key]: value[0] })
     }
 
-    let productClaim = await core.claim(privateSvcSsid, resultArray)
+    let productClaim = await core.claim(nlxIdentity, resultArray)
 
-    await core.allow(privateSvcSsid, productClaim, needDetails.theirPrivateDid)
+    await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
 
     await abundance.offer(needDetails.myPrivateSsid, productClaim)
   }

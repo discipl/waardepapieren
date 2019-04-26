@@ -21,6 +21,10 @@ describe('waardenpapieren-service', function () {
     // Set up server
     let waardenpapierenService = new WaardenpapierenService()
     await timeoutPromise(100)
+
+    CONFIGURATION.NLX_CERT='./system-test/certs/org.crt'
+    CONFIGURATION.NLX_KEY='./system-test/certs/org.key'
+
     let serviceSsid = await waardenpapierenService.start(CONFIGURATION)
     await timeoutPromise(100)
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')

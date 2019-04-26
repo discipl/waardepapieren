@@ -1,6 +1,8 @@
 version: '3'
 services:
   waardepapieren-service:
+    volumes:
+    - ./waardepapieren-service/system-test/certs:/certs:ro
     build: waardepapieren-service/.
     links:
       - mock-nlx
@@ -20,7 +22,7 @@ services:
   mock-nlx:
     image: nlxio/outway:latest
     volumes:
-      - ./waardepapieren-service/system-test/certs:/certs
+      - ./waardepapieren-service/system-test/certs:/certs:ro
     environment:
       - DIRECTORY_INSPECTION_ADDRESS=directory-inspection-api.demo.nlx.io:443
       - TLS_NLX_ROOT_CERT=/certs/root.crt
