@@ -14,7 +14,7 @@ describe('clerk-frontend', () => {
 
     cy.contains('Volgende').click()
 
-    cy.contains('Utrecht')
+    cy.contains('td', 'Utrecht', { 'timeout': 30000 })
 
     cy.contains('Dit klopt!').click()
 

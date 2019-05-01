@@ -28,6 +28,9 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     abundance.getCoreAPI().registerConnector('nlx', nlxConnector)
 
+    CONFIGURATION.NLX_CERT='./system-test/certs/org.crt'
+    CONFIGURATION.NLX_KEY='./system-test/certs/org.key'
+
     // Set up server
     let waardenpapierenService = new WaardenpapierenService()
     await waardenpapierenService.start(CONFIGURATION)
