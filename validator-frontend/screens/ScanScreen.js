@@ -125,9 +125,9 @@ class ValidatingScreen extends Component {
 
   render() {
     console.log('Entered render')
-    const verified = <Octicons name="verified" size={48} color="#33ff33" />;
-    const denied = <Octicons name="alert" size={48} color="#FF0000" />;
-    const waiting = <Octicons name="watch" size={48} color="#777777" />;
+    const verified = <Octicons name="verified" size={128} color="#33ff33" />;
+    const denied = <Octicons name="alert" size={128} color="#FF0000" />;
+    const waiting = <Octicons name="watch" size={128} color="#777777" />;
     if (this.state.validatingState == "waiting"){
       validatingIcon = waiting;
       validatingText = "Checking QR code"
