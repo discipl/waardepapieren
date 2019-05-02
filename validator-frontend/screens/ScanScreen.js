@@ -51,7 +51,7 @@ class ScanScreen extends React.Component {
     console.log(data)
     this._storeData(data);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-    this.props.navigation.navigate('Validating')
+    this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
 
@@ -60,9 +60,12 @@ class ValidatingScreen extends Component {
     headerTitle: 'Validating screen',
   };
   render() {
+    const { navigation } = this.props;
+    const qrString = navigation.getParam('qrString', 'String not found');
+    console.log(qrString);
     return (
       <View>
-        <Text>"This screen works now"</Text>
+        <Text>QR: {JSON.stringify(qrString)}</Text>
       </View>
     );
   }
