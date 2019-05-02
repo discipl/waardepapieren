@@ -5,6 +5,8 @@ import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
 import * as paperWallet from '@discipl/paper-wallet'
 import EphemeralConnector from '@discipl/core-ephemeral'
+import { Octicons } from '@expo/vector-icons';
+import {NavigationEvents} from 'react-navigation';
 
 export default class App extends React.Component {
   render() {
@@ -50,22 +52,21 @@ class ScanScreen extends React.Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    console.log(data)
-    this._storeData(data);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
 
 class ValidatingScreen extends Component {
+  constructor(props){
+    super(props);
+    this.state = {validatingState: "waiting"};
+  }
   static navigationOptions = {
     headerTitle: 'Validating screen',
   };
-
-  _checkQR = async () => {
+  async _checkQR() {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
-    console.log(qrString);
     let cert =  '   -----BEGIN CERTIFICATE-----  '  +
       '   MIIFzzCCA7egAwIBAgIUBDAnPgMV5iH+LkMfm6h5E8jWVOswDQYJKoZIhvcNAQEN  '  +
       '   BQAwXzELMAkGA1UEBhMCTkwxFjAUBgNVBAgTDU5vb3JkLUhvbGxhbmQxEjAQBgNV  '  +
@@ -105,18 +106,45 @@ class ValidatingScreen extends Component {
     let attestorSsid = await (await paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
     let validatorSsid = await paperWallet.getCore().newSsid('ephemeral')
     console.log("Validating...")
-    let result = await paperWallet.validate(attestorSsid.did, qrString, validatorSsid.did)
-    console.log(result)
+    this.result = await paperWallet.validate(attestorSsid.did, qrString, validatorSsid.did)
+    console.log(this.result)
   }
 
-  componentWillMount() {
-    this._checkQR()
+  async wrapperFunction() {
+    await this._checkQR()
+    console.log(this.result);
+    if(this.result == null){
+      console.log("I declare it false!")
+      this.setState({validatingState: "denied"})
+    }
+    else if(this.result == true){
+      console.log("I declare it true");
+      this.setState({validatingState: "verified"})
+    }
   };
 
   render() {
+    console.log('Entered render')
+    const verified = <Octicons name="verified" size={48} color="#33ff33" />;
+    const denied = <Octicons name="alert" size={48} color="#FF0000" />;
+    const waiting = <Octicons name="watch" size={48} color="#777777" />;
+    if (this.state.validatingState == "waiting"){
+      validatingIcon = waiting;
+      validatingText = "Checking QR code"
+    }
+    if (this.state.validatingState == "verified"){
+      validatingIcon = verified;
+      validatingText = "This proof is valid!"
+    }
+    if (this.state.validatingState == "denied"){
+      validatingIcon = denied;
+      validatingText = "This is an unvalid QR-code!"
+    }
     return (
       <View>
-        <Text>QR:</Text>
+        <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
+        <Text>{validatingText}</Text>
+        {validatingIcon}
       </View>
     );
   }
