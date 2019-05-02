@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
+import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
 
-export default class ScanScreen extends React.Component {
+export default class App extends React.Component {
+  render() {
+    return <ScanStack />;
+  }
+}
+
+class ScanScreen extends React.Component {
   state = {
     hasCameraPermission: null,
   }
@@ -44,6 +51,24 @@ export default class ScanScreen extends React.Component {
     console.log(data)
     this._storeData(data);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-
+    this.props.navigation.navigate('Validating')
   }
 }
+
+class ValidatingScreen extends Component {
+  static navigationOptions = {
+    headerTitle: 'Validating screen',
+  };
+  render() {
+    return (
+      <View>
+        <Text>"This screen works now"</Text>
+      </View>
+    );
+  }
+}
+
+const ScanStack = createStackNavigator({
+  Scan: ScanScreen,
+  Validating: ValidatingScreen
+});
