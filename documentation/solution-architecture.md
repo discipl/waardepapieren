@@ -58,7 +58,7 @@ in the use cases the waardepapieren solution facilitates is given below:
 
 ![](images/vcseq0.png)
 
-In essence this is the very process that also takes place when retrieving a proof through the waardepapieren solution as can be seen below in the other [verifiable claim sequence diagrams](images/vseq.png).
+In essence this is the very process that also takes place when retrieving a proof through the waardepapieren solution as can be seen below in the other [verifiable claim sequence diagrams](images/vcseq.png).
 
 ## Information layer
 
