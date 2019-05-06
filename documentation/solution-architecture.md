@@ -46,7 +46,7 @@ As said, the solution also aims at a W3C verifiable credential compliant solutio
 
 The following stakeholders are identified:
 
-- issuer : automated (abundance) service available at location of issuer and/or through its website
+- issuer : entity that issues verifiable claims. Also refers to an automated (abundance type of) service available at location of the issuer and/or through its website to act on behalf of the issuer.
 - clerk : employee that helps a client at location of issuer, services, identifies and authorizes the client manually
 - authorization service : automated service that identifies and authorizes client when client self services him/herself and accesses issuer through website
 - client : person in need of verifiable information required by a validator. It also becomes a holder of the resulting signed information.
@@ -58,42 +58,27 @@ in the use cases the waardepapieren solution facilitates is given below:
 
 ![](images/vcseq0.png)
 
-In essence this is the very proces that also takes place when retrieving a proof through the waardepapieren solution as can be seen below in the other verifiable claim sequence diagrams.
-
-![](images/vcseq.png)
+In essence this is the very process that also takes place when retrieving a proof through the waardepapieren solution as can be seen below in the other [verifiable claim sequence diagrams](images/vseq.png).
 
 ## Information layer
 
-All information is temporarily held in verifiable claim channels on the so called discipl ephemeral platform (http://github.com/discipl/discipl-core-ephemeral) in memory. This platform will enforce access rights denoted by the channel owner in specific allow claims within the channel, so by default all channels are only accessible to the channel owner holding a corresponding private key created and temporarily held by the channel owner.Of course the party hosting the ephemeral server and it's administrator needs to be trusted also, but as this is the issuer as source of the information it is by definition a party already trusted with this information by the client.
+All information is temporarily held in verifiable claim channels on the so called discipl ephemeral platform (http://github.com/discipl/discipl-core-ephemeral) in memory. This platform will enforce access rights denoted by the channel owner in specific allow claims within the channel, so by default all channels are only accessible to the channel owner holding a corresponding private key created and temporarily held by the channel owner. Of course the party hosting the ephemeral server and it's administrator need to be trusted also, but as this is the issuer as provider of the information it is by definition a party already trusted with this information by the client.
 
-The following channels will be created using this solution holding the following information (verifiable claims) with what kind of accessibility retention:
+The following channels will be created using this solution holding the following information (verifiable claims) with what kind of accessibility / retention:
 
-1) public service channel of issuer, destroyed at service shutdown
-  - that a service with some id is attending to needs for what : (ssid, attendTo, what)
-  - (possibly a log of needs that has been attended to)
-2) public customer channel of client, destroyed after solving the need or at max for X minutes or service shutdown whatever comes first
-  - that an anonymous client with some id is in need for what : (ssid, need, what)
-3) private customer channel, destroyed after solving the need or at max for X minutes or service shutdown whatever comes first
-  - that the client refers to a certain BSN number for this. (ssid, BSN, bsn-number)
-  - that the client allows access to this channel to issuer
-  - that the client attests the information prepared by the issuer in the delivery channel to be true
-  - that the client successfully got the signed information in the format it wants by denoting the need as solved
-4) private delivery channel of issuer, destroyed after solving the need or at max for X minutes or service shutdown whatever comes first
-  - that a service with some id is attending to a single specific need that has been noticed for what : (ssid, attendTo, what)
-  - all the information the issuer has prepared to issue, taken from the NLX result channel
-  - that the specific client in need is allowed to access this channel
-  - that it matches a specific need for that same what
-  - that it attests (with signature using NLX outway key) the information to be issued
-5) clerk / auth svc channel, held in memory until read or at max for X minutes or service shutdown whatever comes first
-  - that the client has been identified / authenticated (and authorised) to retrieve the product in relation to the BSN (or other source argument configured) denoted in a given BSN claim in the private customer channel
-6) private NLX channel of issuer, held in memory until read or at max for X minutes or service shutdown whatever comes first
-    - the result of a NLX call stored in the channel of and thus signed with the NLX certificate of the issuer (every claim specifically allowed to specific other actors)
-7) validation channel of validator, destroyed after validation or service shutdown whatever comes first
-      - the same claim and attestation pair as was issued from the delivery channel of the issuer, read from the QR code on a piece of paper
+| channel | what | where | accessibillity | retention |
+|---------|------|-------|----------------|-----------|
+| **SSID S** : public service channel of issuer| - that a service with some id is attending to needs for what : *(ssid, attendTo, what)* <br/><br/> - referrals to private service channels in which specific needs are serviced <br/><br/> - (possibly a log of needs that has been attended to)| ephemeral server of issuer (in memory), private key on waardepapieren service device | public | destroyed at service shutdown |
+| **SSID X** :  public customer channel of client | - that an anonymous client with some id is in need for what : *(ssid, need, what)* <br/><br/>- referral to privately shared customer channel (SSID X-S) <br/><br/> - that the client successfully got the signed information in the format it wants by denoting the need as solved | ephemeral server of issuer (in memory), private key temporarily in memory on client device | public | destroyed after solving the need or at max for X minutes or service shutdown whichever comes first |
+| **SSID X-S** : private customer channel | - that the client allows access to this channel to issuer <br/><br/> - that this channel is referred from SSID X <br/><br/> - that the client refers to a certain BSN number for this. *(ssid, BSN, bsn-number)* <br/><br/> | ephemeral server (in memory), private key temporarily in memory on client device  | privately shared with issuer | destroyed after solving the need or at max for X minutes or service shutdown whichever comes first |
+| **SSID S-X** : private delivery channel of issuer | - that a service with some id is attending to a single specific need that has been noticed for what : *(ssid, attendTo, what)* <br/><br/> - that this service is referred from SSID S <br/><br/> - that the specific client in need is allowed to access this channel <br/><br/> - all the information the issuer has prepared to issue, taken from the NLX result channel <br/><br/> - that it matches a specific need for that same what <br/><br/> - implicitly that it attests (with signature using NLX outway key) the information to be issued | ephemeral server (in memory), private key on waardepapieren service device | privately shared with client | destroyed after solving the need or at max for X minutes or service shutdown whichever comes first |
+| **SSID C** :  clerk / auth svc channel | - that the client has been identified / authenticated (and authorised) to retrieve the product in relation to the BSN (or other source argument configured) denoted in a given BSN claim in the private customer channel | ephemeral server (in memory), private key on website auth service or clerk device | privately shared with waardepapieren service (issuer) | held in memory until read or at max for X minutes or service shutdown whichever comes first |
+| **SSID NLX** : private NLX channel of issuer | - the result of a NLX call stored in the channel of and thus signed with the NLX certificate of the issuer (every claim specifically allowed to specific other actors) | nlx connector to nlx outway on waardepapieren service server of issuer| only private to waardepapieren service | temporarily held in memory |
+| **SSID V** : validation channel of validator| - the same claim and attestation pair as was issued from the delivery channel of the issuer, read from the QR code on a piece of paper | ephemeral (client mode) | temporarily and privately held in memory on device of validator | destroyed after validation or validation app shutdown whichever comes first |
 
-besides these channels, information is issued and stored in supported verifiable credential platforms (in privately held wallets of the client as holder). For now only a custom paper wallet platform is used which stores an attested claim in a QR code printed on a piece of paper to be owned by the client. This piece of paper shall also contain the raw information contained in the attested claim in the QR code which limits the amount of data that can be held in claims such you can issue them in a paper wallet.
+Besides these channels, information is issued and stored in supported verifiable credential platforms (in privately held wallets of the client as holder). For now only a custom paper wallet platform is used which stores an attested claim in a QR code printed on a piece of paper to be owned by the client. This piece of paper shall also contain the raw information contained in the attested claim in the QR code which limits the amount of data that can be held in claims such you can issue them in a paper wallet.
 
-The solution just presents, signs and issues information as returned as result from the NLX call; for now it does not semantically parses this information. For now, the webservice called through NLX needs to accept a BSN number as argument that identifies the client though these kinds of arguments are configurable. The object of what is needed or attended to is something configured by the issuer like 'Uittreksel-GBA-Haarlem'. All other data results from usage of the abundance service api and discipl core api and the connectors used (ephemeral and NLX for now).
+The solution just presents, signs and issues selected information from the JSON data as returned as result from the NLX call; for now, apart from configurable data field selection, it does not semantically parse this information. The webservice called through NLX needs to accept a BSN number as argument that identifies the client though these kinds of arguments are configurable. The object of what is needed or attended to is something configured by the issuer like 'Uittreksel-GBA-Haarlem'. All other data results from usage of the abundance service api and discipl core api and the connectors used (ephemeral and NLX for now).
 
 The process for issuing proofs as described above is illustrated in verifiable claim sequence diagrams below:
 
@@ -136,15 +121,14 @@ is made as minimal as possible.
 ## Key decisions
 
 - scope : the waardepapieren service will at least provide in a single product that can be issued.
-- scope : the information being signed is that of the result data of a NLX call given the BSN number as argument though this argument is configurable
+- scope : the information being signed is that of a configurable selection of fields from the result data (in JSON format) of a NLX call given the BSN number as argument. This latter argument is configurable
 - scope : only the paper wallet is in scope as supported verifiable credential solution
 - scope : identification and authentication is performed either by the clerk-frontend user in the local intranet the waardepapieren service runs in, or through the authentication service integrated within the website through which the service is made accessible. The validation app autenticates a proof through well established techniques around X.509 certificates issued conform EiDAS/EIF.
 - scope : the topic of alignment with W3C Verifiable Credential standard, ETSI TS 103 171 and REGULATION (EU) No 910/2014 is deferred to ongoing development of Discipl
 
 ## Future directions
 
-The solution is prepared to be used in different kind of situations and set ups and use cases in which other types of platforms can be used instead of ephemeral, NLX or paper wallet. The idea is that it is prepared for usage in automated facilitation in requirement resolving in which for instance when a client needs something that requires a signed proof of some issuer, the proof can be automatically and conveniently requested as need
-and once issued by the issuer to the client provided by the client to the validator, identifying themselves through future self sovereign identity solutions from within all kinds of solutions developed independently from the service provided by the issuer. In that situation the solution is used in the way as denoted in the verifiable sequence diagrams below:
+The solution is prepared to be used in different kind of use cases in which other types of platforms can be used instead of ephemeral, NLX or paper wallet. The idea is that it is prepared for usage in automated facilitation in requirement resolving in which for instance when a client needs something that requires a signed proof of some issuer, the proof can be automatically and conveniently requested as need. And once it is issued by the issuer to the client, it can be provided by the client to the validator. In the process they identify themselves through future self sovereign identity solutions from within all kinds of solutions developed independently from the service provided by the issuer. In that situation the solution is used in the way as denoted in the verifiable sequence diagrams below:
 
 ![](images/vcseq5.png)
 
