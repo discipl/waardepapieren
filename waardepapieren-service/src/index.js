@@ -1,8 +1,14 @@
 import WaardepapierenService from './waardepapieren-service'
-import configuration from '../configuration/wpsvc.json'
 
+import fs from 'fs'
+
+let configurationPath = process.env.WAARDEPAPIEREN_CONFIG || '../configuration/waardepapieren-config.json'
+
+let configuration = JSON.parse(fs.readFileSync(configurationPath))
+
+console.log('Booting with configuration: ', configuration)
 console.log(configuration)
-configuration.NLX_OUTWAY_ENDPOINT = process.env.NLX_OUTWAY_ENDPOINT || 'http://localhost:4080'
+
 
 let waardenpapierenService = new WaardepapierenService()
 waardenpapierenService.start(configuration)

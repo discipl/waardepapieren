@@ -3,6 +3,7 @@ services:
   waardepapieren-service:
     volumes:
     - ./waardepapieren-service/system-test/certs:/certs:ro
+    - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
     links:
       - mock-nlx
@@ -10,7 +11,7 @@ services:
       - 3232:3232
       - 3233:3233
     environment:
-      - NLX_OUTWAY_ENDPOINT=http://mock-nlx:80
+    - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose.json
   clerk-frontend:
     build: clerk-frontend/
     links:
