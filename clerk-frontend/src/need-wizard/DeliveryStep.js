@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as paperWallet from '@discipl/paper-wallet'
-import CONFIGURATION from '../configuration/wpsvc.json'
+import CONFIGURATION from '../configuration/clerk-frontend-config.json'
 
 let template = CONFIGURATION.EXPORT_TYPES['@discipl/paper-wallet'].template
 
