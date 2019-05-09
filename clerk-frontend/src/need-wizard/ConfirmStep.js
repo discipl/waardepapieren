@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as abundance from '@discipl/abundance-service'
 
-import CONFIGURATION from '../configuration/wpsvc.json'
+import CONFIGURATION from '../configuration/clerk-frontend-config.json'
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {

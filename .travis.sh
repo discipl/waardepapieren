@@ -9,6 +9,7 @@ npm test
 cd ../waardepapieren-service/
 npm install
 npm test
+npm run system-test
 
 
 # Integration

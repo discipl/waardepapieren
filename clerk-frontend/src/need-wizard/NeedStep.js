@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import CONFIGURATION from '../configuration/wpsvc.json'
+import CONFIGURATION from '../configuration/clerk-frontend-config.json'
 const NEEDS = [
   {
     'predicate': CONFIGURATION.PRODUCT_NEED,

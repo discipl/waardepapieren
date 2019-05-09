@@ -9,7 +9,7 @@ import { w3cwebsocket } from 'websocket'
 import { take } from 'rxjs/operators'
 import sinon from 'sinon'
 
-import CONFIGURATION from '../configuration/wpsvc.json'
+import CONFIGURATION from '../configuration/waardepapieren-config.json'
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
