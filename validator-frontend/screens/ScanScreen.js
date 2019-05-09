@@ -105,7 +105,6 @@ class ValidatingScreen extends Component {
     paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
     let attestorSsid = await (await paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
     let validatorSsid = await paperWallet.getCore().newSsid('ephemeral')
-    console.log("Validating...")
     this.result = await paperWallet.validate(attestorSsid.did, qrString, validatorSsid.did)
     console.log(this.result)
   }
@@ -114,17 +113,14 @@ class ValidatingScreen extends Component {
     await this._checkQR()
     console.log(this.result);
     if(this.result == null){
-      console.log("I declare it false!")
       this.setState({validatingState: "denied"})
     }
     else if(this.result == true){
-      console.log("I declare it true");
       this.setState({validatingState: "verified"})
     }
   };
 
   render() {
-    console.log('Entered render')
     const verified = <Octicons name="verified" size={128} color="#33ff33" />;
     const denied = <Octicons name="alert" size={128} color="#FF0000" />;
     const waiting = <Octicons name="watch" size={128} color="#777777" />;
