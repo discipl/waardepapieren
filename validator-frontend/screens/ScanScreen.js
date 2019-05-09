@@ -22,7 +22,7 @@ class ScanScreen extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-    }
+  }
 
   _storeData = async (data) => {
     try {
@@ -52,6 +52,8 @@ class ScanScreen extends React.Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
+    this._storeData(data)
+    console.log(data);
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
@@ -102,6 +104,12 @@ class ValidatingScreen extends Component {
       '   eyB5  '  +
       '   -----END CERTIFICATE-----  '  +
       '    ' ;
+    let documentJson = JSON.parse(qrString);
+    let claimWithLink = Object.values(documentJson)[0][0];
+    let claimData = Object.values(claimWithLink)[0];
+    let tempdata = claimData[0];
+    let moredata = Object.values(tempdata)[0];
+    console.log(moredata);
     paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
     let attestorSsid = await (await paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
     let validatorSsid = await paperWallet.getCore().newSsid('ephemeral')
