@@ -17,9 +17,11 @@ services:
     links:
       - waardepapieren-service
     ports:
-      - 8080:8080
+    - 443:443
     healthcheck:
       test: service nginx status
+    volumes:
+    - ./clerk-frontend/nginx/certs:/etc/nginx/certs:ro
   mock-nlx:
     image: nlxio/outway:latest
     volumes:
@@ -31,4 +33,4 @@ services:
       - TLS_ORG_KEY=/certs/org.key
       - DISABLE_LOGDB=1
     ports:
-      - 4080:80
+      - 80:80

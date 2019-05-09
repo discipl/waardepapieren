@@ -1,8 +1,8 @@
 FROM node:10
 RUN mkdir /app
 ADD package.json package-lock.json /app/
-ENV REACT_APP_EPHEMERAL_ENDPOINT=http://localhost:8080/api/eph
-ENV REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT=ws://localhost:8080/api/eph-ws
+ENV REACT_APP_EPHEMERAL_ENDPOINT=https://localhost:443/api/eph
+ENV REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT=wss://localhost:443/api/eph-ws
 WORKDIR /app
 ADD public /app/public
 RUN npm install --unsafe-perm
