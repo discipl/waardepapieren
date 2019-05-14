@@ -23,6 +23,7 @@
     "@discipl/core-nlx": "~0.2.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "jsonpath": "^1.0.1",
+    "loglevel": "^1.6.1",
     "rxjs": "^6.4.0",
     "websocket": "^1.0.28"
   },
