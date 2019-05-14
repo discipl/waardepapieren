@@ -4,6 +4,7 @@
   "NLX_OUTWAY_ENDPOINT" : "http://mock-nlx:4080",
   "NLX_CERT": "/certs/org.crt",
   "NLX_KEY": "/certs/org.key",
+  "LOG_LEVEL": "info",
   "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
   "SOURCE_NLX_PATH" : "/brp/basisregistratie/natuurlijke_personen/bsn/{BSN}",
   "SOURCE_ARGUMENT" : "BSN",

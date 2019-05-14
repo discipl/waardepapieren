@@ -5,10 +5,16 @@ import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 import jp from 'jsonpath'
 import fs from 'fs'
+import * as log from 'loglevel'
 
 class WaardenpapierenService {
   async start (configuration) {
+    this.logger = log.getLogger('WaardepapierenService')
     this.configuration = configuration
+
+    if (configuration.LOG_LEVEL) {
+      this.logger.setLevel(configuration.LOG_LEVEL)
+    }
 
     // Setup server
     this.ephemeralServer = new EphemeralServer(3232)
@@ -32,18 +38,27 @@ class WaardenpapierenService {
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
       if (e.code !== 1006) {
-        console.error('Error while listening to need')
-        console.error(e)
+        this.logger.error('Error while listening to need')
+        this.logger.error(e)
+      }
+      else {
+        this.logger.info('Websocket Connection broke')
       }
     })
     await attendResult.observableResult._readyPromise
+
+    this.logger.info('Serving needs')
   }
 
   async serveNeed (need, nlxIdentity) {
+    let logId = Math.floor(Math.random()*10000);
+    this.logger.info('Serving need ', logId)
     let core = abundance.getCoreAPI()
 
     let needDetails = await need
     let argumentClaim = await needDetails.informationPromise
+
+    this.logger.info('Received BSN ', logId)
 
     let srcarg = argumentClaim['claim']['data'][this.configuration.SOURCE_ARGUMENT]
 
@@ -52,6 +67,8 @@ class WaardenpapierenService {
     let identifier = await nlxConnector.claim(null, { 'path': nlxpath, 'params': {[this.configuration.SOURCE_ARGUMENT]:srcarg} })
 
     let result = await nlxConnector.get(identifier)
+
+    this.logger.info('Retrieved NLX data', logId)
 
     let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
 
@@ -68,6 +85,8 @@ class WaardenpapierenService {
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
 
     await abundance.offer(needDetails.myPrivateSsid, productClaim)
+
+    this.logger.info('Served need', logId)
   }
 
   async stop () {
