@@ -31,4 +31,4 @@ services:
       - TLS_ORG_KEY=/certs/org.key
       - DISABLE_LOGDB=1
     ports:
-      - 4080:80
+      - 4080:4080

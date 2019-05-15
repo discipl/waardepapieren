@@ -23,4 +23,4 @@ services:
   mock-nlx:
     build: mock-nlx/
     ports:
-      - 80:80
+      - 4080:4080
