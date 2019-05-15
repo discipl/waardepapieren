@@ -5,6 +5,7 @@ import NeedStep from './NeedStep'
 import ConfirmStep from './ConfirmStep'
 import DeliveryStep from './DeliveryStep'
 
+
 const MAX_STEP = 3;
 
 class NeedWizard extends Component {
@@ -47,11 +48,7 @@ class NeedWizard extends Component {
 
   _download(type) {
     if(type === 'paperWallet') {
-      let a = document.createElement('a');
-      document.body.appendChild(a);
-      a.download = this.state.personalDid+'.png';
-      a.href = this.state.canvas.toDataURL('image/png')
-      a.click()
+      this.state.pdf.save('uittreksel.pdf')
     } else {
       window.alert('Download option ('+type+') not supported...')
     }
@@ -113,11 +110,10 @@ class NeedWizard extends Component {
     })
   }
 
-  deliveryChanged(attestationLink, canvas) {
+  deliveryChanged( pdf) {
     this.setState({
       ...this.state,
-      'attestationLink': attestationLink,
-      'canvas': canvas
+      'pdf': pdf
     })
   }
 
