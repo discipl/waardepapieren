@@ -23,7 +23,11 @@ Alternatively, you can use an offline mock, which replicates the NLX environment
 1. Run `docker-compose -f docker-compose-travis.yml up`
 
 # Running validator
-The validator app is made with [Expo](https://expo.io/), which is a free and open-source react-native framework for mobile development. to run this on a mobile device, connect to the same network without firewall restrictions (if all else fails, starting an hotspot on your mobile device and connecting to it usually works). In the folder "validator-frontend", issue the command:
+The validator app is made with [Expo](https://expo.io/), which is a free and open-source react-native framework for mobile development. to run this on a mobile device, the expo-cli tool is required. to install this, run:
+```bash
+$npm install -g expo-cli
+```
+connect to the same network without firewall restrictions (if all else fails, starting an hotspot on your mobile device and connecting to it usually works). In the folder "validator-frontend", issue the command:
 ```bash
 $expo start
 ```

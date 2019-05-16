@@ -24,14 +24,6 @@ class ScanScreen extends React.Component {
     this.setState({ hasCameraPermission: status === 'granted' });
   }
 
-  _storeData = async (data) => {
-    try {
-      await AsyncStorage.setItem("BRP1", data);
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
   render() {
     const { hasCameraPermission } = this.state;
 
@@ -52,8 +44,6 @@ class ScanScreen extends React.Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    this._storeData(data)
-    console.log(data);
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
@@ -66,6 +56,13 @@ class ValidatingScreen extends Component {
   static navigationOptions = {
     headerTitle: 'Validating screen',
   };
+  _storeData = async (data) => {
+    try {
+      await AsyncStorage.setItem("BRP1", data);
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   async _checkQR() {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
@@ -104,16 +101,9 @@ class ValidatingScreen extends Component {
       '   eyB5  '  +
       '   -----END CERTIFICATE-----  '  +
       '    ' ;
-    let documentJson = JSON.parse(qrString);
-    let claimWithLink = Object.values(documentJson)[0][0];
-    let claimData = Object.values(claimWithLink)[0];
-    let tempdata = claimData[0];
-    let moredata = Object.values(tempdata)[0];
-    console.log(moredata);
     paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
     let attestorSsid = await (await paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
-    let validatorSsid = await paperWallet.getCore().newSsid('ephemeral')
-    this.result = await paperWallet.validate(attestorSsid.did, qrString, validatorSsid.did)
+    this.result = await paperWallet.validate(attestorSsid.did, qrString)
     console.log(this.result)
   }
 
@@ -125,6 +115,7 @@ class ValidatingScreen extends Component {
     }
     else if(this.result == true){
       this.setState({validatingState: "verified"})
+      this._storeData(this.qrString)
     }
   };
 
