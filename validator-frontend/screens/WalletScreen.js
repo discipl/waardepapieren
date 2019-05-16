@@ -23,13 +23,12 @@ class WalletScreen extends React.Component {
         <FlatList
           data={[
             {key: 'Uitreksel BRP'},
-            {key: 'Huisregistratie'},
           ]}
           renderItem={({item}) => (
             <TouchableWithoutFeedback onPress={ () => this.props.navigation.navigate('Uitreksel')}>
 
               <View>
-                <Text style={styles.item}>{item.key}</Text>
+                <Text style={styles.key}>{item.key}</Text>
               </View>
 
             </TouchableWithoutFeedback>
@@ -51,8 +50,10 @@ class UitrekselScreen extends Component {
   }
 
   async componentDidMount() {
-    let displayData = await this._readData();
-    this.setState({displayData: displayData})
+    let claimData = await this._readData();
+    this.setState({claimData: claimData})
+    let renderData = await this._renderData();
+    this.setState({renderData: renderData})
   };
 
   _retrieveData = async () => {
@@ -75,29 +76,38 @@ class UitrekselScreen extends Component {
     let documentJson = JSON.parse(displayData);
     let claimWithLink = Object.values(documentJson)[0][0];
     let claimData = Object.values(claimWithLink)[0];
-    let tempdata = claimData[0];
-    let moredata = Object.values(tempdata)[0];
-    return moredata;
+    return claimData;
+  }
+
+  _renderData = async () => {
+    let claimData = this.state.claimData;
+    let result = []
+    for(var i = 0; i < claimData.length; i++){
+      let entry = {};
+      entry.key = Object.keys(claimData[i])[0];
+      entry.value = Object.values(claimData[i])[0];
+      console.log(entry);
+      result.push(<Text key={entry.key} value={entry.value}/>)
+    }
+    console.log(result);
+    return result;
   }
 
   render() {
-    const displayData = this.state.displayData;
+    //const displayData = this.state.renderData;
+    //console.log(displayData);
     return (
       <View style={styles.container}>
         <FlatList
-          data={[
-            {key: 'Uit memory'},
-            {key: 'nog niet'},
-          ]}
-          renderItem={({item}) => (
-            <TouchableWithoutFeedback onPress={ () => this._retrieveData()}>
-
-              <View>
-                <Text style={styles.item}>{displayData}</Text>
-              </View>
-
-            </TouchableWithoutFeedback>
-          )}
+          data={this.state.renderData}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item}) =>
+          <View style={styles.flatview}>
+            <Text style={styles.key}>{item.key}</Text>
+            <Text style={styles.value}>{item.props.value}</Text>
+          </View>
+          }
+          keyExtractor={item => item.key}
         />
       </View>
     );
@@ -113,11 +123,17 @@ const styles = StyleSheet.create({
   container: {
    backgroundColor: 'white',
    flex: 1,
-   paddingTop: 22
   },
-  item: {
+  key: {
     padding: 10,
-    fontSize: 18,
-    height: 44,
+    fontSize: 20,
+    height: 48,
+    fontWeight: 'bold',
   },
+  value: {
+    padding: 10,
+    fontSize: 16,
+    height: 41,
+    color: '#666666'
+  }
 })
