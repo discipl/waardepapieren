@@ -44,6 +44,7 @@ class ScanScreen extends React.Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
+    console.log('Navigating to validation screen')
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
@@ -101,8 +102,11 @@ class ValidatingScreen extends Component {
       '   eyB5  '  +
       '   -----END CERTIFICATE-----  '  +
       '    ' ;
+    console.log('Registering ephemeral connector', EphemeralConnector)
     paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
+    console.log('Importing attestorSsid')
     let attestorSsid = await (await paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
+    console.log("Validating...")
     this.result = await paperWallet.validate(attestorSsid.did, qrString)
     console.log(this.result)
   }
@@ -123,6 +127,9 @@ class ValidatingScreen extends Component {
     const verified = <Octicons name="verified" size={128} color="#33ff33" />;
     const denied = <Octicons name="alert" size={128} color="#FF0000" />;
     const waiting = <Octicons name="watch" size={128} color="#777777" />;
+
+    let validatingIcon;
+    let validatingText;
     if (this.state.validatingState == "waiting"){
       validatingIcon = waiting;
       validatingText = "Checking QR code"
