@@ -9,12 +9,18 @@ import { Octicons } from '@expo/vector-icons';
 import {NavigationEvents} from 'react-navigation';
 
 export default class App extends React.Component {
+  static navigationOptions = {
+    header: null,
+  }
   render() {
     return <ScanStack />;
   }
 }
 
 class ScanScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  }
   state = {
     hasCameraPermission: null,
   }
@@ -55,7 +61,7 @@ class ValidatingScreen extends Component {
     this.state = {validatingState: "waiting"};
   }
   static navigationOptions = {
-    headerTitle: 'Validating screen',
+    headerTitle: 'Validatie',
   };
   _storeData = async (data) => {
     try {
