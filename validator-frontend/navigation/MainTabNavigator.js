@@ -8,6 +8,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ScanScreen from '../screens/ScanScreen';
 import WalletScreen from '../screens/WalletScreen';
+import UitrekselScreen from '../screens/WalletScreen';
+import ValidatingScreen from '../screens/ScanScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
