@@ -25,7 +25,7 @@ class WalletScreen extends React.Component {
       <View style={styles.container}>
         <FlatList
           data={[
-            {key: 'Uitreksel BRP'},
+            {key: 'Uittreksel BRP'},
           ]}
           renderItem={({item}) => (
             <TouchableWithoutFeedback onPress={ () => this.props.navigation.navigate('Uitreksel')}>
