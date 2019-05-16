@@ -8,6 +8,9 @@ import EphemeralConnector from '@discipl/core-ephemeral'
 import Asset from 'expo'
 
 export default class App extends React.Component {
+  static navigationOptions = {
+    header: null,
+  }
   render() {
     return <WalletStack />;
   }

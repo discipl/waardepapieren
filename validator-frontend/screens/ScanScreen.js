@@ -9,6 +9,9 @@ import { Octicons } from '@expo/vector-icons';
 import {NavigationEvents} from 'react-navigation';
 
 export default class App extends React.Component {
+  static navigationOptions = {
+    header: null,
+  }
   render() {
     return <ScanStack />;
   }
