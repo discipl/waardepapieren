@@ -18,7 +18,7 @@ export default class App extends React.Component {
 
 class WalletScreen extends React.Component {
   static navigationOptions = {
-    headerTitle: 'wallet screen',
+    headerTitle: 'Gescande uittreksels',
   };
   render() {
     return (
@@ -44,7 +44,7 @@ class WalletScreen extends React.Component {
 
 class UitrekselScreen extends Component {
   static navigationOptions = {
-    headerTitle: 'Uitreksel screen',
+    headerTitle: 'Uitreksel',
   };
 
   constructor(props){
