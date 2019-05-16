@@ -1,5 +1,6 @@
 import WaardepapierenService from './waardepapieren-service'
 
+
 import fs from 'fs'
 
 let configurationPath = process.env.WAARDEPAPIEREN_CONFIG || '../configuration/waardepapieren-config.json'

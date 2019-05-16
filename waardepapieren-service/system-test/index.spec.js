@@ -32,16 +32,12 @@ describe('waardenpapieren-service', function () {
     let ephemeralConnector = await abundance.getCoreAPI().getConnector('ephemeral')
     ephemeralConnector.configure(CONFIGURATION.EPHEMERAL_ENDPOINT, CONFIGURATION.EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
-    console.log('here')
     // Set up need
     let need = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
-    console.log("here1.5")
 
     let observeOffer = await abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
-    console.log('here1.7')
     await observeOffer.readyPromise
 
-    console.log("here2")
 
     await abundance.getCoreAPI().claim(need.myPrivateSsid, {[CONFIGURATION.SOURCE_ARGUMENT]: '663678651'})
 

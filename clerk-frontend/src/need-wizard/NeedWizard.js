@@ -5,6 +5,7 @@ import NeedStep from './NeedStep'
 import ConfirmStep from './ConfirmStep'
 import DeliveryStep from './DeliveryStep'
 
+
 const MAX_STEP = 3;
 
 class NeedWizard extends Component {
@@ -45,13 +46,23 @@ class NeedWizard extends Component {
     })
   }
 
+  _download(type) {
+    if(type === 'paperWallet') {
+      this.state.pdf.save('uittreksel.pdf')
+    } else {
+      window.alert('Download option ('+type+') not supported...')
+    }
+  }
+
   renderButtons() {
     let prevButton = <button onClick={this._prev}>Vorige</button>;
     let nextButton = <button onClick={this._next}>Volgende</button>;
     let wrongInfoButton = <button>Dit klopt niet!</button>;
     let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
-    let downloadButton = <button>Download</button>; // currently still mock
-    let appleWalletButton = <button>Download naar Apple Wallet</button>;
+
+    let downloadButton = <button onClick={this._download.bind(this, 'paperWallet')}>Download</button>; // currently still mock
+    let appleWalletButton = <button onClick={this._download.bind(this, 'appleWallet')}>Download naar Apple Wallet</button>;
+
     let finishButton = <button onClick={this._first}>Afronden</button>;
 
     if (this.state.step === 0) {
@@ -99,11 +110,10 @@ class NeedWizard extends Component {
     })
   }
 
-  deliveryChanged(attestationLink, canvas) {
+  deliveryChanged( pdf) {
     this.setState({
       ...this.state,
-      'attestationLink': attestationLink,
-      'canvas': canvas
+      'pdf': pdf
     })
   }
 
