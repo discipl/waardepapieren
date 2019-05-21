@@ -13,7 +13,7 @@
     "rxjs": "^6.4.0"
   },
   "scripts": {
-    "postinstall": "cp -r ./node_modules/@discipl/paper-wallet/images ./public/images/",
+    "postinstall": "cp -r ./node_modules/@discipl/paper-wallet/images ./public/images/; cp -r ../waardepapieren-service/system-test/certs/org.crt ./public/certs/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
