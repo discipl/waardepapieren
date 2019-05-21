@@ -58,7 +58,9 @@ in the use cases the waardepapieren solution facilitates is given below:
 
 ![](images/vcseq0.png)
 
-In essence this is the very process that also takes place when retrieving a proof through the waardepapieren solution as can be seen below in the other [verifiable claim sequence diagrams](images/vcseq.png).
+In essence this is the very process that also takes place when retrieving a proof through the waardepapieren solution as can be seen in the other [verifiable claim sequence diagrams](images/vcseq.png) in the rest of this document. See an explanation of how to interpret these diagrams and what is called a channel actually is in the picture below:
+
+> ![](images/vcseq.png)
 
 ## Information layer
 
