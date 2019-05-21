@@ -65,7 +65,9 @@ class ValidatingScreen extends Component {
   };
   _storeData = async (data) => {
     try {
-      await AsyncStorage.setItem("BRP1", data);
+      if (data) {
+         await AsyncStorage.setItem("BRP1", data);
+      }
     } catch (error) {
       console.log(error.message)
     }
