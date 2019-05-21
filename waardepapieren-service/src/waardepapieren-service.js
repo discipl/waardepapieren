@@ -14,10 +14,11 @@ class WaardenpapierenService {
 
     if (configuration.LOG_LEVEL) {
       this.logger.setLevel(configuration.LOG_LEVEL)
+      log.getLogger('EphemeralConnector').setLevel(configuration.LOG_LEVEL)
     }
 
     // Setup server
-    this.ephemeralServer = new EphemeralServer(3232)
+    this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_RETENTION_TIME)
     this.ephemeralServer.start()
     const core = abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
