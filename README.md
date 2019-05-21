@@ -15,7 +15,7 @@ This will start 3 applications:
 
 Note that the nlx-mock and waardepapieren-service need a valid certificate for the demo NLX environment.
 
-1. Generate certificates as described [here](https://docs.nlx.io/get-started/create-certificates/), and place the `org.key` and `org.crt` files at `./waardepapieren-service/system-test/certs/`
+1. Generate certificates as described [here](https://docs.nlx.io/get-started/create-certificates/), and place the `org.key` and `org.crt` files at `./waardepapieren-service/system-test/certs/` and just `org.crt` at `./clerk-frontend/public/certs/`
 2. Run `docker-compose up`
 
 Alternatively, you can use an offline mock, which replicates the NLX environment.
