@@ -1,4 +1,4 @@
-const ENDPOINT = 'http://localhost:8080'
+const ENDPOINT = 'https://localhost:443'
 
 describe('clerk-frontend', () => {
   it('Allows a clerk to request waardepapieren', () => {

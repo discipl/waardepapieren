@@ -17,10 +17,12 @@ services:
     links:
       - waardepapieren-service
     ports:
-      - 8080:8080
+      - 443:443
     healthcheck:
       test: service nginx status
+    volumes:
+      - ./clerk-frontend/nginx/certs:/etc/nginx/certs:ro
   mock-nlx:
     build: mock-nlx/
     ports:
-      - 4080:4080
+      - 80:80

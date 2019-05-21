@@ -1,7 +1,7 @@
 {
   "EPHEMERAL_ENDPOINT" : "http://localhost:3232",
   "EPHEMERAL_WEBSOCKET_ENDPOINT" : "ws://localhost:3233",
-  "NLX_OUTWAY_ENDPOINT" : "http://mock-nlx:4080",
+  "NLX_OUTWAY_ENDPOINT" : "http://mock-nlx:80",
   "NLX_CERT": "/certs/org.crt",
   "NLX_KEY": "/certs/org.key",
   "LOG_LEVEL": "info",

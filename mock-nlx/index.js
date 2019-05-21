@@ -61,4 +61,4 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) =
   res.end()
 })
 
-app.listen(4080)
+app.listen(80)
