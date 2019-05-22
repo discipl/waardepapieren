@@ -75,6 +75,7 @@ class ValidatingScreen extends Component {
   async _checkQR() {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
+    this.setState({qrString: qrString})
     let cert =  '   -----BEGIN CERTIFICATE-----  '  +
       '   MIIFzzCCA7egAwIBAgIUBDAnPgMV5iH+LkMfm6h5E8jWVOswDQYJKoZIhvcNAQEN  '  +
       '   BQAwXzELMAkGA1UEBhMCTkwxFjAUBgNVBAgTDU5vb3JkLUhvbGxhbmQxEjAQBgNV  '  +
@@ -127,7 +128,7 @@ class ValidatingScreen extends Component {
     }
     else if(this.result == true){
       this.setState({validatingState: "verified"})
-      this._storeData(this.qrString)
+      this._storeData(this.state.qrString)
     }
   };
 
