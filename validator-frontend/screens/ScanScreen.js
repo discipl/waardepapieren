@@ -188,9 +188,11 @@ class ValidatingScreen extends Component {
     }
     return (
       <View style={styles.container}>
-        <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
-        <Text style ={styles.key}>{validatingText}</Text>
-        {validatingIcon}
+        <View style={styles.validateState}>
+          <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
+          <Text style ={styles.key}>{validatingText}</Text>
+          {validatingIcon}
+        </View>
 
         <FlatList
           data={this.state.renderData}
@@ -230,6 +232,12 @@ const styles = StyleSheet.create({
     height: 41,
     color: '#666666'
   },
+  validateState: {
+    flex:3,
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'center'
+    },
   flatview: {
     backgroundColor: '#F6F6F6',
     borderTopWidth: 2,
