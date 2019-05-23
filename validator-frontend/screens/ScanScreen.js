@@ -28,10 +28,17 @@ class ScanScreen extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+    const { navigation } = this.props;
+    navigation.addListener('willFocus', () =>
+      this.setState({ focusedScreen: true })
+    );
+    navigation.addListener('willBlur', () =>
+      this.setState({ focusedScreen: false })
+    );
   }
 
   render() {
-    const { hasCameraPermission } = this.state;
+    const { hasCameraPermission, focusedScreen } = this.state;
 
     if (hasCameraPermission === null) {
       return <Text>Requesting for camera permission</Text>;
@@ -39,6 +46,10 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
+    if (!focusedScreen) {
+      return <Text>You are not on this screen. If you are, something went wrong</Text>;
+    }
+
     return (
       <View style={{ flex: 1 }}>
         <BarCodeScanner
