@@ -229,5 +229,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: 41,
     color: '#666666'
+  },
+  flatview: {
+    backgroundColor: '#F6F6F6',
+    borderTopWidth: 2,
+    borderTopColor: '#DDDDDD'
   }
 })
