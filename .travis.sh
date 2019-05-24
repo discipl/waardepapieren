@@ -4,12 +4,14 @@
 cd clerk-frontend
 npm install
 npm test
+npm audit
 
 # Waardepapieren service
 cd ../waardepapieren-service/
 npm install
 npm test
 npm run system-test
+npm audit
 
 
 # Integration

@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "@discipl/abundance-service": "^0.4.1",
-    "@discipl/core-ephemeral": "^0.7.0",
-    "@discipl/paper-wallet": "^0.6.0",
+    "@discipl/core-ephemeral": "^0.8.0",
+    "@discipl/paper-wallet": "^0.6.1",
     "jspdf": "^1.5.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^2.1.8",
-    "rxjs": "^6.4.0"
+    "react-scripts": "^3.0.1",
+    "rxjs": "^6.5.2"
   },
   "scripts": {
     "postinstall": "cp -r ./node_modules/@discipl/paper-wallet/images ./public/images/",
@@ -30,6 +30,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cypress": "^3.2.0"
+    "cypress": "^3.3.0"
   }
 }
