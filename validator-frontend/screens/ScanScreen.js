@@ -3,7 +3,8 @@ import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
-import * as paperWallet from '@discipl/paper-wallet'
+import { PaperWallet } from '@discipl/paper-wallet'
+
 import EphemeralConnector from '@discipl/core-ephemeral'
 import { Octicons } from '@expo/vector-icons';
 import {NavigationEvents} from 'react-navigation';
@@ -21,8 +22,13 @@ class ScanScreen extends React.Component {
   static navigationOptions = {
     header: null,
   }
-  state = {
-    hasCameraPermission: null,
+
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      hasCameraPermission: null,
+    }
   }
 
   async componentDidMount() {
@@ -85,7 +91,7 @@ class ValidatingScreen extends Component {
     }
   }
 
-  _storeData = async (data) => {
+  async _storeData (data) {
     try {
       if (data) {
         await AsyncStorage.setItem("BRP1", data);
@@ -95,7 +101,7 @@ class ValidatingScreen extends Component {
     }
   }
 
-  _readData = async () => {
+  async _readData() {
     let displayData = await this.state.qrString;
     let documentJson = JSON.parse(displayData).claimData;
     let claimWithLink = Object.values(documentJson)[0][0];
@@ -103,7 +109,7 @@ class ValidatingScreen extends Component {
     return claimData;
   }
 
-  _renderData = async () => {
+  async _renderData() {
     let claimData = this.state.claimData;
     let result = []
     for(var i = 0; i < claimData.length; i++){
@@ -118,6 +124,9 @@ class ValidatingScreen extends Component {
   }
 
   async _checkQR() {
+    this.paperWallet = new PaperWallet()
+    console.log('Instantiated paper wallet', this.paperWallet)
+
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
 
@@ -138,12 +147,13 @@ class ValidatingScreen extends Component {
 
     this.setState({qrString: qrString})
 
+    console.log(this.paper)
     console.log('Registering ephemeral connector', EphemeralConnector)
-    paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
+    this.paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
     console.log('Importing attestorSsid')
-    let attestorSsid = await (await paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
+    let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
     console.log("Validating...")
-    this.result = await paperWallet.validate(attestorSsid.did, qrString)
+    this.result = await this.paperWallet.validate(attestorSsid.did, qrString)
     console.log(this.result)
   }
 
