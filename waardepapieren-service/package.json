@@ -15,26 +15,26 @@
     "start": "node --require @babel/register src/index.js"
   },
   "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/register": "^7.4.0",
-    "@discipl/abundance-service": "^0.4.1",
-    "@discipl/core-ephemeral": "^0.7.0",
-    "@discipl/core-nlx": "~0.2.0",
-    "babel-plugin-dynamic-import-node": "^2.2.0",
-    "jsonpath": "^1.0.1",
-    "loglevel": "^1.6.1",
-    "rxjs": "^6.4.0",
-    "websocket": "^1.0.28"
+    "@babel/core": "7.4.4",
+    "@babel/preset-env": "7.4.4",
+    "@babel/register": "7.4.4",
+    "@discipl/abundance-service": "0.4.1",
+    "@discipl/core-ephemeral": "0.8.0",
+    "@discipl/core-nlx": "0.2.0",
+    "babel-plugin-dynamic-import-node": "2.2.0",
+    "jsonpath": "1.0.1",
+    "loglevel": "1.6.1",
+    "rxjs": "6.5.2",
+    "websocket": "1.0.28"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "chai": "^4.2.0",
-    "codecov": "^3.3.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.3.0",
-    "sinon": "^7.3.1",
-    "standard": "^12.0.1",
-    "ws": "^6.2.1"
+    "babel-eslint": "10.0.1",
+    "chai": "4.2.0",
+    "codecov": "3.5.0",
+    "mocha": "5.2.0",
+    "nyc": "14.1.1",
+    "sinon": "7.3.2",
+    "standard": "12.0.1",
+    "ws": "6.2.1"
   }
 }

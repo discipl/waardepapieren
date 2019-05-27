@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
@@ -28,10 +28,17 @@ class ScanScreen extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+    const { navigation } = this.props;
+    navigation.addListener('willFocus', () =>
+      this.setState({ focusedScreen: true })
+    );
+    navigation.addListener('willBlur', () =>
+      this.setState({ focusedScreen: false })
+    );
   }
 
   render() {
-    const { hasCameraPermission } = this.state;
+    const { hasCameraPermission, focusedScreen } = this.state;
 
     if (hasCameraPermission === null) {
       return <Text>Requesting for camera permission</Text>;
@@ -39,6 +46,10 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
+    if (!focusedScreen) {
+      return <Text>You are not on this screen. If you are, something went wrong</Text>;
+    }
+
     return (
       <View style={{ flex: 1 }}>
         <BarCodeScanner
@@ -60,18 +71,52 @@ class ValidatingScreen extends Component {
     super(props);
     this.state = {validatingState: "waiting"};
   }
+
   static navigationOptions = {
     headerTitle: 'Validatie',
   };
+
+  async renderClaimData(){
+    if(this.state.validatingState == "verified"){
+      let claimData = await this._readData();
+      this.setState({claimData: claimData})
+      let renderData = await this._renderData();
+      this.setState({renderData: renderData})
+    }
+  }
+
   _storeData = async (data) => {
     try {
       if (data) {
-         await AsyncStorage.setItem("BRP1", data);
+        await AsyncStorage.setItem("BRP1", data);
       }
     } catch (error) {
       console.log(error.message)
     }
   }
+
+  _readData = async () => {
+    let displayData = await this.state.qrString;
+    let documentJson = JSON.parse(displayData);
+    let claimWithLink = Object.values(documentJson)[0][0];
+    let claimData = Object.values(claimWithLink)[0];
+    return claimData;
+  }
+
+  _renderData = async () => {
+    let claimData = this.state.claimData;
+    let result = []
+    for(var i = 0; i < claimData.length; i++){
+      let entry = {};
+      entry.key = Object.keys(claimData[i])[0];
+      entry.value = Object.values(claimData[i])[0];
+      console.log(entry);
+      result.push(<Text key={entry.key} value={entry.value}/>)
+    }
+    console.log(result);
+    return result;
+  }
+
   async _checkQR() {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
@@ -88,6 +133,9 @@ class ValidatingScreen extends Component {
         console.log(e.message)
       })
     console.log('cert', cert)
+
+    this.setState({qrString: qrString})
+
     console.log('Registering ephemeral connector', EphemeralConnector)
     paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
     console.log('Importing attestorSsid')
@@ -105,7 +153,8 @@ class ValidatingScreen extends Component {
     }
     else if(this.result == true){
       this.setState({validatingState: "verified"})
-      this._storeData(this.qrString)
+      this._storeData(this.state.qrString)
+      this.renderClaimData()
     }
   };
 
@@ -129,10 +178,24 @@ class ValidatingScreen extends Component {
       validatingText = "This is an unvalid QR-code!"
     }
     return (
-      <View>
-        <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
-        <Text>{validatingText}</Text>
-        {validatingIcon}
+      <View style={styles.container}>
+        <View style={styles.validateState}>
+          <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
+          <Text style ={styles.key}>{validatingText}</Text>
+          {validatingIcon}
+        </View>
+
+        <FlatList
+          data={this.state.renderData}
+          showsVerticalScrollIndicator={false}
+          renderItem={({item}) =>
+          <View style={styles.flatview}>
+            <Text style={styles.key}>{item.key}</Text>
+            <Text style={styles.value}>{item.props.value}</Text>
+          </View>
+          }
+          keyExtractor={item => item.key}
+        />
       </View>
     );
   }
@@ -142,3 +205,33 @@ const ScanStack = createStackNavigator({
   Scan: ScanScreen,
   Validating: ValidatingScreen
 });
+
+const styles = StyleSheet.create({
+  container: {
+   backgroundColor: 'white',
+   flex: 1,
+  },
+  key: {
+    padding: 10,
+    fontSize: 20,
+    height: 48,
+    fontWeight: 'bold',
+  },
+  value: {
+    padding: 10,
+    fontSize: 16,
+    height: 41,
+    color: '#666666'
+  },
+  validateState: {
+    flex:3,
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'center'
+    },
+  flatview: {
+    backgroundColor: '#F6F6F6',
+    borderTopWidth: 2,
+    borderTopColor: '#DDDDDD'
+  }
+})
