@@ -28,9 +28,9 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     console.log(this.props)
 
-    const certUrl = process.env.REACT_APP_CERTIFICATE_URL || CONFIGURATION.DEFAULT_CERTIFICATE_URL
+    const certUrl = process.env.REACT_APP_CERTIFICATE_HOST || CONFIGURATION.DEFAULT_CERTIFICATE_HOST
 
-    let vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {'cert': certUrl})
+    let vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {'cert': certUrl + '/certs/org.crt'})
 
     console.log("Issued")
 

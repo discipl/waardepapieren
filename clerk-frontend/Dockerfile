@@ -7,6 +7,8 @@ WORKDIR /app
 ADD public /app/public
 RUN npm install --unsafe-perm
 ADD src /app/src
+ARG CERTIFICATE_HOST
+ENV REACT_APP_CERTIFICATE_HOST=${CERTIFICATE_HOST}
 RUN npm run build
 
 FROM nginx:1.15.8

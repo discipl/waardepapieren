@@ -9,10 +9,6 @@ In order to make everything functional, we need to generate valid certificates f
 ensure that the validation app can retrieve those.
 
 1. Generate certificates as described [here](https://docs.nlx.io/get-started/create-certificates/), and place the `org.key` and `org.crt` files at `./waardepapieren-service/system-test/certs/` and just `org.crt` at `./clerk-frontend/public/certs/`
-2. If also running the validator app, make sure that an ip address where your phone can reach the frontend is configured 
-in the `CERTIFICATE_URL` in `./clerk-frontend/src/configuration/clerk-frontend-config.json`. This ip address will generally
-be your wifi IP address on the machine you are running the waardepapieren service. Ensure that your phone is connected
-to the same network.
 
 ## Running
 
@@ -26,7 +22,9 @@ This will start 3 applications:
 
 This is done as follows:
 
-1. Run `docker-compose up`
+1. Set the environment variable CERT_HOST_IP is with an IP (or domain) that the validator app can use to reach
+   the clerk-frontend container. Ensure that the validator app runs on the same (wifi) network as the clerk frontend.
+2. Run `docker-compose up`
 
 Alternatively, you can use an offline mock, which replicates the NLX environment.
 
