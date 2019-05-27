@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as abundance from '@discipl/abundance-service'
 
 import CONFIGURATION from '../configuration/clerk-frontend-config.json'
+import { AbundanceService } from '@discipl/abundance-service'
 
 const timeoutPromise = (timeoutMillis) => {
   return new Promise(function (resolve, reject) {
@@ -14,17 +14,19 @@ class ConfirmStep extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+
+    this.abundance = new AbundanceService(this.props.core)
   }
 
   async componentDidMount() {
     await timeoutPromise(100)
 
-    let need = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
+    let need = await this.abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
 
-    let observeOffer = await abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
+    let observeOffer = await this.abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise
 
-    await abundance.getCoreAPI().claim(need.myPrivateSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: this.props.bsn })
+    await this.abundance.getCoreAPI().claim(need.myPrivateSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: this.props.bsn })
 
 
     let result = await observeOffer.resultPromise

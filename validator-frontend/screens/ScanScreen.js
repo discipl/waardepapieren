@@ -75,7 +75,10 @@ class ValidatingScreen extends Component {
   async _checkQR() {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
-    let cert =  await fetch('http://10.10.5.133:8880/certs/org.crt')
+
+    let certEndpoint = JSON.parse(qrString).metadata.cert
+
+    let cert =  await fetch(certEndpoint)
       .then((response) => {
         return response.text()
       })

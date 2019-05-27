@@ -15,6 +15,8 @@ class NeedWizard extends Component {
       'step': 0
     }
 
+    this.core = props.core;
+
     this._prev = this._prev.bind(this);
     this._next = this._next.bind(this);
     this._first = this._first.bind(this);
@@ -124,9 +126,9 @@ class NeedWizard extends Component {
       case 1:
         return <NeedStep needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
+        return <ConfirmStep core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
       case 3:
-        return <DeliveryStep personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
+        return <DeliveryStep core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }
