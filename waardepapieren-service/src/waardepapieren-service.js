@@ -1,4 +1,4 @@
-import * as abundance from '@discipl/abundance-service'
+import { AbundanceService } from '@discipl/abundance-service'
 // Specifically importing the server, because the server is not in the index to ensure browser compatibility
 import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
@@ -20,7 +20,8 @@ class WaardenpapierenService {
     // Setup server
     this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_RETENTION_TIME)
     this.ephemeralServer.start()
-    const core = abundance.getCoreAPI()
+    this.abundance = new AbundanceService()
+    const core = this.abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
     ephemeralConnector.configure(this.configuration.EPHEMERAL_ENDPOINT, this.configuration.EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
@@ -31,7 +32,7 @@ class WaardenpapierenService {
 
     const nlxConnector = await core.getConnector('nlx')
     nlxConnector.configure(this.configuration.NLX_OUTWAY_ENDPOINT)
-    let attendResult = await abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
+    let attendResult = await this.abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
 
     // TODO: Refactor to observableResult.subscribe when fix from core propagates
     await attendResult.observableResult._observable.subscribe(async (need) => {
@@ -54,7 +55,7 @@ class WaardenpapierenService {
   async serveNeed (need, nlxIdentity) {
     let logId = Math.floor(Math.random()*10000);
     this.logger.info('Serving need ', logId)
-    let core = abundance.getCoreAPI()
+    let core = this.abundance.getCoreAPI()
 
     let needDetails = await need
     let argumentClaim = await needDetails.informationPromise
@@ -85,7 +86,7 @@ class WaardenpapierenService {
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
 
-    await abundance.offer(needDetails.myPrivateSsid, productClaim)
+    await this.abundance.offer(needDetails.myPrivateSsid, productClaim)
 
     this.logger.info('Served need', logId)
   }
@@ -100,7 +101,7 @@ class WaardenpapierenService {
   }
 
   getCoreAPI () {
-    return abundance.getCoreAPI()
+    return this.abundance.getCoreAPI()
   }
 }
 
