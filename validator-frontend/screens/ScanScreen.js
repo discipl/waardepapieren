@@ -97,7 +97,7 @@ class ValidatingScreen extends Component {
 
   _readData = async () => {
     let displayData = await this.state.qrString;
-    let documentJson = JSON.parse(displayData);
+    let documentJson = JSON.parse(displayData).claimData;
     let claimWithLink = Object.values(documentJson)[0][0];
     let claimData = Object.values(claimWithLink)[0];
     return claimData;
@@ -122,6 +122,8 @@ class ValidatingScreen extends Component {
     const qrString = await navigation.getParam('qrString', 'String not found');
 
     let certEndpoint = JSON.parse(qrString).metadata.cert
+
+    console.log('Fetching', certEndpoint)
 
     let cert =  await fetch(certEndpoint)
       .then((response) => {
