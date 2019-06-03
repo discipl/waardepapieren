@@ -171,9 +171,9 @@ class ValidatingScreen extends Component {
   };
 
   render() {
-    const verified = <Octicons name="verified" size={128} color="#33ff33" />;
-    const denied = <Octicons name="alert" size={128} color="#FF0000" />;
-    const waiting = <Octicons name="watch" size={128} color="#777777" />;
+    const verified = <Octicons name="verified" size={64} color="#33ff33"/>;
+    const denied = <Octicons name="alert" size={64} color="#FF0000" />;
+    const waiting = <Octicons name="watch" size={64} color="#777777" />;
 
     let validatingIcon;
     let validatingText;
@@ -236,6 +236,8 @@ const styles = StyleSheet.create({
     color: '#666666'
   },
   validateState: {
+    padding: 10,
+    margin: 10,
     flex:3,
     flexDirection:'column',
     alignItems:'center',
