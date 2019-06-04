@@ -3,9 +3,9 @@
   "version": "0.2.1",
   "private": true,
   "dependencies": {
-    "@discipl/abundance-service": "^0.4.1",
+    "@discipl/abundance-service": "^0.5.0",
     "@discipl/core-ephemeral": "^0.8.0",
-    "@discipl/paper-wallet": "^0.6.1",
+    "@discipl/paper-wallet": "^0.8.0",
     "jspdf": "^1.5.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

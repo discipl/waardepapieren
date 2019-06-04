@@ -2,6 +2,7 @@
   "DEFAULT_EPHEMERAL_ENDPOINT" : "http://localhost:3000",
   "DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT" : "ws://localhost:3233",
   "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
+  "DEFAULT_CERTIFICATE_URL": "http://10.10.5.75:3000/certs/org.crt",
   "SOURCE_ARGUMENT" : "BSN",
   "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
   "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",

@@ -13,11 +13,15 @@ services:
     environment:
     - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose.json
   clerk-frontend:
-    build: clerk-frontend/
+    build:
+      context: clerk-frontend/
+      args:
+        - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
     links:
       - waardepapieren-service
     ports:
     - 443:443
+    - 8880:8880
     healthcheck:
       test: service nginx status
     volumes:

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as paperWallet from '@discipl/paper-wallet'
 import CONFIGURATION from '../configuration/clerk-frontend-config.json'
 import * as jsPDF from 'jspdf'
+import { PaperWallet } from '@discipl/paper-wallet'
 
 let template = CONFIGURATION.EXPORT_TYPES['@discipl/paper-wallet'].template
 
@@ -13,6 +13,8 @@ class ConfirmStep extends Component {
       attestationLink : null,
       canvas : null
     }
+
+    this.paperWallet = new PaperWallet(this.props.core)
 
     this.canvasRef = React.createRef()
   }
@@ -26,7 +28,9 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     console.log(this.props)
 
-    let vc = await paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid)
+    const certUrl = process.env.REACT_APP_CERTIFICATE_HOST || CONFIGURATION.DEFAULT_CERTIFICATE_HOST
+
+    let vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {'cert': certUrl + '/certs/org.crt'})
 
     console.log("Issued")
 
@@ -39,7 +43,7 @@ class ConfirmStep extends Component {
     this.canvasRef.current.width = template.canvasWidth
     this.canvasRef.current.height = template.canvasHeight
 
-    await paperWallet.toCanvas(vc, template, this.canvasRef.current)
+    await this.paperWallet.toCanvas(vc, template, this.canvasRef.current)
 
     let imageData = this.canvasRef.current.toDataURL('image/png')
 
