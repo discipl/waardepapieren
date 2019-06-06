@@ -33,19 +33,19 @@ ScanStack.navigationOptions = {
   ),
 };
 
-const WalletStack = createStackNavigator({
-  Wallet: WalletScreen,
-});
-
-WalletStack.navigationOptions = {
-  tabBarLabel: 'Wallet',
-  tabBarIcon: ({ focused }) => (
-    <AntDesign name="book" size={24} color="blue" />
-  ),
-};
+// const WalletStack = createStackNavigator({
+//   Wallet: WalletScreen,
+// });
+//
+// WalletStack.navigationOptions = {
+//   tabBarLabel: 'Wallet',
+//   tabBarIcon: ({ focused }) => (
+//     <AntDesign name="book" size={24} color="blue" />
+//   ),
+// };
 
 export default createBottomTabNavigator({
   HomeStack,
   ScanStack,
-  WalletStack,
+//  WalletStack,
 });
