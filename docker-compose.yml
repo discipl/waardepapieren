@@ -3,6 +3,7 @@ services:
   waardepapieren-service:
     volumes:
     - ./waardepapieren-service/system-test/certs:/certs:ro
+    - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
     - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
     links:
@@ -19,6 +20,7 @@ services:
         - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
     links:
       - waardepapieren-service
+
     ports:
     - 443:443
     - 8880:8880
