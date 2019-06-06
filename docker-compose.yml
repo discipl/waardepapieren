@@ -13,6 +13,8 @@ services:
       - 3233:3233
     environment:
     - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose.json
+    # Ignore self-signed ephemeral and NLX cert issues
+    - NODE_TLS_REJECT_UNAUTHORIZED=0
   clerk-frontend:
     build:
       context: clerk-frontend/
@@ -20,7 +22,6 @@ services:
         - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
     links:
       - waardepapieren-service
-
     ports:
     - 443:443
     - 8880:8880

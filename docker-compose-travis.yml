@@ -12,7 +12,7 @@ services:
       - 3232:3232
       - 3233:3233
     environment:
-      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose.json
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose-travis.json
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
   clerk-frontend:
