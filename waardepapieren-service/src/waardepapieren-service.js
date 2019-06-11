@@ -18,7 +18,7 @@ class WaardenpapierenService {
     }
 
     // Setup server
-    this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_RETENTION_TIME)
+    this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
     this.ephemeralServer.start()
     this.abundance = new AbundanceService()
     const core = this.abundance.getCoreAPI()
