@@ -91,16 +91,6 @@ class ValidatingScreen extends Component {
     }
   }
 
-  async _storeData (data) {
-    try {
-      if (data) {
-        await AsyncStorage.setItem("BRP1", data);
-      }
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
   async _readData() {
     let displayData = await this.state.qrString;
     let documentJson = JSON.parse(displayData).claimData;
@@ -165,7 +155,6 @@ class ValidatingScreen extends Component {
     }
     else if(this.result == true){
       this.setState({validatingState: "verified"})
-      this._storeData(this.state.qrString)
       this.renderClaimData()
     }
   };
