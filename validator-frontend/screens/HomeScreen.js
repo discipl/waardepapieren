@@ -35,14 +35,9 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Welkom bij de waardepapieren app!</Text>
+            <Text style={styles.getStartedText}>Welkom bij de waardepapieren validator!</Text>
           </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Hulp nodig met het gebruik van {"\n"}             deze app? Klik hier!</Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
       </View>
     );
@@ -65,7 +60,7 @@ export default class HomeScreen extends React.Component {
     } else {
       return (
         <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
+          Deze applicatie is in beta.
         </Text>
       );
     }
