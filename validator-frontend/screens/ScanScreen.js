@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, Text, View } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
@@ -32,8 +32,17 @@ class ScanScreen extends React.Component {
   }
 
   async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ hasCameraPermission: status === 'granted' });
+    const hasCameraPermission = this.state.hasCameraPermission
+    if (!hasCameraPermission) {
+      Alert.alert(
+        'De camera is nodig',
+        'Om documenten te valideren is de camera nodig om een QR-code te scannen. Hier krijgt u een popup voor.',
+        [
+          {text: 'OK', onPress: () => this.askPermissions()},
+        ],
+        { cancelable: false }
+      )
+    }
     const { navigation } = this.props;
     navigation.addListener('willFocus', () =>
       this.setState({ focusedScreen: true })
@@ -41,6 +50,12 @@ class ScanScreen extends React.Component {
     navigation.addListener('willBlur', () =>
       this.setState({ focusedScreen: false })
     );
+  }
+
+  async askPermissions() {
+    console.log("Did i be here?");
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
   }
 
   render() {
@@ -53,8 +68,9 @@ class ScanScreen extends React.Component {
       return <Text>No access to camera</Text>;
     }
     if (!focusedScreen) {
-      return <Text>You are not on this screen. If you are, something went wrong</Text>;
+      return <Text>Loading camera</Text>;
     }
+
 
     return (
       <View style={{ flex: 1 }}>
