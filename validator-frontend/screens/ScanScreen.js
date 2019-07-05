@@ -136,37 +136,45 @@ class ValidatingScreen extends Component {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
 
-    let certEndpoint = JSON.parse(qrString).metadata.cert
+    try{
+      let certEndpoint = JSON.parse(qrString).metadata.cert
+      console.log("i have tried this");
+      console.log('Fetching', certEndpoint)
 
-    console.log('Fetching', certEndpoint)
+      let cert =  await fetch(certEndpoint)
+        .then((response) => {
+          return response.text()
+        })
+        .catch((e) => {
+          console.log('Request failed', e)
+          console.log(e.stack)
+          console.log(e.message)
+        })
+      console.log('cert', cert)
 
-    let cert =  await fetch(certEndpoint)
-      .then((response) => {
-        return response.text()
-      })
-      .catch((e) => {
-        console.log('Request failed', e)
-        console.log(e.stack)
-        console.log(e.message)
-      })
-    console.log('cert', cert)
+      this.setState({qrString: qrString})
 
-    this.setState({qrString: qrString})
+      console.log(this.paper)
+      console.log('Registering ephemeral connector', EphemeralConnector)
+      this.paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
+      console.log('Importing attestorSsid')
+      let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
+      console.log("Validating...")
+      this.result = await this.paperWallet.validate(attestorSsid.did, qrString)
+      console.log(this.result)
+    }
+    catch{
+      this.result = false
+      console.log("This was not a valid certificate");
+    }
 
-    console.log(this.paper)
-    console.log('Registering ephemeral connector', EphemeralConnector)
-    this.paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
-    console.log('Importing attestorSsid')
-    let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
-    console.log("Validating...")
-    this.result = await this.paperWallet.validate(attestorSsid.did, qrString)
-    console.log(this.result)
+
   }
 
   async wrapperFunction() {
     await this._checkQR()
     console.log(this.result);
-    if(this.result == null){
+    if(this.result == null || this.result == false){
       this.setState({validatingState: "denied"})
     }
     else if(this.result == true){
