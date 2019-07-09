@@ -6,6 +6,8 @@
   unvalidQR: "This is an unvalid QR-code!",
   validQR: "This proof is validated!",
   validatingHeader: "Validator",
+  permissionMessage: "We need your camera to validate documents.",
+  permissionHeader: "Camera permission needed",
 
   navigationHome: "Home",
   navigationScan: "Scan",

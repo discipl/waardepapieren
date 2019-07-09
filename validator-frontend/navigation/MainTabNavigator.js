@@ -4,12 +4,21 @@ import { AntDesign, Ionicons } from '@expo/vector-icons'
 import HomeScreen from '../screens/HomeScreen'
 import ScanScreen from '../screens/ScanScreen'
 
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+const en = require('../lang/en.json');
+const nl = require('../lang/nl.json');
+
+i18n.fallbacks = true;
+i18n.translations = { nl, en };
+i18n.locale = Localization.locale;
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 })
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: i18n.t("navigationHome"),
   tabBarIcon: ({ focused }) => (
     <AntDesign name="home" size={24} color="blue"/>
   ),
@@ -20,7 +29,7 @@ const ScanStack = createStackNavigator({
 })
 
 ScanStack.navigationOptions = {
-  tabBarLabel: 'Scan',
+  tabBarLabel: i18n.t("navigationScan"),
   tabBarIcon: ({ focused }) => (
     <Ionicons name="md-qr-scanner" size={24} color="blue"/>
   ),

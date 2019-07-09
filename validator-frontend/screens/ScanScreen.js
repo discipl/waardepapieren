@@ -44,8 +44,8 @@ class ScanScreen extends React.Component {
     const hasCameraPermission = this.state.hasCameraPermission
     if (!hasCameraPermission) {
       Alert.alert(
-        'De camera is nodig',
-        'Om documenten te valideren is de camera nodig om een QR-code te scannen. Hier krijgt u een popup voor.',
+        i18n.t("permissionHeader"),
+        i18n.t("permissionMessage"),
         [
           {text: 'OK', onPress: () => this.askPermissions()},
         ],

@@ -6,6 +6,8 @@
   unvalidQR: "Dit is geen geldige QR-code!",
   validQR: "Dit is geldig bewijs!",
   validatingHeader: "Validatie",
+  permissionMessage: "We hebben uw camera nodig om waardepapieren te valideren.",
+  permissionHeader: "Camera nodig",
 
   navigationHome: "Home",
   navigationScan: "Scan",
