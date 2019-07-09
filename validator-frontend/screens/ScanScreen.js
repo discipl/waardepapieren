@@ -9,6 +9,27 @@ import EphemeralConnector from '@discipl/core-ephemeral'
 import { Octicons } from '@expo/vector-icons';
 import {NavigationEvents} from 'react-navigation';
 
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+
+const en = {
+  checkingQR: "Validating QR-code",
+  unvalidQR: "This is an unvalid QR-code!",
+  validQR: "This proof is validated!",
+  validatingHeader: "Validator"
+};
+
+const nl = {
+  checkingQR: "QR-code valideren",
+  unvalidQR: "Dit is geen geldige QR-code!",
+  validQR: "Dit is geldig bewijs!",
+  validatingHeader: "Validatie"
+};
+
+i18n.fallbacks = true;
+i18n.translations = { en, nl };
+i18n.locale = Localization.locale;
+
 export default class App extends React.Component {
   static navigationOptions = {
     header: null,
@@ -56,7 +77,7 @@ class ScanScreen extends React.Component {
     console.log("Did i be here?");
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-  }
+  }"This proof is valid!"
 
   render() {
     const { hasCameraPermission, focusedScreen } = this.state;
@@ -192,15 +213,15 @@ class ValidatingScreen extends Component {
     let validatingText;
     if (this.state.validatingState == "waiting"){
       validatingIcon = waiting;
-      validatingText = "Checking QR code"
+      validatingText = i18n.t("checkingQR");
     }
     if (this.state.validatingState == "verified"){
       validatingIcon = verified;
-      validatingText = "This proof is valid!"
+      validatingText = i18n.t("validQR");
     }
     if (this.state.validatingState == "denied"){
       validatingIcon = denied;
-      validatingText = "This is an unvalid QR-code!"
+      validatingText = i18n.t("unvalidQR");
     }
     return (
       <View style={styles.container}>
