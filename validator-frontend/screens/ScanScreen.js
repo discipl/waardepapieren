@@ -11,23 +11,11 @@ import {NavigationEvents} from 'react-navigation';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
-
-const en = {
-  checkingQR: "Validating QR-code",
-  unvalidQR: "This is an unvalid QR-code!",
-  validQR: "This proof is validated!",
-  validatingHeader: "Validator"
-};
-
-const nl = {
-  checkingQR: "QR-code valideren",
-  unvalidQR: "Dit is geen geldige QR-code!",
-  validQR: "Dit is geldig bewijs!",
-  validatingHeader: "Validatie"
-};
+const en = require('../lang/en.json');
+const nl = require('../lang/nl.json');
 
 i18n.fallbacks = true;
-i18n.translations = { en, nl };
+i18n.translations = { nl, en };
 i18n.locale = Localization.locale;
 
 export default class App extends React.Component {
@@ -77,7 +65,7 @@ class ScanScreen extends React.Component {
     console.log("Did i be here?");
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-  }"This proof is valid!"
+  }
 
   render() {
     const { hasCameraPermission, focusedScreen } = this.state;

@@ -1,0 +1,12 @@
+{
+  betaMessage: "Deze applicatie is in beta",
+  welcomeMessage: "Welkom bij de validatie app",
+
+  checkingQR: "QR-code valideren",
+  unvalidQR: "Dit is geen geldige QR-code!",
+  validQR: "Dit is geldig bewijs!",
+  validatingHeader: "Validatie",
+
+  navigationHome: "Home",
+  navigationScan: "Scan",
+};

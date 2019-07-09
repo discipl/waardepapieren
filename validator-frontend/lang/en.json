@@ -1,0 +1,12 @@
+{
+  betaMessage: "This application is in beta",
+  welcomeMessage: "Welcome to the validator app",
+
+  checkingQR: "Validating the QR-code",
+  unvalidQR: "This is an unvalid QR-code!",
+  validQR: "This proof is validated!",
+  validatingHeader: "Validator",
+
+  navigationHome: "Home",
+  navigationScan: "Scan",
+}
