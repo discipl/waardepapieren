@@ -209,7 +209,7 @@ class ValidatingScreen extends Component {
     }
     if (this.state.validatingState == "denied"){
       validatingIcon = denied;
-      validatingText = i18n.t("unvalidQR");
+      validatingText = i18n.t("invalidQR");
     }
     return (
       <View style={styles.container}>

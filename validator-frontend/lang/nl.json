@@ -3,7 +3,7 @@
   welcomeMessage: "Welkom bij de validatie app",
 
   checkingQR: "QR-code valideren",
-  unvalidQR: "Dit is geen geldige QR-code!",
+  invalidQR: "Dit is geen geldige QR-code!",
   validQR: "Dit is geldig bewijs!",
   validatingHeader: "Validatie",
   permissionMessage: "We hebben uw camera nodig om waardepapieren te valideren.",
