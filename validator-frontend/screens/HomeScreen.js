@@ -14,8 +14,8 @@ import { MonoText } from '../components/StyledText';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
-const en = require('../lang/en.json');
-const nl = require('../lang/nl.json');
+import * as en from '../lang/en.json';
+import * as nl from '../lang/nl.json';
 
 i18n.fallbacks = true;
 i18n.translations = { nl, en };

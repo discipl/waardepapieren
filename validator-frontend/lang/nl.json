@@ -1,14 +1,14 @@
 {
-  betaMessage: "Deze applicatie is in beta",
-  welcomeMessage: "Welkom bij de validatie app",
+  "betaMessage": "Deze applicatie is in beta",
+  "welcomeMessage": "Welkom bij de validatie app",
 
-  checkingQR: "QR-code valideren",
-  invalidQR: "Dit is geen geldige QR-code!",
-  validQR: "Dit is geldig bewijs!",
-  validatingHeader: "Validatie",
-  permissionMessage: "We hebben uw camera nodig om waardepapieren te valideren.",
-  permissionHeader: "Camera nodig",
+  "checkingQR": "QR-code valideren",
+  "invalidQR": "Dit is geen geldige QR-code!",
+  "validQR": "Dit is geldig bewijs!",
+  "validatingHeader": "Validatie",
+  "permissionMessage": "We hebben uw camera nodig om waardepapieren te valideren.",
+  "permissionHeader": "Camera nodig",
 
-  navigationHome: "Home",
-  navigationScan: "Scan",
+  "navigationHome": "Home",
+  "navigationScan": "Scan",
 };
