@@ -104,7 +104,7 @@ class ValidatingScreen extends Component {
   }
 
   static navigationOptions = {
-    headerTitle: 'Validatie',
+    headerTitle: i18n.t("validatingHeader"),
   };
 
   async renderClaimData(){

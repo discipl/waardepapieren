@@ -3,7 +3,7 @@
   "welcomeMessage": "Welcome to the validator app",
 
   "checkingQR": "Validating the QR-code",
-  "invalidQR": "This is an unvalid QR-code!",
+  "invalidQR": "This is an invalid QR-code!",
   "validQR": "This proof is validated!",
   "validatingHeader": "Validator",
   "permissionMessage": "We need your camera to validate documents.",
