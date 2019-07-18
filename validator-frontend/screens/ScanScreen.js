@@ -32,7 +32,6 @@ class ScanScreen extends React.Component {
     header: null,
   }
 
-
   constructor (props) {
     super(props)
     this.state = {
@@ -42,7 +41,9 @@ class ScanScreen extends React.Component {
 
   async componentDidMount() {
     const hasCameraPermission = this.state.hasCameraPermission
-    if (!hasCameraPermission) {
+    //this._storeData("Not granted")
+    const cameraPermissionStorage = await this._retrieveData()
+    if (cameraPermissionStorage != "granted") {
       Alert.alert(
         i18n.t("permissionHeader"),
         i18n.t("permissionMessage"),
@@ -51,6 +52,9 @@ class ScanScreen extends React.Component {
         ],
         { cancelable: false }
       )
+    }
+    else {
+      this.askPermissions()
     }
     const { navigation } = this.props;
     navigation.addListener('willFocus', () =>
@@ -61,10 +65,34 @@ class ScanScreen extends React.Component {
     );
   }
 
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("cameraPermissions");
+      if (value !== null) {
+        // We have data!!
+        return value;
+      }
+      else if (value == null) {
+        console.log("value was null")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  _storeData = async (data) => {
+    try {
+      await AsyncStorage.setItem("cameraPermissions", data);
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   async askPermissions() {
     console.log("Did i be here?");
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+    this._storeData("granted");
   }
 
   render() {
