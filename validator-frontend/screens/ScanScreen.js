@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, Text, View } from 'react-native';
+import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
@@ -8,6 +8,15 @@ import { PaperWallet } from '@discipl/paper-wallet'
 import EphemeralConnector from '@discipl/core-ephemeral'
 import { Octicons } from '@expo/vector-icons';
 import {NavigationEvents} from 'react-navigation';
+
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+import * as en from '../lang/en.json';
+import * as nl from '../lang/nl.json';
+
+i18n.fallbacks = true;
+i18n.translations = { nl, en };
+i18n.locale = Localization.locale;
 
 export default class App extends React.Component {
   static navigationOptions = {
@@ -32,8 +41,17 @@ class ScanScreen extends React.Component {
   }
 
   async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
-    this.setState({ hasCameraPermission: status === 'granted' });
+    const hasCameraPermission = this.state.hasCameraPermission
+    if (!hasCameraPermission) {
+      Alert.alert(
+        i18n.t("permissionHeader"),
+        i18n.t("permissionMessage"),
+        [
+          {text: 'OK', onPress: () => this.askPermissions()},
+        ],
+        { cancelable: false }
+      )
+    }
     const { navigation } = this.props;
     navigation.addListener('willFocus', () =>
       this.setState({ focusedScreen: true })
@@ -41,6 +59,12 @@ class ScanScreen extends React.Component {
     navigation.addListener('willBlur', () =>
       this.setState({ focusedScreen: false })
     );
+  }
+
+  async askPermissions() {
+    console.log("Did i be here?");
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    this.setState({ hasCameraPermission: status === 'granted' });
   }
 
   render() {
@@ -53,8 +77,9 @@ class ScanScreen extends React.Component {
       return <Text>No access to camera</Text>;
     }
     if (!focusedScreen) {
-      return <Text>You are not on this screen. If you are, something went wrong</Text>;
+      return <Text>Loading camera</Text>;
     }
+
 
     return (
       <View style={{ flex: 1 }}>
@@ -79,7 +104,7 @@ class ValidatingScreen extends Component {
   }
 
   static navigationOptions = {
-    headerTitle: 'Validatie',
+    headerTitle: i18n.t("validatingHeader"),
   };
 
   async renderClaimData(){
@@ -120,37 +145,45 @@ class ValidatingScreen extends Component {
     const { navigation } = this.props;
     const qrString = await navigation.getParam('qrString', 'String not found');
 
-    let certEndpoint = JSON.parse(qrString).metadata.cert
+    try{
+      let certEndpoint = JSON.parse(qrString).metadata.cert
+      console.log("i have tried this");
+      console.log('Fetching', certEndpoint)
 
-    console.log('Fetching', certEndpoint)
+      let cert =  await fetch(certEndpoint)
+        .then((response) => {
+          return response.text()
+        })
+        .catch((e) => {
+          console.log('Request failed', e)
+          console.log(e.stack)
+          console.log(e.message)
+        })
+      console.log('cert', cert)
 
-    let cert =  await fetch(certEndpoint)
-      .then((response) => {
-        return response.text()
-      })
-      .catch((e) => {
-        console.log('Request failed', e)
-        console.log(e.stack)
-        console.log(e.message)
-      })
-    console.log('cert', cert)
+      this.setState({qrString: qrString})
 
-    this.setState({qrString: qrString})
+      console.log(this.paper)
+      console.log('Registering ephemeral connector', EphemeralConnector)
+      this.paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
+      console.log('Importing attestorSsid')
+      let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
+      console.log("Validating...")
+      this.result = await this.paperWallet.validate(attestorSsid.did, qrString)
+      console.log(this.result)
+    }
+    catch{
+      this.result = false
+      console.log("This was not a valid certificate");
+    }
 
-    console.log(this.paper)
-    console.log('Registering ephemeral connector', EphemeralConnector)
-    this.paperWallet.getCore().registerConnector('ephemeral', new EphemeralConnector())
-    console.log('Importing attestorSsid')
-    let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': cert})
-    console.log("Validating...")
-    this.result = await this.paperWallet.validate(attestorSsid.did, qrString)
-    console.log(this.result)
+
   }
 
   async wrapperFunction() {
     await this._checkQR()
     console.log(this.result);
-    if(this.result == null){
+    if(this.result == null || this.result == false){
       this.setState({validatingState: "denied"})
     }
     else if(this.result == true){
@@ -168,15 +201,15 @@ class ValidatingScreen extends Component {
     let validatingText;
     if (this.state.validatingState == "waiting"){
       validatingIcon = waiting;
-      validatingText = "Checking QR code"
+      validatingText = i18n.t("checkingQR");
     }
     if (this.state.validatingState == "verified"){
       validatingIcon = verified;
-      validatingText = "This proof is valid!"
+      validatingText = i18n.t("validQR");
     }
     if (this.state.validatingState == "denied"){
       validatingIcon = denied;
-      validatingText = "This is an unvalid QR-code!"
+      validatingText = i18n.t("invalidQR");
     }
     return (
       <View style={styles.container}>
