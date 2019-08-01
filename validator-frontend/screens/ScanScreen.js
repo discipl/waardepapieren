@@ -178,9 +178,7 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
-    // if (!focusedScreen && hasCameraPermission === true) {
-    //   return <Text>Loading camera</Text>;
-    // }
+
     return (
       <View style={{ flex: 1 }}>
         <BarCodeScanner
