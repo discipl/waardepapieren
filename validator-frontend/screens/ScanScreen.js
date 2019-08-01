@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
-import { BarCodeScanner, Permissions } from 'expo';
+import { BarCodeScanner } from 'expo-barcode-scanner'
+import * as Permissions from 'expo-permissions'
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
 import { PaperWallet } from '@discipl/paper-wallet'
@@ -33,6 +34,7 @@ class ScanScreen extends React.Component {
   }
 
   constructor (props) {
+
     super(props)
     this.state = {
       hasCameraPermission: null,
@@ -89,9 +91,10 @@ class ScanScreen extends React.Component {
   }
 
   async askPermissions() {
-    console.log("Did i be here?");
+    console.log("Entered askPermission function");
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+    console.log("changed hasCameraPermission state");
     this._storeData("granted");
   }
 
@@ -104,9 +107,9 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
-    if (!focusedScreen) {
-      return <Text>Loading camera</Text>;
-    }
+    // if (!focusedScreen && hasCameraPermission === true) {
+    //   return <Text>Loading camera</Text>;
+    // }
 
 
     return (
