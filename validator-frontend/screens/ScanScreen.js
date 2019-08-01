@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
-import { BarCodeScanner, Permissions, Asset } from 'expo';
+import { BarCodeScanner, Permissions } from 'expo';
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
 import { PaperWallet } from '@discipl/paper-wallet'
