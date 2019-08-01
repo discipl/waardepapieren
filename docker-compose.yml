@@ -32,7 +32,7 @@ services:
   mock-nlx:
     image: nlxio/outway:latest
     volumes:
-      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./mock-nlx/certs:/certs:ro
     environment:
       - DIRECTORY_INSPECTION_ADDRESS=directory-inspection-api.demo.nlx.io:443
       - TLS_NLX_ROOT_CERT=/certs/root.crt
