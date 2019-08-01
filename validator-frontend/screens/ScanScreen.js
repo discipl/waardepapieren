@@ -43,7 +43,6 @@ class ScanScreen extends React.Component {
 
   async componentDidMount() {
     const hasCameraPermission = this.state.hasCameraPermission
-    //this._storeData("Not granted")
     const cameraPermissionStorage = await this._retrieveData()
     if (cameraPermissionStorage != "granted") {
       Alert.alert(
@@ -110,8 +109,6 @@ class ScanScreen extends React.Component {
     // if (!focusedScreen && hasCameraPermission === true) {
     //   return <Text>Loading camera</Text>;
     // }
-
-
     return (
       <View style={{ flex: 1 }}>
         <BarCodeScanner
