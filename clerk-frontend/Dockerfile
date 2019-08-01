@@ -4,8 +4,8 @@ ADD package.json package-lock.json /app/
 ENV REACT_APP_EPHEMERAL_ENDPOINT=https://localhost:443/api/eph
 ENV REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT=wss://localhost:443/api/eph-ws
 WORKDIR /app
-ADD public /app/public
 RUN npm install --unsafe-perm
+ADD public /app/public
 ADD src /app/src
 ARG CERTIFICATE_HOST
 ENV REACT_APP_CERTIFICATE_HOST=${CERTIFICATE_HOST}
