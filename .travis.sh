@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Exit on error of any of the commands
+set -e
+
 # Clerk frontend
 cd clerk-frontend
 npm install > /dev/null
