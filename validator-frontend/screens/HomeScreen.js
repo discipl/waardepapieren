@@ -12,6 +12,15 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+import * as en from '../lang/en.json';
+import * as nl from '../lang/nl.json';
+
+i18n.fallbacks = true;
+i18n.translations = { nl, en };
+i18n.locale = Localization.locale;
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -35,7 +44,7 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Welkom bij de waardepapieren validator!</Text>
+            <Text style={styles.getStartedText}>{i18n.t("welcomeMessage")}</Text>
           </View>
 
         </ScrollView>
@@ -53,14 +62,13 @@ export default class HomeScreen extends React.Component {
 
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
+          Development mode is enabled. {i18n.t("betaMessage")}
         </Text>
       );
     } else {
       return (
         <Text style={styles.developmentModeText}>
-          Deze applicatie is in beta.
+          {i18n.t("betaMessage")}
         </Text>
       );
     }

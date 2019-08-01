@@ -1,0 +1,15 @@
+{
+  "betaMessage": "This application is in beta",
+  "welcomeMessage": "Welcome to the validator app",
+
+  "checkingQR": "Validating the QR-code",
+  "invalidQR": "This is an invalid QR-code!",
+  "validQR": "This proof is validated!",
+  "issuerNameDescription": "Issuer: ",
+  "validatingHeader": "Validator",
+  "permissionMessage": "We need your camera to validate documents.",
+  "permissionHeader": "Camera permission needed",
+
+  "navigationHome": "Home",
+  "navigationScan": "Scan",
+}

@@ -2,7 +2,7 @@
 
 # Clerk frontend
 cd clerk-frontend
-npm install
+npm install > /dev/null
 npm test
 npm audit
 

@@ -13,7 +13,6 @@
     "rxjs": "^6.5.2"
   },
   "scripts": {
-    "postinstall": "cp -r ./node_modules/@discipl/paper-wallet/images ./public/images/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,6 +29,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cypress": "^3.3.0"
+    "cypress": "^3.4.0"
   }
 }
