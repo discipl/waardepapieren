@@ -13,7 +13,7 @@ npm audit
 cd ../waardepapieren-service/
 npm install
 # Ignore self-signed cert
-NODE_TLS_REJECT_UNAUTHORIZED=0 npm test
+npm test
 npm run system-test
 npm audit
 
