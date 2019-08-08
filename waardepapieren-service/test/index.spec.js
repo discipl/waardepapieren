@@ -3,7 +3,7 @@
 
 import { expect } from 'chai'
 import WaardenpapierenService from '../src/waardepapieren-service'
-import * as abundance from '@discipl/abundance-service'
+import { AbundanceService } from '@discipl/abundance-service'
 import { w3cwebsocket } from 'websocket'
 
 import { take } from 'rxjs/operators'
@@ -16,6 +16,8 @@ const timeoutPromise = (timeoutMillis) => {
     setTimeout(() => resolve(), timeoutMillis)
   })
 }
+
+const abundance = new AbundanceService()
 
 describe('waardenpapieren-service, integrated with mocked nlx connector', function () {
   this.timeout(5000)
@@ -30,10 +32,12 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     CONFIGURATION.NLX_CERT='./system-test/certs/org.crt'
     CONFIGURATION.NLX_KEY='./system-test/certs/org.key'
+    CONFIGURATION.EPHEMERAL_CERT='./system-test/ephemeral-certs/org.crt'
+    CONFIGURATION.EPHEMERAL_KEY='./system-test/ephemeral-certs/org.key'
     CONFIGURATION.LOG_LEVEL='info'
 
     // Set up server
-    let waardenpapierenService = new WaardenpapierenService()
+    let waardenpapierenService = new WaardenpapierenService(abundance.getCoreAPI())
     await waardenpapierenService.start(CONFIGURATION)
     await timeoutPromise(100)
 

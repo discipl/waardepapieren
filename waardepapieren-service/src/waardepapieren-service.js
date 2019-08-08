@@ -8,6 +8,9 @@ import fs from 'fs'
 import * as log from 'loglevel'
 
 class WaardenpapierenService {
+  constructor (core) {
+    this.core = core
+  }
   async start (configuration) {
     this.logger = log.getLogger('WaardepapierenService')
     this.configuration = configuration
@@ -20,7 +23,7 @@ class WaardenpapierenService {
     // Setup server
     this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
     this.ephemeralServer.start()
-    this.abundance = new AbundanceService()
+    this.abundance = new AbundanceService(this.core)
     const core = this.abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
     ephemeralConnector.configure(this.configuration.EPHEMERAL_ENDPOINT, this.configuration.EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
