@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@discipl/abundance-service": "^0.5.0",
-    "@discipl/core-ephemeral": "^0.10.1",
+    "@discipl/core-ephemeral": "^0.10.3",
     "@discipl/paper-wallet": "^0.8.0",
     "jspdf": "^1.5.3",
     "react": "^16.8.6",
