@@ -340,7 +340,7 @@ class ValidatingScreen extends Component {
           <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
           <Text style ={styles.key}>{validatingText}</Text>
           {validatingIcon}
-          <Text style ={styles.key}>{issuerText}</Text>
+          <Text style ={styles.value}>{issuerText}</Text>
         </View>
 
         <FlatList
