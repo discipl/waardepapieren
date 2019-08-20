@@ -25,7 +25,7 @@ describe('waardenpapieren-service', function () {
     CONFIGURATION.NLX_KEY='./system-test/certs/org.key'
 
     // Set up server
-    let waardenpapierenService = new WaardenpapierenService()
+    let waardenpapierenService = new WaardenpapierenService(abundance.getCoreAPI())
     await waardenpapierenService.start(CONFIGURATION)
     await timeoutPromise(100)
 

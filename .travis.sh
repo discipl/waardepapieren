@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Exit on error of any of the commands
+set -e
+
 # Clerk frontend
 cd clerk-frontend
 npm install > /dev/null
@@ -9,6 +12,7 @@ npm audit
 # Waardepapieren service
 cd ../waardepapieren-service/
 npm install
+# Ignore self-signed cert
 npm test
 npm run system-test
 npm audit
