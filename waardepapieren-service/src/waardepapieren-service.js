@@ -28,9 +28,10 @@ class WaardenpapierenService {
     const ephemeralConnector = await core.getConnector('ephemeral')
     ephemeralConnector.configure(this.configuration.EPHEMERAL_ENDPOINT, this.configuration.EPHEMERAL_WEBSOCKET_ENDPOINT, w3cwebsocket)
 
-    let nlxCert = fs.readFileSync(this.configuration.NLX_CERT)
-    let nlxKey = fs.readFileSync(this.configuration.NLX_KEY)
+    let nlxCert = fs.readFileSync(this.configuration.NLX_CERT).toString()
+    let nlxKey = fs.readFileSync(this.configuration.NLX_KEY).toString()
 
+    console.log('NLX_CERT', nlxCert)
     let nlxEphemeralIdentity = await ephemeralConnector.newIdentity({ 'cert': nlxCert, 'privkey': nlxKey })
 
     const nlxConnector = await core.getConnector('nlx')
