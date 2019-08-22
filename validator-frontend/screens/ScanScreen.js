@@ -114,6 +114,7 @@ class ScanScreen extends React.Component {
   }
 
   async componentDidMount() {
+    this.props.navigation.navigate('Validating', {qrString: JSON.stringify({"claimData":{"did:discipl:ephemeral:crt:4c86faf535029c8cf4a371813cc44cb434875b18":[{"link:discipl:ephemeral:tEi6K3mPRmE6QRf4WvpxY1hQgGmIG7uDV85zQILQNSCnQjAZPg2mj4Fbok/BHL9C8mFJQ1tCswBHBtsu6NIESA45XnN13pE+nLD6IPOeHx2cUrObxtzsqLhAy4ZXN6eDpZDmqnb6ymELUfXu/D2n4rL/t9aD279vqjFRKgBVE5WsId9c6KEYA+76mBQUBoJr8sF7w+3oMjzKy88oW693I3Keu+cdl/9sRCyYAYIDzwmg3A6n8t9KUpsBDK1b6tNznA6qoiN9Zb4JZ7rpq6lnVpyU5pyJjD+p9DiWgIYsVauJy8WOcKfNWkeOomWez0of2o+gu9xf+VLzcX3MSiAfZA==":[{"Doel":"Bewijs verblijfadres in woonplaats"},{"Burgerservicenummer (BSN)":"663678651"},{"Woonplaats verblijfadres":"Utrecht"}]}]},"metadata":{"cert":"http://10.10.4.117:8880/certs/org.crt"}})})
     const hasCameraPermission = this.state.hasCameraPermission
     const cameraPermissionStorage = await this._retrieveData()
     if (cameraPermissionStorage != "granted") {
@@ -191,7 +192,8 @@ class ScanScreen extends React.Component {
 
   handleBarCodeScanned = ({ type, data }) => {
     console.log('Navigating to validation screen')
-    this.props.navigation.navigate('Validating', {qrString: data})
+    this.props.navigation.navigate('Validating', {qrString: JSON.stringify({"claimData":{"did:discipl:ephemeral:crt:4c86faf535029c8cf4a371813cc44cb434875b18":[{"link:discipl:ephemeral:tEi6K3mPRmE6QRf4WvpxY1hQgGmIG7uDV85zQILQNSCnQjAZPg2mj4Fbok/BHL9C8mFJQ1tCswBHBtsu6NIESA45XnN13pE+nLD6IPOeHx2cUrObxtzsqLhAy4ZXN6eDpZDmqnb6ymELUfXu/D2n4rL/t9aD279vqjFRKgBVE5WsId9c6KEYA+76mBQUBoJr8sF7w+3oMjzKy88oW693I3Keu+cdl/9sRCyYAYIDzwmg3A6n8t9KUpsBDK1b6tNznA6qoiN9Zb4JZ7rpq6lnVpyU5pyJjD+p9DiWgIYsVauJy8WOcKfNWkeOomWez0of2o+gu9xf+VLzcX3MSiAfZA==":[{"Doel":"Bewijs verblijfadres in woonplaats"},{"Burgerservicenummer (BSN)":"663678651"},{"Woonplaats verblijfadres":"Utrecht"}]}]},"metadata":{"cert":"http://10.10.4.117:8880/certs/org.crt"}})})
+  console.log(data);
   }
 }
 
