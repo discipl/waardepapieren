@@ -21,6 +21,9 @@
       "**/*"
     ],
     "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to scan QR-codes on documents that are signed with the waardepapieren-service to validate said documents."
+      },
       "supportsTablet": true
     }
   }
