@@ -74,7 +74,7 @@ const demoRootCA = "-----BEGIN CERTIFICATE-----\n" +
   "/ttNih9OjNTPG9l/dQi04B3ztwWtSrPVXCCkf2vrNBo4tz5/BdOD5o7llg==\n" +
   "-----END CERTIFICATE-----"
 
-const rootCA = __DEV__ ? demoRootCA : realRootCA
+const rootCA = true ? demoRootCA : realRootCA
 
 import forge from 'node-forge'
 
