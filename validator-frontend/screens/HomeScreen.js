@@ -55,11 +55,14 @@ export default class HomeScreen extends React.Component {
 
             <Text style={styles.getStartedText}>{i18n.t("welcomeMessage")}</Text>
           </View>
-          <Text style={styles.developmentModeText}>{i18n.t("strictValidationMessage")}</Text>
-          <Switch
-            onValueChange={this.strictValidationSwitch}
-            value={this.state.strictValidationSwitchValue}
-          />
+          <View style={styles.switchContainer}>
+            <Text style={styles.strictValidationMessage}>{i18n.t("strictValidationMessage")}</Text>
+            <Switch
+              style={styles.switch}
+              onValueChange={this.strictValidationSwitch}
+              value={this.state.strictValidationSwitchValue}
+            />
+          </View>
         </ScrollView>
       </View>
     );
@@ -123,6 +126,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
+  },
+  switchContainer: {
+    marginTop: 20,
+    marginHorizontal: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#fcfcfc',
+  },
+  strictValidationMessage: {
+    fontSize: 16,
+    color: 'rgba(0,0,0,0.55)',
+  },
+  switch: {
+    flex: 1,
   },
   contentContainer: {
     paddingTop: 30,
@@ -200,10 +219,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
-  switch: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 100
-  }
 });
