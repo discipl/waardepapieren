@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Switch,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -22,6 +23,13 @@ i18n.translations = { nl, en };
 i18n.locale = Localization.locale;
 
 export default class HomeScreen extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      strictValidationSwitchValue: false,
+    }
+  }
+
   static navigationOptions = {
     header: null,
   };
@@ -46,10 +54,18 @@ export default class HomeScreen extends React.Component {
 
             <Text style={styles.getStartedText}>{i18n.t("welcomeMessage")}</Text>
           </View>
-
+          <Switch
+            onValueChange={this.strictValidationSwitch}
+            value={this.state.strictValidationSwitchValue}
+          />
         </ScrollView>
       </View>
     );
+  }
+
+  strictValidationSwitch = (value) => {
+      this.setState({strictValidationSwitchValue: value})
+      console.log('The strict validation switch is: ' + value)
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -173,4 +189,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
+  switch: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 100
+  }
 });
