@@ -55,6 +55,7 @@ export default class HomeScreen extends React.Component {
 
             <Text style={styles.getStartedText}>{i18n.t("welcomeMessage")}</Text>
           </View>
+          <Text style={styles.developmentModeText}>{i18n.t("strictValidationMessage")}</Text>
           <Switch
             onValueChange={this.strictValidationSwitch}
             value={this.state.strictValidationSwitchValue}
@@ -73,7 +74,6 @@ export default class HomeScreen extends React.Component {
   _storeData = async (data) => {
     try {
       await AsyncStorage.setItem("strictValidationSwitchValue", data);
-      console.log("Written switch value");
     } catch (error) {
       console.log(error.message)
     }
