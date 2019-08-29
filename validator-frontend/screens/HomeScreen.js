@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   Switch,
+  AsyncStorage,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -66,6 +67,16 @@ export default class HomeScreen extends React.Component {
   strictValidationSwitch = (value) => {
       this.setState({strictValidationSwitchValue: value})
       console.log('The strict validation switch is: ' + value)
+      this._storeData(value.toString())
+  }
+
+  _storeData = async (data) => {
+    try {
+      await AsyncStorage.setItem("strictValidationSwitchValue", data);
+      console.log("Written switch value");
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   _maybeRenderDevelopmentModeWarning() {

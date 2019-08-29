@@ -74,8 +74,6 @@ const demoRootCA = "-----BEGIN CERTIFICATE-----\n" +
   "/ttNih9OjNTPG9l/dQi04B3ztwWtSrPVXCCkf2vrNBo4tz5/BdOD5o7llg==\n" +
   "-----END CERTIFICATE-----"
 
-const rootCA = __DEV__ ? demoRootCA : realRootCA
-
 import forge from 'node-forge'
 
 import EphemeralConnector from '@discipl/core-ephemeral'
@@ -201,9 +199,30 @@ class ValidatingScreen extends Component {
     this.state = {validatingState: "waiting"};
   }
 
+  async componentWillMount() {
+    var strictValidation = await this._retrieveData()
+    const rootCA = (strictValidation=="true") ? demoRootCA : realRootCA
+    console.log(rootCA);
+  }
+
   static navigationOptions = {
     headerTitle: i18n.t("validatingHeader"),
   };
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("strictValidationSwitchValue");
+      if (value !== null) {
+        // We have data!!
+        return value;
+      }
+      else if (value == null) {
+        console.log("value was null")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   async renderClaimData(){
     if(this.state.validatingState == "verified"){
