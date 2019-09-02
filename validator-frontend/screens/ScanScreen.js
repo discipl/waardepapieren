@@ -78,6 +78,7 @@ import forge from 'node-forge'
 
 import EphemeralConnector from '@discipl/core-ephemeral'
 import { Octicons } from '@expo/vector-icons';
+import * as Font from 'expo-font';
 import {NavigationEvents} from 'react-navigation';
 
 import * as Localization from 'expo-localization';
@@ -134,6 +135,8 @@ class ScanScreen extends React.Component {
     navigation.addListener('willBlur', () =>
       this.setState({ focusedScreen: false })
     );
+
+    await Font.loadAsync(Octicons.font)
   }
 
   _retrieveData = async () => {
