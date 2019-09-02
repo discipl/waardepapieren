@@ -201,8 +201,9 @@ class ValidatingScreen extends Component {
 
   async componentWillMount() {
     var strictValidation = await this._retrieveData()
-    const rootCA = (strictValidation=="true") ? demoRootCA : realRootCA
-    console.log(rootCA);
+    console.log('StrictValidation', strictValidation)
+    this.rootCA = (strictValidation=="true") ? realRootCA : demoRootCA
+    console.log('rootCA', this.rootCA);
   }
 
   static navigationOptions = {
@@ -293,7 +294,7 @@ class ValidatingScreen extends Component {
 
 
 
-      const caStore = forge.pki.createCaStore([rootCA])
+      const caStore = forge.pki.createCaStore([this.rootCA])
       console.log('Verifying against CA store')
       forge.pki.verifyCertificateChain(caStore, certChainParsed)
       console.log('Truely verified')
