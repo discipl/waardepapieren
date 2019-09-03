@@ -1,7 +1,6 @@
 {
   "betaMessage": "Deze applicatie is in beta",
   "welcomeMessage": "Welkom bij de validatie app",
-  "strictValidationMessage": "Gebruik stricte validatie",
 
   "checkingQR": "QR-code valideren",
   "invalidQR": "Dit is geen geldige QR-code!",
