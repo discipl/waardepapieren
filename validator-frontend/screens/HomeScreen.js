@@ -7,8 +7,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Switch,
-  AsyncStorage,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -24,13 +22,6 @@ i18n.translations = { nl, en };
 i18n.locale = Localization.locale;
 
 export default class HomeScreen extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      strictValidationSwitchValue: false,
-    }
-  }
-
   static navigationOptions = {
     header: null,
   };
@@ -55,31 +46,10 @@ export default class HomeScreen extends React.Component {
 
             <Text style={styles.getStartedText}>{i18n.t("welcomeMessage")}</Text>
           </View>
-          <View style={styles.switchContainer}>
-            <Text style={styles.strictValidationMessage}>{i18n.t("strictValidationMessage")}</Text>
-            <Switch
-              style={styles.switch}
-              onValueChange={this.strictValidationSwitch}
-              value={this.state.strictValidationSwitchValue}
-            />
-          </View>
+
         </ScrollView>
       </View>
     );
-  }
-
-  strictValidationSwitch = (value) => {
-      this.setState({strictValidationSwitchValue: value})
-      console.log('The strict validation switch is: ' + value)
-      this._storeData(value.toString())
-  }
-
-  _storeData = async (data) => {
-    try {
-      await AsyncStorage.setItem("strictValidationSwitchValue", data);
-    } catch (error) {
-      console.log(error.message)
-    }
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -126,22 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 19,
     textAlign: 'center',
-  },
-  switchContainer: {
-    marginTop: 20,
-    marginHorizontal: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    flexDirection: 'row',
-    backgroundColor: '#fcfcfc',
-  },
-  strictValidationMessage: {
-    fontSize: 16,
-    color: 'rgba(0,0,0,0.55)',
-  },
-  switch: {
-    flex: 1,
   },
   contentContainer: {
     paddingTop: 30,

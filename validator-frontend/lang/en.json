@@ -1,7 +1,6 @@
 {
   "betaMessage": "This application is in beta",
   "welcomeMessage": "Welcome to the validator app",
-  "strictValidationMessage": "Use strict validation",
 
   "checkingQR": "Validating the QR-code",
   "invalidQR": "This is an invalid QR-code!",
