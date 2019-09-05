@@ -24,6 +24,6 @@ Once the validator app scans a code, it will:
 2. Validate that the certificate used to sign is (indirectly) trusted by the CA root, by validating the full chain
 3. Validate the signature using the certificate and the data signed
 
-The CA root is pinned in the validator app. In development mode, the CA root is a [self-signed cert](demo-certs/rootDemoCA.pem).
+The CA root is pinned in the validator app. In development mode, the CA root is a [self-signed cert](../demo-certs/rootDemoCA.pem).
 Since the key is present in this repo, anyone can sign valid certificates for attestions.
 In production mode (strict validation), the CA root is the [Staat der Nederlanden EV](https://www.pkioverheid.nl/) certificate.
