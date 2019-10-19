@@ -45,9 +45,6 @@ wait till the program has fully loaded and scan the QR code in the left bottom c
 
 
 
-
-
-
 # Basic Flow (Main Succes Scenario)
 
 Dit document heeft als doel om zowel het ontwikkelteam als de gemeente een duidelijk beeld 
@@ -87,12 +84,12 @@ gemeenteambtenaar klikt op *dit klopt!*
 
 ***
 6. systeem laat uittreksel zien
-![canvas](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_05.png)
+![hs5](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_05.png)
 
 ***
 7. Gemeentelijk ambtenaar  klikt op download
 
-![hs9](https://github.com/discipl/waardepapieren/blob/master/pictures/Screenshot_9.PNG)
+![hs15](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_15.png)
 
 ***
 8. Systeem laat downloadscherm zien
