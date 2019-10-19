@@ -89,12 +89,12 @@ gemeenteambtenaar klikt op *dit klopt!*
 ***
 7. Gemeentelijk ambtenaar  klikt op download
 
-![hs15](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_15.png)
+![hs15](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_16.png)
 
 ***
 8. Systeem laat downloadscherm zien
 
-![hs5](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_06.png)
+![hs5](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_15.png)
 
 [uittreksel](https://github.com/discipl/waardepapieren/blob/master/pictures/uittreksel.pdf)
 
