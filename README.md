@@ -8,7 +8,7 @@ verify claims. In particular, how municipalities can issue
 In order to make everything functional, we need to generate valid certificates for demo NLX environments and
 ensure that the validation app can retrieve those. This is only needed for working with live NLX, when using `docker-compose-travis.yml`, these certificates are not needed.
 
-1. Generate certificates as described [here](https://docs.nlx.io/get-started/create-certificates/), and place the `org.key` and `org.crt` files at `./mock-nlx/certs/`
+1. Generate certificates as described [here](https://docs.nlx.io/try-nlx/retrieve-a-demo-certificate/), and place the `org.key` and `org.crt` files at `./mock-nlx/certs/`
 ## Running
 
 The easiest way to run is using docker-compose:
