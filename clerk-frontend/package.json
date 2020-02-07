@@ -5,11 +5,11 @@
   "dependencies": {
     "@discipl/abundance-service": "^0.5.1",
     "@discipl/core-ephemeral": "^0.11.1",
-    "@discipl/paper-wallet": "^0.8.0",
+    "@discipl/paper-wallet": "^0.8.1",
     "jspdf": "^1.5.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^3.3.1",
     "rxjs": "^6.5.2"
   },
   "scripts": {
