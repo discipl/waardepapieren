@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.1",
-    "@discipl/paper-wallet": "^0.8.0",
+    "@discipl/paper-wallet": "^0.8.1",
     "@expo/samples": "2.1.1",
     "@expo/vector-icons": "^10.0.0",
     "expo": "^36.0.0",
