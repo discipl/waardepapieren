@@ -11,6 +11,9 @@ ARG CERTIFICATE_HOST
 ENV REACT_APP_CERTIFICATE_HOST=${CERTIFICATE_HOST}
 RUN npm run build
 
-FROM nginx:1.15.8
+FROM nginx:1.17.8
+RUN mkdir /etc/nginx/certs/
+ADD pre-start.sh /
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=0 /app/build /usr/share/nginx/html
+CMD ./pre-start.sh && nginx -g "daemon off;"
