@@ -150,7 +150,7 @@ app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/123456789', (req, res)
     "datumTot": {
       "dag": 3,
       "datum": "1989-05-03",
-      "jaar": 1989,
+      "jaar": 1991,
       "maand": 5
     },
   }
