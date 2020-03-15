@@ -1,6 +1,6 @@
 {
-  "EPHEMERAL_ENDPOINT" : "https://localhost:3232",
-  "EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://localhost:3232",
+  "EPHEMERAL_ENDPOINT" : "https://localhost:3242",
+  "EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://localhost:3242",
   "EPHEMERAL_CERT": "/ephemeral-certs/org.crt",
   "EPHEMERAL_KEY": "/ephemeral-certs/org.key",
   "NLX_OUTWAY_ENDPOINT" : "https://mock-nlx:8443",
