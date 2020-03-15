@@ -1,0 +1,25 @@
+{
+  "EPHEMERAL_ENDPOINT" : "https://localhost:3232",
+  "EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://localhost:3232",
+  "EPHEMERAL_CERT": "/ephemeral-certs/org.crt",
+  "EPHEMERAL_KEY": "/ephemeral-certs/org.key",
+  "NLX_OUTWAY_ENDPOINT" : "https://mock-nlx:8443",
+  "NLX_CERT": "/certs/org.crt",
+  "NLX_KEY": "/certs/org.key",
+  "LOG_LEVEL": "info",
+  "EPHEMERAL_RETENTION_TIME": 86400,
+  "PRODUCT_NEED" : "BRP_VERBLIJFPLAATSHISTORIE_NEED",
+  "SOURCE_NLX_PATH" : "/brp/basisregistratie/verblijfplaatshistorie/bsn/{BSN}",
+  "SOURCE_ARGUMENT" : "BSN",
+  "PRODUCT_ACCEPT" : "BRP_VERBLIJFPLAATSHISTORIE_ACCEPT",
+  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
+  "PRODUCT_DESCRIPTION" : "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
+  "PRODUCT_PURPOSE" : "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon",
+  "SOURCE_DATA_SELECTION" : [
+    {"Burgerservicenummer (BSN)" : "burgerservicenummer"},
+    {"Functie adres" : "functieAdres"},
+    {"Locatiebeschrijving" : "locatiebeschrijving"},
+    {"Geldig vanaf datum" : "datumIngangGeldigheid"},
+    {"Geldig tot datum" : "datumTot"}
+  ]
+}
