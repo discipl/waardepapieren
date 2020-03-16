@@ -23,9 +23,11 @@ services:
     build: waardepapieren-verblijfplaatshistorie-service/.
     links:
       - mock-nlx
-    ports:
-      - 3232:3232
-      - 3234:3234
+      - waardepapieren-service
+    # No need for ports: mapping
+    #  ports:
+    #  - 3232:3232
+    #  - 3234:3234
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
       # Ignore self-signed ephemeral cert issues
