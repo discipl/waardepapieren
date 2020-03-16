@@ -21,8 +21,9 @@ class WaardenpapierenVerblijfplaatshistorieService {
     }
 
     // Setup server
-    this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
-    this.ephemeralServer.start()
+    // Don't start server
+    // this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
+    // this.ephemeralServer.start()
     this.abundance = new AbundanceService(this.core)
     const core = this.abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
