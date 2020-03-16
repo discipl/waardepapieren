@@ -24,8 +24,8 @@ services:
     links:
       - mock-nlx
     ports:
-      - 3232:3232
-      - 3234:3234
+      - 3242:3242
+      - 3243:3243
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
       # Ignore self-signed ephemeral cert issues
