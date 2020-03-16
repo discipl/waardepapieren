@@ -17,9 +17,9 @@ services:
       - NODE_TLS_REJECT_UNAUTHORIZED=0
   waardepapieren-verblijfplaatshistorie-service:
     volumes:
-      - ./waardepapieren-service/system-test/certs:/certs:ro
-      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
-      - ./waardepapieren-service/configuration/:/app/configuration:ro
+      - ./waardepapieren-verblijfplaatshistorie-service/system-test/certs:/certs:ro
+      - ./waardepapieren-verblijfplaatshistorie-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-verblijfplaatshistorie-service/configuration/:/app/configuration:ro
     build: waardepapieren-verblijfplaatshistorie-service/.
     links:
       - mock-nlx
