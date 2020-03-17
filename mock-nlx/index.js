@@ -61,7 +61,7 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) =
   res.end()
 })
 
-app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/123456789', (req, res) => {
+app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/663678651', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(JSON.stringify( {
     "functieAdres": "woonadres",
