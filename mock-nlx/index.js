@@ -167,7 +167,30 @@ app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/663678651', (req, res)
       "datum": "1989-05-03",
       "jaar": 1991,
       "maand": 5
-    },
+    }, 
+      "TestArrayAdressen": [
+                  {  
+                    "AdresNr" : 1,
+                    "AdresNaam" : "Dorpsstraat",
+                    "PlaatsNaam" : "Zaanstad",
+                    "VanafDatum" : "1988-03-02",   
+                    "TotDatum" : "1995-02-16"
+                  },
+                  {  
+                    "AdresNr" : 2,
+                    "AdresNaam" : "Roosendaalseweg",
+                    "PlaatsNaam" : "Hoorn",
+                    "VanafDatum" : "1995-02-16",   
+                    "TotDatum" : "1995-02-16"
+                  },
+                  {  
+                     "AdresNr" : 3,
+                     "AdresNaam" : "Boekweitstraat",
+                     "Plaatsnaam" : "Hoorn",
+                     "VanafDatum" : "1995-02-16",   
+                     "TotDatum" : "2016-12-30"
+                  }
+      ]
   }
   ))
   res.end()
