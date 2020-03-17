@@ -24,6 +24,7 @@
     {"Functie adres" : "functieAdres"},
     {"Locatiebeschrijving" : "locatiebeschrijving"},
     {"Geldig vanaf datum" : "datumIngangGeldigheid.datum"},
-    {"Geldig tot datum" : "datumTot.datum"}
+    {"Geldig tot datum" : "datumTot.datum"},
+    {"Verblijfplaatshistorie" : "TestArrayAdressen.AdresNaam"}
   ]
 }
