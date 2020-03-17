@@ -64,6 +64,21 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) =
 app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/663678651', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(JSON.stringify( {
+    "aanduiding_naamsgebruik": "V",
+    "aanschrijving": {
+      "adelijke_titel": "",
+      "geslachtsnaam": "Vlasman",
+      "voorletters": "S.",
+      "voornamen": "Sanne",
+      "voorvoegsel_geslachtsnaam": ""
+    },
+    "burgerservicenummer": "663678651",
+    "emailadres": "SanneVlasman@gmail.com",
+    "geboorte": {
+      "datum": "05/07/1970",
+      "land": "Nederland",
+      "stad": "Utrecht"
+    },
     "functieAdres": "woonadres",
     "huisletter": "B",
     "huisnummer": 23,
