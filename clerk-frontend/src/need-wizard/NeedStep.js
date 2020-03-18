@@ -18,7 +18,7 @@ class NeedStep extends Component {
     super(props);
 
     if (this.props.needChanged) {
-      this.props.needChanged(this.props.need)
+      this.props.needChanged(this.props.need.predicate)
     }
   }
 
