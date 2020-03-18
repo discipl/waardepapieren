@@ -20,7 +20,7 @@ class ConfirmStep extends Component {
 
   async componentDidMount() {
     // added console log for debugging purposes
-    console.log(this.props.need)
+    console.log('Choosen product',this.props.need)
 
     await timeoutPromise(100)
 
