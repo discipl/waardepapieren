@@ -122,12 +122,16 @@ class NeedWizard extends Component {
   renderStep () {
     switch(this.state.step) {
       case 0:
+        console.log('BSNStep done')
         return <BSNStep bsnChanged={this.bsnChanged}/>
       case 1:
+        console.log('NeedStep done')
         return <NeedStep needChanged={this.needChanged}/>
       case 2:
+        console.log('ConfirmStep done')
         return <ConfirmStep core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
       case 3:
+        console.log('DeliveryStep done')
         return <DeliveryStep core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
