@@ -20,6 +20,10 @@ class NeedStep extends Component {
       selectValue: ""
     };
     
+    if (this.props.needChanged) {
+      this.props.needChanged(NEEDS[id].predicate)
+    }
+
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
 
