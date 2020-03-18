@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-fetch(window.waardepapierenConfigUrl || 'http://localhost:3000/clerk-frontend-config.json').then(
+fetch(window.waardepapierenConfigUrl || 'https://localhost/clerk-frontend-config.json').then(
     (response) => response.json())
     .then((config) => {
         console.log("config", config)

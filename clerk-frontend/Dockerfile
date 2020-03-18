@@ -6,6 +6,7 @@ ENV REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT=wss://localhost:443/api/eph-ws
 WORKDIR /app
 RUN npm install --unsafe-perm
 ADD public /app/public
+ADD scripts /app/scripts
 ADD src /app/src
 ARG CERTIFICATE_HOST
 ENV REACT_APP_CERTIFICATE_HOST=${CERTIFICATE_HOST}

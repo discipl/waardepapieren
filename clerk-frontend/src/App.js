@@ -25,7 +25,7 @@ class App extends Component {
 
     render() {
         return (
-            <NeedWizard core={this.abundance.getCoreAPI()}/>
+            <NeedWizard core={this.abundance.getCoreAPI()} config={this.props.config}/>
         );
     }
 }

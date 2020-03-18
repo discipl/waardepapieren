@@ -122,13 +122,13 @@ class NeedWizard extends Component {
   renderStep () {
     switch(this.state.step) {
       case 0:
-        return <BSNStep bsnChanged={this.bsnChanged}/>
+        return <BSNStep config={this.props.config} bsnChanged={this.bsnChanged}/>
       case 1:
-        return <NeedStep needChanged={this.needChanged}/>
+        return <NeedStep config={this.props.config} needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
+        return <ConfirmStep config={this.props.config} core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
       case 3:
-        return <DeliveryStep core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
+        return <DeliveryStep config={this.props.config} core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }
