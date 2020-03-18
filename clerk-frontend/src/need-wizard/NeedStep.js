@@ -3,8 +3,12 @@ import React, { Component } from 'react';
 import CONFIGURATION from '../configuration/clerk-frontend-config.json'
 const NEEDS = [
   {
-    'predicate': CONFIGURATION.PRODUCTS[1].PRODUCT_NEED,
+    'predicate': CONFIGURATION.PRODUCTS[0].PRODUCT_NEED,
     'description': 'Uittreksel Basis Registratie Persoonsgegevens'
+  },
+  {
+    'predicate': CONFIGURATION.PRODUCTS[1].PRODUCT_NEED,
+    'description': 'Uittreksel Basis Registratie Verblijfplaatshistorie'
   }
 ]
 
