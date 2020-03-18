@@ -25,6 +25,6 @@
     {"Locatiebeschrijving" : "locatiebeschrijving"},
     {"Geldig vanaf datum" : "datumIngangGeldigheid.datum"},
     {"Geldig tot datum" : "datumTot.datum"},
-    {"Verblijfplaatshistorie" : "TestArrayAdressen.AdresNaam"}
+    {"Verblijfplaatshistorie" : "TestArrayAdressen"}
   ]
 }
