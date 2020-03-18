@@ -21,7 +21,7 @@ class NeedStep extends Component {
     };
     
     if (this.props.needChanged) {
-      this.props.needChanged(NEEDS[id].predicate)
+      this.props.needChanged(NEEDS[this.state.selectValue].predicate)
     }
 
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
