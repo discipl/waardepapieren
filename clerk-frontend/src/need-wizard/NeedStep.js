@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import CONFIGURATION from '../configuration/clerk-frontend-config.json'
 const NEEDS = [
   {
-    'predicate': this.props.need,
+    'predicate': CONFIGURATION.PRODUCTS[0].PRODUCT_NEED,
     'description': 'Uittreksel Basis Registratie Persoonsgegevens'
   }
 ]
