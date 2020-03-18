@@ -16,14 +16,15 @@ class NeedStep extends Component {
 
   constructor(props) {
     super(props);
-    
-    this.props.needChanged = {
-      need: ''
+    this.state = {
+      selectValue: ""
     };
+    
+    this.handleDropdownChange = this.handleDropdownChange.bind(this);
+  }
 
-    //if (this.props.needChanged) {
-    //  this.props.needChanged(NEEDS[1].predicate)
-    //}
+  handleDropdownChange(e) {
+    this.setState({ selectValue: e.target.value });
   }
 
   renderOptions() {
@@ -39,7 +40,7 @@ class NeedStep extends Component {
     return (
       <div className="need-form">
         <form>
-          <select>
+          <select id="dropdown" onChange={this.handleDropdownChange}>
             {this.renderOptions()}
           </select>
         </form>
