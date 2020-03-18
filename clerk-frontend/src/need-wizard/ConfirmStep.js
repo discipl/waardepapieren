@@ -19,6 +19,9 @@ class ConfirmStep extends Component {
   }
 
   async componentDidMount() {
+    // added console log for debugging purposes
+    console.log(this.props.need)
+
     await timeoutPromise(100)
 
     let need = await this.abundance.need('ephemeral', this.props.need)
