@@ -3,11 +3,22 @@
   "DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT" : "ws://localhost:3233",
   "DEFAULT_CERTIFICATE_URL": "http://10.10.5.75:3000/certs/org.crt",
   "SOURCE_ARGUMENT" : "BSN",
-  "PRODUCT_NEED" : "BRP_VERBLIJFPLAATSHISTORIE_NEED",
-  "PRODUCT_ACCEPT" : "BRP_VERBLIJFPLAATSHISTORIE_ACCEPT",
-  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
-  "PRODUCT_DESCRIPTION" : "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
-  "PRODUCT_PURPOSE" : "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon",
+  "PRODUCTS" : [
+    {
+      "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
+      "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
+      "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+      "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
+      "PRODUCT_PURPOSE" : "Bewijs leveren voor verblijfadres in woonplaats"
+     },
+     {
+      "PRODUCT_NEED" : "BRP_VERBLIJFPLAATSHISTORIE_NEED",
+      "PRODUCT_ACCEPT" : "BRP_VERBLIJFPLAATSHISTORIE_ACCEPT",
+      "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
+      "PRODUCT_DESCRIPTION" : "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
+      "PRODUCT_PURPOSE" : "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
+     }
+   ],
   "EXPORT_TYPES" : {
     "@discipl/paper-wallet" : {
       "template" : {
@@ -30,12 +41,12 @@
         "canvasHeight": 838,
 
         "productHeaderFont": "bold 11.5px helvetica",
-        "productHeaderText": "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
+        "productHeaderText": "Gewaarmerkt digitaal afschrift uit de basisregistratie personen (BRP)",
         "productHeaderOffsetX": 40,
         "productHeaderOffsetY": 190,
 
         "subheaderFont": "11.5px helvetica",
-        "subheaderText": "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon",
+        "subheaderText": "Overzicht geregistreerde gegevens van een ingeschreven persoon",
         "subheaderOffsetX": 40,
         "subheaderOffsetY": 210,
 
