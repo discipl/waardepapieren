@@ -16,22 +16,12 @@ class NeedStep extends Component {
 
   constructor(props) {
     super(props);
-    
-  // Used example code from: https://stackblitz.com/edit/react-ymwpeu
 
-  handleChange = (e) => {
-   
-    //var index = e.nativeEvent.target.selectedIndex;
-    //var text =e.nativeEvent.target[index].text;
-    this.setState({type:e.target.value})  
-  }
-
-  if (this.props.needChanged) {
-      this.props.needChanged(NEEDS[e.nativeEvent.target.selectedIndex].predicate)
+    if (this.props.needChanged) {
+      this.props.needChanged(NEEDS[1].predicate)
     }
   }
 
-  
   renderOptions() {
     let result = []
     for (let i = 0; i < NEEDS.length; i++) {
@@ -45,7 +35,7 @@ class NeedStep extends Component {
     return (
       <div className="need-form">
         <form>
-          <select value={this.state.type}  onChange={this.handleChange}>
+          <select>
             {this.renderOptions()}
           </select>
         </form>
