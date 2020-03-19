@@ -53,11 +53,11 @@ class ConfirmStep extends Component {
     if (this.state.data) {
       for (let keyValue of this.state.data) {
         let key = Object.keys(keyValue)[0]
-        let value = keyValue[key]
+        let value = JSON.stringify(keyValue[key])
 
-        if (typeof value !==  'string') {
-          value = JSON.stringify(value)
-        }
+        //if (typeof value !==  'string') {
+        //  value = JSON.stringify(value)
+        //}
 
 
         result.push(<tr><td>{key}</td><td>{value}</td></tr>)
