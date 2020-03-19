@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 
 class NeedStep extends Component {
 
@@ -28,12 +28,13 @@ class NeedStep extends Component {
 
   render() {
     return (
-      <div className="need-form">
-        <form>
-          <select>
-            {this.renderOptions()}
-          </select>
-        </form>
+      <div className="input need-form">
+        <label className="input__label" htmlFor="waardepapieren-keuze">
+          Kies uit beschikbare waardepapieren
+        </label>
+        <select id="waardepapieren-keuze" className="input__control input__control--xl input__control--select">
+          {this.renderOptions()}
+        </select>
       </div>
     );
   }

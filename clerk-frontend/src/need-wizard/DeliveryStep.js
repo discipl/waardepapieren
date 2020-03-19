@@ -59,7 +59,7 @@ class ConfirmStep extends Component {
   render() {
     return (
       <div className="delivery-data">
-        <canvas id="delivery-canvas" ref={this.canvasRef}/>
+        <canvas id="delivery-canvas" class="responsive" ref={this.canvasRef}/>
       </div>
     );
   }

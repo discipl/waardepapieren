@@ -57,7 +57,18 @@ class ConfirmStep extends Component {
         }
 
 
-        result.push(<tr><td>{key}</td><td>{value}</td></tr>)
+        result.push(
+          <li className="definition-list__item definition-list__item--horizontal">
+            <div className="definition-list__title">
+              {key}
+            </div>
+            <div className="definition-list__description">
+              <p>
+                {value}
+              </p>
+            </div>
+          </li>
+        )
       }
 
     }
@@ -67,12 +78,15 @@ class ConfirmStep extends Component {
 
   render() {
     return (
-      <div className="confirmation-data">
-        <table>
-          <tbody>
-            {this.renderAttributes()}
-          </tbody>
-        </table>
+      <div>
+        <p>
+          <strong>
+            Controleer onderstaande gegevens:
+          </strong>
+        </p>
+        <ul className="definition-list definition-list--large-titles">
+          {this.renderAttributes()}
+        </ul>
       </div>
     );
   }
