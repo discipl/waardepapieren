@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CONFIGURATION from '../../../waardepapieren-service/configuration/products-configuration.json';
+import CONFIGURATION from '../products-config.json';
 const NEEDS = [
   {
     'predicate': CONFIGURATION.PRODUCTS[0].PRODUCT_NEED,
