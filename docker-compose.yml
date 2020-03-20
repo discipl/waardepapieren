@@ -2,9 +2,9 @@ version: '3'
 services:
   waardepapieren-service:
     volumes:
-    - ./waardepapieren-service/system-test/certs:/certs:ro
-    - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
-    - ./waardepapieren-service/configuration/:/app/configuration:ro
+      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
     links:
       - mock-nlx
@@ -12,20 +12,20 @@ services:
       - 3232:3232
       - 3233:3233
     environment:
-    - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose.json
-    # Ignore self-signed ephemeral and NLX cert issues
-    - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose.json
+      # Ignore self-signed ephemeral and NLX cert issues
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
   waardepapieren-verblijfplaatshistorie-service:
     volumes:
       - ./waardepapieren-service/system-test/certs:/certs:ro
       - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
       - ./waardepapieren-service/configuration/:/app/configuration:ro
-    build: waardepapieren-verblijfplaatshistorie-service/.
+    build: waardepapieren-service/.
     links:
       - mock-nlx
       - waardepapieren-service
     environment:
-      - WAARDEPAPIEREN_VERBLIJFPLAATSHISTORIE_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
   clerk-frontend:
