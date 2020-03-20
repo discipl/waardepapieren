@@ -3,7 +3,7 @@ const ENDPOINT = 'https://localhost:443'
 describe('clerk-frontend', () => {
   it('Allows a clerk to request waardepapieren', () => {
     cy.visit('')
-    cy.contains('Verstrekken bewijs inschrijving BRP')
+    cy.contains('Verstrekken waardepapier')
 
     cy.get('.bsn-form input')
       .type('663678651')
@@ -14,7 +14,7 @@ describe('clerk-frontend', () => {
 
     cy.contains('Volgende').click()
 
-    cy.contains('td', 'Utrecht', { 'timeout': 30000 })
+    cy.contains('p', 'Utrecht', { 'timeout': 30000 })
 
     cy.contains('Dit klopt!').click()
 
