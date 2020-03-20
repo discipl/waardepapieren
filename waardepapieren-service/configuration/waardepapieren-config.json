@@ -1,4 +1,5 @@
 {
+  "EPHEMERAL_START" : "Yes",
   "EPHEMERAL_ENDPOINT" : "https://localhost:3232",
   "EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://localhost:3232",
   "EPHEMERAL_CERT": "/ephemeral-certs/org.crt",

@@ -1,4 +1,5 @@
 {
+  "EPHEMERAL_START" : "No",
   "EPHEMERAL_ENDPOINT" : "https://waardepapieren-service:3232",
   "EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://waardepapieren-service:3232",
   "EPHEMERAL_CERT": "/ephemeral-certs/org.crt",
