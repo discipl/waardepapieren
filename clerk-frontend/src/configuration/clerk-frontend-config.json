@@ -25,11 +25,11 @@
 
         "backgroundImage" : "form-assets/another_pdf_template.png",
 
-        "logoImage": "form-assets/logo.png",
-        "logoWidth": 210,
-        "logoHeight": 160,
-        "logoOffsetX": 0,
-        "logoOffsetY": 0,
+        "logoImage": "form-assets/logo_Hoorn.png",
+        "logoWidth": 220,
+        "logoHeight": 220,
+        "logoOffsetX": 10,
+        "logoOffsetY": 10,
 
         "disciplImage": "form-assets/discipl.png",
         "disciplWidth": 90,
