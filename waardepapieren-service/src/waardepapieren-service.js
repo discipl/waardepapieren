@@ -20,14 +20,12 @@ class WaardenpapierenService {
       log.getLogger('EphemeralConnector').setLevel(configuration.LOG_LEVEL)
     }
 
-    if /* waardepapieren-service */ (this.configuration.PRODUCT_NEED === "BRP_UITTREKSEL_NEED") {
+    if (this.configuration.EPHEMERAL_START === "Yes") {
       // Setup server
       this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
       this.ephemeralServer.start()
-        }
-    else /* waardepapieren-verblijfplaatshistorie-service */ {
-      // Do nothing
     }
+    
     this.abundance = new AbundanceService(this.core)
     const core = this.abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
