@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import CONFIGURATION from '../configuration/clerk-frontend-config.json'
+
 import { AbundanceService } from '@discipl/abundance-service'
 
 const timeoutPromise = (timeoutMillis) => {
@@ -21,12 +21,12 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     await timeoutPromise(100)
 
-    let need = await this.abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
+    let need = await this.abundance.need('ephemeral', this.props.config.PRODUCT_NEED)
 
     let observeOffer = await this.abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise
 
-    await this.abundance.getCoreAPI().claim(need.myPrivateSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: this.props.bsn })
+    await this.abundance.getCoreAPI().claim(need.myPrivateSsid, { [this.props.config.SOURCE_ARGUMENT]: this.props.bsn })
 
 
     let result = await observeOffer.resultPromise
@@ -57,7 +57,18 @@ class ConfirmStep extends Component {
         }
 
 
-        result.push(<tr><td>{key}</td><td>{value}</td></tr>)
+        result.push(
+          <li className="definition-list__item definition-list__item--horizontal">
+            <div className="definition-list__title">
+              {key}
+            </div>
+            <div className="definition-list__description">
+              <p>
+                {value}
+              </p>
+            </div>
+          </li>
+        )
       }
 
     }
@@ -67,12 +78,15 @@ class ConfirmStep extends Component {
 
   render() {
     return (
-      <div className="confirmation-data">
-        <table>
-          <tbody>
-            {this.renderAttributes()}
-          </tbody>
-        </table>
+      <div>
+        <p>
+          <strong>
+            Controleer onderstaande gegevens:
+          </strong>
+        </p>
+        <ul className="definition-list definition-list--large-titles">
+          {this.renderAttributes()}
+        </ul>
       </div>
     );
   }

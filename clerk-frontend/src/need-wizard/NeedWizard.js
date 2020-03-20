@@ -57,29 +57,29 @@ class NeedWizard extends Component {
   }
 
   renderButtons() {
-    let prevButton = <button onClick={this._prev}>Vorige</button>;
-    let nextButton = <button onClick={this._next}>Volgende</button>;
-    let wrongInfoButton = <button>Dit klopt niet!</button>;
-    let rightInfoButton = <button onClick={this._next}>Dit klopt!</button>;
+    let prevButton = <span>of naar de <a href="#" onClick={this._prev}>vorige stap</a></span>;
+    let nextButton = <button onClick={this._next} className="btn btn--primary">Volgende<i className="btn__icon icon icon-arr-forward" title="Ga naar volgende stap" role=""></i></button>;
+    let wrongInfoButton = <button className="btn btn--primary">Dit klopt niet!</button>;
+    let rightInfoButton = <button className="btn" onClick={this._next}>Dit klopt!<i className="btn__icon icon icon-arr-forward" title="Ga naar de volgende stap" role=""></i></button>;
 
-    let downloadButton = <button onClick={this._download.bind(this, 'paperWallet')}>Download</button>; // currently still mock
-    let appleWalletButton = <button onClick={this._download.bind(this, 'appleWallet')}>Download naar Apple Wallet</button>;
+    let downloadButton = <button className="btn btn--primary" onClick={this._download.bind(this, 'paperWallet')}>Download<i className="btn__icon icon icon-download" title="Download het document" role=""></i></button>; // currently still mock
+    let appleWalletButton = <button className="btn btn--primary" onClick={this._download.bind(this, 'appleWallet')}>Download naar Apple Wallet<i className="btn__icon icon icon-folder" title="Download het document" role=""></i></button>;
 
-    let finishButton = <button onClick={this._first}>Afronden</button>;
+    let finishButton = <span>of <a href="#" onClick={this._first}>afronden</a></span>;
 
     if (this.state.step === 0) {
       return nextButton;
     }
 
     if (this.state.step === 2) {
-      return [prevButton, wrongInfoButton, rightInfoButton];
+      return [wrongInfoButton, rightInfoButton, prevButton];
     }
 
     if (this.state.step === MAX_STEP) {
       return [downloadButton, appleWalletButton, finishButton];
     }
 
-    return [prevButton, nextButton];
+    return [nextButton, prevButton];
   }
 
   bsnChanged(bsn) {
@@ -122,13 +122,13 @@ class NeedWizard extends Component {
   renderStep () {
     switch(this.state.step) {
       case 0:
-        return <BSNStep bsnChanged={this.bsnChanged}/>
+        return <BSNStep config={this.props.config} bsnChanged={this.bsnChanged}/>
       case 1:
-        return <NeedStep needChanged={this.needChanged}/>
+        return <NeedStep config={this.props.config} needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
+        return <ConfirmStep config={this.props.config} core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
       case 3:
-        return <DeliveryStep core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
+        return <DeliveryStep config={this.props.config} core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }
@@ -137,10 +137,13 @@ class NeedWizard extends Component {
   render() {
     return (
       <div className="NeedWizard">
-        <h2>Verstrekken bewijs inschrijving BRP</h2>
-        <h3>door gemeentelijk ambtenaar</h3>
+        <h2 role="heading">
+          Verstrekken waardepapier
+        </h2>
         {this.renderStep()}
-        {this.renderButtons()}
+        <div className="input">
+          {this.renderButtons()}
+        </div>
       </div>
     );
   }

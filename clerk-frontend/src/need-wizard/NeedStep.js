@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 
-import CONFIGURATION from '../configuration/clerk-frontend-config.json'
-const NEEDS = [
-  {
-    'predicate': CONFIGURATION.PRODUCT_NEED,
-    'description': 'Uittreksel Basis Registratie Persoonsgegevens'
-  }
-]
-
 class NeedStep extends Component {
 
   constructor(props) {
     super(props);
 
+    this.needs = [
+      {
+        'predicate': this.props.config.PRODUCT_NEED,
+        'description': 'Uittreksel Basis Registratie Persoonsgegevens'
+      }
+    ]
+
     if (this.props.needChanged) {
-      this.props.needChanged(NEEDS[0].predicate)
+      this.props.needChanged(this.needs[0].predicate)
     }
   }
 
   renderOptions() {
     let result = []
-    for (let i = 0; i < NEEDS.length; i++) {
-      let need = NEEDS[i]
+    for (let i = 0; i < this.needs.length; i++) {
+      let need = this.needs[i]
       result.push(<option value={need.predicate}>{need.description}</option>)
     }
     return result
@@ -29,12 +28,13 @@ class NeedStep extends Component {
 
   render() {
     return (
-      <div className="need-form">
-        <form>
-          <select>
-            {this.renderOptions()}
-          </select>
-        </form>
+      <div className="input need-form">
+        <label className="input__label" htmlFor="waardepapieren-keuze">
+          Kies uit beschikbare waardepapieren
+        </label>
+        <select id="waardepapieren-keuze" className="input__control input__control--xl input__control--select">
+          {this.renderOptions()}
+        </select>
       </div>
     );
   }

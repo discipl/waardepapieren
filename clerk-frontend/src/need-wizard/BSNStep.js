@@ -22,7 +22,12 @@ class BSNStep extends Component {
     return (
       <div className="bsn-form">
         <form>
-          <input type="text" placeholder='Voer BSN in' onChange={this.handleChange}/>
+          <div className="input">
+            <label className="input__label" htmlFor="waardepapieren-bsn">
+              Voer BSN in
+            </label>
+            <input type="text" id="waardepapieren-bsn" className="input__control input__control--large input__control--text" onChange={this.handleChange} />
+          </div>
         </form>
       </div>
     );
