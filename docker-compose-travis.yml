@@ -20,7 +20,7 @@ services:
       - ./waardepapieren-service/system-test/certs:/certs:ro
       - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
       - ./waardepapieren-service/configuration/:/app/configuration:ro
-    build: waardepapieren-verblijfplaatshistorie-service/.
+    build: waardepapieren-service/.
     links:
       - mock-nlx
       - waardepapieren-service
