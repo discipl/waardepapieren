@@ -16,9 +16,18 @@ class NeedStep extends Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      'currentNeed': NEEDS[0].predicate
+    }   
     if (this.props.needChanged) {
-      this.props.needChanged(NEEDS[1].predicate)
+      this.props.needChanged(NEEDS[0].predicate)
+    }
+  }
+
+  needChanged(event) {
+    this.setState({ currentNeed: event.target.value });
+    if (this.props.needChanged) {
+      this.props.needChanged(event.target.value)
     }
   }
 
@@ -35,7 +44,7 @@ class NeedStep extends Component {
     return (
       <div className="need-form">
         <form>
-          <select>
+          <select onChange={this.needChanged.bind(this)} value={this.state.currentNeed}>
             {this.renderOptions()}
           </select>
         </form>
