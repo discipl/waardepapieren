@@ -7,7 +7,7 @@ class NeedStep extends Component {
 
     this.needs = [
       {
-        'predicate': this.props.config.PRODUCT_NEED,
+        'predicate': this.props.config.PRODUCTS[0].PRODUCT_NEED,
         'description': 'Uittreksel Basis Registratie Persoonsgegevens'
       }
     ]
