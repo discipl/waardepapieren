@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
-import CONFIGURATION from '../products-config.json';
-const NEEDS = [
-  {
-    'predicate': CONFIGURATION.PRODUCTS[0].PRODUCT_NEED,
-    'description': 'Uittreksel Basis Registratie Persoonsgegevens'
-  },
-  {
-    'predicate': CONFIGURATION.PRODUCTS[1].PRODUCT_NEED,
-    'description': 'Uittreksel Basis Registratie Verblijfplaatshistorie'
-  }
-]
+
 class NeedStep extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      'currentNeed': NEEDS[0].predicate
-    }   
-    if (this.props.needChanged) {
-      this.props.needChanged(NEEDS[0].predicate)
-    }
-  }
 
-  needChanged(event) {
-    this.setState({ currentNeed: event.target.value });
+    this.needs = [
+      {
+        'predicate': this.props.config.PRODUCT_NEED,
+        'description': 'Uittreksel Basis Registratie Persoonsgegevens'
+      }
+    ]
+
     if (this.props.needChanged) {
-      this.props.needChanged(event.target.value)
+      this.props.needChanged(this.needs[0].predicate)
     }
   }
 
