@@ -21,7 +21,7 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     await timeoutPromise(100)
 
-    let need = await this.abundance.need('ephemeral', this.props.config.PRODUCT_NEED)
+    let need = await this.abundance.need('ephemeral', this.props.need)
 
     let observeOffer = await this.abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise

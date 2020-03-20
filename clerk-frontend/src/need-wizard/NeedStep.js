@@ -9,11 +9,22 @@ class NeedStep extends Component {
       {
         'predicate': this.props.config.PRODUCTS[0].PRODUCT_NEED,
         'description': 'Uittreksel Basis Registratie Persoonsgegevens'
+      },
+      {
+        'predicate': this.props.config.PRODUCTS[1].PRODUCT_NEED,
+        'description': 'Uittreksel Basis Registratie Verblijfplaatshistorie'
       }
     ]
 
     if (this.props.needChanged) {
       this.props.needChanged(this.needs[0].predicate)
+    }
+  }
+
+  needChanged(event) {
+    this.setState({ currentNeed: event.target.value });
+    if (this.props.needChanged) {
+      this.props.needChanged(event.target.value)
     }
   }
 
