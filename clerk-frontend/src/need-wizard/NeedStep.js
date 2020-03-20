@@ -13,7 +13,7 @@ class NeedStep extends Component {
     ]
 
     if (this.props.needChanged) {
-      this.props.needChanged(this.needs[0].predicate)
+      this.props.needChanged(this.needs[1].predicate)
     }
   }
 
