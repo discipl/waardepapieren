@@ -17,7 +17,7 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) =
       "geboorte": {
         "datum": "05/07/1970",
         "land": "Nederland",
-        "stad": "Utrecht"
+        "stad": "Haarlem"
       },
       "identificatie": "da02a3ac-4412-11e9-b210-d663bd873d93",
       "kinderen": [
@@ -45,16 +45,16 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) =
       "postadres": {
         "huisnummer": 21,
         "postcode": "3512JC",
-        "straatnaam": "Domplein",
-        "woonplaats": "Utrecht"
+        "straatnaam": "Stationsplein",
+        "woonplaats": "Haarlem"
       },
       "telefoonnummer": "(06)594-38-045",
       "url": "/natuurlijke_personen/da02a3ac-4412-11e9-b210-d663bd873d93",
       "verblijfadres": {
         "huisnummer": 21,
         "postcode": "3512JC",
-        "straatnaam": "Domplein",
-        "woonplaats": "Utrecht"
+        "straatnaam": "Stationsplein",
+        "woonplaats": "Haarlem"
       }
     }
   ))
@@ -77,7 +77,7 @@ app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/663678651', (req, res)
     "geboorte": {
       "datum": "05/07/1970",
       "land": "Nederland",
-      "stad": "Utrecht"
+      "stad": "Hoorn"
     },
     "functieAdres": "woonadres",
     "huisletter": "B",
@@ -87,7 +87,7 @@ app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/663678651', (req, res)
     "identificatiecodeNummeraanduiding": "0518200000366054",
     "naamOpenbareRuimte": "Loosduinsekade",
     "postcode": "2571CC",
-    "woonplaatsnaam": "Utrecht",
+    "woonplaatsnaam": "Hoorn",
     "identificatiecodeAdresseerbaarObject": "0518200000366054",
     "indicatieVestigingVanuitBuitenland": true,
     "locatiebeschrijving": "Naast de derde brug",
