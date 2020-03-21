@@ -16,18 +16,21 @@ class NeedStep extends Component {
       }
     ]
 
+    this.state = {
+      'currentNeed': this.needs[0].predicate
+    }   
     if (this.props.needChanged) {
-      this.props.needChanged(this.needs[1].predicate)
+      this.props.needChanged(this.needs[0].predicate)
     }
   }
-
+  
   needChanged(event) {
     this.setState({ currentNeed: event.target.value });
     if (this.props.needChanged) {
       this.props.needChanged(event.target.value)
     }
   }
-
+  
   renderOptions() {
     let result = []
     for (let i = 0; i < this.needs.length; i++) {
@@ -43,7 +46,7 @@ class NeedStep extends Component {
         <label className="input__label" htmlFor="waardepapieren-keuze">
           Kies uit beschikbare waardepapieren
         </label>
-        <select id="waardepapieren-keuze" className="input__control input__control--xl input__control--select">
+        <select onChange={this.needChanged.bind(this)} value={this.state.currentNeed} id="waardepapieren-keuze" className="input__control input__control--xl input__control--select">
           {this.renderOptions()}
         </select>
       </div>
