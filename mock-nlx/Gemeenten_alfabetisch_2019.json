@@ -1,0 +1,2842 @@
+[
+  {
+    "Gemeentecode": 1680,
+    "GemeentecodeGM": "GM1680",
+    "Gemeentenaam": "Aa en Hunze",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0358",
+    "GemeentecodeGM": "GM0358",
+    "Gemeentenaam": "Aalsmeer",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0197",
+    "GemeentecodeGM": "GM0197",
+    "Gemeentenaam": "Aalten",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0059",
+    "GemeentecodeGM": "GM0059",
+    "Gemeentenaam": "Achtkarspelen",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0482",
+    "GemeentecodeGM": "GM0482",
+    "Gemeentenaam": "Alblasserdam",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0613",
+    "GemeentecodeGM": "GM0613",
+    "Gemeentenaam": "Albrandswaard",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0361",
+    "GemeentecodeGM": "GM0361",
+    "Gemeentenaam": "Alkmaar",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0141",
+    "GemeentecodeGM": "GM0141",
+    "Gemeentenaam": "Almelo",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0034",
+    "GemeentecodeGM": "GM0034",
+    "Gemeentenaam": "Almere",
+    "Provinciecode": 24,
+    "ProvinciecodePV": "PV24",
+    "Provincienaam": "Flevoland"
+  },
+  {
+    "Gemeentecode": "0484",
+    "GemeentecodeGM": "GM0484",
+    "Gemeentenaam": "Alphen aan den Rijn",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1723,
+    "GemeentecodeGM": "GM1723",
+    "Gemeentenaam": "Alphen-Chaam",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1959,
+    "GemeentecodeGM": "GM1959",
+    "Gemeentenaam": "Altena",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0060",
+    "GemeentecodeGM": "GM0060",
+    "Gemeentenaam": "Ameland",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0307",
+    "GemeentecodeGM": "GM0307",
+    "Gemeentenaam": "Amersfoort",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0362",
+    "GemeentecodeGM": "GM0362",
+    "Gemeentenaam": "Amstelveen",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0363",
+    "GemeentecodeGM": "GM0363",
+    "Gemeentenaam": "Amsterdam",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0200",
+    "GemeentecodeGM": "GM0200",
+    "Gemeentenaam": "Apeldoorn",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0003",
+    "GemeentecodeGM": "GM0003",
+    "Gemeentenaam": "Appingedam",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0202",
+    "GemeentecodeGM": "GM0202",
+    "Gemeentenaam": "Arnhem",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0106",
+    "GemeentecodeGM": "GM0106",
+    "Gemeentenaam": "Assen",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0743",
+    "GemeentecodeGM": "GM0743",
+    "Gemeentenaam": "Asten",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0744",
+    "GemeentecodeGM": "GM0744",
+    "Gemeentenaam": "Baarle-Nassau",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0308",
+    "GemeentecodeGM": "GM0308",
+    "Gemeentenaam": "Baarn",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0489",
+    "GemeentecodeGM": "GM0489",
+    "Gemeentenaam": "Barendrecht",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0203",
+    "GemeentecodeGM": "GM0203",
+    "Gemeentenaam": "Barneveld",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0888",
+    "GemeentecodeGM": "GM0888",
+    "Gemeentenaam": "Beek",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1954,
+    "GemeentecodeGM": "GM1954",
+    "Gemeentenaam": "Beekdaelen",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0370",
+    "GemeentecodeGM": "GM0370",
+    "Gemeentenaam": "Beemster",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0889",
+    "GemeentecodeGM": "GM0889",
+    "Gemeentenaam": "Beesel",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1945,
+    "GemeentecodeGM": "GM1945",
+    "Gemeentenaam": "Berg en Dal",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1724,
+    "GemeentecodeGM": "GM1724",
+    "Gemeentenaam": "Bergeijk",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0893",
+    "GemeentecodeGM": "GM0893",
+    "Gemeentenaam": "Bergen (L.)",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0373",
+    "GemeentecodeGM": "GM0373",
+    "Gemeentenaam": "Bergen (NH.)",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0748",
+    "GemeentecodeGM": "GM0748",
+    "Gemeentenaam": "Bergen op Zoom",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1859,
+    "GemeentecodeGM": "GM1859",
+    "Gemeentenaam": "Berkelland",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1721,
+    "GemeentecodeGM": "GM1721",
+    "Gemeentenaam": "Bernheze",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0753",
+    "GemeentecodeGM": "GM0753",
+    "Gemeentenaam": "Best",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0209",
+    "GemeentecodeGM": "GM0209",
+    "Gemeentenaam": "Beuningen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0375",
+    "GemeentecodeGM": "GM0375",
+    "Gemeentenaam": "Beverwijk",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0310",
+    "GemeentecodeGM": "GM0310",
+    "Gemeentenaam": "De Bilt",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1728,
+    "GemeentecodeGM": "GM1728",
+    "Gemeentenaam": "Bladel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0376",
+    "GemeentecodeGM": "GM0376",
+    "Gemeentenaam": "Blaricum",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0377",
+    "GemeentecodeGM": "GM0377",
+    "Gemeentenaam": "Bloemendaal",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1901,
+    "GemeentecodeGM": "GM1901",
+    "Gemeentenaam": "Bodegraven-Reeuwijk",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0755",
+    "GemeentecodeGM": "GM0755",
+    "Gemeentenaam": "Boekel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1681,
+    "GemeentecodeGM": "GM1681",
+    "Gemeentenaam": "Borger-Odoorn",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0147",
+    "GemeentecodeGM": "GM0147",
+    "Gemeentenaam": "Borne",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0654",
+    "GemeentecodeGM": "GM0654",
+    "Gemeentenaam": "Borsele",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0756",
+    "GemeentecodeGM": "GM0756",
+    "Gemeentenaam": "Boxmeer",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0757",
+    "GemeentecodeGM": "GM0757",
+    "Gemeentenaam": "Boxtel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0758",
+    "GemeentecodeGM": "GM0758",
+    "Gemeentenaam": "Breda",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0501",
+    "GemeentecodeGM": "GM0501",
+    "Gemeentenaam": "Brielle",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1876,
+    "GemeentecodeGM": "GM1876",
+    "Gemeentenaam": "Bronckhorst",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0213",
+    "GemeentecodeGM": "GM0213",
+    "Gemeentenaam": "Brummen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0899",
+    "GemeentecodeGM": "GM0899",
+    "Gemeentenaam": "Brunssum",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0312",
+    "GemeentecodeGM": "GM0312",
+    "Gemeentenaam": "Bunnik",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0313",
+    "GemeentecodeGM": "GM0313",
+    "Gemeentenaam": "Bunschoten",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0214",
+    "GemeentecodeGM": "GM0214",
+    "Gemeentenaam": "Buren",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0502",
+    "GemeentecodeGM": "GM0502",
+    "Gemeentenaam": "Capelle aan den IJssel",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0383",
+    "GemeentecodeGM": "GM0383",
+    "Gemeentenaam": "Castricum",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0109",
+    "GemeentecodeGM": "GM0109",
+    "Gemeentenaam": "Coevorden",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": 1706,
+    "GemeentecodeGM": "GM1706",
+    "Gemeentenaam": "Cranendonck",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1684,
+    "GemeentecodeGM": "GM1684",
+    "Gemeentenaam": "Cuijk",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0216",
+    "GemeentecodeGM": "GM0216",
+    "Gemeentenaam": "Culemborg",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0148",
+    "GemeentecodeGM": "GM0148",
+    "Gemeentenaam": "Dalfsen",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": 1891,
+    "GemeentecodeGM": "GM1891",
+    "Gemeentenaam": "Dantumadiel",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0503",
+    "GemeentecodeGM": "GM0503",
+    "Gemeentenaam": "Delft",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0010",
+    "GemeentecodeGM": "GM0010",
+    "Gemeentenaam": "Delfzijl",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0762",
+    "GemeentecodeGM": "GM0762",
+    "Gemeentenaam": "Deurne",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0150",
+    "GemeentecodeGM": "GM0150",
+    "Gemeentenaam": "Deventer",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0384",
+    "GemeentecodeGM": "GM0384",
+    "Gemeentenaam": "Diemen",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1774,
+    "GemeentecodeGM": "GM1774",
+    "Gemeentenaam": "Dinkelland",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0221",
+    "GemeentecodeGM": "GM0221",
+    "Gemeentenaam": "Doesburg",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0222",
+    "GemeentecodeGM": "GM0222",
+    "Gemeentenaam": "Doetinchem",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0766",
+    "GemeentecodeGM": "GM0766",
+    "Gemeentenaam": "Dongen",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0505",
+    "GemeentecodeGM": "GM0505",
+    "Gemeentenaam": "Dordrecht",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0498",
+    "GemeentecodeGM": "GM0498",
+    "Gemeentenaam": "Drechterland",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1719,
+    "GemeentecodeGM": "GM1719",
+    "Gemeentenaam": "Drimmelen",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0303",
+    "GemeentecodeGM": "GM0303",
+    "Gemeentenaam": "Dronten",
+    "Provinciecode": 24,
+    "ProvinciecodePV": "PV24",
+    "Provincienaam": "Flevoland"
+  },
+  {
+    "Gemeentecode": "0225",
+    "GemeentecodeGM": "GM0225",
+    "Gemeentenaam": "Druten",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0226",
+    "GemeentecodeGM": "GM0226",
+    "Gemeentenaam": "Duiven",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1711,
+    "GemeentecodeGM": "GM1711",
+    "Gemeentenaam": "Echt-Susteren",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0385",
+    "GemeentecodeGM": "GM0385",
+    "Gemeentenaam": "Edam-Volendam",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0228",
+    "GemeentecodeGM": "GM0228",
+    "Gemeentenaam": "Ede",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0317",
+    "GemeentecodeGM": "GM0317",
+    "Gemeentenaam": "Eemnes",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0770",
+    "GemeentecodeGM": "GM0770",
+    "Gemeentenaam": "Eersel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1903,
+    "GemeentecodeGM": "GM1903",
+    "Gemeentenaam": "Eijsden-Margraten",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0772",
+    "GemeentecodeGM": "GM0772",
+    "Gemeentenaam": "Eindhoven",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0230",
+    "GemeentecodeGM": "GM0230",
+    "Gemeentenaam": "Elburg",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0114",
+    "GemeentecodeGM": "GM0114",
+    "Gemeentenaam": "Emmen",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0388",
+    "GemeentecodeGM": "GM0388",
+    "Gemeentenaam": "Enkhuizen",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0153",
+    "GemeentecodeGM": "GM0153",
+    "Gemeentenaam": "Enschede",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0232",
+    "GemeentecodeGM": "GM0232",
+    "Gemeentenaam": "Epe",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0233",
+    "GemeentecodeGM": "GM0233",
+    "Gemeentenaam": "Ermelo",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0777",
+    "GemeentecodeGM": "GM0777",
+    "Gemeentenaam": "Etten-Leur",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1940,
+    "GemeentecodeGM": "GM1940",
+    "Gemeentenaam": "De Fryske Marren",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0779",
+    "GemeentecodeGM": "GM0779",
+    "Gemeentenaam": "Geertruidenberg",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1771,
+    "GemeentecodeGM": "GM1771",
+    "Gemeentenaam": "Geldrop-Mierlo",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1652,
+    "GemeentecodeGM": "GM1652",
+    "Gemeentenaam": "Gemert-Bakel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0907",
+    "GemeentecodeGM": "GM0907",
+    "Gemeentenaam": "Gennep",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0784",
+    "GemeentecodeGM": "GM0784",
+    "Gemeentenaam": "Gilze en Rijen",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1924,
+    "GemeentecodeGM": "GM1924",
+    "Gemeentenaam": "Goeree-Overflakkee",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0664",
+    "GemeentecodeGM": "GM0664",
+    "Gemeentenaam": "Goes",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0785",
+    "GemeentecodeGM": "GM0785",
+    "Gemeentenaam": "Goirle",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1942,
+    "GemeentecodeGM": "GM1942",
+    "Gemeentenaam": "Gooise Meren",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0512",
+    "GemeentecodeGM": "GM0512",
+    "Gemeentenaam": "Gorinchem",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0513",
+    "GemeentecodeGM": "GM0513",
+    "Gemeentenaam": "Gouda",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0786",
+    "GemeentecodeGM": "GM0786",
+    "Gemeentenaam": "Grave",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0518",
+    "GemeentecodeGM": "GM0518",
+    "Gemeentenaam": "'s-Gravenhage",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0014",
+    "GemeentecodeGM": "GM0014",
+    "Gemeentenaam": "Groningen",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": 1729,
+    "GemeentecodeGM": "GM1729",
+    "Gemeentenaam": "Gulpen-Wittem",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0158",
+    "GemeentecodeGM": "GM0158",
+    "Gemeentenaam": "Haaksbergen",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0788",
+    "GemeentecodeGM": "GM0788",
+    "Gemeentenaam": "Haaren",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0392",
+    "GemeentecodeGM": "GM0392",
+    "Gemeentenaam": "Haarlem",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0394",
+    "GemeentecodeGM": "GM0394",
+    "Gemeentenaam": "Haarlemmermeer",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1655,
+    "GemeentecodeGM": "GM1655",
+    "Gemeentenaam": "Halderberge",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0160",
+    "GemeentecodeGM": "GM0160",
+    "Gemeentenaam": "Hardenberg",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0243",
+    "GemeentecodeGM": "GM0243",
+    "Gemeentenaam": "Harderwijk",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0523",
+    "GemeentecodeGM": "GM0523",
+    "Gemeentenaam": "Hardinxveld-Giessendam",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0072",
+    "GemeentecodeGM": "GM0072",
+    "Gemeentenaam": "Harlingen",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0244",
+    "GemeentecodeGM": "GM0244",
+    "Gemeentenaam": "Hattem",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0396",
+    "GemeentecodeGM": "GM0396",
+    "Gemeentenaam": "Heemskerk",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0397",
+    "GemeentecodeGM": "GM0397",
+    "Gemeentenaam": "Heemstede",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0246",
+    "GemeentecodeGM": "GM0246",
+    "Gemeentenaam": "Heerde",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0074",
+    "GemeentecodeGM": "GM0074",
+    "Gemeentenaam": "Heerenveen",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0398",
+    "GemeentecodeGM": "GM0398",
+    "Gemeentenaam": "Heerhugowaard",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0917",
+    "GemeentecodeGM": "GM0917",
+    "Gemeentenaam": "Heerlen",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1658,
+    "GemeentecodeGM": "GM1658",
+    "Gemeentenaam": "Heeze-Leende",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0399",
+    "GemeentecodeGM": "GM0399",
+    "Gemeentenaam": "Heiloo",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0400",
+    "GemeentecodeGM": "GM0400",
+    "Gemeentenaam": "Den Helder",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0163",
+    "GemeentecodeGM": "GM0163",
+    "Gemeentenaam": "Hellendoorn",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0530",
+    "GemeentecodeGM": "GM0530",
+    "Gemeentenaam": "Hellevoetsluis",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0794",
+    "GemeentecodeGM": "GM0794",
+    "Gemeentenaam": "Helmond",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0531",
+    "GemeentecodeGM": "GM0531",
+    "Gemeentenaam": "Hendrik-Ido-Ambacht",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0164",
+    "GemeentecodeGM": "GM0164",
+    "Gemeentenaam": "Hengelo",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0796",
+    "GemeentecodeGM": "GM0796",
+    "Gemeentenaam": "'s-Hertogenbosch",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0252",
+    "GemeentecodeGM": "GM0252",
+    "Gemeentenaam": "Heumen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0797",
+    "GemeentecodeGM": "GM0797",
+    "Gemeentenaam": "Heusden",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0534",
+    "GemeentecodeGM": "GM0534",
+    "Gemeentenaam": "Hillegom",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0798",
+    "GemeentecodeGM": "GM0798",
+    "Gemeentenaam": "Hilvarenbeek",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0402",
+    "GemeentecodeGM": "GM0402",
+    "Gemeentenaam": "Hilversum",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1963,
+    "GemeentecodeGM": "GM1963",
+    "Gemeentenaam": "Hoeksche Waard",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1735,
+    "GemeentecodeGM": "GM1735",
+    "Gemeentenaam": "Hof van Twente",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": 1966,
+    "GemeentecodeGM": "GM1966",
+    "Gemeentenaam": "Het Hogeland",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": 1911,
+    "GemeentecodeGM": "GM1911",
+    "Gemeentenaam": "Hollands Kroon",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0118",
+    "GemeentecodeGM": "GM0118",
+    "Gemeentenaam": "Hoogeveen",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0405",
+    "GemeentecodeGM": "GM0405",
+    "Gemeentenaam": "Hoorn",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1507,
+    "GemeentecodeGM": "GM1507",
+    "Gemeentenaam": "Horst aan de Maas",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0321",
+    "GemeentecodeGM": "GM0321",
+    "Gemeentenaam": "Houten",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0406",
+    "GemeentecodeGM": "GM0406",
+    "Gemeentenaam": "Huizen",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0677",
+    "GemeentecodeGM": "GM0677",
+    "Gemeentenaam": "Hulst",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0353",
+    "GemeentecodeGM": "GM0353",
+    "Gemeentenaam": "IJsselstein",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1884,
+    "GemeentecodeGM": "GM1884",
+    "Gemeentenaam": "Kaag en Braassem",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0166",
+    "GemeentecodeGM": "GM0166",
+    "Gemeentenaam": "Kampen",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0678",
+    "GemeentecodeGM": "GM0678",
+    "Gemeentenaam": "Kapelle",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0537",
+    "GemeentecodeGM": "GM0537",
+    "Gemeentenaam": "Katwijk",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0928",
+    "GemeentecodeGM": "GM0928",
+    "Gemeentenaam": "Kerkrade",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1598,
+    "GemeentecodeGM": "GM1598",
+    "Gemeentenaam": "Koggenland",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0542",
+    "GemeentecodeGM": "GM0542",
+    "Gemeentenaam": "Krimpen aan den IJssel",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1931,
+    "GemeentecodeGM": "GM1931",
+    "Gemeentenaam": "Krimpenerwaard",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1659,
+    "GemeentecodeGM": "GM1659",
+    "Gemeentenaam": "Laarbeek",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1685,
+    "GemeentecodeGM": "GM1685",
+    "Gemeentenaam": "Landerd",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0882",
+    "GemeentecodeGM": "GM0882",
+    "Gemeentenaam": "Landgraaf",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0415",
+    "GemeentecodeGM": "GM0415",
+    "Gemeentenaam": "Landsmeer",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0416",
+    "GemeentecodeGM": "GM0416",
+    "Gemeentenaam": "Langedijk",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1621,
+    "GemeentecodeGM": "GM1621",
+    "Gemeentenaam": "Lansingerland",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0417",
+    "GemeentecodeGM": "GM0417",
+    "Gemeentenaam": "Laren",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0080",
+    "GemeentecodeGM": "GM0080",
+    "Gemeentenaam": "Leeuwarden",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0546",
+    "GemeentecodeGM": "GM0546",
+    "Gemeentenaam": "Leiden",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0547",
+    "GemeentecodeGM": "GM0547",
+    "Gemeentenaam": "Leiderdorp",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1916,
+    "GemeentecodeGM": "GM1916",
+    "Gemeentenaam": "Leidschendam-Voorburg",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0995",
+    "GemeentecodeGM": "GM0995",
+    "Gemeentenaam": "Lelystad",
+    "Provinciecode": 24,
+    "ProvinciecodePV": "PV24",
+    "Provincienaam": "Flevoland"
+  },
+  {
+    "Gemeentecode": 1640,
+    "GemeentecodeGM": "GM1640",
+    "Gemeentenaam": "Leudal",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0327",
+    "GemeentecodeGM": "GM0327",
+    "Gemeentenaam": "Leusden",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1705,
+    "GemeentecodeGM": "GM1705",
+    "Gemeentenaam": "Lingewaard",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0553",
+    "GemeentecodeGM": "GM0553",
+    "Gemeentenaam": "Lisse",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0262",
+    "GemeentecodeGM": "GM0262",
+    "Gemeentenaam": "Lochem",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0809",
+    "GemeentecodeGM": "GM0809",
+    "Gemeentenaam": "Loon op Zand",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0331",
+    "GemeentecodeGM": "GM0331",
+    "Gemeentenaam": "Lopik",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0024",
+    "GemeentecodeGM": "GM0024",
+    "Gemeentenaam": "Loppersum",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0168",
+    "GemeentecodeGM": "GM0168",
+    "Gemeentenaam": "Losser",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0263",
+    "GemeentecodeGM": "GM0263",
+    "Gemeentenaam": "Maasdriel",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1641,
+    "GemeentecodeGM": "GM1641",
+    "Gemeentenaam": "Maasgouw",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0556",
+    "GemeentecodeGM": "GM0556",
+    "Gemeentenaam": "Maassluis",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0935",
+    "GemeentecodeGM": "GM0935",
+    "Gemeentenaam": "Maastricht",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0420",
+    "GemeentecodeGM": "GM0420",
+    "Gemeentenaam": "Medemblik",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0938",
+    "GemeentecodeGM": "GM0938",
+    "Gemeentenaam": "Meerssen",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1948,
+    "GemeentecodeGM": "GM1948",
+    "Gemeentenaam": "Meierijstad",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0119",
+    "GemeentecodeGM": "GM0119",
+    "Gemeentenaam": "Meppel",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0687",
+    "GemeentecodeGM": "GM0687",
+    "Gemeentenaam": "Middelburg",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": 1842,
+    "GemeentecodeGM": "GM1842",
+    "Gemeentenaam": "Midden-Delfland",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1731,
+    "GemeentecodeGM": "GM1731",
+    "Gemeentenaam": "Midden-Drenthe",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": 1952,
+    "GemeentecodeGM": "GM1952",
+    "Gemeentenaam": "Midden-Groningen",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0815",
+    "GemeentecodeGM": "GM0815",
+    "Gemeentenaam": "Mill en Sint Hubert",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1709,
+    "GemeentecodeGM": "GM1709",
+    "Gemeentenaam": "Moerdijk",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1978,
+    "GemeentecodeGM": "GM1978",
+    "Gemeentenaam": "Molenlanden",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1955,
+    "GemeentecodeGM": "GM1955",
+    "Gemeentenaam": "Montferland",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0335",
+    "GemeentecodeGM": "GM0335",
+    "Gemeentenaam": "Montfoort",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0944",
+    "GemeentecodeGM": "GM0944",
+    "Gemeentenaam": "Mook en Middelaar",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1740,
+    "GemeentecodeGM": "GM1740",
+    "Gemeentenaam": "Neder-Betuwe",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0946",
+    "GemeentecodeGM": "GM0946",
+    "Gemeentenaam": "Nederweert",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0356",
+    "GemeentecodeGM": "GM0356",
+    "Gemeentenaam": "Nieuwegein",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0569",
+    "GemeentecodeGM": "GM0569",
+    "Gemeentenaam": "Nieuwkoop",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0267",
+    "GemeentecodeGM": "GM0267",
+    "Gemeentenaam": "Nijkerk",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0268",
+    "GemeentecodeGM": "GM0268",
+    "Gemeentenaam": "Nijmegen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1930,
+    "GemeentecodeGM": "GM1930",
+    "Gemeentenaam": "Nissewaard",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1970,
+    "GemeentecodeGM": "GM1970",
+    "Gemeentenaam": "Noardeast-Fryslân",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": 1695,
+    "GemeentecodeGM": "GM1695",
+    "Gemeentenaam": "Noord-Beveland",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": 1699,
+    "GemeentecodeGM": "GM1699",
+    "Gemeentenaam": "Noordenveld",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0171",
+    "GemeentecodeGM": "GM0171",
+    "Gemeentenaam": "Noordoostpolder",
+    "Provinciecode": 24,
+    "ProvinciecodePV": "PV24",
+    "Provincienaam": "Flevoland"
+  },
+  {
+    "Gemeentecode": "0575",
+    "GemeentecodeGM": "GM0575",
+    "Gemeentenaam": "Noordwijk",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0820",
+    "GemeentecodeGM": "GM0820",
+    "Gemeentenaam": "Nuenen, Gerwen en Nederwetten",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0302",
+    "GemeentecodeGM": "GM0302",
+    "Gemeentenaam": "Nunspeet",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0579",
+    "GemeentecodeGM": "GM0579",
+    "Gemeentenaam": "Oegstgeest",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0823",
+    "GemeentecodeGM": "GM0823",
+    "Gemeentenaam": "Oirschot",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0824",
+    "GemeentecodeGM": "GM0824",
+    "Gemeentenaam": "Oisterwijk",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1895,
+    "GemeentecodeGM": "GM1895",
+    "Gemeentenaam": "Oldambt",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0269",
+    "GemeentecodeGM": "GM0269",
+    "Gemeentenaam": "Oldebroek",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0173",
+    "GemeentecodeGM": "GM0173",
+    "Gemeentenaam": "Oldenzaal",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": 1773,
+    "GemeentecodeGM": "GM1773",
+    "Gemeentenaam": "Olst-Wijhe",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0175",
+    "GemeentecodeGM": "GM0175",
+    "Gemeentenaam": "Ommen",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": 1586,
+    "GemeentecodeGM": "GM1586",
+    "Gemeentenaam": "Oost Gelre",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0826",
+    "GemeentecodeGM": "GM0826",
+    "Gemeentenaam": "Oosterhout",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0085",
+    "GemeentecodeGM": "GM0085",
+    "Gemeentenaam": "Ooststellingwerf",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0431",
+    "GemeentecodeGM": "GM0431",
+    "Gemeentenaam": "Oostzaan",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0432",
+    "GemeentecodeGM": "GM0432",
+    "Gemeentenaam": "Opmeer",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0086",
+    "GemeentecodeGM": "GM0086",
+    "Gemeentenaam": "Opsterland",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0828",
+    "GemeentecodeGM": "GM0828",
+    "Gemeentenaam": "Oss",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1509,
+    "GemeentecodeGM": "GM1509",
+    "Gemeentenaam": "Oude IJsselstreek",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0437",
+    "GemeentecodeGM": "GM0437",
+    "Gemeentenaam": "Ouder-Amstel",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0589",
+    "GemeentecodeGM": "GM0589",
+    "Gemeentenaam": "Oudewater",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1734,
+    "GemeentecodeGM": "GM1734",
+    "Gemeentenaam": "Overbetuwe",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0590",
+    "GemeentecodeGM": "GM0590",
+    "Gemeentenaam": "Papendrecht",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1894,
+    "GemeentecodeGM": "GM1894",
+    "Gemeentenaam": "Peel en Maas",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0765",
+    "GemeentecodeGM": "GM0765",
+    "Gemeentenaam": "Pekela",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": 1926,
+    "GemeentecodeGM": "GM1926",
+    "Gemeentenaam": "Pijnacker-Nootdorp",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0439",
+    "GemeentecodeGM": "GM0439",
+    "Gemeentenaam": "Purmerend",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0273",
+    "GemeentecodeGM": "GM0273",
+    "Gemeentenaam": "Putten",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0177",
+    "GemeentecodeGM": "GM0177",
+    "Gemeentenaam": "Raalte",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0703",
+    "GemeentecodeGM": "GM0703",
+    "Gemeentenaam": "Reimerswaal",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0274",
+    "GemeentecodeGM": "GM0274",
+    "Gemeentenaam": "Renkum",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0339",
+    "GemeentecodeGM": "GM0339",
+    "Gemeentenaam": "Renswoude",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1667,
+    "GemeentecodeGM": "GM1667",
+    "Gemeentenaam": "Reusel-De Mierden",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0275",
+    "GemeentecodeGM": "GM0275",
+    "Gemeentenaam": "Rheden",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0340",
+    "GemeentecodeGM": "GM0340",
+    "Gemeentenaam": "Rhenen",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0597",
+    "GemeentecodeGM": "GM0597",
+    "Gemeentenaam": "Ridderkerk",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1742,
+    "GemeentecodeGM": "GM1742",
+    "Gemeentenaam": "Rijssen-Holten",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0603",
+    "GemeentecodeGM": "GM0603",
+    "Gemeentenaam": "Rijswijk",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1669,
+    "GemeentecodeGM": "GM1669",
+    "Gemeentenaam": "Roerdalen",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0957",
+    "GemeentecodeGM": "GM0957",
+    "Gemeentenaam": "Roermond",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0736",
+    "GemeentecodeGM": "GM0736",
+    "Gemeentenaam": "De Ronde Venen",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1674,
+    "GemeentecodeGM": "GM1674",
+    "Gemeentenaam": "Roosendaal",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0599",
+    "GemeentecodeGM": "GM0599",
+    "Gemeentenaam": "Rotterdam",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0277",
+    "GemeentecodeGM": "GM0277",
+    "Gemeentenaam": "Rozendaal",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0840",
+    "GemeentecodeGM": "GM0840",
+    "Gemeentenaam": "Rucphen",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0441",
+    "GemeentecodeGM": "GM0441",
+    "Gemeentenaam": "Schagen",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0279",
+    "GemeentecodeGM": "GM0279",
+    "Gemeentenaam": "Scherpenzeel",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0606",
+    "GemeentecodeGM": "GM0606",
+    "Gemeentenaam": "Schiedam",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0088",
+    "GemeentecodeGM": "GM0088",
+    "Gemeentenaam": "Schiermonnikoog",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": 1676,
+    "GemeentecodeGM": "GM1676",
+    "Gemeentenaam": "Schouwen-Duiveland",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0965",
+    "GemeentecodeGM": "GM0965",
+    "Gemeentenaam": "Simpelveld",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1702,
+    "GemeentecodeGM": "GM1702",
+    "Gemeentenaam": "Sint Anthonis",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0845",
+    "GemeentecodeGM": "GM0845",
+    "Gemeentenaam": "Sint-Michielsgestel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1883,
+    "GemeentecodeGM": "GM1883",
+    "Gemeentenaam": "Sittard-Geleen",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0610",
+    "GemeentecodeGM": "GM0610",
+    "Gemeentenaam": "Sliedrecht",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1714,
+    "GemeentecodeGM": "GM1714",
+    "Gemeentenaam": "Sluis",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0090",
+    "GemeentecodeGM": "GM0090",
+    "Gemeentenaam": "Smallingerland",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0342",
+    "GemeentecodeGM": "GM0342",
+    "Gemeentenaam": "Soest",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0847",
+    "GemeentecodeGM": "GM0847",
+    "Gemeentenaam": "Someren",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0848",
+    "GemeentecodeGM": "GM0848",
+    "Gemeentenaam": "Son en Breugel",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0037",
+    "GemeentecodeGM": "GM0037",
+    "Gemeentenaam": "Stadskanaal",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0180",
+    "GemeentecodeGM": "GM0180",
+    "Gemeentenaam": "Staphorst",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0532",
+    "GemeentecodeGM": "GM0532",
+    "Gemeentenaam": "Stede Broec",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0851",
+    "GemeentecodeGM": "GM0851",
+    "Gemeentenaam": "Steenbergen",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1708,
+    "GemeentecodeGM": "GM1708",
+    "Gemeentenaam": "Steenwijkerland",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0971",
+    "GemeentecodeGM": "GM0971",
+    "Gemeentenaam": "Stein",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1904,
+    "GemeentecodeGM": "GM1904",
+    "Gemeentenaam": "Stichtse Vecht",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1900,
+    "GemeentecodeGM": "GM1900",
+    "Gemeentenaam": "Súdwest-Fryslân",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0715",
+    "GemeentecodeGM": "GM0715",
+    "Gemeentenaam": "Terneuzen",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0093",
+    "GemeentecodeGM": "GM0093",
+    "Gemeentenaam": "Terschelling",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0448",
+    "GemeentecodeGM": "GM0448",
+    "Gemeentenaam": "Texel",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1525,
+    "GemeentecodeGM": "GM1525",
+    "Gemeentenaam": "Teylingen",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0716",
+    "GemeentecodeGM": "GM0716",
+    "Gemeentenaam": "Tholen",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0281",
+    "GemeentecodeGM": "GM0281",
+    "Gemeentenaam": "Tiel",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0855",
+    "GemeentecodeGM": "GM0855",
+    "Gemeentenaam": "Tilburg",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0183",
+    "GemeentecodeGM": "GM0183",
+    "Gemeentenaam": "Tubbergen",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": 1700,
+    "GemeentecodeGM": "GM1700",
+    "Gemeentenaam": "Twenterand",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": 1730,
+    "GemeentecodeGM": "GM1730",
+    "Gemeentenaam": "Tynaarlo",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0737",
+    "GemeentecodeGM": "GM0737",
+    "Gemeentenaam": "Tytsjerksteradiel",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0856",
+    "GemeentecodeGM": "GM0856",
+    "Gemeentenaam": "Uden",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0450",
+    "GemeentecodeGM": "GM0450",
+    "Gemeentenaam": "Uitgeest",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0451",
+    "GemeentecodeGM": "GM0451",
+    "Gemeentenaam": "Uithoorn",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0184",
+    "GemeentecodeGM": "GM0184",
+    "Gemeentenaam": "Urk",
+    "Provinciecode": 24,
+    "ProvinciecodePV": "PV24",
+    "Provincienaam": "Flevoland"
+  },
+  {
+    "Gemeentecode": "0344",
+    "GemeentecodeGM": "GM0344",
+    "Gemeentenaam": "Utrecht",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1581,
+    "GemeentecodeGM": "GM1581",
+    "Gemeentenaam": "Utrechtse Heuvelrug",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0981",
+    "GemeentecodeGM": "GM0981",
+    "Gemeentenaam": "Vaals",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0994",
+    "GemeentecodeGM": "GM0994",
+    "Gemeentenaam": "Valkenburg aan de Geul",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0858",
+    "GemeentecodeGM": "GM0858",
+    "Gemeentenaam": "Valkenswaard",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0047",
+    "GemeentecodeGM": "GM0047",
+    "Gemeentenaam": "Veendam",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": "0345",
+    "GemeentecodeGM": "GM0345",
+    "Gemeentenaam": "Veenendaal",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0717",
+    "GemeentecodeGM": "GM0717",
+    "Gemeentenaam": "Veere",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0861",
+    "GemeentecodeGM": "GM0861",
+    "Gemeentenaam": "Veldhoven",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0453",
+    "GemeentecodeGM": "GM0453",
+    "Gemeentenaam": "Velsen",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0983",
+    "GemeentecodeGM": "GM0983",
+    "Gemeentenaam": "Venlo",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0984",
+    "GemeentecodeGM": "GM0984",
+    "Gemeentenaam": "Venray",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": 1961,
+    "GemeentecodeGM": "GM1961",
+    "Gemeentenaam": "Vijfheerenlanden",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0622",
+    "GemeentecodeGM": "GM0622",
+    "Gemeentenaam": "Vlaardingen",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0096",
+    "GemeentecodeGM": "GM0096",
+    "Gemeentenaam": "Vlieland",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0718",
+    "GemeentecodeGM": "GM0718",
+    "Gemeentenaam": "Vlissingen",
+    "Provinciecode": 29,
+    "ProvinciecodePV": "PV29",
+    "Provincienaam": "Zeeland"
+  },
+  {
+    "Gemeentecode": "0986",
+    "GemeentecodeGM": "GM0986",
+    "Gemeentenaam": "Voerendaal",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0626",
+    "GemeentecodeGM": "GM0626",
+    "Gemeentenaam": "Voorschoten",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0285",
+    "GemeentecodeGM": "GM0285",
+    "Gemeentenaam": "Voorst",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0865",
+    "GemeentecodeGM": "GM0865",
+    "Gemeentenaam": "Vught",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": 1949,
+    "GemeentecodeGM": "GM1949",
+    "Gemeentenaam": "Waadhoeke",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0866",
+    "GemeentecodeGM": "GM0866",
+    "Gemeentenaam": "Waalre",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0867",
+    "GemeentecodeGM": "GM0867",
+    "Gemeentenaam": "Waalwijk",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0627",
+    "GemeentecodeGM": "GM0627",
+    "Gemeentenaam": "Waddinxveen",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0289",
+    "GemeentecodeGM": "GM0289",
+    "Gemeentenaam": "Wageningen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0629",
+    "GemeentecodeGM": "GM0629",
+    "Gemeentenaam": "Wassenaar",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0852",
+    "GemeentecodeGM": "GM0852",
+    "Gemeentenaam": "Waterland",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0988",
+    "GemeentecodeGM": "GM0988",
+    "Gemeentenaam": "Weert",
+    "Provinciecode": 31,
+    "ProvinciecodePV": "PV31",
+    "Provincienaam": "Limburg"
+  },
+  {
+    "Gemeentecode": "0457",
+    "GemeentecodeGM": "GM0457",
+    "Gemeentenaam": "Weesp",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": 1960,
+    "GemeentecodeGM": "GM1960",
+    "Gemeentenaam": "West Betuwe",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0668",
+    "GemeentecodeGM": "GM0668",
+    "Gemeentenaam": "West Maas en Waal",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1969,
+    "GemeentecodeGM": "GM1969",
+    "Gemeentenaam": "Westerkwartier",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": 1701,
+    "GemeentecodeGM": "GM1701",
+    "Gemeentenaam": "Westerveld",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0293",
+    "GemeentecodeGM": "GM0293",
+    "Gemeentenaam": "Westervoort",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1950,
+    "GemeentecodeGM": "GM1950",
+    "Gemeentenaam": "Westerwolde",
+    "Provinciecode": 20,
+    "ProvinciecodePV": "PV20",
+    "Provincienaam": "Groningen"
+  },
+  {
+    "Gemeentecode": 1783,
+    "GemeentecodeGM": "GM1783",
+    "Gemeentenaam": "Westland",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0098",
+    "GemeentecodeGM": "GM0098",
+    "Gemeentenaam": "Weststellingwerf",
+    "Provinciecode": 21,
+    "ProvinciecodePV": "PV21",
+    "Provincienaam": "Friesland"
+  },
+  {
+    "Gemeentecode": "0614",
+    "GemeentecodeGM": "GM0614",
+    "Gemeentenaam": "Westvoorne",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0189",
+    "GemeentecodeGM": "GM0189",
+    "Gemeentenaam": "Wierden",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0296",
+    "GemeentecodeGM": "GM0296",
+    "Gemeentenaam": "Wijchen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1696,
+    "GemeentecodeGM": "GM1696",
+    "Gemeentenaam": "Wijdemeren",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0352",
+    "GemeentecodeGM": "GM0352",
+    "Gemeentenaam": "Wijk bij Duurstede",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0294",
+    "GemeentecodeGM": "GM0294",
+    "Gemeentenaam": "Winterswijk",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0873",
+    "GemeentecodeGM": "GM0873",
+    "Gemeentenaam": "Woensdrecht",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0632",
+    "GemeentecodeGM": "GM0632",
+    "Gemeentenaam": "Woerden",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": 1690,
+    "GemeentecodeGM": "GM1690",
+    "Gemeentenaam": "De Wolden",
+    "Provinciecode": 22,
+    "ProvinciecodePV": "PV22",
+    "Provincienaam": "Drenthe"
+  },
+  {
+    "Gemeentecode": "0880",
+    "GemeentecodeGM": "GM0880",
+    "Gemeentenaam": "Wormerland",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0351",
+    "GemeentecodeGM": "GM0351",
+    "Gemeentenaam": "Woudenberg",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0479",
+    "GemeentecodeGM": "GM0479",
+    "Gemeentenaam": "Zaanstad",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0297",
+    "GemeentecodeGM": "GM0297",
+    "Gemeentenaam": "Zaltbommel",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0473",
+    "GemeentecodeGM": "GM0473",
+    "Gemeentenaam": "Zandvoort",
+    "Provinciecode": 27,
+    "ProvinciecodePV": "PV27",
+    "Provincienaam": "Noord-Holland"
+  },
+  {
+    "Gemeentecode": "0050",
+    "GemeentecodeGM": "GM0050",
+    "Gemeentenaam": "Zeewolde",
+    "Provinciecode": 24,
+    "ProvinciecodePV": "PV24",
+    "Provincienaam": "Flevoland"
+  },
+  {
+    "Gemeentecode": "0355",
+    "GemeentecodeGM": "GM0355",
+    "Gemeentenaam": "Zeist",
+    "Provinciecode": 26,
+    "ProvinciecodePV": "PV26",
+    "Provincienaam": "Utrecht"
+  },
+  {
+    "Gemeentecode": "0299",
+    "GemeentecodeGM": "GM0299",
+    "Gemeentenaam": "Zevenaar",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": "0637",
+    "GemeentecodeGM": "GM0637",
+    "Gemeentenaam": "Zoetermeer",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0638",
+    "GemeentecodeGM": "GM0638",
+    "Gemeentenaam": "Zoeterwoude",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": 1892,
+    "GemeentecodeGM": "GM1892",
+    "Gemeentenaam": "Zuidplas",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0879",
+    "GemeentecodeGM": "GM0879",
+    "Gemeentenaam": "Zundert",
+    "Provinciecode": 30,
+    "ProvinciecodePV": "PV30",
+    "Provincienaam": "Noord-Brabant"
+  },
+  {
+    "Gemeentecode": "0301",
+    "GemeentecodeGM": "GM0301",
+    "Gemeentenaam": "Zutphen",
+    "Provinciecode": 25,
+    "ProvinciecodePV": "PV25",
+    "Provincienaam": "Gelderland"
+  },
+  {
+    "Gemeentecode": 1896,
+    "GemeentecodeGM": "GM1896",
+    "Gemeentenaam": "Zwartewaterland",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  },
+  {
+    "Gemeentecode": "0642",
+    "GemeentecodeGM": "GM0642",
+    "Gemeentenaam": "Zwijndrecht",
+    "Provinciecode": 28,
+    "ProvinciecodePV": "PV28",
+    "Provincienaam": "Zuid-Holland"
+  },
+  {
+    "Gemeentecode": "0193",
+    "GemeentecodeGM": "GM0193",
+    "Gemeentenaam": "Zwolle",
+    "Provinciecode": 23,
+    "ProvinciecodePV": "PV23",
+    "Provincienaam": "Overijssel"
+  }
+]
