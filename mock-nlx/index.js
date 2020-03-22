@@ -1,13 +1,7 @@
 var express = require('express')
 var app = express()
 var fs = require('fs')
-
-let gemeentenLijst = {}
-fs.readFile('data-gemeenten-alfabetisch.json'), 'utf-8', (err, data) => {
-  if (err) throw err
-  
-  gemeentenLijst = JSON.parse(data)
-}
+let gemeentenLijst = JSON.parse(fs.readFileSync('data-gemeenten-alfabetisch.json', 'utf-8'))
 
 app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
