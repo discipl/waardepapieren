@@ -3,6 +3,14 @@ var app = express()
 var fs = require('fs')
 let gemeentenLijst = JSON.parse(fs.readFileSync('data-gemeenten-alfabetisch.json', 'utf-8'))
 
+app.get('/cbs/gemeentenlijst/gemeentecode/0392', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.write(JSON.stringify(
+    gemeentenLijst)
+  )
+  res.end()
+})
+
 app.get('/brp/basisregistratie/natuurlijke_personen/bsn/663678651', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(JSON.stringify({
