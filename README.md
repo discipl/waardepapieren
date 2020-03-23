@@ -10,6 +10,8 @@ ensure that the validation app can retrieve those. This is only needed for worki
 
 1. Generate certificates as described [here](https://docs.nlx.io/try-nlx/retrieve-a-demo-certificate/), and place the `org.key` and `org.crt` files at `./mock-nlx/certs/`
 2. Ensure the certificates are readable, for example by giving the following permissions `chmod g+r org.key`
+3. Feed these certificates in environment variables with `source ./prepare-env.sh`
+
 ## Running
 
 The easiest way to run is using docker-compose:

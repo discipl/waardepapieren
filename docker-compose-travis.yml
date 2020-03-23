@@ -1,10 +1,6 @@
 version: '3'
 services:
   waardepapieren-service:
-    volumes:
-      - ./waardepapieren-service/system-test/certs:/certs:ro
-      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
-      - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
     links:
       - mock-nlx
@@ -12,7 +8,11 @@ services:
       - 3232:3232
       - 3233:3233
     environment:
-      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose-travis.json
+      - BASE64_EPHEMERAL_KEY=$BASE64_EPHEMERAL_KEY
+      - BASE64_EPHEMERAL_CERT=$BASE64_EPHEMERAL_CERT
+      - BASE64_NLX_KEY=$BASE64_NLX_KEY
+      - BASE64_NLX_CERT=$BASE64_NLX_CERT
+      - BASE64_WAARDEPAPIEREN_CONFIG=$BASE64_WAARDEPAPIEREN_CONFIG
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
   clerk-frontend:
@@ -27,8 +27,9 @@ services:
       - 8880:8880
     healthcheck:
       test: service nginx status
-    volumes:
-      - ./clerk-frontend/nginx/certs:/etc/nginx/certs:ro
+    environment:
+      - BASE64_KEY=$BASE64_KEY
+      - BASE64_CERT=$BASE64_CERT
   mock-nlx:
     build: mock-nlx/
     ports:

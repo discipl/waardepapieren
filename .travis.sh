@@ -20,6 +20,7 @@ npm audit || [ $(date +%s) -lt 1585699200 ] # Temporarily disable audit due to m
 
 # Integration
 cd ..
+
 export CERT_HOST_IP=$(ip -o addr show | grep -E "eth0.*inet " | grep -E -o  -e "[0-9]*(\.[0-9]*){3}" | head -1)
 docker-compose -f docker-compose-travis.yml build
 docker-compose -f docker-compose-travis.yml up -d
