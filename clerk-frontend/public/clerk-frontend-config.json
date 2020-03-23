@@ -2,13 +2,24 @@
   "CONTAINER_ID": "root",
   "DEFAULT_EPHEMERAL_ENDPOINT" : "http://localhost:3000",
   "DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT" : "ws://localhost:3233",
-  "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
   "DEFAULT_CERTIFICATE_URL": "http://10.10.5.75:3000/certs/org.crt",
   "SOURCE_ARGUMENT" : "BSN",
-  "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
-  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
-  "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
-  "PRODUCT_PURPOSE" : "Bewijs leveren voor verblijfadres in woonplaats",
+  "PRODUCTS" : [
+    {
+      "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
+      "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
+      "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+      "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
+      "PRODUCT_PURPOSE" : "Bewijs leveren voor verblijfadres in woonplaats"
+     },
+     {
+      "PRODUCT_NEED" : "BRP_VERBLIJFPLAATSHISTORIE_NEED",
+      "PRODUCT_ACCEPT" : "BRP_VERBLIJFPLAATSHISTORIE_ACCEPT",
+      "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
+      "PRODUCT_DESCRIPTION" : "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
+      "PRODUCT_PURPOSE" : "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
+     }
+   ],
   "EXPORT_TYPES" : {
     "@discipl/paper-wallet" : {
       "template" : {
