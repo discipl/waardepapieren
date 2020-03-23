@@ -20,7 +20,7 @@ class WaardenpapierenService {
       log.getLogger('EphemeralConnector').setLevel(configuration.LOG_LEVEL)
     }
 
-    if (this.configuration.EPHEMERAL_START === "Yes") {
+    if (this.configuration.EPHEMERAL_START === true) {
       // Setup server
       this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
       this.ephemeralServer.start()
