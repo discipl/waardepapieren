@@ -48,15 +48,7 @@ class ConfirmStep extends Component {
   renderAttributes() {
     let result = []
     if (this.state.data) {
-      for (let keyValue of this.state.data) {
-        let key = Object.keys(keyValue)[0]
-        let value = keyValue[key]
-
-        if (typeof value !==  'string') {
-          value = JSON.stringify(value)
-        }
-
-
+      Object.keys(this.state.data).forEach(key => {
         result.push(
           <li className="definition-list__item definition-list__item--horizontal">
             <div className="definition-list__title">
@@ -64,15 +56,17 @@ class ConfirmStep extends Component {
             </div>
             <div className="definition-list__description">
               <p>
-                {value}
+                {this.state.data[key]}
               </p>
             </div>
           </li>
-        )
+        );
+        if (typeof this.state.data[key] === 'object') {
+          this.renderAttributes()
       }
+      })
 
     }
-
     return result
   }
 
