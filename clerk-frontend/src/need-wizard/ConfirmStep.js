@@ -9,6 +9,28 @@ const timeoutPromise = (timeoutMillis) => {
   })
 }
 
+let result = [];
+
+function iterate (obj) {
+  Object.keys(obj).forEach(key => {
+    result.push(
+      <li className="definition-list__item definition-list__item--horizontal">
+      <div className="definition-list__title">
+        {key}
+      </div>
+      <div className="definition-list__description">
+        <p>
+          {obj[key]}
+        </p>
+      </div>
+      </li>
+    )
+    if (typeof obj[key] === 'object') {
+      iterate(obj[key])
+    }
+  })
+}
+
 class ConfirmStep extends Component {
 
   constructor(props) {
@@ -46,29 +68,10 @@ class ConfirmStep extends Component {
   }
 
   renderAttributes() {
-    let result = []
     if (this.state.data) {
-      Object.keys(this.state.data).forEach(key => {
-        result.push(
-          <li className="definition-list__item definition-list__item--horizontal">
-            <div className="definition-list__title">
-              {key}
-            </div>
-            <div className="definition-list__description">
-              <p>
-                {this.state.data[key]}
-              </p>
-            </div>
-          </li>
-        );
-        if (typeof this.state.data[key] === 'object') {
-          this.renderAttributes()
+      iterate(this.state.data)
       }
-      })
-
     }
-    return result
-  }
 
   render() {
     return (
