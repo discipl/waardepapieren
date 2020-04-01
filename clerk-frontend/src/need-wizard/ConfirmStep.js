@@ -11,26 +11,6 @@ const timeoutPromise = (timeoutMillis) => {
 
 let result = [];
 
-function iterate (obj) {
-  Object.keys(obj).forEach(key => {
-    result.push(
-      <li className="definition-list__item definition-list__item--horizontal">
-      <div className="definition-list__title">
-        {key}
-      </div>
-      <div className="definition-list__description">
-        <p>
-          {obj[key]}
-        </p>
-      </div>
-      </li>
-    )
-    if (typeof obj[key] === 'object') {
-      iterate(obj[key])
-    }
-  })
-}
-
 class ConfirmStep extends Component {
 
   constructor(props) {
@@ -66,12 +46,52 @@ class ConfirmStep extends Component {
       'data': result.claim.data
     })
   }
-
-  renderAttributes() {
+  
+  renderAttributes(obj) {
     if (this.state.data) {
-      iterate(this.state.data)
+      for (var k in obj) {
+        if (typeof obj[k] === 'object' && obj[k] !== null) {
+          result.push(
+            <li className="definition-list__item definition-list__item--horizontal">
+              <div className="definition-list__title">
+                {`key: ${k.toUpperCase()}`}
+              </div>
+            </li>
+          )
+          this.renderAttributes(obj[k])
+        }
+        else {
+          result.push(
+            <li className="definition-list__item definition-list__item--horizontal">
+              <div className="definition-list__title">
+                {`key: ${k}`}
+              </div>
+              <div className="definition-list__description">
+                <p>
+                  {`value: ${obj[k]}`}
+                </p>
+              </div>
+            </li>
+          )
+        }
       }
     }
+    return result
+  }
+  
+  /*
+  renderAttributes(obj) {
+    for (var k in obj) {
+      if (typeof obj[k] === 'object' && obj[k] !== null) {
+        result.push(k.toUpperCase())
+        renderAttributes(obj[k]);
+      }
+      else
+        result.push(k, obj[k]);
+     }
+    return result
+  }
+  */
 
   render() {
     return (
@@ -82,7 +102,7 @@ class ConfirmStep extends Component {
           </strong>
         </p>
         <ul className="definition-list definition-list--large-titles">
-          {this.renderAttributes()}
+          {this.renderAttributes(this.state.data)}
         </ul>
       </div>
     );
