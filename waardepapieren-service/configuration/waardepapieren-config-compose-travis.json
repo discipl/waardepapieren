@@ -17,9 +17,9 @@
   "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
   "PRODUCT_PURPOSE" : "Bewijs verblijfadres in woonplaats",
   "SOURCE_DATA_SELECTION" : [
-    {"Burgerservicenummer (BSN)" : "_embedded.ingeschrevenpersonen[0].burgerservicenummer"},
     {"Naam" : "_embedded.ingeschrevenpersonen[0].naam"},
     {"Nationaliteit" : "_embedded.ingeschrevenpersonen[0].nationaliteit"},
-    {"Woonplaats verblijfadres" : "_embedded.ingeschrevenpersonen[0].verblijfplaats"}
+    {"Woonplaats verblijfadres" : "_embedded.ingeschrevenpersonen[0].verblijfplaats"},
+    {"Burgerservicenummer (BSN)" : "_embedded.ingeschrevenpersonen[0].burgerservicenummer"}
   ]
 }
