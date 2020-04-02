@@ -47,51 +47,41 @@ class ConfirmStep extends Component {
     })
   }
   
-  renderAttributes(obj) {
-    if (this.state.data) {
+  renderAttributes(obj, recursive) {
+    if (!recursive) {
+      // Clear existing array - this is required when user selects 'vorige stap' in Clerk Frontend
+      result = []
+    }
+    if (obj) {
       for (var k in obj) {
         if (typeof obj[k] === 'object' && obj[k] !== null) {
           result.push(
             <li className="definition-list__item definition-list__item--horizontal">
               <div className="definition-list__title">
-                {`key: ${k.toUpperCase()}`}
+                {k.toUpperCase()}
               </div>
             </li>
           )
-          this.renderAttributes(obj[k])
+          this.renderAttributes(obj[k], true)
         }
         else {
           result.push(
             <li className="definition-list__item definition-list__item--horizontal">
               <div className="definition-list__title">
-                {`key: ${k}`}
+                {k}
               </div>
               <div className="definition-list__description">
                 <p>
-                  {`value: ${obj[k]}`}
+                  {obj[k]}
                 </p>
               </div>
             </li>
           )
         }
-      }
     }
-    return result
   }
-  
-  /*
-  renderAttributes(obj) {
-    for (var k in obj) {
-      if (typeof obj[k] === 'object' && obj[k] !== null) {
-        result.push(k.toUpperCase())
-        renderAttributes(obj[k]);
-      }
-      else
-        result.push(k, obj[k]);
-     }
-    return result
-  }
-  */
+  return result
+}
 
   render() {
     return (
@@ -102,7 +92,7 @@ class ConfirmStep extends Component {
           </strong>
         </p>
         <ul className="definition-list definition-list--large-titles">
-          {this.renderAttributes(this.state.data)}
+          {this.renderAttributes(this.state.data, false)}
         </ul>
       </div>
     );
