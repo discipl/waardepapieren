@@ -9,8 +9,6 @@ const timeoutPromise = (timeoutMillis) => {
   })
 }
 
-let result = [];
-
 class ConfirmStep extends Component {
 
   constructor(props) {
@@ -47,11 +45,7 @@ class ConfirmStep extends Component {
     })
   }
   
-  renderAttributes(obj, recursive) {
-    if (!recursive) {
-      // Clear existing array - this is required when user selects 'vorige stap' in Clerk Frontend
-      result = []
-    }
+  renderAttributes(obj, result) {
     if (obj) {
       for (var k in obj) {
         if (typeof obj[k] === 'object' && obj[k] !== null) {
@@ -62,7 +56,7 @@ class ConfirmStep extends Component {
               </div>
             </li>
           )
-          this.renderAttributes(obj[k], true)
+          this.renderAttributes(obj[k], result)
         }
         else {
           result.push(
@@ -84,6 +78,7 @@ class ConfirmStep extends Component {
 }
 
   render() {
+    let result = [];
     return (
       <div>
         <p>
@@ -92,7 +87,7 @@ class ConfirmStep extends Component {
           </strong>
         </p>
         <ul className="definition-list definition-list--large-titles">
-          {this.renderAttributes(this.state.data, false)}
+          {this.renderAttributes(this.state.data, result)}
         </ul>
       </div>
     );
