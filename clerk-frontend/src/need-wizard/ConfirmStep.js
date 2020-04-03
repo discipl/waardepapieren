@@ -49,7 +49,6 @@ class ConfirmStep extends Component {
   renderAttributes(obj) {
     const result = []
     if (Array.isArray(obj)) {
-      // elk element renderen in een lijst
       for (const element of obj) {
         result.push(
           <li className="definition-list__item definition-list__item--horizontal">
@@ -63,6 +62,7 @@ class ConfirmStep extends Component {
     else if (typeof obj === 'object' && obj !== null) {
       for (const k of Object.keys(obj)) {
         result.push(
+          <ul>
           <li className="definition-list__item definition-list__item--horizontal">
             <div className="definition-list__title">
               {k}
@@ -71,14 +71,15 @@ class ConfirmStep extends Component {
               {this.renderAttributes(obj[k])}
             </div>
           </li>
+          </ul>
         )
       }
     }
     else {
       result.push(
-          <p>
-            {obj}
-          </p>
+        <p>
+          {obj}
+        </p>
       )
     }
     return result

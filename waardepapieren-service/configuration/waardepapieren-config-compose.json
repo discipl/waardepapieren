@@ -18,7 +18,6 @@
   "PRODUCT_PURPOSE" : "Bewijs verblijfadres in woonplaats",
   "SOURCE_DATA_SELECTION" : [
     {"Burgerservicenummer (BSN)" : "_embedded.ingeschrevenpersonen[0].burgerservicenummer"},
-    {"Voorletters" : "_embedded.ingeschrevenpersonen[0].naam.voorletters"},
     {"Naam" : "_embedded.ingeschrevenpersonen[0].naam"},
     {"Woonplaats verblijfadres" : "_embedded.ingeschrevenpersonen[0].verblijfplaats.gemeenteVanInschrijving.omschrijving"}
   ]
