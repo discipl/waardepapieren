@@ -44,38 +44,45 @@ class ConfirmStep extends Component {
       'data': result.claim.data
     })
   }
-  
-  renderAttributes(obj, result) {
-    if (obj) {
-      for (var k in obj) {
-        if (typeof obj[k] === 'object' && obj[k] !== null) {
-          result.push(
-            <li className="definition-list__item definition-list__item--horizontal">
-              <div className="definition-list__title">
-                {k.toUpperCase()}
-              </div>
-            </li>
-          )
-          this.renderAttributes(obj[k], result)
-        }
-        else {
-          result.push(
-            <li className="definition-list__item definition-list__item--horizontal">
-              <div className="definition-list__title">
-                {k}
-              </div>
-              <div className="definition-list__description">
-                <p>
-                  {obj[k]}
-                </p>
-              </div>
-            </li>
-          )
-        }
+
+
+  renderAttributes(obj) {
+    const result = []
+    if (Array.isArray(obj)) {
+      // elk element renderen in een lijst
+      for (const element of obj) {
+        result.push(
+          <li className="definition-list__item definition-list__item--horizontal">
+            <div className="definition-list__title">
+              {this.renderAttributes(element)}
+            </div>
+          </li>
+        )
+      }
     }
+    else if (typeof obj === 'object' && obj !== null) {
+      for (const k of Object.keys(obj)) {
+        result.push(
+          <li className="definition-list__item definition-list__item--horizontal">
+            <div className="definition-list__title">
+              {k}
+            </div>
+            <div className="definition-list__description">
+              {this.renderAttributes(obj[k])}
+            </div>
+          </li>
+        )
+      }
+    }
+    else {
+      result.push(
+          <p>
+            {obj}
+          </p>
+      )
+    }
+    return result
   }
-  return result
-}
 
   render() {
     let result = [];
