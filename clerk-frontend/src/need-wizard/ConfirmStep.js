@@ -62,16 +62,16 @@ class ConfirmStep extends Component {
     else if (typeof obj === 'object' && obj !== null) {
       for (const k of Object.keys(obj)) {
         result.push(
-          <ul>
           <li className="definition-list__item definition-list__item--horizontal">
-            <div className="definition-list__title">
-              {k}
-            </div>
-            <div className="definition-list__description">
-              {this.renderAttributes(obj[k])}
-            </div>
+            <ul>
+              <div className="definition-list__title">
+                {k}
+              </div>
+              <div className="definition-list__description">
+                {this.renderAttributes(obj[k])}
+              </div>
+            </ul>
           </li>
-          </ul>
         )
       }
     }
