@@ -45,38 +45,48 @@ class ConfirmStep extends Component {
     })
   }
 
-  renderAttributes() {
-    let result = []
-    if (this.state.data) {
-      for (let keyValue of this.state.data) {
-        let key = Object.keys(keyValue)[0]
-        let value = keyValue[key]
 
-        if (typeof value !==  'string') {
-          value = JSON.stringify(value)
-        }
-
-
+  renderAttributes(obj) {
+    const result = []
+    if (Array.isArray(obj)) {
+      for (const element of obj) {
         result.push(
           <li className="definition-list__item definition-list__item--horizontal">
             <div className="definition-list__title">
-              {key}
-            </div>
-            <div className="definition-list__description">
-              <p>
-                {value}
-              </p>
+              {this.renderAttributes(element)}
             </div>
           </li>
         )
       }
-
     }
-
+    else if (typeof obj === 'object' && obj !== null) {
+      for (const k of Object.keys(obj)) {
+        result.push(
+          <li className="definition-list__item definition-list__item--horizontal">
+            <ul>
+              <div className="definition-list__title">
+                {k}
+              </div>
+              <div className="definition-list__description">
+                {this.renderAttributes(obj[k])}
+              </div>
+            </ul>
+          </li>
+        )
+      }
+    }
+    else {
+      result.push(
+        <p>
+          {obj}
+        </p>
+      )
+    }
     return result
   }
 
   render() {
+    let result = [];
     return (
       <div>
         <p>
@@ -85,7 +95,7 @@ class ConfirmStep extends Component {
           </strong>
         </p>
         <ul className="definition-list definition-list--large-titles">
-          {this.renderAttributes()}
+          {this.renderAttributes(this.state.data, result)}
         </ul>
       </div>
     );

@@ -17,15 +17,14 @@
   "PRODUCT_DESCRIPTION" : "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
   "PRODUCT_PURPOSE" : "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon",
   "SOURCE_DATA_SELECTION" : [
-    {"Naam" : "aanschrijving.geslachtsnaam"},
-    {"Voornamen" : "aanschrijving.voornamen"},
-    {"Geboren" : "geboorte.datum"},
-    {"Wonende te" : "woonplaatsnaam"},
-    {"Burgerservicenummer (BSN)" : "burgerservicenummer"},
-    {"Functie adres" : "functieAdres"},
-    {"Locatiebeschrijving" : "locatiebeschrijving"},
-    {"Geldig vanaf datum" : "datumIngangGeldigheid.datum"},
-    {"Geldig tot datum" : "datumTot.datum"},
-    {"Verblijfplaatshistorie" : "TestArrayAdressen"}
+    {"Huidig adres" : "_embedded.verblijfplaatshistorie[0].functieAdres"},
+    {"Straat" : "_embedded.verblijfplaatshistorie[0].straatnaam"},
+    {"Huisnummer" : "_embedded.verblijfplaatshistorie[0].huisnummer"},
+    {"Plaats" : "_embedded.verblijfplaatshistorie[0].woonplaatsnaam"},
+    {"Sinds" : "_embedded.verblijfplaatshistorie[0].datumAanvangAdreshouding.datum"},
+    {"Vorig adres" : "_embedded.verblijfplaatshistorie[1].functieAdres"},
+    {"Locatiebeschrijving" : "_embedded.verblijfplaatshistorie[1].locatiebeschrijving"},
+    {"Plaats" : "_embedded.verblijfplaatshistorie[1].woonplaatsnaam"},
+    {"Sinds" : "_embedded.verblijfplaatshistorie[1].datumAanvangAdreshouding.datum"}
   ]
 }
