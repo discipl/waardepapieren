@@ -25,7 +25,21 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     let nlxConnector = await abundance.getCoreAPI().getConnector('nlx')
 
     let nlxClaimStub = sinon.stub(nlxConnector, 'claim').returns('claimId')
-    let nlxGetStub = sinon.stub(nlxConnector, 'get').returns({ 'burgerservicenummer': '123123123', 'verblijfadres': {'adres':'Markt 3', 'woonplaats': 'Haarlem' }})
+    let nlxGetStub = sinon.stub(nlxConnector, 'get').returns({ '_embedded': {
+      'ingeschrevenpersonen': [{
+          'burgerservicenummer': '123123123',
+          'naam': {
+            'voorletters': 'A.B.C',
+            'geslachtsnaam': 'Streeveld',
+          },
+          'verblijfplaats': {
+            'gemeenteVanInschrijving': {
+              'omschrijving': 'Haarlem'
+            }
+          }
+        }]
+      }
+    })
     let nlxConfigureSpy = sinon.spy(nlxConnector, 'configure')
 
     abundance.getCoreAPI().registerConnector('nlx', nlxConnector)
@@ -66,6 +80,12 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
         },
         {
           "Burgerservicenummer (BSN)": "123123123"
+        },
+        {
+          "Voorletters": "A.B.C",
+        },
+        {
+          "Geslachtsnaam": "Streeveld",
         },
         {
           "Woonplaats verblijfadres": "Haarlem"
