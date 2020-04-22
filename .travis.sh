@@ -7,7 +7,7 @@ set -e
 cd clerk-frontend
 npm install > /dev/null
 npm test
-npm audit || [ $(date +%s) -lt 1585699200 ] # Temporarily disable audit due to minimist low severity issue in toolchain
+npm audit
 
 # Waardepapieren service
 cd ../waardepapieren-service/
@@ -15,7 +15,7 @@ npm install
 # Ignore self-signed cert
 npm test
 npm run system-test
-npm audit || [ $(date +%s) -lt 1585699200 ] # Temporarily disable audit due to minimist low severity issue in toolchain
+npm audit
 
 
 # Integration
