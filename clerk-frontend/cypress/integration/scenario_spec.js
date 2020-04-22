@@ -6,7 +6,7 @@ describe('clerk-frontend', () => {
     cy.contains('Verstrekken waardepapier')
 
     cy.get('.bsn-form input')
-      .type('663678651')
+      .type('999994669')
 
     cy.contains('Volgende').click()
 
@@ -14,7 +14,7 @@ describe('clerk-frontend', () => {
 
     cy.contains('Volgende').click()
 
-    cy.contains('p', 'Haarlem', { 'timeout': 30000 })
+    cy.contains('p', 'Rotterdam', { 'timeout': 30000 })
 
     cy.contains('Dit klopt!').click()
 
