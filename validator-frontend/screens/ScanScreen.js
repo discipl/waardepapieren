@@ -176,6 +176,9 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
+    if (this.state.focusedScreen === false) {
+      return <Text>Screen is currently not active</Text>
+    }
 
     return (
       <View style={{ flex: 1 }}>
@@ -199,7 +202,7 @@ class ValidatingScreen extends Component {
     this.state = {validatingState: "waiting"};
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     var strictValidation = await this._retrieveData()
     console.log('StrictValidation', strictValidation)
     this.rootCA = (strictValidation=="true") ? realRootCA : demoRootCA
@@ -367,12 +370,11 @@ class ValidatingScreen extends Component {
           data={this.state.renderData}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) =>
-          <View style={styles.flatview}>
+          <View key={item.key} style={styles.flatview}>
             <Text style={styles.key}>{item.key}</Text>
             <Text style={styles.value}>{item.props.value}</Text>
           </View>
           }
-          keyExtractor={item => item.key}
         />
       </View>
     );
@@ -404,11 +406,10 @@ const styles = StyleSheet.create({
   validateState: {
     padding: 10,
     margin: 10,
-    flex:3,
     flexDirection:'column',
     alignItems:'center',
-    justifyContent:'center'
-    },
+    justifyContent:'center',
+  },
   flatview: {
     backgroundColor: '#F6F6F6',
     borderTopWidth: 2,
