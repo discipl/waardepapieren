@@ -29,7 +29,8 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
       'ingeschrevenpersonen': [{
           'burgerservicenummer': '123123123',
           'naam': {
-            'voorletters': 'A.B.C'
+            'voorletters': 'A.B.C',
+            'geslachtsnaam': 'Streeveld',
           },
           'verblijfplaats': {
             'gemeenteVanInschrijving': {
@@ -82,6 +83,9 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
         },
         {
           "Voorletters": "A.B.C",
+        },
+        {
+          "Geslachtsnaam": "Streeveld",
         },
         {
           "Woonplaats verblijfadres": "Haarlem"
