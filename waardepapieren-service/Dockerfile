@@ -1,8 +1,8 @@
 FROM node:10
 RUN mkdir /app
-ADD .babelrc package.json package-lock.json /app/
-ADD src/* app/src/
-ADD configuration/* app/configuration/
+COPY .babelrc package.json package-lock.json /app/
+COPY src/* app/src/
+COPY configuration/* app/configuration/
 WORKDIR /app
 RUN npm install --production
 CMD npm start

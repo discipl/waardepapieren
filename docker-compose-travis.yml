@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services:
   waardepapieren-service:
     volumes:
@@ -6,8 +6,8 @@ services:
       - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
       - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
-    links:
-      - mock-nlx
+    networks:
+      - waardepapieren
     ports:
       - 3232:3232
       - 3233:3233
@@ -21,9 +21,8 @@ services:
       - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
       - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
-    links:
-      - mock-nlx
-      - waardepapieren-service
+    networks:
+      - waardepapieren
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
       # Ignore self-signed ephemeral cert issues
@@ -33,8 +32,8 @@ services:
       context: clerk-frontend/
       args:
         - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
-    links:
-      - waardepapieren-service
+    networks:
+      - waardepapieren
     ports:
       - 443:443
       - 8880:8880
@@ -44,5 +43,16 @@ services:
       - ./clerk-frontend/nginx/certs:/etc/nginx/certs:ro
   mock-nlx:
     build: mock-nlx/
+    networks:
+      - waardepapieren
     ports:
       - 80:80
+  ipv8:
+    build:
+      context: ipv8/.
+    networks:
+      - waardepapieren
+
+networks:
+  waardepapieren:
+    name: waardepapieren
