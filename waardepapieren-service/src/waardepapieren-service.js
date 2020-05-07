@@ -1,4 +1,5 @@
 import { AbundanceService } from '@discipl/abundance-service'
+import Ipv8Connector from '@discipl/core-ipv8';
 // Specifically importing the server, because the server is not in the index to ensure browser compatibility
 import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
 import { take } from 'rxjs/operators'
@@ -6,6 +7,7 @@ import { w3cwebsocket } from 'websocket'
 import jp from 'jsonpath'
 import fs from 'fs'
 import * as log from 'loglevel'
+import stringify from "json-stable-stringify"
 
 class WaardenpapierenService {
   constructor (core) {
@@ -41,6 +43,9 @@ class WaardenpapierenService {
     nlxConnector.configure(this.configuration.NLX_OUTWAY_ENDPOINT)
     let attendResult = await this.abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
 
+    const ipv8connector = await core.getConnector('ipv8')
+    ipv8connector.configure('https://clerk-frontend/api/ipv8/service')
+
     // TODO: Refactor to observableResult.subscribe when fix from core propagates
     await attendResult.observableResult._observable.subscribe(async (need) => {
       await this.serveNeed(need, nlxEphemeralIdentity)
@@ -70,6 +75,7 @@ class WaardenpapierenService {
     this.logger.info('Received BSN ', logId)
 
     let srcarg = argumentClaim['claim']['data'][this.configuration.SOURCE_ARGUMENT]
+    let ipv8link = argumentClaim['claim']['data']['ipv8_link']
 
     const nlxConnector = await core.getConnector('nlx')
     let nlxpath = this.configuration.SOURCE_NLX_PATH.replace('{'+this.configuration.SOURCE_ARGUMENT+'}', srcarg)
@@ -90,6 +96,13 @@ class WaardenpapierenService {
     }
 
     let productClaim = await core.claim(nlxIdentity, resultArray)
+
+    // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
+    await core.attest(
+      { did: 'did:discipl:ipv8:eyJtaWQiOiJ3K1g5RWcrWlhESjA5V3l1MTMvVS83aE1UM1E9IiwicHVibGljS2V5IjoiNGM2OTYyNGU2MTQzNGM1MDRiM2FjZjUxMTdjMzU0NzY1MTVkMWRjMjVhNDk5OTRkMWY4MTc0YmVlYzEyMDc3N2E5MTdjYjNjOWVjZDRkNzAxZTFmNTljMjkyNDFjYjk2YmFhOGY3MGJmNDUwMjI0ZGRmMTA0YzEyYzI5YTFkOTFmMzY2MjU2ZTc4OTY4MTVhOTUzMiJ9' },
+      stringify(resultArray),
+      ipv8link
+    )
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
 

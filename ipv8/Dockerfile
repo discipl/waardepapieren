@@ -8,6 +8,8 @@ RUN git clone https://github.com/Tribler/py-ipv8.git pyipv8
 RUN pip install --no-cache-dir -r ./pyipv8/requirements.txt
 
 RUN touch __init__.py
-COPY . .
+RUN mkdir db
+COPY main.py ./main.py
+COPY certs ./certs
 
 CMD ["python", "main.py"]
