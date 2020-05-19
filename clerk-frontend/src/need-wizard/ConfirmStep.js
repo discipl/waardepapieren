@@ -21,14 +21,14 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     await timeoutPromise(100)
 
-    const claimerDid = 'did:discipl:ipv8:eyJtaWQiOiIzWjZQTGRPMWVadlc4blRHMkxlaWRDckJmVDA9IiwicHVibGljS2V5IjoiNGM2OTYyNGU2MTQzNGM1MDRiM2E5NzdiY2I5NjFkZjRkMGNhYzVlOTQzOWFjMDAyYzdkMjNhMWE4ZDljMmI4YmZjN2NhMDQ4MmIzYTc0MmEyMTIzNGFkYTljMDFmNDg3MTVmOTNiMmE0YTliNTI4NzQwMWY0ODk3ZGU3OTYzOWRkZWQ4ZjliOGZjNmY0YTA1NTAyMiJ9'
-    const attesterDid = 'did:discipl:ipv8:eyJtaWQiOiJ3K1g5RWcrWlhESjA5V3l1MTMvVS83aE1UM1E9IiwicHVibGljS2V5IjoiNGM2OTYyNGU2MTQzNGM1MDRiM2FjZjUxMTdjMzU0NzY1MTVkMWRjMjVhNDk5OTRkMWY4MTc0YmVlYzEyMDc3N2E5MTdjYjNjOWVjZDRkNzAxZTFmNTljMjkyNDFjYjk2YmFhOGY3MGJmNDUwMjI0ZGRmMTA0YzEyYzI5YTFkOTFmMzY2MjU2ZTc4OTY4MTVhOTUzMiJ9'
+    const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI='
+    const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
 
     let need = await this.abundance.need('ephemeral', this.props.need)
     let ipv8link = await this.abundance.getCoreAPI().claim(
-      { did: claimerDid },
+      { did: siteDid },
       this.props.need,
-      { did: attesterDid }
+      { did: serviceDid }
     )
 
     console.log('ipv8_link', ipv8link)

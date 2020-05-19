@@ -8,7 +8,7 @@ from pyipv8.ipv8_service import IPv8
 
 
 async def start_communities():
-    for i, v in enumerate(["site", "client", "app"]):
+    for i, v in enumerate(["site", "service", "app"]):
         configuration = get_default_configuration()
         configuration['logger']['level'] = "ERROR"
         configuration['keys'] = [

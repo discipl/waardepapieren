@@ -98,8 +98,10 @@ class WaardenpapierenService {
     let productClaim = await core.claim(nlxIdentity, resultArray)
 
     // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
+    const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
+
     await core.attest(
-      { did: 'did:discipl:ipv8:eyJtaWQiOiJ3K1g5RWcrWlhESjA5V3l1MTMvVS83aE1UM1E9IiwicHVibGljS2V5IjoiNGM2OTYyNGU2MTQzNGM1MDRiM2FjZjUxMTdjMzU0NzY1MTVkMWRjMjVhNDk5OTRkMWY4MTc0YmVlYzEyMDc3N2E5MTdjYjNjOWVjZDRkNzAxZTFmNTljMjkyNDFjYjk2YmFhOGY3MGJmNDUwMjI0ZGRmMTA0YzEyYzI5YTFkOTFmMzY2MjU2ZTc4OTY4MTVhOTUzMiJ9' },
+      { did: serviceDid },
       stringify(resultArray),
       ipv8link
     )

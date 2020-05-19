@@ -12,4 +12,4 @@ RUN mkdir db
 COPY main.py ./main.py
 COPY certs ./certs
 
-CMD ["python", "main.py"]
+CMD ["python", "-u", "main.py"]
