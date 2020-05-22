@@ -5,6 +5,7 @@ import * as Permissions from 'expo-permissions'
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
 import { PaperWallet } from '@discipl/paper-wallet'
+import Ipv8Connector from '@discipl/core-ipv8'
 
 
 const realRootCA = "-----BEGIN CERTIFICATE-----\n" +
@@ -230,15 +231,15 @@ class ValidatingScreen extends Component {
 
   async renderClaimData(){
     if(this.state.validatingState == "verified"){
-      let claimData = await this._readData();
+      let claimData = this._readData();
       this.setState({claimData: claimData})
       let renderData = await this._renderData();
       this.setState({renderData: renderData})
     }
   }
 
-  async _readData() {
-    let displayData = await this.state.qrString;
+  _readData() {
+    let displayData = this.state.qrString;
     let documentJson = JSON.parse(displayData).claimData;
     let claimWithLink = Object.values(documentJson)[0][0];
     let claimData = Object.values(claimWithLink)[0];
@@ -320,12 +321,42 @@ class ValidatingScreen extends Component {
       console.log("This was not a valid certificate", e);
       console.log(e.stack)
     }
+  }
 
+  async _checkIpv8QR() {
+    const { navigation } = this.props;
+    const core = new PaperWallet().getCore()
+    core.registerConnector('ipv8', new Ipv8Connector())
 
+    const qrString = await navigation.getParam('qrString', 'String not found');
+
+    try {
+      const claimData = this._readData()
+      const ipv8Link = claimData.find(v => v.IPV8_LINK !== undefined).IPV8_LINK;
+      const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI=';
+      (await core.getConnector('ipv8')).configure('http://niels.pc:14412');
+
+      console.log('link', ipv8Link)
+      console.log('peer',  (await core.getConnector('ipv8')).extractPeerFromDid(siteDid))
+
+      
+      const verified = await core.verify(JSON.stringify(claimData.filter(v => v.IPV8_LINK === undefined)), ipv8Link, [siteDid])
+
+      if (verified === null) {
+        throw Error("IPv8 claim not verified")
+      } else {
+        this.result = true
+      }
+    } catch(e) {
+      this.result = false
+      console.log("This was not a valid certificate", e);
+      console.log(e.stack)
+    }
   }
 
   async wrapperFunction() {
     await this._checkQR()
+    await this._checkIpv8QR()
     console.log(this.result);
     if(this.result == null || this.result == false){
       this.setState({validatingState: "denied"})

@@ -75,7 +75,7 @@ class WaardenpapierenService {
     this.logger.info('Received BSN ', logId)
 
     let srcarg = argumentClaim['claim']['data'][this.configuration.SOURCE_ARGUMENT]
-    let ipv8link = argumentClaim['claim']['data']['ipv8_link']
+    let ipv8TempLink = argumentClaim['claim']['data']['ipv8_link']
 
     const nlxConnector = await core.getConnector('nlx')
     let nlxpath = this.configuration.SOURCE_NLX_PATH.replace('{'+this.configuration.SOURCE_ARGUMENT+'}', srcarg)
@@ -95,16 +95,17 @@ class WaardenpapierenService {
       resultArray.push({ [key]: value[0] })
     }
 
-    let productClaim = await core.claim(nlxIdentity, resultArray)
-
     // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
     const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
-
-    await core.attest(
+    const ipv8PermLink = await core.attest(
       { did: serviceDid },
       stringify(resultArray),
-      ipv8link
+      ipv8TempLink
     )
+
+    resultArray.push({ 'IPV8_LINK': ipv8PermLink })
+
+    let productClaim = await core.claim(nlxIdentity, resultArray)
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
 
