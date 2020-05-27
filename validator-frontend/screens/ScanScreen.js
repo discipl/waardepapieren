@@ -289,10 +289,10 @@ class ValidatingScreen extends React.Component {
     try {
       const claimData = this._readClaimData()
       const ipv8Link = claimData.find(v => v.IPV8_LINK !== undefined).IPV8_LINK;
-      const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI=';
+      const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=';
       (await core.getConnector('ipv8')).configure('http://niels.pc:14412');
 
-      const verified = await core.verify(JSON.stringify(claimData.filter(v => v.IPV8_LINK === undefined)), ipv8Link, [siteDid])
+      const verified = await core.verify(JSON.stringify(claimData.filter(v => v.IPV8_LINK === undefined)), ipv8Link, [serviceDid])
 
       if (verified === null) {
         throw Error("IPv8 claim not verified")
