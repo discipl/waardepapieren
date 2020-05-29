@@ -1,9 +1,9 @@
-FROM python:3.7-buster as ipv8
+FROM python:3.7-slim as ipv8
 WORKDIR /usr/src/app
 
 # Libsodium is not installed by default but required for IPv8
 RUN apt-get update
-RUN apt-get install libsodium-dev --yes
+RUN apt-get install libsodium-dev git gcc --yes
 RUN git clone https://github.com/Tribler/py-ipv8.git pyipv8
 RUN pip install --no-cache-dir -r ./pyipv8/requirements.txt
 

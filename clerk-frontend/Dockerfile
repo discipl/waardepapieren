@@ -4,14 +4,14 @@ ENV REACT_APP_EPHEMERAL_ENDPOINT=https://localhost:443/api/eph
 ENV REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT=wss://localhost:443/api/eph-ws
 ENV REACT_APP_CERTIFICATE_HOST=${CERTIFICATE_HOST}
 RUN mkdir /app
+WORKDIR /app
 
 COPY package.json package-lock.json /app/
+RUN npm install --unsafe-perm
+
 COPY public /app/public
 COPY scripts /app/scripts
 COPY src /app/src
-
-WORKDIR /app
-RUN npm install --unsafe-perm
 RUN npm run build
 
 FROM nginx:1.15.8
