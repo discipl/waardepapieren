@@ -32,8 +32,9 @@ class ConfirmStep extends Component {
     const certUrl = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
 
     let vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {
-      'cert': certUrl + '/certs/org.crt',
-      'ipv8endpoint': certUrl + '/api/ipv8/site'
+      cert: certUrl + '/certs/org.crt',
+      ipv8endpoint: 'http://niels.pc:14412',
+      ...this.props.qrMetadata
     })
 
     console.log("Issued")

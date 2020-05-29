@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 import { AbundanceService } from '@discipl/abundance-service'
 
 const timeoutPromise = (timeoutMillis) => {
@@ -25,36 +23,39 @@ class ConfirmStep extends Component {
     const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
 
     let need = await this.abundance.need('ephemeral', this.props.need)
-    let ipv8link = await this.abundance.getCoreAPI().claim(
+    let ipv8TempLink = await this.abundance.getCoreAPI().claim(
       { did: siteDid },
       this.props.need,
       { did: serviceDid }
     )
-
-    console.log('ipv8_link', ipv8link)
 
     let observeOffer = await this.abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise
 
     await this.abundance.getCoreAPI().claim(need.myPrivateSsid, {
       [this.props.config.SOURCE_ARGUMENT]: this.props.bsn,
-      ['ipv8_link']: ipv8link
+      ['ipv8_link']: ipv8TempLink
     })
 
-
-    let result = await observeOffer.resultPromise
+    const result = await observeOffer.resultPromise
+    const attestedIpv8Link = result.claim.data
+    const resultLink = result.claim.previous
+    const resultData = await this.abundance.getCoreAPI().get(result.claim.previous, need.myPrivateSsid)
 
     if (this.props.ssidsChanged) {
       this.props.ssidsChanged(need.theirPrivateDid, need.myPrivateSsid)
     }
 
     if (this.props.resultLinkChanged) {
-      this.props.resultLinkChanged(result.link)
+      this.props.resultLinkChanged(resultLink)
+    }
+
+    if (this.props.qrMetadataChanged) {
+      this.props.qrMetadataChanged({ ipv8Link: attestedIpv8Link })
     }
 
     this.setState({
-      ...this.state,
-      'data': result.claim.data
+      data: resultData.data
     })
   }
 
@@ -95,6 +96,7 @@ class ConfirmStep extends Component {
         </p>
       )
     }
+
     return result
   }
 

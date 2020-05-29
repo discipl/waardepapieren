@@ -283,16 +283,22 @@ class ValidatingScreen extends React.Component {
   }
 
   async _checkIpv8QR() {
+    const { navigation } = this.props;
+    const qrString = await navigation.getParam('qrString', 'String not found');
     const core = new PaperWallet().getCore()
     core.registerConnector('ipv8', new Ipv8Connector())
+    const ipv8Connector = await core.getConnector('ipv8')
+    ipv8Connector.VERIFICATION_REQUEST_MAX_RETRIES = 5
+    ipv8Connector.VERIFICATION_REQUEST_RETRY_TIMEOUT_MS = 500
 
     try {
-      const claimData = this._readClaimData()
-      const ipv8Link = claimData.find(v => v.IPV8_LINK !== undefined).IPV8_LINK;
+      const claimLink = Object.keys(Object.values(JSON.parse(qrString).claimData)[0][0])[0]
+      const ipv8Link = JSON.parse(qrString).metadata.ipv8Link
+      const ipv8Endpoint = JSON.parse(qrString).metadata.ipv8endpoint
       const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=';
-      (await core.getConnector('ipv8')).configure('http://niels.pc:14412');
+      ipv8Connector.configure(ipv8Endpoint);
 
-      const verified = await core.verify(JSON.stringify(claimData.filter(v => v.IPV8_LINK === undefined)), ipv8Link, [serviceDid])
+      const verified = await core.verify(claimLink, ipv8Link, [serviceDid])
 
       if (verified === null) {
         throw Error("IPv8 claim not verified")

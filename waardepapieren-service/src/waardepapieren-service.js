@@ -95,21 +95,21 @@ class WaardenpapierenService {
       resultArray.push({ [key]: value[0] })
     }
 
+    let productClaim = await core.claim(nlxIdentity, resultArray)
+    
     // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
     const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
     const ipv8PermLink = await core.attest(
       { did: serviceDid },
-      stringify(resultArray),
+      productClaim,
       ipv8TempLink
     )
-
-    resultArray.push({ 'IPV8_LINK': ipv8PermLink })
-
-    let productClaim = await core.claim(nlxIdentity, resultArray)
+      
+    let ipv8Claim = await core.claim(nlxIdentity, ipv8PermLink)
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
-
-    await this.abundance.offer(needDetails.myPrivateSsid, productClaim)
+    await core.allow(nlxIdentity, ipv8Claim, needDetails.theirPrivateDid)
+    await this.abundance.offer(needDetails.myPrivateSsid, ipv8Claim)
 
     this.logger.info('Served need', logId)
   }
