@@ -10,6 +10,3 @@ fetch(window.waardepapierenConfigUrl || 'https://localhost/clerk-frontend-config
         ReactDOM.render(<App config={config} />, document.getElementById(config.CONTAINER_ID));
     }
 )
-
-
-

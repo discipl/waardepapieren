@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { AbundanceService } from '@discipl/abundance-service'
 
 const timeoutPromise = (timeoutMillis) => {
@@ -7,12 +7,10 @@ const timeoutPromise = (timeoutMillis) => {
   })
 }
 
-class ConfirmStep extends Component {
-
+class ConfirmStep extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
-
     this.abundance = new AbundanceService(this.props.core)
   }
 
@@ -59,7 +57,6 @@ class ConfirmStep extends Component {
     })
   }
 
-
   renderAttributes(obj) {
     const result = []
     if (Array.isArray(obj)) {
@@ -101,7 +98,6 @@ class ConfirmStep extends Component {
   }
 
   render() {
-    let result = [];
     return (
       <div>
         <p>
@@ -110,7 +106,7 @@ class ConfirmStep extends Component {
           </strong>
         </p>
         <ul className="definition-list definition-list--large-titles">
-          {this.renderAttributes(this.state.data, result)}
+          {this.renderAttributes(this.state.data)}
         </ul>
       </div>
     );

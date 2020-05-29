@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NeedWizard.css'
 import BSNStep from './BSNStep'
 import NeedStep from './NeedStep'
@@ -8,7 +8,7 @@ import DeliveryStep from './DeliveryStep'
 
 const MAX_STEP = 3;
 
-class NeedWizard extends Component {
+class NeedWizard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,26 +30,25 @@ class NeedWizard extends Component {
   _prev() {
     this.setState({
       ...this.state,
-      step: this.state.step-1
+      step: this.state.step - 1
     })
   }
 
   _next() {
     this.setState({
       ...this.state,
-      step: this.state.step+1
+      step: this.state.step + 1
     })
   }
 
   _first() {
     this.setState({
-      ...this.state,
       step: 0
     })
   }
 
   _download(type) {
-    if(type === 'paperWallet') {
+    if (type === 'paperWallet') {
       this.state.pdf.save('uittreksel.pdf')
     } else {
       window.alert('Download option (' + type + ') not supported...')

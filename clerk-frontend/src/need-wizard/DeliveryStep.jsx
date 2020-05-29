@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import * as jsPDF from 'jspdf'
 import { PaperWallet } from '@discipl/paper-wallet'
 
-
-
 class ConfirmStep extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -14,9 +11,7 @@ class ConfirmStep extends Component {
     }
 
     this.template = this.props.config.EXPORT_TYPES['@discipl/paper-wallet'].template
-
     this.paperWallet = new PaperWallet(this.props.core)
-
     this.canvasRef = React.createRef()
   }
 
@@ -30,8 +25,7 @@ class ConfirmStep extends Component {
     console.log(this.props)
 
     const certUrl = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
-
-    let vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {
+    const vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {
       cert: certUrl + '/certs/org.crt',
       ipv8endpoint: 'http://niels.pc:14412',
       ...this.props.qrMetadata
@@ -39,7 +33,7 @@ class ConfirmStep extends Component {
 
     console.log("Issued")
 
-    let pdf = new jsPDF({
+    const pdf = new jsPDF({
       orientation: 'p',
       unit: 'pt',
       format: [595.28, 841.89]
@@ -52,9 +46,6 @@ class ConfirmStep extends Component {
 
     let imageData = this.canvasRef.current.toDataURL('image/png')
 
-
-
-
     pdf.addImage(imageData, 'png', 0, 0, this.template.canvasWidth, this.template.canvasHeight)
 
     this.deliveryChanged(pdf)
@@ -63,7 +54,7 @@ class ConfirmStep extends Component {
   render() {
     return (
       <div className="delivery-data">
-        <canvas id="delivery-canvas" class="responsive" ref={this.canvasRef}/>
+        <canvas id="delivery-canvas" className="responsive" ref={this.canvasRef} />
       </div>
     );
   }

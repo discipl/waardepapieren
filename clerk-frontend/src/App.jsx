@@ -4,17 +4,12 @@ import { AbundanceService } from '@discipl/abundance-service'
 import EphemeralConnector from '@discipl/core-ephemeral'
 import Ipv8Connector from '@discipl/core-ipv8';
 
-
-
-
-
-
 class App extends Component {
     constructor(props) {
         super(props)
-
         this.abundance = new AbundanceService()
     }
+
     async componentDidMount() {
         console.log(new EphemeralConnector().getName())
         await this.abundance.getCoreAPI().registerConnector('ephemeral', new EphemeralConnector())
