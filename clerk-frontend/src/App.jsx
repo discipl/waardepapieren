@@ -28,7 +28,7 @@ class App extends Component {
         const core = await this.abundance.getCoreAPI()
 
         const verificationRequestsObserve = await core.observeVerificationRequests(siteDid, { did: appDid }, {did: null, privkey: null})
-        verificationRequestsObserve._observable.subscribe(request => {
+        await verificationRequestsObserve.subscribe(request => {
             ipv8Connector.ipv8AttestationClient.allowVerify(request.verifier.mid, request.claim.data)
         })
     }
