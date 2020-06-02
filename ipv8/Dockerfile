@@ -13,3 +13,4 @@ COPY main.py ./main.py
 COPY certs ./certs
 
 CMD ["python", "-u", "main.py"]
+HEALTHCHECK --interval=1s --timeout=5s --start-period=10s --retries=3 CMD [ "python", "healthcheck.py" ]
