@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.1",
+    "@discipl/core-ipv8": "0.0.1",
     "@discipl/paper-wallet": "^0.8.1",
     "@expo/samples": "2.1.1",
     "@expo/vector-icons": "^10.0.0",
@@ -27,7 +28,7 @@
     "qrcode": "^1.3.3",
     "react": "16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
-    "react-navigation": "^2.18.2"
+    "react-navigation": "^2.18.3"
   },
   "devDependencies": {
     "babel-preset-expo": "^8.0.0",
