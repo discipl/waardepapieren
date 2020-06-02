@@ -6,6 +6,8 @@ services:
       - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
       - ./waardepapieren-service/configuration/:/app/configuration:ro
     build: waardepapieren-service/.
+    depends_on:
+      - ipv8
     networks:
       - waardepapieren
     ports:
@@ -32,6 +34,10 @@ services:
       context: clerk-frontend/
       args:
         - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
+        - IPV8_HOST=http://$CERT_HOST_IP
+    depends_on:
+      - ipv8
+      - waardepapieren-service
     networks:
       - waardepapieren
     ports:
@@ -52,6 +58,10 @@ services:
       context: ipv8/.
     networks:
       - waardepapieren
+    ports:
+      - 14410:14410
+      - 14411:14411
+      - 14412:14412
 
 networks:
   waardepapieren:

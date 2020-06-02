@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as jsPDF from 'jspdf'
 import { PaperWallet } from '@discipl/paper-wallet'
 
-class ConfirmStep extends Component {
+class ConfirmStep extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,10 +24,11 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     console.log(this.props)
 
-    const certUrl = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
+    const certHost = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
+    const ipv8Host = process.env.REACT_APP_IPV8_HOST
     const vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {
-      cert: certUrl + '/certs/org.crt',
-      ipv8endpoint: 'http://niels.pc:14412',
+      cert: certHost + '/certs/org.crt',
+      ipv8endpoint: ipv8Host + ':14412',
       ...this.props.qrMetadata
     })
 
