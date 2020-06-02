@@ -114,7 +114,7 @@ class ScanScreen extends React.Component {
   async componentDidMount() {
     const cameraPermissionStorage = await this._getCameraPermissions()
 
-    if (cameraPermissionStorage != "granted") {
+    if (cameraPermissionStorage !== "granted") {
       Alert.alert(
         i18n.t("permissionHeader"),
         i18n.t("permissionMessage"),
@@ -193,9 +193,9 @@ class ValidatingScreen extends React.Component {
   }
 
   async componentDidMount() {
-    var strictValidation = await this._getStrictValidationPreference()
+    const strictValidation = await this._getStrictValidationPreference()
     console.log('StrictValidation', strictValidation)
-    this.rootCA = (strictValidation == "true") ? realRootCA : demoRootCA
+    this.rootCA = (strictValidation === "true") ? realRootCA : demoRootCA
     console.log('rootCA', this.rootCA);
   }
 
@@ -215,9 +215,8 @@ class ValidatingScreen extends React.Component {
     let displayData = this.state.qrString;
     let documentJson = JSON.parse(displayData).claimData;
     let claimWithLink = Object.values(documentJson)[0][0];
-    let claimData = Object.values(claimWithLink)[0];
 
-    return claimData;
+    return Object.values(claimWithLink)[0];
   }
 
   async _checkQR() {
@@ -292,8 +291,14 @@ class ValidatingScreen extends React.Component {
     ipv8Connector.VERIFICATION_REQUEST_RETRY_TIMEOUT_MS = 500
 
     try {
-      const claimLink = Object.keys(Object.values(JSON.parse(qrString).claimData)[0][0])[0]
       const ipv8Link = JSON.parse(qrString).metadata.ipv8Link
+
+      // If no link to a IPv8 claim is found the result is considered valid
+      if (!ipv8Link) {
+        return true;
+      }
+
+      const claimLink = Object.keys(Object.values(JSON.parse(qrString).claimData)[0][0])[0]
       const ipv8Endpoint = JSON.parse(qrString).metadata.ipv8endpoint
       const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=';
       ipv8Connector.configure(ipv8Endpoint);
@@ -301,12 +306,14 @@ class ValidatingScreen extends React.Component {
       const verified = await core.verify(claimLink, ipv8Link, [serviceDid])
 
       if (verified === null) {
-        throw Error("IPv8 claim not verified")
+        console.log('This was not a valid IPv8 claim')
+
+        return false
       }
 
       return true
-    } catch(e) {
-      console.log("This was not a valid IPv8 claim", e);
+    } catch (e) {
+      console.log("Error when verifying the IPv8 claim", e);
       console.log(e.stack)
 
       return false
@@ -318,7 +325,7 @@ class ValidatingScreen extends React.Component {
     let ipv8ValidationResult = await this._checkIpv8QR()
 
     if (!validationResult || !ipv8ValidationResult){
-      this.setState({validatingState: "denied"})
+      this.setState({ validatingState: "denied" })
     }
     else {
       this.setState({ validatingState: "verified" })
@@ -345,16 +352,16 @@ class ValidatingScreen extends React.Component {
     let validatingIcon;
     let validatingText;
     let issuerText;
-    if (this.state.validatingState == "waiting") {
+    if (this.state.validatingState === "waiting") {
       validatingIcon = waiting;
       validatingText = i18n.t("checkingQR");
     }
-    if (this.state.validatingState == "verified") {
+    if (this.state.validatingState === "verified") {
       validatingIcon = verified;
       validatingText = i18n.t("validQR");
       issuerText = i18n.t("issuerNameDescription") + this.state.issuer
     }
-    if (this.state.validatingState == "denied") {
+    if (this.state.validatingState === "denied") {
       validatingIcon = denied;
       validatingText = i18n.t("invalidQR");
     }
@@ -368,7 +375,7 @@ class ValidatingScreen extends React.Component {
           <Text style ={styles.value}>{issuerText}</Text>
         </View>
 
-        {this.state.validatingState == "verified" ? <FlatList
+        {this.state.validatingState === "verified" ? <FlatList
           data={this._renderClaimData()}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) =>
