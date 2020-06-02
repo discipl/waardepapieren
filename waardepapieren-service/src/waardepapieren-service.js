@@ -105,11 +105,11 @@ class WaardenpapierenService {
       ipv8TempLink
     )
       
-    let ipv8Claim = await core.claim(nlxIdentity, ipv8PermLink)
+    let resultClaim = await core.claim(nlxIdentity, { ipv8Claim: ipv8PermLink, productClaim })
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
-    await core.allow(nlxIdentity, ipv8Claim, needDetails.theirPrivateDid)
-    await this.abundance.offer(needDetails.myPrivateSsid, ipv8Claim)
+    await core.allow(nlxIdentity, resultClaim, needDetails.theirPrivateDid)
+    await this.abundance.offer(needDetails.myPrivateSsid, resultClaim)
 
     this.logger.info('Served need', logId)
   }

@@ -36,9 +36,9 @@ class ConfirmStep extends React.Component {
     })
 
     const result = await observeOffer.resultPromise
-    const attestedIpv8Link = result.claim.data
-    const resultLink = result.claim.previous
-    const resultData = await this.abundance.getCoreAPI().get(result.claim.previous, need.myPrivateSsid)
+    const attestedIpv8Link = result.claim.data.ipv8Claim
+    const resultLink = result.claim.data.productClaim
+    const resultData = await this.abundance.getCoreAPI().get(resultLink, need.myPrivateSsid)
 
     if (this.props.ssidsChanged) {
       this.props.ssidsChanged(need.theirPrivateDid, need.myPrivateSsid)
