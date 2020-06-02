@@ -7,10 +7,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test": "jest"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ]
   },
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.1",
@@ -32,6 +35,7 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^8.0.0",
-    "jest-expo": "^36.0.0"
+    "jest-expo": "^36.0.0",
+    "react-test-renderer": "^16.13.1"
   }
 }
