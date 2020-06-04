@@ -17,15 +17,19 @@ class ConfirmStep extends React.Component {
   async componentDidMount() {
     await timeoutPromise(100)
 
-    const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI='
-    const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
+    const need = await this.abundance.need('ephemeral', this.props.need)
+    let ipv8TempLink = null
 
-    let need = await this.abundance.need('ephemeral', this.props.need)
-    let ipv8TempLink = await this.abundance.getCoreAPI().claim(
-      { did: siteDid },
-      this.props.need,
-      { did: serviceDid }
-    )
+    if (this.props.config.ENABLE_IPV8_ATTESTATION) {
+      const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI='
+      const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
+
+      ipv8TempLink = await this.abundance.getCoreAPI().claim(
+          { did: siteDid },
+          this.props.need,
+          { did: serviceDid }
+      )
+    }
 
     let observeOffer = await this.abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise
@@ -36,7 +40,6 @@ class ConfirmStep extends React.Component {
     })
 
     const result = await observeOffer.resultPromise
-    const attestedIpv8Link = result.claim.data.ipv8Claim
     const resultLink = result.claim.data.productClaim
     const resultData = await this.abundance.getCoreAPI().get(resultLink, need.myPrivateSsid)
 
@@ -48,7 +51,8 @@ class ConfirmStep extends React.Component {
       this.props.resultLinkChanged(resultLink)
     }
 
-    if (this.props.qrMetadataChanged) {
+    if (this.props.config.ENABLE_IPV8_ATTESTATION && this.props.qrMetadataChanged) {
+      const attestedIpv8Link = result.claim.data.ipv8Claim
       this.props.qrMetadataChanged({ ipv8Link: attestedIpv8Link })
     }
 

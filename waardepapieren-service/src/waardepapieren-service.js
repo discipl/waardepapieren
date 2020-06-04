@@ -1,19 +1,16 @@
 import { AbundanceService } from '@discipl/abundance-service'
-import Ipv8Connector from '@discipl/core-ipv8';
 // Specifically importing the server, because the server is not in the index to ensure browser compatibility
 import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
-import { take } from 'rxjs/operators'
 import { w3cwebsocket } from 'websocket'
 import jp from 'jsonpath'
 import fs from 'fs'
 import * as log from 'loglevel'
-import stringify from "json-stable-stringify"
 
 class WaardenpapierenService {
-  constructor (core) {
+  constructor(core) {
     this.core = core
   }
-  async start (configuration) {
+  async start(configuration) {
     this.logger = log.getLogger('WaardepapierenService')
     this.configuration = configuration
 
@@ -27,7 +24,7 @@ class WaardenpapierenService {
       this.ephemeralServer = new EphemeralServer(3232, configuration.EPHEMERAL_CERT, configuration.EPHEMERAL_KEY, configuration.EPHEMERAL_RETENTION_TIME)
       this.ephemeralServer.start()
     }
-    
+
     this.abundance = new AbundanceService(this.core)
     const core = this.abundance.getCoreAPI()
     const ephemeralConnector = await core.getConnector('ephemeral')
@@ -43,11 +40,13 @@ class WaardenpapierenService {
     nlxConnector.configure(this.configuration.NLX_OUTWAY_ENDPOINT)
     let attendResult = await this.abundance.attendTo('ephemeral', this.configuration.PRODUCT_NEED, [this.configuration.SOURCE_ARGUMENT])
 
-    const ipv8connector = await core.getConnector('ipv8')
-    ipv8connector.configure('https://clerk-frontend/api/ipv8/service')
+    if (this.configuration.ENABLE_IPV8_ATTESTATION) {
+      const ipv8connector = await core.getConnector('ipv8')
+      ipv8connector.configure('https://clerk-frontend/api/ipv8/service')
+    }
 
     // TODO: Refactor to observableResult.subscribe when fix from core propagates
-    await attendResult.observableResult._observable.subscribe(async (need) => {
+    await attendResult.observableResult.subscribe(async (need) => {
       await this.serveNeed(need, nlxEphemeralIdentity)
     }, (e) => {
       // If connection is dropped by remote peer, this is fine
@@ -64,8 +63,8 @@ class WaardenpapierenService {
     this.logger.info('Serving needs')
   }
 
-  async serveNeed (need, nlxIdentity) {
-    let logId = Math.floor(Math.random()*10000);
+  async serveNeed(need, nlxIdentity) {
+    let logId = Math.floor(Math.random() * 10000);
     this.logger.info('Serving need ', logId)
     let core = this.abundance.getCoreAPI()
 
@@ -78,14 +77,14 @@ class WaardenpapierenService {
     let ipv8TempLink = argumentClaim['claim']['data']['ipv8_link']
 
     const nlxConnector = await core.getConnector('nlx')
-    let nlxpath = this.configuration.SOURCE_NLX_PATH.replace('{'+this.configuration.SOURCE_ARGUMENT+'}', srcarg)
-    let identifier = await nlxConnector.claim(null, { 'path': nlxpath, 'params': {[this.configuration.SOURCE_ARGUMENT]:srcarg} })
+    let nlxpath = this.configuration.SOURCE_NLX_PATH.replace('{' + this.configuration.SOURCE_ARGUMENT + '}', srcarg)
+    let identifier = await nlxConnector.claim(null, { 'path': nlxpath, 'params': { [this.configuration.SOURCE_ARGUMENT]: srcarg } })
 
     let result = await nlxConnector.get(identifier)
 
     this.logger.info('Retrieved NLX data', logId)
 
-    let resultArray = [{'Doel':this.configuration.PRODUCT_PURPOSE}]
+    let resultArray = [{ 'Doel': this.configuration.PRODUCT_PURPOSE }]
 
     for (let field in this.configuration.SOURCE_DATA_SELECTION) {
       let key = Object.keys(this.configuration.SOURCE_DATA_SELECTION[field])[0]
@@ -96,16 +95,21 @@ class WaardenpapierenService {
     }
 
     let productClaim = await core.claim(nlxIdentity, resultArray)
-    
-    // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
-    const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
-    const ipv8PermLink = await core.attest(
-      { did: serviceDid },
-      productClaim,
-      ipv8TempLink
-    )
-      
-    let resultClaim = await core.claim(nlxIdentity, { ipv8Claim: ipv8PermLink, productClaim })
+    let resultClaim = null
+
+    if (this.configuration.ENABLE_IPV8_ATTESTATION) {
+      // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
+      const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
+      const ipv8PermLink = await core.attest(
+        { did: serviceDid },
+        productClaim,
+        ipv8TempLink
+      )
+
+      resultClaim = await core.claim(nlxIdentity, { ipv8Claim: ipv8PermLink, productClaim })
+    } else {
+      resultClaim = await core.claim(nlxIdentity, { productClaim })
+    }
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
     await core.allow(nlxIdentity, resultClaim, needDetails.theirPrivateDid)
@@ -114,7 +118,7 @@ class WaardenpapierenService {
     this.logger.info('Served need', logId)
   }
 
-  async stop () {
+  async stop() {
     try {
       await this.ephemeralServer.close()
     } catch (e) {
@@ -123,7 +127,7 @@ class WaardenpapierenService {
     }
   }
 
-  getCoreAPI () {
+  getCoreAPI() {
     return this.abundance.getCoreAPI()
   }
 }

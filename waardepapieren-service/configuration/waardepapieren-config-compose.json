@@ -21,5 +21,6 @@
     {"Voorletters" : "_embedded.ingeschrevenpersonen[0].naam.voorletters"},
     {"Geslachtsnaam" : "_embedded.ingeschrevenpersonen[0].naam.geslachtsnaam"},
     {"Woonplaats verblijfadres" : "_embedded.ingeschrevenpersonen[0].verblijfplaats.gemeenteVanInschrijving.omschrijving"}
-  ]
+  ],
+  "ENABLE_IPV8_ATTESTATION": false
 }
