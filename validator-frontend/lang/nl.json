@@ -7,6 +7,7 @@
   "invalidQR": "Dit is geen geldige QR-code!",
   "validQR": "Dit is geldig bewijs!",
   "issuerNameDescription": "Afgegeven door: ",
+  "validationMethods": "Validatie methoden: ",
   "validatingHeader": "Validatie",
   "permissionMessage": "We hebben uw camera nodig om waardepapieren te valideren.",
   "permissionHeader": "Camera nodig",

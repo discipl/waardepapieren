@@ -189,7 +189,10 @@ class ScanScreen extends React.Component {
 class ValidatingScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { validatingState: "waiting" };
+    this.state = {
+      validatingState: "waiting",
+      validationMethods: []
+    };
   }
 
   async componentDidMount() {
@@ -271,6 +274,8 @@ class ValidatingScreen extends React.Component {
       let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': orgCertifcate})
       console.log("Validating...")
 
+      this.setState(prevState => ({ validationMethods: [...prevState.validationMethods, 'Ephemeral'] }))
+
       return await this.paperWallet.validate(attestorSsid.did, qrString)
     }
     catch (e) {
@@ -310,6 +315,8 @@ class ValidatingScreen extends React.Component {
 
         return false
       }
+
+      this.setState(prevState => ({ validationMethods: [...prevState.validationMethods, 'IPv8'] }))
 
       return true
     } catch (e) {
@@ -352,6 +359,8 @@ class ValidatingScreen extends React.Component {
     let validatingIcon;
     let validatingText;
     let issuerText;
+    let validationMethodsText;
+
     if (this.state.validatingState === "waiting") {
       validatingIcon = waiting;
       validatingText = i18n.t("checkingQR");
@@ -360,6 +369,7 @@ class ValidatingScreen extends React.Component {
       validatingIcon = verified;
       validatingText = i18n.t("validQR");
       issuerText = i18n.t("issuerNameDescription") + this.state.issuer
+      validationMethodsText = i18n.t("validationMethods") + this.state.validationMethods.join(', ')
     }
     if (this.state.validatingState === "denied") {
       validatingIcon = denied;
@@ -372,7 +382,11 @@ class ValidatingScreen extends React.Component {
           <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
           <Text style ={styles.key}>{validatingText}</Text>
           {validatingIcon}
-          <Text style ={styles.value}>{issuerText}</Text>
+
+          <View style={styles.validationInformation}>
+            <Text style={styles.validationInformationText}>{validationMethodsText}</Text>
+            <Text style={styles.validationInformationText}>{issuerText}</Text>
+          </View>
         </View>
 
         {this.state.validatingState === "verified" ? <FlatList
@@ -418,6 +432,14 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     alignItems:'center',
     justifyContent:'center',
+  },
+  validationInformation: {
+    padding: 10
+  },
+  validationInformationText: {
+    fontSize: 16,
+    padding: 5,
+    color: '#666666'
   },
   flatview: {
     backgroundColor: '#F6F6F6',

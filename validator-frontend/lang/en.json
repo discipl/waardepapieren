@@ -7,6 +7,7 @@
   "invalidQR": "This is an invalid QR-code!",
   "validQR": "This proof is validated!",
   "issuerNameDescription": "Issuer: ",
+  "validationMethods": "Validation methods: ",
   "validatingHeader": "Validator",
   "permissionMessage": "We need your camera to validate documents.",
   "permissionHeader": "Camera permission needed",
