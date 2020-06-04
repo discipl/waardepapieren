@@ -24,8 +24,8 @@ class App extends Component {
             ipv8Connector.configure('https://localhost/api/ipv8/site')
 
             // Watch for verification request where the app is the requester and approve  those
-            const appDid = 'did:discipl:ipv8:TGliTmFDTFBLOnj5S5VTowiIEV3QELnWusYPUBoiJ4vXtjeznhUUHdF6CbkMsP7H4PZwESO4LPHByqZHyEkjnM986nRQ2Bit76U='
-            const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI='
+            const appDid = this.props.config.IPV8_APP_DID
+            const siteDid = this.props.config.IPV8_SITE_DID
             const core = await this.abundance.getCoreAPI()
 
             const verificationRequestsObserve = await core.observeVerificationRequests(siteDid, { did: appDid }, {did: null, privkey: null})

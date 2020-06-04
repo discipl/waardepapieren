@@ -45,7 +45,6 @@ class WaardenpapierenService {
       ipv8connector.configure('https://clerk-frontend/api/ipv8/service')
     }
 
-    // TODO: Refactor to observableResult.subscribe when fix from core propagates
     await attendResult.observableResult.subscribe(async (need) => {
       await this.serveNeed(need, nlxEphemeralIdentity)
     }, (e) => {
@@ -99,9 +98,8 @@ class WaardenpapierenService {
 
     if (this.configuration.ENABLE_IPV8_ATTESTATION) {
       // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
-      const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
       const ipv8PermLink = await core.attest(
-        { did: serviceDid },
+        { did: this.configuration.IPV8_SERVICE_DID },
         productClaim,
         ipv8TempLink
       )

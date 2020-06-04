@@ -21,13 +21,10 @@ class ConfirmStep extends React.Component {
     let ipv8TempLink = null
 
     if (this.props.config.ENABLE_IPV8_ATTESTATION) {
-      const siteDid = 'did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI='
-      const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI='
-
       ipv8TempLink = await this.abundance.getCoreAPI().claim(
-          { did: siteDid },
+          { did: this.props.config.IPV8_SITE_DID },
           this.props.need,
-          { did: serviceDid }
+          { did: this.props.config.IPV8_SERVICE_DID }
       )
     }
 

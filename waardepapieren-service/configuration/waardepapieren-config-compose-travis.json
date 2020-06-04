@@ -22,5 +22,8 @@
     {"Geslachtsnaam" : "_embedded.ingeschrevenpersonen[0].naam.geslachtsnaam"},
     {"Woonplaats verblijfadres" : "_embedded.ingeschrevenpersonen[0].verblijfplaats.gemeenteVanInschrijving.omschrijving"}
   ],
-  "ENABLE_IPV8_ATTESTATION": true
+  "ENABLE_IPV8_ATTESTATION": true,
+  "IPV8_SERVICE_DID": "did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=",
+  "IPV8_SITE_DID": "did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI=",
+  "IPV8_APP_DID": "did:discipl:ipv8:TGliTmFDTFBLOnj5S5VTowiIEV3QELnWusYPUBoiJ4vXtjeznhUUHdF6CbkMsP7H4PZwESO4LPHByqZHyEkjnM986nRQ2Bit76U="
 }
