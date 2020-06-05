@@ -33,6 +33,12 @@ Alternatively, you can use an offline mock, which replicates the NLX environment
 
 The clerk frontend will be available at `https://localhost:443`
 
+### Running with IPv8
+Optionally IPv8 attestation can be used in extend with Ephemeral. This is done as follows:
+
+1. Create (or edit) the config files that are used by the application. These are located in `clerk-frontend/public` and `waardepapieren-service/configuration`. Set the `ENABLE_IPV8_ATTESTATION` to `true`
+2. Run `docker-compose -f docker-compose-travis.yml -f docker-compose-ipv8.yml up`
+
 # Running validator
 The validator app is made with [Expo](https://expo.io/), which is a free and open-source react-native framework for mobile development. to run this on a mobile device, the expo-cli tool is required. to install this, run:
 ```bash
