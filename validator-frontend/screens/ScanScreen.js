@@ -274,7 +274,7 @@ class ValidatingScreen extends React.Component {
       let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': orgCertifcate})
       console.log("Validating...")
 
-      this.setState(prevState => ({ validationMethods: [...prevState.validationMethods, 'Ephemeral'] }))
+      this.setState(prevState => ({ validationMethods: [...prevState.validationMethods, 'Certificate'] }))
 
       return await this.paperWallet.validate(attestorSsid.did, qrString)
     }
