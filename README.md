@@ -10,15 +10,16 @@ ensure that the validation app can retrieve those. This is only needed for worki
 
 1. Generate certificates as described [here](https://docs.nlx.io/try-nlx/retrieve-a-demo-certificate/), and place the `org.key` and `org.crt` files at `./mock-nlx/certs/`
 2. Ensure the certificates are readable, for example by giving the following permissions `chmod g+r org.key`
-## Running
 
+## Running
 The easiest way to run is using docker-compose:
 
 This will start 3 applications:
-
 - clerk-frontend
 - waardepapieren-service, with embedded ephemeral-server
 - nlx-mock, which is an nlx-outway that provides access to a mock BRP service
+
+Also the network `waardepapieren` will be created and used by all Docker container.
 
 This is done as follows:
 
@@ -28,8 +29,9 @@ This is done as follows:
 
 Alternatively, you can use an offline mock, which replicates the NLX environment.
 
-1. Run `docker-compose -f docker-compose-travis.yml up`
+1. Run `docker-compose -f docker-compose-travis.yml up --build`
 
+> The `--build` flags ensures that the latest version of the application is build. Dockers build-in caching is still used, so only the modified parts of the application are rebuild. Optionally the `--no-cache` flag can be added to disable the caching. This may be required when changes to the `package.json` are made.
 
 The clerk frontend will be available at `https://localhost:443`
 
@@ -37,7 +39,9 @@ The clerk frontend will be available at `https://localhost:443`
 Optionally IPv8 attestation can be used in extend with Ephemeral. This is done as follows:
 
 1. Create (or edit) the config files that are used by the application. These are located in `clerk-frontend/public` and `waardepapieren-service/configuration`. Set the `ENABLE_IPV8_ATTESTATION` to `true`
-2. Run `docker-compose -f docker-compose-travis.yml -f docker-compose-ipv8.yml up`
+2. Run `docker-compose -f docker-compose-travis.yml -f docker-compose-ipv8.yml up --build`
+
+The `docker-compose-ipv8.yml` can be ran as a stand-alone application. However, it depends on the existence of the `waardepapieren` network. Run the complete application once as described  above to create the network.
 
 # Running validator
 The validator app is made with [Expo](https://expo.io/), which is a free and open-source react-native framework for mobile development. to run this on a mobile device, the expo-cli tool is required. to install this, run:
