@@ -76,7 +76,7 @@ nieuwe innovatieve ideeen uit te proberen.
 ![hs1](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_01.png)
 
 ***
-3. gemeentelijk abmtenaar tikt magisch nummer in.  (BSN=663678651)
+3. gemeentelijk abmtenaar tikt magisch nummer in.  (BSN=999994669)
 ![hs2](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_02.png)
 gemeenteambtenaar klikt op volgende
 
