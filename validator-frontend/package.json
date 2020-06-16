@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@discipl/core-ephemeral": "^0.11.1",
-    "@discipl/core-ipv8": "0.0.1",
+    "@discipl/core-ipv8": "0.0.2",
     "@discipl/paper-wallet": "^0.8.1",
     "@expo/samples": "2.1.1",
     "@expo/vector-icons": "^10.0.0",

@@ -20,7 +20,7 @@
     "@babel/register": "7.4.4",
     "@discipl/abundance-service": "0.5.2",
     "@discipl/core-ephemeral": "0.11.1",
-    "@discipl/core-ipv8": "0.0.1",
+    "@discipl/core-ipv8": "0.0.2",
     "@discipl/core-nlx": "0.2.0",
     "babel-plugin-dynamic-import-node": "2.2.0",
     "json-stable-stringify": "^1.0.1",

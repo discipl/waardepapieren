@@ -292,8 +292,6 @@ class ValidatingScreen extends React.Component {
     const core = new PaperWallet().getCore()
     core.registerConnector('ipv8', new Ipv8Connector())
     const ipv8Connector = await core.getConnector('ipv8')
-    ipv8Connector.VERIFICATION_REQUEST_MAX_RETRIES = 5
-    ipv8Connector.VERIFICATION_REQUEST_RETRY_TIMEOUT_MS = 500
 
     try {
       const ipv8Link = JSON.parse(qrString).metadata.ipv8Link
@@ -306,7 +304,7 @@ class ValidatingScreen extends React.Component {
       const claimLink = Object.keys(Object.values(JSON.parse(qrString).claimData)[0][0])[0]
       const ipv8Endpoint = JSON.parse(qrString).metadata.ipv8endpoint
       const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=';
-      ipv8Connector.configure(ipv8Endpoint);
+      ipv8Connector.configure(ipv8Endpoint,  { VERIFICATION_REQUEST_MAX_RETRIES: 5, VERIFICATION_REQUEST_RETRY_TIMEOUT_MS: 500 });
 
       const verified = await core.verify(claimLink, ipv8Link, [serviceDid])
 
