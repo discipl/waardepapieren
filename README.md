@@ -10,6 +10,7 @@ ensure that the validation app can retrieve those. This is only needed for worki
 
 1. Generate certificates as described [here](https://docs.nlx.io/try-nlx/retrieve-a-demo-certificate/), and place the `org.key` and `org.crt` files at `./mock-nlx/certs/`
 2. Ensure the certificates are readable, for example by giving the following permissions `chmod g+r org.key`
+
 ## Running
 
 The easiest way to run is using docker-compose:
@@ -18,17 +19,17 @@ This will start 3 applications:
 
 - clerk-frontend
 - waardepapieren-service, with embedded ephemeral-server
-- nlx-mock, which is an nlx-outway that provides access to a mock BRP service
+- nlx-mock, which is a mocked nlx-service
 
 This is done as follows:
 
 1. Set the environment variable CERT_HOST_IP is with an IP (or domain) that the validator app can use to reach
    the clerk-frontend container. Ensure that the validator app runs on the same (wifi) network as the clerk frontend.
-2. Run `docker-compose up`
+2. Run `docker-compose -f docker-compose-travis.yml up`
 
-Alternatively, you can use an offline mock, which replicates the NLX environment.
+Alternatively, you can use a live NLX version (unmaintained configuration):
 
-1. Run `docker-compose -f docker-compose-travis.yml up`
+1. Run `docker-compose up`
 
 
 The clerk frontend will be available at `https://localhost:443`
@@ -66,7 +67,7 @@ nieuwe innovatieve ideeen uit te proberen.
 ![hs1](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_01.png)
 
 ***
-3. gemeentelijk abmtenaar tikt magisch nummer in.  (BSN=663678651)
+3. gemeentelijk abmtenaar tikt magisch nummer in (anders dan in screenshot: BSN=999994669)
 ![hs2](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_02.png)
 gemeenteambtenaar klikt op volgende
 
