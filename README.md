@@ -27,7 +27,7 @@ This is done as follows:
    the clerk-frontend container. Ensure that the validator app runs on the same (wifi) network as the clerk frontend.
 2. Run `docker-compose -f docker-compose-travis.yml up`
 
-Alternatively, you can use a live NLX version with:
+Alternatively, you can use a live NLX version (unmaintained configuration):
 
 1. Run `docker-compose up`
 
