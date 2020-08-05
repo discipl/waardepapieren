@@ -17,7 +17,7 @@ The easiest way to run is using docker-compose:
 This will start 3 applications:
 - clerk-frontend
 - waardepapieren-service, with embedded ephemeral-server
-- nlx-mock, which is an nlx-outway that provides access to a mock BRP service
+- nlx-mock, which is a mocked nlx-service
 
 Also the network `waardepapieren` will be created and used by all Docker container.
 
@@ -25,11 +25,11 @@ This is done as follows:
 
 1. Set the environment variable CERT_HOST_IP is with an IP (or domain) that the validator app can use to reach
    the clerk-frontend container. Ensure that the validator app runs on the same (wifi) network as the clerk frontend.
-2. Run `docker-compose up`
+2. Run `docker-compose -f docker-compose-travis.yml up`
 
-Alternatively, you can use an offline mock, which replicates the NLX environment.
+Alternatively, you can use a live NLX version (unmaintained configuration):
 
-1. Run `docker-compose -f docker-compose-travis.yml up --build`
+1. Run `docker-compose up --build`
 
 > The `--build` flags ensures that the latest version of the application is build. Dockers build-in caching is still used, so only the modified parts of the application are rebuild. Optionally the `--no-cache` flag can be added to disable the caching. This may be required when changes to the `package.json` are made.
 
@@ -76,7 +76,7 @@ nieuwe innovatieve ideeen uit te proberen.
 ![hs1](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_01.png)
 
 ***
-3. gemeentelijk abmtenaar tikt magisch nummer in.  (BSN=999994669)
+3. gemeentelijk abmtenaar tikt magisch nummer in (anders dan in screenshot: BSN=999994669)
 ![hs2](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_02.png)
 gemeenteambtenaar klikt op volgende
 
