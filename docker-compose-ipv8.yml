@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  ipv8:
+    build:
+      context: ipv8/.
+    ports:
+      - 14410:14410
+      - 14411:14411
+      - 14412:14412
+
+networks:
+  default:
+    external:
+      name: waardepapieren

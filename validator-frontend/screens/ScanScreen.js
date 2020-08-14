@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import * as Permissions from 'expo-permissions'
 import { createStackNavigator } from 'react-navigation'
 import { AsyncStorage } from 'react-native'
 import { PaperWallet } from '@discipl/paper-wallet'
+import Ipv8Connector from '@discipl/core-ipv8'
 
 
 const realRootCA = "-----BEGIN CERTIFICATE-----\n" +
@@ -104,7 +105,6 @@ class ScanScreen extends React.Component {
   }
 
   constructor (props) {
-
     super(props)
     this.state = {
       hasCameraPermission: null,
@@ -112,14 +112,14 @@ class ScanScreen extends React.Component {
   }
 
   async componentDidMount() {
-    const hasCameraPermission = this.state.hasCameraPermission
-    const cameraPermissionStorage = await this._retrieveData()
-    if (cameraPermissionStorage != "granted") {
+    const cameraPermissionStorage = await this._getCameraPermissions()
+
+    if (cameraPermissionStorage !== "granted") {
       Alert.alert(
         i18n.t("permissionHeader"),
         i18n.t("permissionMessage"),
         [
-          {text: 'OK', onPress: () => this.askPermissions()},
+          { text: 'OK', onPress: () => this.askPermissions() },
         ],
         { cancelable: false }
       )
@@ -136,22 +136,15 @@ class ScanScreen extends React.Component {
     );
   }
 
-  _retrieveData = async () => {
+  _getCameraPermissions = async () => {
     try {
-      const value = await AsyncStorage.getItem("cameraPermissions");
-      if (value !== null) {
-        // We have data!!
-        return value;
-      }
-      else if (value == null) {
-        console.log("value was null")
-      }
+      return await AsyncStorage.getItem("cameraPermissions");
     } catch (error) {
-      console.log(error)
+      console.log('Error when retreiving the camera permissions', error)
     }
   }
 
-  _storeData = async (data) => {
+  _storeCameraPermissions = async (data) => {
     try {
       await AsyncStorage.setItem("cameraPermissions", data);
     } catch (error) {
@@ -160,11 +153,9 @@ class ScanScreen extends React.Component {
   }
 
   async askPermissions() {
-    console.log("Entered askPermission function");
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
-    console.log("changed hasCameraPermission state");
-    this._storeData("granted");
+    this._storeCameraPermissions("granted");
   }
 
   render() {
@@ -176,7 +167,7 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
-    if (this.state.focusedScreen === false) {
+    if (focusedScreen === false) {
       return <Text>Screen is currently not active</Text>
     }
 
@@ -191,21 +182,23 @@ class ScanScreen extends React.Component {
   }
 
   handleBarCodeScanned = ({ type, data }) => {
-    console.log('Navigating to validation screen')
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
 
-class ValidatingScreen extends Component {
-  constructor(props){
+class ValidatingScreen extends React.Component {
+  constructor(props) {
     super(props);
-    this.state = {validatingState: "waiting"};
+    this.state = {
+      validatingState: "waiting",
+      validationMethods: []
+    };
   }
 
   async componentDidMount() {
-    var strictValidation = await this._retrieveData()
+    const strictValidation = await this._getStrictValidationPreference()
     console.log('StrictValidation', strictValidation)
-    this.rootCA = (strictValidation=="true") ? realRootCA : demoRootCA
+    this.rootCA = (strictValidation === "true") ? realRootCA : demoRootCA
     console.log('rootCA', this.rootCA);
   }
 
@@ -213,50 +206,20 @@ class ValidatingScreen extends Component {
     headerTitle: i18n.t("validatingHeader"),
   };
 
-  _retrieveData = async () => {
+  _getStrictValidationPreference = async () => {
     try {
-      const value = await AsyncStorage.getItem("strictValidationSwitchValue");
-      if (value !== null) {
-        // We have data!!
-        return value;
-      }
-      else if (value == null) {
-        console.log("value was null")
-      }
+      return await AsyncStorage.getItem("strictValidationSwitchValue");
     } catch (error) {
-      console.log(error)
+      console.log('Error when retreiving the Strict Validation perference', error)
     }
   }
 
-  async renderClaimData(){
-    if(this.state.validatingState == "verified"){
-      let claimData = await this._readData();
-      this.setState({claimData: claimData})
-      let renderData = await this._renderData();
-      this.setState({renderData: renderData})
-    }
-  }
-
-  async _readData() {
-    let displayData = await this.state.qrString;
+  _readClaimData() {
+    let displayData = this.state.qrString;
     let documentJson = JSON.parse(displayData).claimData;
     let claimWithLink = Object.values(documentJson)[0][0];
-    let claimData = Object.values(claimWithLink)[0];
-    return claimData;
-  }
 
-  async _renderData() {
-    let claimData = this.state.claimData;
-    let result = []
-    for(var i = 0; i < claimData.length; i++){
-      let entry = {};
-      entry.key = Object.keys(claimData[i])[0];
-      entry.value = Object.values(claimData[i])[0];
-      console.log(entry);
-      result.push(<Text key={entry.key} value={entry.value}/>)
-    }
-    console.log(result);
-    return result;
+    return Object.values(claimWithLink)[0];
   }
 
   async _checkQR() {
@@ -271,9 +234,7 @@ class ValidatingScreen extends Component {
       console.log('Fetching', certEndpoint)
 
       let certChain =  await fetch(certEndpoint)
-        .then((response) => {
-          return response.text()
-        })
+        .then((response) => response.text())
         .catch((e) => {
           console.log('Request failed', e)
           console.log(e.stack)
@@ -312,29 +273,81 @@ class ValidatingScreen extends Component {
       console.log(orgCertifcate)
       let attestorSsid = await (await this.paperWallet.getCore().getConnector('ephemeral')).newIdentity({'cert': orgCertifcate})
       console.log("Validating...")
-      this.result = await this.paperWallet.validate(attestorSsid.did, qrString)
-      console.log(this.result)
+
+      this.setState(prevState => ({ validationMethods: [...prevState.validationMethods, 'Certificate'] }))
+
+      return await this.paperWallet.validate(attestorSsid.did, qrString)
     }
     catch (e) {
-      this.result = false
       console.log("This was not a valid certificate", e);
       console.log(e.stack)
+
+      return false
     }
+  }
 
+  async _checkIpv8QR() {
+    const { navigation } = this.props;
+    const qrString = await navigation.getParam('qrString', 'String not found');
+    const core = new PaperWallet().getCore()
+    core.registerConnector('ipv8', new Ipv8Connector())
+    const ipv8Connector = await core.getConnector('ipv8')
 
+    try {
+      const ipv8Link = JSON.parse(qrString).metadata.ipv8Link
+
+      // If no link to a IPv8 claim is found the result is considered valid
+      if (!ipv8Link) {
+        return true;
+      }
+
+      const claimLink = Object.keys(Object.values(JSON.parse(qrString).claimData)[0][0])[0]
+      const ipv8Endpoint = JSON.parse(qrString).metadata.ipv8endpoint
+      const serviceDid = 'did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=';
+      ipv8Connector.configure(ipv8Endpoint,  { VERIFICATION_REQUEST_MAX_RETRIES: 5, VERIFICATION_REQUEST_RETRY_TIMEOUT_MS: 500 });
+
+      const verified = await core.verify(claimLink, ipv8Link, [serviceDid])
+
+      if (verified === null) {
+        console.log('This was not a valid IPv8 claim')
+
+        return false
+      }
+
+      this.setState(prevState => ({ validationMethods: [...prevState.validationMethods, 'IPv8'] }))
+
+      return true
+    } catch (e) {
+      console.log("Error when verifying the IPv8 claim", e);
+      console.log(e.stack)
+
+      return false
+    }
   }
 
   async wrapperFunction() {
-    await this._checkQR()
-    console.log(this.result);
-    if(this.result == null || this.result == false){
-      this.setState({validatingState: "denied"})
+    let validationResult = await this._checkQR()
+    let ipv8ValidationResult = await this._checkIpv8QR()
+
+    if (!validationResult || !ipv8ValidationResult){
+      this.setState({ validatingState: "denied" })
     }
-    else if(this.result == true){
-      this.setState({validatingState: "verified"})
-      this.renderClaimData()
+    else {
+      this.setState({ validatingState: "verified" })
+      console.log('Validation passed!')
     }
   };
+
+  _renderClaimData() {
+    let claimData = this._readClaimData();
+
+    return claimData.map(data => {
+      let key = Object.keys(data)[0]
+      let value = Object.values(data)[0]
+
+      return <Text key={key} value={value} />
+    })
+  }
 
   render() {
     const verified = <Octicons name="verified" size={64} color="#33ff33"/>;
@@ -344,30 +357,38 @@ class ValidatingScreen extends Component {
     let validatingIcon;
     let validatingText;
     let issuerText;
-    if (this.state.validatingState == "waiting"){
+    let validationMethodsText;
+
+    if (this.state.validatingState === "waiting") {
       validatingIcon = waiting;
       validatingText = i18n.t("checkingQR");
     }
-    if (this.state.validatingState == "verified"){
+    if (this.state.validatingState === "verified") {
       validatingIcon = verified;
       validatingText = i18n.t("validQR");
       issuerText = i18n.t("issuerNameDescription") + this.state.issuer
+      validationMethodsText = i18n.t("validationMethods") + this.state.validationMethods.join(', ')
     }
-    if (this.state.validatingState == "denied"){
+    if (this.state.validatingState === "denied") {
       validatingIcon = denied;
       validatingText = i18n.t("invalidQR");
     }
+
     return (
       <View style={styles.container}>
         <View style={styles.validateState}>
           <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
           <Text style ={styles.key}>{validatingText}</Text>
           {validatingIcon}
-          <Text style ={styles.value}>{issuerText}</Text>
+
+          <View style={styles.validationInformation}>
+            <Text style={styles.validationInformationText}>{validationMethodsText}</Text>
+            <Text style={styles.validationInformationText}>{issuerText}</Text>
+          </View>
         </View>
 
-        <FlatList
-          data={this.state.renderData}
+        {this.state.validatingState === "verified" ? <FlatList
+          data={this._renderClaimData()}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) =>
           <View key={item.key} style={styles.flatview}>
@@ -375,7 +396,7 @@ class ValidatingScreen extends Component {
             <Text style={styles.value}>{item.props.value}</Text>
           </View>
           }
-        />
+        /> : <></>}
       </View>
     );
   }
@@ -409,6 +430,14 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     alignItems:'center',
     justifyContent:'center',
+  },
+  validationInformation: {
+    padding: 10
+  },
+  validationInformationText: {
+    fontSize: 16,
+    padding: 5,
+    color: '#666666'
   },
   flatview: {
     backgroundColor: '#F6F6F6',

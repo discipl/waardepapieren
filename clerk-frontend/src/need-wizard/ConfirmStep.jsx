@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-
+import React from 'react';
 import { AbundanceService } from '@discipl/abundance-service'
 
 const timeoutPromise = (timeoutMillis) => {
@@ -9,42 +7,56 @@ const timeoutPromise = (timeoutMillis) => {
   })
 }
 
-class ConfirmStep extends Component {
-
+class ConfirmStep extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
-
     this.abundance = new AbundanceService(this.props.core)
   }
 
   async componentDidMount() {
     await timeoutPromise(100)
 
-    let need = await this.abundance.need('ephemeral', this.props.need)
+    const need = await this.abundance.need('ephemeral', this.props.need)
+    let ipv8TempLink = null
+
+    if (this.props.config.ENABLE_IPV8_ATTESTATION) {
+      ipv8TempLink = await this.abundance.getCoreAPI().claim(
+          { did: this.props.config.IPV8_SITE_DID },
+          this.props.need,
+          { did: this.props.config.IPV8_SERVICE_DID }
+      )
+    }
 
     let observeOffer = await this.abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise
 
-    await this.abundance.getCoreAPI().claim(need.myPrivateSsid, { [this.props.config.SOURCE_ARGUMENT]: this.props.bsn })
+    await this.abundance.getCoreAPI().claim(need.myPrivateSsid, {
+      [this.props.config.SOURCE_ARGUMENT]: this.props.bsn,
+      ['ipv8_link']: ipv8TempLink
+    })
 
-
-    let result = await observeOffer.resultPromise
+    const result = await observeOffer.resultPromise
+    const resultLink = result.claim.data.productClaim
+    const resultData = await this.abundance.getCoreAPI().get(resultLink, need.myPrivateSsid)
 
     if (this.props.ssidsChanged) {
       this.props.ssidsChanged(need.theirPrivateDid, need.myPrivateSsid)
     }
 
     if (this.props.resultLinkChanged) {
-      this.props.resultLinkChanged(result.link)
+      this.props.resultLinkChanged(resultLink)
+    }
+
+    if (this.props.config.ENABLE_IPV8_ATTESTATION && this.props.qrMetadataChanged) {
+      const attestedIpv8Link = result.claim.data.ipv8Claim
+      this.props.qrMetadataChanged({ ipv8Link: attestedIpv8Link })
     }
 
     this.setState({
-      ...this.state,
-      'data': result.claim.data
+      data: resultData.data
     })
   }
-
 
   renderAttributes(obj) {
     const result = []
@@ -82,11 +94,11 @@ class ConfirmStep extends Component {
         </p>
       )
     }
+
     return result
   }
 
   render() {
-    let result = [];
     return (
       <div>
         <p>
@@ -95,7 +107,7 @@ class ConfirmStep extends Component {
           </strong>
         </p>
         <ul className="definition-list definition-list--large-titles">
-          {this.renderAttributes(this.state.data, result)}
+          {this.renderAttributes(this.state.data)}
         </ul>
       </div>
     );

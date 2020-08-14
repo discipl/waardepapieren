@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NeedWizard.css'
 import BSNStep from './BSNStep'
 import NeedStep from './NeedStep'
@@ -8,15 +8,14 @@ import DeliveryStep from './DeliveryStep'
 
 const MAX_STEP = 3;
 
-class NeedWizard extends Component {
+class NeedWizard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      'step': 0
+      step: 0
     }
 
     this.core = props.core;
-
     this._prev = this._prev.bind(this);
     this._next = this._next.bind(this);
     this._first = this._first.bind(this);
@@ -25,34 +24,34 @@ class NeedWizard extends Component {
     this.ssidsChanged = this.ssidsChanged.bind(this);
     this.resultLinkChanged = this.resultLinkChanged.bind(this);
     this.deliveryChanged = this.deliveryChanged.bind(this);
+    this.qrMetadataChanged = this.qrMetadataChanged.bind(this);
   }
 
   _prev() {
     this.setState({
       ...this.state,
-      step: this.state.step-1
+      step: this.state.step - 1
     })
   }
 
   _next() {
     this.setState({
       ...this.state,
-      step: this.state.step+1
+      step: this.state.step + 1
     })
   }
 
   _first() {
     this.setState({
-      ...this.state,
       step: 0
     })
   }
 
   _download(type) {
-    if(type === 'paperWallet') {
+    if (type === 'paperWallet') {
       this.state.pdf.save('uittreksel.pdf')
     } else {
-      window.alert('Download option ('+type+') not supported...')
+      window.alert('Download option (' + type + ') not supported...')
     }
   }
 
@@ -84,38 +83,38 @@ class NeedWizard extends Component {
 
   bsnChanged(bsn) {
     this.setState({
-      ...this.state,
-      'bsn': bsn
+      bsn: bsn
     })
   }
 
   needChanged(need) {
     this.setState({
-      ...this.state,
-      'need': need
+      need: need
     })
   }
 
   ssidsChanged(personalDid, myPrivateSsid) {
-
     this.setState({
-      ...this.state,
-      'personalDid': personalDid,
-      'myPrivateSsid': myPrivateSsid
+      personalDid: personalDid,
+      myPrivateSsid: myPrivateSsid
     })
   }
 
   resultLinkChanged(resultLink) {
     this.setState({
-      ...this.state,
-      'resultLink': resultLink
+      resultLink: resultLink
     })
   }
 
-  deliveryChanged( pdf) {
+  deliveryChanged(pdf) {
     this.setState({
-      ...this.state,
-      'pdf': pdf
+      pdf: pdf
+    })
+  }
+
+  qrMetadataChanged(metadata) {
+    this.setState({
+      qrMetadata: metadata
     })
   }
 
@@ -126,9 +125,9 @@ class NeedWizard extends Component {
       case 1:
         return <NeedStep config={this.props.config} needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep config={this.props.config} core={this.core}bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged}/>
+        return <ConfirmStep config={this.props.config} core={this.core} bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged} qrMetadataChanged={this.qrMetadataChanged} />
       case 3:
-        return <DeliveryStep config={this.props.config} core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} deliveryChanged={this.deliveryChanged} />
+        return <DeliveryStep config={this.props.config} core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} qrMetadata={this.state.qrMetadata} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }

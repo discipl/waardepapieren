@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as jsPDF from 'jspdf'
 import { PaperWallet } from '@discipl/paper-wallet'
 
-
-
-class ConfirmStep extends Component {
-
+class ConfirmStep extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,9 +11,7 @@ class ConfirmStep extends Component {
     }
 
     this.template = this.props.config.EXPORT_TYPES['@discipl/paper-wallet'].template
-
     this.paperWallet = new PaperWallet(this.props.core)
-
     this.canvasRef = React.createRef()
   }
 
@@ -29,13 +24,17 @@ class ConfirmStep extends Component {
   async componentDidMount() {
     console.log(this.props)
 
-    const certUrl = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
-
-    let vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {'cert': certUrl + '/certs/org.crt'})
+    const certHost = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
+    const ipv8Host = process.env.REACT_APP_IPV8_HOST
+    const vc = await this.paperWallet.issue(this.props.resultLink, this.props.myPrivateSsid, {
+      cert: certHost + '/certs/org.crt',
+      ipv8endpoint: ipv8Host + ':14412',
+      ...this.props.qrMetadata
+    })
 
     console.log("Issued")
 
-    let pdf = new jsPDF({
+    const pdf = new jsPDF({
       orientation: 'p',
       unit: 'pt',
       format: [595.28, 841.89]
@@ -48,9 +47,6 @@ class ConfirmStep extends Component {
 
     let imageData = this.canvasRef.current.toDataURL('image/png')
 
-
-
-
     pdf.addImage(imageData, 'png', 0, 0, this.template.canvasWidth, this.template.canvasHeight)
 
     this.deliveryChanged(pdf)
@@ -59,7 +55,7 @@ class ConfirmStep extends Component {
   render() {
     return (
       <div className="delivery-data">
-        <canvas id="delivery-canvas" class="responsive" ref={this.canvasRef}/>
+        <canvas id="delivery-canvas" className="responsive" ref={this.canvasRef} />
       </div>
     );
   }

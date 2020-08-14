@@ -1,18 +1,5 @@
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Switch,
-  AsyncStorage,
-} from 'react-native';
-import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
+import { Image, Platform, ScrollView, StyleSheet, Text, View, Switch, AsyncStorage } from 'react-native';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
@@ -24,8 +11,8 @@ i18n.translations = { nl, en };
 i18n.locale = Localization.locale;
 
 export default class HomeScreen extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       strictValidationSwitchValue: false,
     }
@@ -84,35 +71,19 @@ export default class HomeScreen extends React.Component {
 
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
       return (
         <Text style={styles.developmentModeText}>
           Development mode is enabled. {i18n.t("betaMessage")}
         </Text>
       );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          {i18n.t("betaMessage")}
-        </Text>
-      );
     }
-  }
 
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
+    return (
+      <Text style={styles.developmentModeText}>
+        {i18n.t("betaMessage")}
+      </Text>
     );
-  };
+  }
 }
 
 const styles = StyleSheet.create({

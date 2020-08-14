@@ -5,8 +5,6 @@ import { expect } from 'chai'
 import WaardenpapierenService from '../src/waardepapieren-service'
 import { AbundanceService } from '@discipl/abundance-service'
 import { w3cwebsocket } from 'websocket'
-
-import { take } from 'rxjs/operators'
 import sinon from 'sinon'
 
 import CONFIGURATION from '../configuration/waardepapieren-config.json'
@@ -18,12 +16,20 @@ const timeoutPromise = (timeoutMillis) => {
 }
 
 const abundance = new AbundanceService()
+let waardenpapierenService = null
 
 describe('waardenpapieren-service, integrated with mocked nlx connector', function () {
   this.timeout(5000)
+
+  after(async function () {
+    // Ensure the service is stopped after the test to prevent hanging when the test fails
+    if (waardenpapierenService) {
+      await waardenpapierenService.stop()
+    }
+  })
+  
   it('should serve an expressed need for BRP', async () => {
     let nlxConnector = await abundance.getCoreAPI().getConnector('nlx')
-
     let nlxClaimStub = sinon.stub(nlxConnector, 'claim').returns('claimId')
     let nlxGetStub = sinon.stub(nlxConnector, 'get').returns({ '_embedded': {
       'ingeschrevenpersonen': [{
@@ -51,7 +57,7 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     CONFIGURATION.LOG_LEVEL='info'
 
     // Set up server
-    let waardenpapierenService = new WaardenpapierenService(abundance.getCoreAPI())
+    waardenpapierenService = new WaardenpapierenService(abundance.getCoreAPI())
     await waardenpapierenService.start(CONFIGURATION)
     await timeoutPromise(100)
 
@@ -64,17 +70,16 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
 
     // Set up need
     let need = await abundance.need('ephemeral', CONFIGURATION.PRODUCT_NEED)
-
-
     let observeOffer = await abundance.observeOffer(need.theirPrivateDid, need.myPrivateSsid)
     await observeOffer.readyPromise
-
-    await abundance.getCoreAPI().claim(need.myPrivateSsid, {[CONFIGURATION.SOURCE_ARGUMENT]: '123123123'})
+    await abundance.getCoreAPI().claim(need.myPrivateSsid, { [CONFIGURATION.SOURCE_ARGUMENT]: '123123123' })
 
 
     let result = await observeOffer.resultPromise
+    let resultLink = result.claim.data.productClaim
+    let resultData = await abundance.getCoreAPI().get(resultLink, need.myPrivateSsid)
 
-    expect(result.claim.data).to.deep.equal([
+    expect(resultData.data).to.deep.equal([
         {
           "Doel": "Bewijs verblijfadres in woonplaats"
         },
@@ -97,7 +102,6 @@ describe('waardenpapieren-service, integrated with mocked nlx connector', functi
     expect(nlxClaimStub.args[0]).to.deep.equal([null, { 'path': '/brp/basisregistratie/natuurlijke_personen/bsn/123123123', 'params': {'BSN':'123123123'} }])
     expect(nlxGetStub.callCount).to.equal(1)
     expect(nlxGetStub.args[0]).to.deep.equal(['claimId'])
-
 
     await waardenpapierenService.stop()
   })
