@@ -25,9 +25,9 @@ services:
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
 
-  clerk-frontend:
+  haarlem-frontend:
     build:
-      context: clerk-frontend/
+      context: haarlem-frontend/
       args:
         - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
         - IPV8_HOST=http://$CERT_HOST_IP
@@ -39,7 +39,7 @@ services:
     healthcheck:
       test: service nginx status
     volumes:
-      - ./clerk-frontend/nginx/certs:/etc/nginx/certs:ro
+      - ./haarlem-frontend/nginx/certs:/etc/nginx/certs:ro
 
   mock-nlx:
     build: mock-nlx/
