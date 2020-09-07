@@ -1,7 +1,9 @@
 {
   "name": "@discipl/waardepapieren-component",
   "version": "0.2.1",
-  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@discipl/abundance-service": "^0.5.2",
     "@discipl/core-ephemeral": "^0.11.1",

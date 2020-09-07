@@ -9,8 +9,6 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json package-lock.json /app/
-RUN mkdir -p /home/pim/packages/
-COPY discipl-waardepapieren-component-0.2.1.tgz /home/pim/packages/
 RUN npm install --unsafe-perm
 
 COPY public /app/public
