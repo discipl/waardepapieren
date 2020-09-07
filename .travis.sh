@@ -4,7 +4,7 @@
 set -e
 
 # Clerk frontend
-cd waardepapieren-compoent
+cd waardepapieren-component
 npm install > /dev/null
 npm test
 npm audit || [ $(date +%s) -lt 1593561613 ] # Temporarily disable until 1 july due to yargs-parser low severity issue in toolchain
