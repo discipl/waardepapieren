@@ -33,4 +33,5 @@ done
 echo "Dockers are booted"
 
 cd haarlem-frontend
+npm install
 cypress run
