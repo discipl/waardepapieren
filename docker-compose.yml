@@ -28,20 +28,21 @@ services:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
-  clerk-frontend:
+  haarlem-frontend:
     build:
-      context: clerk-frontend/
+      context: haarlem-frontend/
       args:
         - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
-    links:
+        - IPV8_HOST=http://$CERT_HOST_IP
+    depends_on:
       - waardepapieren-service
     ports:
-    - 443:443
-    - 8880:8880
+      - 443:443
+      - 8880:8880
     healthcheck:
       test: service nginx status
     volumes:
-    - ./clerk-frontend/nginx/certs:/etc/nginx/certs:ro
+      - ./haarlem-frontend/nginx/certs:/etc/nginx/certs:ro
   mock-nlx:
     image: nlxio/outway:latest
     volumes:

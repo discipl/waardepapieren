@@ -4,7 +4,7 @@
 set -e
 
 # Clerk frontend
-cd clerk-frontend
+cd waardepapieren-component
 npm install > /dev/null
 npm test
 npm audit || [ $(date +%s) -lt 1593561613 ] # Temporarily disable until 1 july due to yargs-parser low severity issue in toolchain
@@ -32,5 +32,6 @@ do
 done
 echo "Dockers are booted"
 
-cd clerk-frontend
+cd haarlem-frontend
+npm install
 cypress run

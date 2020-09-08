@@ -1,0 +1,43 @@
+{
+  "name": "@discipl/waardepapieren-component",
+  "version": "0.2.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@discipl/abundance-service": "^0.5.2",
+    "@discipl/core-ephemeral": "^0.11.1",
+    "@discipl/core-ipv8": "^0.0.2",
+    "@discipl/paper-wallet": "^0.8.2",
+    "jspdf": "^1.5.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^3.4.3",
+    "rxjs": "^6.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "prepack": "node ./scripts/build-non-split.js",
+    "build": "node ./scripts/build-non-split.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "files": [
+    "src/",
+    "public/",
+    "build/"
+  ],
+  "proxy": "http://localhost:3232",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "rewire": "^5.0.0"
+  }
+}
