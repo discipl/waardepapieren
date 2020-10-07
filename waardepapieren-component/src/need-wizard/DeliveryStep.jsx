@@ -56,6 +56,7 @@ class ConfirmStep extends React.Component {
     return (
       <div className="delivery-data">
         <canvas id="delivery-canvas" className="responsive" ref={this.canvasRef} />
+        <p>Example tekst for testing npm pack waardepapieren component.</p>
       </div>
     );
   }
