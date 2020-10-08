@@ -8,7 +8,7 @@ ENV REACT_APP_IPV8_HOST=${IPV8_HOST}
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json package-lock.json /app/
+COPY discipl-waardepapieren-component-0.2.1.tgz package.json package-lock.json /app/
 RUN npm install --unsafe-perm
 
 COPY public /app/public
