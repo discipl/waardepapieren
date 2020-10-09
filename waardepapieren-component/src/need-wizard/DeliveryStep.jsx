@@ -7,7 +7,8 @@ class ConfirmStep extends React.Component {
     super(props);
     this.state = {
       attestationLink : null,
-      canvas : null
+      canvas : null,
+      base64 : null
     }
 
     this.template = this.props.config.EXPORT_TYPES['@discipl/paper-wallet'].template
@@ -32,8 +33,11 @@ class ConfirmStep extends React.Component {
       ...this.props.qrMetadata
     })
 
+    this.setState({
+      base64: vc.qr // Contains the base 64 png encoding of the VC QR code
+    })
+
     console.log("Issued")
-    console.log(vc.qr.toString('base64'));
     
     const pdf = new jsPDF({
       orientation: 'p',
@@ -57,8 +61,8 @@ class ConfirmStep extends React.Component {
     return (
       <div className="delivery-data">
         <canvas id="delivery-canvas" className="responsive" ref={this.canvasRef} />
-        <p>Base64 encoding of the QR code is:</p>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAATPSURBVO3BQY4cSRIEQdNA/f/Lujz6KYBEejXZsyaCf6RqyUnVopOqRSdVi06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXok5eA/CQ1E5BJzRtAnlBzA+QJNROQn6TmjZOqRSdVi06qFn2yTM0mIE8AuVHzhJobIE+oeUPNJiCbTqoWnVQtOqla9MmXAXlCzRNqboBMQCY1k5o31ExAvgnIE2q+6aRq0UnVopOqRZ/8ckBu1NwAmdRMQG7UTEAmNROQSc1/yUnVopOqRSdViz755dRMQG6ATGqeUDMBmdT8PzupWnRSteikatEnX6bmbwIyqbkBMqmZgDwB5AbIpOYJNf+Sk6pFJ1WLTqoWfbIMyE8CMqmZgNwAmdRMQCY1E5An1ExAngDyLzupWnRSteikahH+kV8MyKTmBsik5gkgT6iZgNyo+c1OqhadVC06qVr0yUtAJjUTkBs1E5An1ExAJjWTmgnIjZobNROQCcik5gkgk5obIJOaCciNmjdOqhadVC06qVr0yT9GzQ2QCcgTQJ4A8oSaCcgE5A0gb6iZgGw6qVp0UrXopGrRJ8uAPAFkUjMBmdTcANmk5gbIjZongExqNgGZ1Gw6qVp0UrXopGrRJ1+mZgIyqZmATGo2qfkmNROQGzU3QG7UvAFkUvPGSdWik6pFJ1WLPvlhap4AcqNmUjMBuVFzA+RGzQRkUjMBuVGzCcik5ptOqhadVC06qVr0yZcBmdTcqLkBcgNkUjMBeUPNBOSbgExqboA8AWRS88ZJ1aKTqkUnVYs+WabmCSCTmgnIDZBJzY2aCciNmgnIjZongNyomYDcqLkB8k0nVYtOqhadVC36ZBmQSc2NmgnIpGYCMqmZgExqJiCTmhsgk5oJyDcBeQLIpOZGzaaTqkUnVYtOqhZ9skzNBOQNIG8AuQEyqbkB8gSQSc0bQG7U/E0nVYtOqhadVC365CU1N2omIJOaCcikZgJyo+YJIE+omYC8AWRS84SaGyA/6aRq0UnVopOqRfhHXgAyqXkCyBNqJiCTmjeAfJOaGyCTmhsgk5oJyKTmm06qFp1ULTqpWoR/5IuAvKFmAjKpmYBMaiYgb6i5ATKp2QRkUnMD5Ak1b5xULTqpWnRSteiTZUAmNW8AeULNE2omIE8AeQLIJiBPqJmAbDqpWnRSteikahH+kV8MyI2aTUBu1ExAnlDzBJBJzd90UrXopGrRSdWiT14C8pPU3Kh5AsikZgJyo2YCMqmZgDwBZFLzBJAbNZtOqhadVC06qVr0yTI1m4D8JCBvqJmATGomIDdq3lBzA2RS88ZJ1aKTqkUnVYs++TIgT6h5Qs0NkCfUPAFkUvMGkE1AJjXfdFK16KRq0UnVok9+OSCTmjeATGpu1NyouVEzAZnUTECeUDMBmdRsOqladFK16KRq0Sf/MUAmNW8AmdTcALlRMwGZ1NyoeUPNBGRS88ZJ1aKTqkUnVYs++TI136RmAjIBmdS8AWRS801AbtRMQCY1E5BJzaaTqkUnVYtOqhZ9sgzITwLyBJA31LwB5AbIb3ZSteikatFJ1SL8I1VLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatFJ1aKTqkX/AwPBHWocx0EPAAAAAElFTkSuQmCC"></img>
+        <p>Base64 encoding of the VC QR code is:</p>
+        <img src={this.state.base64}></img>
       </div>
     );
   }
