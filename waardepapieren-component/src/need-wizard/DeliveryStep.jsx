@@ -33,7 +33,8 @@ class ConfirmStep extends React.Component {
     })
 
     console.log("Issued")
-
+    console.log(vc.qr.toString('base64'));
+    
     const pdf = new jsPDF({
       orientation: 'p',
       unit: 'pt',
@@ -56,8 +57,8 @@ class ConfirmStep extends React.Component {
     return (
       <div className="delivery-data">
         <canvas id="delivery-canvas" className="responsive" ref={this.canvasRef} />
-        <p>Image converted to base 64 is:</p>
-        <p></p>
+        <p>Base64 encoding of the QR code is:</p>
+        <img src={this.vc.qr}></img>
       </div>
     );
   }
