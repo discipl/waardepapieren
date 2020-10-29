@@ -9,10 +9,11 @@
     "@discipl/core-ephemeral": "^0.11.3",
     "@discipl/core-ipv8": "0.0.3",
     "@discipl/paper-wallet": "^0.8.2",
+    "eslint": "^7.12.1",
     "jspdf": "^1.5.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^4.0.0",
     "rxjs": "^6.5.2"
   },
   "scripts": {
