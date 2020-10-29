@@ -1,13 +1,13 @@
 {
   "name": "@discipl/waardepapieren-component",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@discipl/abundance-service": "^0.5.2",
-    "@discipl/core-ephemeral": "^0.11.1",
-    "@discipl/core-ipv8": "^0.0.2",
+    "@discipl/core-ephemeral": "^0.11.3",
+    "@discipl/core-ipv8": "0.0.3",
     "@discipl/paper-wallet": "^0.8.2",
     "jspdf": "^1.5.3",
     "react": "^16.8.6",
