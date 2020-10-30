@@ -43,6 +43,13 @@ Optionally IPv8 attestation can be used in extend with Ephemeral. This is done a
 
 The `docker-compose-ipv8.yml` can be ran as a stand-alone application. However, it depends on the existence of the `waardepapieren` network. Run the complete application once as described  above to create the network.
 
+### Integration instructions
+
+The docker containers built using the instructions above can be used to deploy these services in a production environment. However,
+it is likely advantageous to integrate the `waardepapieren-component` in your frontend. In any case, this can
+be done as in `haarlem-frontend` which shows how to embed the `waardepapieren-component` in a website with existing content.
+If the surrounding website is hosted with TYPO3, you might want to use the [plugin](https://github.com/OpenGemeenten/waardepapieren-typo3-demo).
+
 # Running validator
 The validator app is made with [Expo](https://expo.io/), which is a free and open-source react-native framework for mobile development. to run this on a mobile device, the expo-cli tool is required. to install this, run:
 ```bash
@@ -60,16 +67,13 @@ wait till the program has fully loaded and scan the QR code in the left bottom c
 
 Dit document heeft als doel om zowel het ontwikkelteam als de gemeente een duidelijk beeld 
 te geven van de  applicatie, middels een volledig implementatievoorbeeld van hoe Discipl-componenten 
-kunnen worden gebruikt  om claims af te geven en te verifiëren. In het bijzonder, hoe gemeenten die kunnen uitgeven. .
+kunnen worden gebruikt  om claims af te geven en te verifiëren. In het bijzonder, hoe gemeenten die kunnen uitgeven.
 
-Architectuur en Hardware
-Om waardepapieren op te zetten gaan we in onze situatie een Docker instantie draaien. Deze Docker instantie zal in dit geval moeten draaien op een server 
-bij de gemeente of in de cloud (Azure)  De innovatie-proeftuin https://zuidugchelen.eu (macOS sierra) biedt de mogeljkheid om laagdrempelig 
-nieuwe innovatieve ideeen uit te proberen. 
+Een live demo is beschikbaar via https://waardepapieren-demo.discipl.org/
 
 
 ***
-1. gemeentelijk ambtenaar klikt op https://zuidugchelen.eu en opent de clerk-frontend 
+1. gemeentelijk ambtenaar klikt op https://waardepapieren-demo.discipl.org/ en opent de clerk-frontend 
 
 ***
 2. Systeem laat hoofdscherm zien.
@@ -118,8 +122,8 @@ nb  `download apple-wallet` werkt nog niet
 10. Systeem laat weer het hoofdscherm zien. ` Serving needs`
 ![hs1](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_01.png)
 
-Er is nu een automatisch gegenereerd document en daarom niet ondertekend.  
-De gegevens zijn verkregen via NLX en geborgd in de QR code. De validatie_app is bedoeld om de echtheid te controleren .
+Er is nu een automatisch gegenereerd document en daarom niet met een fysieke handtekening ondertekend.  
+De gegevens zijn verkregen via NLX en geborgd in de QR code. De validatie_app is bedoeld om de echtheid te controleren.
 
 # Validatie waardepapieren_app met expo 
 
@@ -133,7 +137,7 @@ Met een standaard qr lezer kan bovenstaande QR code worden gescand, en de JSON c
 
 ***
 
-JSON is een internetcommunicatiestandaard vanwege de eenvoudige integratie met JavaScript en het flexibele formaat, maar vereist codering om toegang te krijgen tot de gegevens in een JSON-document. Met Expo kunnen webontwikkelaars echt native apps bouwen die zowel op iOS als Android werken door ze èènmaal in JavaScript te schrijven.
+Met de Expo app kan het uittreksel gevalideerd worden. Deze kan gebouwd worden met [deze code](./validator-frontend)
 
 https://apps.apple.com/nl/app/expo-client/id982107779
 ![Expo](https://github.com/discipl/waardepapieren/blob/master/pictures/hbs20191010_10.PNG)
