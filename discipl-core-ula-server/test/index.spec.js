@@ -11,9 +11,17 @@ describe('The ULA Server Connector', () => {
         conn.configure(process.env.ULA_ENDPOINT, process.env.ULA_BASIC_AUTH);
 
 
-        const result = await conn.claim("123123123", "", {"data": "important"})
+        const resultLink = await conn.claim("123123123", "", {"data": "important"})
 
-        expect(result).to.equal({"non": "sensen"})
+        expect(resultLink).to.be.a('string')
+        expect(resultLink.startsWith("link:discipl:ulaserver")).to.equal(true)
+
+        const claim = await conn.get(resultLink);
+
+        expect(claim.qrcode).to.be.a('string');
+        expect(claim.sessionId).to.be.a('string');
+        expect(claim.transactionId).to.be.a('string');
+        
     })
 }
 )

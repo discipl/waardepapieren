@@ -36,7 +36,9 @@ class UlaServerConnector extends BaseConnector {
         body: JSON.stringify(body)
     })
 
-    return result.json()
+    const response = await result.json();
+
+    return this.linkFromReference(Buffer.from(JSON.stringify(response)).toString('base64'));
   }
 
   getDidOfClaim () {
@@ -51,8 +53,10 @@ class UlaServerConnector extends BaseConnector {
     throw new Error("Unsupported method")
   }
 
-  get() {
-    throw new Error("Unsupported method")
+  get(link, _did = null, _privkey = null) {
+    const reference = BaseConnector.referenceFromLink(link);
+
+    return JSON.parse(Buffer.from(reference, 'base64').toString('utf8'));
   }
 
   observe() {
