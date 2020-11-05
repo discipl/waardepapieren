@@ -14,7 +14,7 @@ describe('The ULA Server Connector', () => {
         const resultLink = await conn.claim("123123123", "", {"data": "important"})
 
         expect(resultLink).to.be.a('string')
-        expect(resultLink.startsWith("link:discipl:ulaserver")).to.equal(true)
+        expect(resultLink.startsWith("link:discipl:ula-server")).to.equal(true)
 
         const claim = await conn.get(resultLink);
 

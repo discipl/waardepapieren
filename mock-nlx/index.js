@@ -279,4 +279,6 @@ app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/999994669', (req, res)
   res.end()
 })
 
-app.listen(80)
+const port = process.env.NLX_MOCK_PORT | 80
+
+app.listen(port)

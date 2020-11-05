@@ -1,8 +1,9 @@
 {
-  "name": "discipl-core-ula-server",
-  "version": "0.0.1-alpha.1",
+  "name": "@discipl/core-ula-server",
+  "version": "0.0.1-alpha.2",
   "description": "Connector for ULA server",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "src/index.js",
   "scripts": {
     "prepack": "babel src/ --out-dir dist",
     "test": "source ./.env.sh && nyc --reporter=html --reporter=text ./node_modules/.bin/mocha --require @babel/register ./test/**/*.spec.js",

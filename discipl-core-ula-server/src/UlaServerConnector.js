@@ -10,7 +10,7 @@ class UlaServerConnector extends BaseConnector {
    * @returns {string} The string 'ephemeral'.
    */
   getName () {
-    return 'ulaserver'
+    return 'ula-server'
   }
 
   

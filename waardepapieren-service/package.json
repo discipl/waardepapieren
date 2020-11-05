@@ -12,7 +12,8 @@
     "lint-fix": "./node_modules/standard/bin/cmd.js --parser babel-eslint --fix",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && ./node_modules/codecov/bin/codecov",
     "system-test": "./system-test/run-system-test.sh",
-    "start": "node --require @babel/register src/index.js"
+    "start": "node --require @babel/register src/index.js",
+    "start-local": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && exportWAARDEPAPIEREN_CONFIG=./configuration/waardepapieren-config.json && node --require @babel/register src/index.js"
   },
   "dependencies": {
     "@babel/core": "7.4.4",
@@ -22,6 +23,7 @@
     "@discipl/core-ephemeral": "^0.11.3",
     "@discipl/core-ipv8": "0.0.3",
     "@discipl/core-nlx": "0.2.0",
+    "@discipl/core-ula-server": "0.0.1-alpha.2",
     "babel-plugin-dynamic-import-node": "2.2.0",
     "json-stable-stringify": "^1.0.1",
     "jsonpath": "1.0.1",

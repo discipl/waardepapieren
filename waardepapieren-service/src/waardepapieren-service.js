@@ -1,6 +1,7 @@
 import { AbundanceService } from '@discipl/abundance-service'
 // Specifically importing the server, because the server is not in the index to ensure browser compatibility
 import EphemeralServer from '@discipl/core-ephemeral/dist/EphemeralServer'
+import UlaServerConnector from '@discipl/core-ula-server';
 import { w3cwebsocket } from 'websocket'
 import jp from 'jsonpath'
 import fs from 'fs'
@@ -43,6 +44,12 @@ class WaardenpapierenService {
     if (this.configuration.ENABLE_IPV8_ATTESTATION) {
       const ipv8connector = await core.getConnector('ipv8')
       ipv8connector.configure('https://clerk-frontend/api/ipv8/service')
+    }
+
+    if (this.configuration.ENABLE_ULA_SERVER_ATTESTATION) {
+      core.registerConnector("ula-server", new UlaServerConnector())
+      const ulaConnector = await core.getConnector('ula-server');
+      ulaConnector.configure(this.configuration.ULA_SERVER_ENDPOINT, this.configuration.ULA_BASIC_AUTH);
     }
 
     await attendResult.observableResult.subscribe(async (need) => {
@@ -93,8 +100,14 @@ class WaardenpapierenService {
       resultArray.push({ [key]: value[0] })
     }
 
-    let productClaim = await core.claim(nlxIdentity, resultArray)
-    let resultClaim = null
+    const productClaim = await core.claim(nlxIdentity, resultArray)
+    
+    let resultClaimContent = productClaim
+    if (this.configuration.ENABLE_ULA_SERVER_ATTESTATION) {
+        const ulaLink = await core.claim({ did: "did:discipl:ula-server:anonymous"}, productClaim)
+        resultClaimContent['ulaServerClaim'] = ulaLink
+    }
+
 
     if (this.configuration.ENABLE_IPV8_ATTESTATION) {
       // Claim is now only identified by the attribute name (the need), there should be a check if the data is attested for the correct attribute
@@ -103,11 +116,10 @@ class WaardenpapierenService {
         productClaim,
         ipv8TempLink
       )
+      resultClaimContent['ipv8Claim'] =  ipv8PermLink
+    } 
 
-      resultClaim = await core.claim(nlxIdentity, { ipv8Claim: ipv8PermLink, productClaim })
-    } else {
-      resultClaim = await core.claim(nlxIdentity, { productClaim })
-    }
+    let resultClaim = core.claim(nlxIdentity, resultClaimContent)
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
     await core.allow(nlxIdentity, resultClaim, needDetails.theirPrivateDid)
