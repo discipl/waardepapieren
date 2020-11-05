@@ -11,6 +11,8 @@ services:
       - 3233:3233
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose-travis.json
+      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
+      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
 

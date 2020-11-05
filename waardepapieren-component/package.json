@@ -28,7 +28,6 @@
     "public/",
     "build/"
   ],
-  "proxy": "http://localhost:3232",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -39,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "http-proxy-middleware": "^1.0.6",
     "rewire": "^5.0.0"
   }
 }

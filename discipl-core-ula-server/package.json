@@ -22,7 +22,8 @@
   ],
   "dependencies": {
     "@discipl/core-baseconnector": "^0.2.2",
-    "isomorphic-fetch": "^3.0.0"
+    "isomorphic-fetch": "^3.0.0",
+    "loglevel": "^1.7.0"
   },
   "devDependencies": {
     "@babel/cli": "7.11.5",

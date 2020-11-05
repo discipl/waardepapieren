@@ -44,12 +44,15 @@ class WaardenpapierenService {
     if (this.configuration.ENABLE_IPV8_ATTESTATION) {
       const ipv8connector = await core.getConnector('ipv8')
       ipv8connector.configure('https://clerk-frontend/api/ipv8/service')
+      
     }
 
     if (this.configuration.ENABLE_ULA_SERVER_ATTESTATION) {
       core.registerConnector("ula-server", new UlaServerConnector())
       const ulaConnector = await core.getConnector('ula-server');
+      this.logger.debug("PRECONFIG", this.configuration.ULA_SERVER_ENDPOINT, this.configuration.ULA_BASIC_AUTH);
       ulaConnector.configure(this.configuration.ULA_SERVER_ENDPOINT, this.configuration.ULA_BASIC_AUTH);
+      this.logger.debug("POSTCONFIG", ulaConnector);
     }
 
     await attendResult.observableResult.subscribe(async (need) => {
@@ -102,8 +105,9 @@ class WaardenpapierenService {
 
     const productClaim = await core.claim(nlxIdentity, resultArray)
     
-    let resultClaimContent = productClaim
+    let resultClaimContent = {productClaim}
     if (this.configuration.ENABLE_ULA_SERVER_ATTESTATION) {
+      this.logger.debug("PreClaim", await core.getConnector("ula-server"))
         const ulaLink = await core.claim({ did: "did:discipl:ula-server:anonymous"}, productClaim)
         resultClaimContent['ulaServerClaim'] = ulaLink
     }
@@ -118,8 +122,8 @@ class WaardenpapierenService {
       )
       resultClaimContent['ipv8Claim'] =  ipv8PermLink
     } 
-
-    let resultClaim = core.claim(nlxIdentity, resultClaimContent)
+    this.logger.debug("PreClaim result", resultClaimContent);
+    let resultClaim = await core.claim(nlxIdentity, resultClaimContent)
 
     await core.allow(nlxIdentity, productClaim, needDetails.theirPrivateDid)
     await core.allow(nlxIdentity, resultClaim, needDetails.theirPrivateDid)

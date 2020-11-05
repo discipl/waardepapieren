@@ -1,7 +1,7 @@
 {
     "CONTAINER_ID": "root",
-    "DEFAULT_EPHEMERAL_ENDPOINT": "http://localhost:3000/api/eph",
-    "DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT": "http://localhost:3000/api/eph-ws",
+    "DEFAULT_EPHEMERAL_ENDPOINT": "http://localhost:3000/api",
+    "DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT": "ws://localhost:3000/api",
     "DEFAULT_CERTIFICATE_URL": "http://localhost:3000/certs/org.crt",
     "SOURCE_ARGUMENT": "BSN",
     "ENABLE_IPV8_ATTESTATION": false,
