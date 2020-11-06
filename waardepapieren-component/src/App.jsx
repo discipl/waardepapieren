@@ -3,6 +3,7 @@ import NeedWizard from './need-wizard/NeedWizard'
 import { AbundanceService } from '@discipl/abundance-service'
 import EphemeralConnector from '@discipl/core-ephemeral'
 import Ipv8Connector from '@discipl/core-ipv8';
+import UlaServerConnector from '@discipl/core-ula-server';
 
 class App extends Component {
     constructor(props) {
@@ -17,6 +18,9 @@ class App extends Component {
         let ephemeralEndpoint = process.env.REACT_APP_EPHEMERAL_ENDPOINT != null ? process.env.REACT_APP_EPHEMERAL_ENDPOINT : this.props.config.DEFAULT_EPHEMERAL_ENDPOINT
         let ephemeralWebsocketEndpoint = process.env.REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT != null ? process.env.REACT_APP_EPHEMERAL_WEBSOCKET_ENDPOINT : this.props.config.DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT
         ephemeralConnector.configure(ephemeralEndpoint, ephemeralWebsocketEndpoint, window.WebSocket)
+
+        await this.abundance.getCoreAPI().registerConnector('ula-server', new UlaServerConnector())
+        
 
         if (this.props.config.ENABLE_IPV8_ATTESTATION) {
             await this.abundance.getCoreAPI().registerConnector('ipv8', new Ipv8Connector())

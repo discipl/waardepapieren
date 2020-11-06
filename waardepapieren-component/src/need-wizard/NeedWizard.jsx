@@ -25,6 +25,8 @@ class NeedWizard extends React.Component {
     this.resultLinkChanged = this.resultLinkChanged.bind(this);
     this.deliveryChanged = this.deliveryChanged.bind(this);
     this.qrMetadataChanged = this.qrMetadataChanged.bind(this);
+    this.changeToWalletLink = this.changeToWalletLink.bind(this);
+    this.walletLinkChanged = this.walletLinkChanged.bind(this);
   }
 
   _prev() {
@@ -55,6 +57,13 @@ class NeedWizard extends React.Component {
     }
   }
 
+  changeToWalletLink() {
+    this.setState({
+      resultLink: this.state.walletLink,
+      walletVc: true
+    })
+  }
+
   renderButtons() {
     let prevButton = <span>of naar de <a href="#" onClick={this._prev}>vorige stap</a></span>;
     let nextButton = <button onClick={this._next} className="btn btn--primary">Volgende<i className="btn__icon icon icon-arr-forward" title="Ga naar volgende stap" role=""></i></button>;
@@ -62,7 +71,7 @@ class NeedWizard extends React.Component {
     let rightInfoButton = <button className="btn" onClick={this._next}>Dit klopt!<i className="btn__icon icon icon-arr-forward" title="Ga naar de volgende stap" role=""></i></button>;
 
     let downloadButton = <button className="btn btn--primary" onClick={this._download.bind(this, 'paperWallet')}>Download<i className="btn__icon icon icon-download" title="Download het document" role=""></i></button>; // currently still mock
-    let appleWalletButton = <button className="btn btn--primary" onClick={this._download.bind(this, 'appleWallet')}>Download naar Apple Wallet<i className="btn__icon icon icon-folder" title="Download het document" role=""></i></button>;
+    let walletButton = <button className="btn btn--primary" onClick={this.changeToWalletLink}>Download naar Wallet<i className="btn__icon icon icon-folder" title="Download het document" role=""></i></button>;
 
     let finishButton = <span>of <a href="#" onClick={this._first}>afronden</a></span>;
 
@@ -75,7 +84,7 @@ class NeedWizard extends React.Component {
     }
 
     if (this.state.step === MAX_STEP) {
-      return [downloadButton, appleWalletButton, finishButton];
+      return [downloadButton, walletButton, finishButton];
     }
 
     return [nextButton, prevButton];
@@ -106,6 +115,12 @@ class NeedWizard extends React.Component {
     })
   }
 
+  walletLinkChanged(walletLink) {
+    this.setState({
+      walletLink: walletLink
+    })
+  }
+
   deliveryChanged(pdf) {
     this.setState({
       pdf: pdf
@@ -119,15 +134,16 @@ class NeedWizard extends React.Component {
   }
 
   renderStep () {
+    console.log("WizardState", this.state)
     switch(this.state.step) {
       case 0:
         return <BSNStep config={this.props.config} bsnChanged={this.bsnChanged}/>
       case 1:
         return <NeedStep config={this.props.config} needChanged={this.needChanged}/>
       case 2:
-        return <ConfirmStep config={this.props.config} core={this.core} bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged} qrMetadataChanged={this.qrMetadataChanged} />
+        return <ConfirmStep config={this.props.config} core={this.core} bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged} walletLinkChanged={this.walletLinkChanged} qrMetadataChanged={this.qrMetadataChanged} />
       case 3:
-        return <DeliveryStep config={this.props.config} core={this.core} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} qrMetadata={this.state.qrMetadata} deliveryChanged={this.deliveryChanged} />
+        return <DeliveryStep config={this.props.config} core={this.core} walletVc={this.state.walletVc} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} qrMetadata={this.state.qrMetadata} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
     }

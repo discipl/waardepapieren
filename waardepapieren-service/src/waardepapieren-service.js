@@ -94,21 +94,23 @@ class WaardenpapierenService {
     this.logger.info('Retrieved NLX data', logId)
 
     let resultArray = [{ 'Doel': this.configuration.PRODUCT_PURPOSE }]
-
+    let resultObject = { 'Doel': this.configuration.PRODUCT_PURPOSE }
     for (let field in this.configuration.SOURCE_DATA_SELECTION) {
       let key = Object.keys(this.configuration.SOURCE_DATA_SELECTION[field])[0]
       let path = this.configuration.SOURCE_DATA_SELECTION[field][key]
       let value = jp.query(result, path)
 
       resultArray.push({ [key]: value[0] })
+      resultObject[key] = value[0]
     }
 
     const productClaim = await core.claim(nlxIdentity, resultArray)
     
     let resultClaimContent = {productClaim}
     if (this.configuration.ENABLE_ULA_SERVER_ATTESTATION) {
-      this.logger.debug("PreClaim", await core.getConnector("ula-server"))
-        const ulaLink = await core.claim({ did: "did:discipl:ula-server:anonymous"}, productClaim)
+        this.logger.debug("PreClaim", productClaim)
+        const ulaLink = await core.claim({ did: "did:discipl:ula-server:anonymous"}, resultObject)
+
         resultClaimContent['ulaServerClaim'] = ulaLink
     }
 

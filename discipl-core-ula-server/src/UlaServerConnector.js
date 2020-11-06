@@ -55,8 +55,8 @@ class UlaServerConnector extends BaseConnector {
 
   get(link, _did = null, _privkey = null) {
     const reference = BaseConnector.referenceFromLink(link);
-
-    return JSON.parse(Buffer.from(reference, 'base64').toString('utf8'));
+    const data = JSON.parse(Buffer.from(reference, 'base64').toString('utf8'));
+    return {"inviteURL":data.qrcode,"operationType":"issuing", "documentName": "testdocument"};
   }
 
   observe() {

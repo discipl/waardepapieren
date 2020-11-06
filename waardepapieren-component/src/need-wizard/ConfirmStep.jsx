@@ -48,6 +48,10 @@ class ConfirmStep extends React.Component {
       this.props.resultLinkChanged(resultLink)
     }
 
+    if (result.claim.data.ulaServerClaim) {
+      this.props.walletLinkChanged(result.claim.data.ulaServerClaim);
+    }
+
     if (this.props.config.ENABLE_IPV8_ATTESTATION && this.props.qrMetadataChanged) {
       const attestedIpv8Link = result.claim.data.ipv8Claim
       this.props.qrMetadataChanged({ ipv8Link: attestedIpv8Link })

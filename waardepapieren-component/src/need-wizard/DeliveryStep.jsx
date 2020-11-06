@@ -1,6 +1,9 @@
 import React from 'react';
 import * as jsPDF from 'jspdf'
 import { PaperWallet } from '@discipl/paper-wallet'
+import QRCode from 'qrcode'
+
+import stringify from 'json-stable-stringify'
 
 class ConfirmStep extends React.Component {
   constructor(props) {
@@ -21,8 +24,15 @@ class ConfirmStep extends React.Component {
     }
   }
 
+  async componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.walletVc != this.props.walletVc) {
+      await this.componentDidMount()
+    }
+  }
+
   async componentDidMount() {
     console.log(this.props)
+    this.paperWallet = new PaperWallet(this.props.core)
 
     const certHost = process.env.REACT_APP_CERTIFICATE_HOST || this.props.config.DEFAULT_CERTIFICATE_HOST
     const ipv8Host = process.env.REACT_APP_IPV8_HOST
@@ -31,6 +41,8 @@ class ConfirmStep extends React.Component {
       ipv8endpoint: ipv8Host + ':14412',
       ...this.props.qrMetadata
     })
+
+    
 
     console.log("Issued")
 
@@ -42,14 +54,33 @@ class ConfirmStep extends React.Component {
 
     this.canvasRef.current.width = this.template.canvasWidth
     this.canvasRef.current.height = this.template.canvasHeight
-
-    await this.paperWallet.toCanvas(vc, this.template, this.canvasRef.current)
+    if (this.props.walletVc) {
+      console.log("Before walletVc", this)
+      const walletVc = await this.createWalletVc(vc);
+      await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current)
+    }
+    else {
+      await this.paperWallet.toCanvas(vc, this.template, this.canvasRef.current)
+    }
+    
 
     let imageData = this.canvasRef.current.toDataURL('image/png')
 
     pdf.addImage(imageData, 'png', 0, 0, this.template.canvasWidth, this.template.canvasHeight)
 
     this.deliveryChanged(pdf)
+  }
+
+  async createWalletVc(vc) {
+    console.log("Inside function", this)
+    const data = await this.paperWallet.core.get(this.props.resultLink);
+    let qr = await QRCode.toDataURL(stringify(data))
+    let ver = (await QRCode.create(stringify(data))).version
+    return {
+        claimData: vc.claimData,
+        qr: qr,
+        version: ver
+    }
   }
 
   render() {
