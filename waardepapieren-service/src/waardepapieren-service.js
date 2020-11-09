@@ -109,7 +109,11 @@ class WaardenpapierenService {
     let resultClaimContent = {productClaim}
     if (this.configuration.ENABLE_ULA_SERVER_ATTESTATION) {
         this.logger.debug("PreClaim", productClaim)
-        const ulaLink = await core.claim({ did: "did:discipl:ula-server:anonymous"}, resultObject)
+        const ulaLink = await core.claim({ did: "did:discipl:ula-server:anonymous"}, {
+          "testdocument": {
+            "predicates": resultObject
+          }
+        })
 
         resultClaimContent['ulaServerClaim'] = ulaLink
     }
