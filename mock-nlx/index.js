@@ -56,9 +56,9 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/999994669', (req, res) =
                 },
                 "geslachtsaanduiding": "vrouw",
                 "naam": {
-                    "aanhef": "Geachte mevrouw 'S Streeveld-te Schaars",
-                    "aanschrijfwijze": "jonkvrouw Ż.Å.Đ. 'S Streeveld-te Schaars",
-                    "gebruikInLopendeTekst": "jonkvrouw 'S Streeveld-te Schaars",
+                    "aanhef": "Geachte mevrouw 'S Streeveld-Asgaard",
+                    "aanschrijfwijze": "jonkvrouw Ż.Å.Đ. 'S Streeveld-Asgaard",
+                    "gebruikInLopendeTekst": "jonkvrouw 'S Streeveld-Asgaard",
                     "aanduidingNaamgebruik": "eigen_partner",
                     "voornamen": "Żáïŀëñøŕ Åłéèç Đëļŧå",
                     "voorletters": "Ż.Å.Đ.",
@@ -123,6 +123,46 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/999994669', (req, res) =
                         "code": "6030",
                         "omschrijving": "Nederland"
                     }
+                },
+                "partner": {
+                    "burgerservicenummer": "999992697",
+                    "geslachtsaanduiding": "man",
+                    "soortVerbintenis": "huwelijk",
+                    "naam": {
+                        "geslachtsnaam": "Asgaard",
+                        "voorletters": "T",
+                        "voornamen": "Thor",
+                        "voorvoegsel": ""
+                    },
+                    "geboorte": {
+                        "datum": "1998-01-26",
+                        "jaar": 1998,
+                        "maand": 01,
+                        "dag": 26,
+                        "land": {
+                            "code": "6030",
+                            "omschrijving": "Nederland"
+                        },
+                        "plaats": {
+                            "code": "0530",
+                            "omschrijving": "Hellevoetsluis"
+                        },
+                    },
+                    "aangaanHuwelijkPartnerschap": {
+                        "datum": "2019-11-02",
+                        "jaar": 2019,
+                        "maand": 11,
+                        "dag": 02,
+                        "land": {
+                            "code": "6030",
+                            "omschrijving": "Nederland"
+                        },
+                        "plaats": {
+                            "code": "0530",
+                            "omschrijving": "Hellevoetsluis"
+                        }
+                    },
+                    "geheimhoudingPersoonsgegevens": false, 
                 }
             }
         ]
