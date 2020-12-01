@@ -42,9 +42,7 @@ class ConfirmStep extends React.Component {
       ...this.props.qrMetadata
     })
 
-    
-
-    console.log("Issued")
+    console.log("Issued");
 
     const pdf = new jsPDF({
       orientation: 'p',
@@ -52,35 +50,23 @@ class ConfirmStep extends React.Component {
       format: [595.28, 841.89]
     })
 
-    this.canvasRef.current.width = this.template.canvasWidth
-    this.canvasRef.current.height = this.template.canvasHeight
+    this.canvasRef.current.width = this.template.canvasWidth;
+    this.canvasRef.current.height = this.template.canvasHeight;
     if (this.props.walletVc) {
-      console.log("Before walletVc", this)
-      const walletVc = await this.createWalletVc(vc);
-      await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current)
+      console.log("Before walletVc", this);
+      const resultLink = this.props.resultLink;
+      const walletVc = await this.paperWallet.createWalletVc(vc, resultLink);
+      await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current);
     }
     else {
-      await this.paperWallet.toCanvas(vc, this.template, this.canvasRef.current)
+      await this.paperWallet.toCanvas(vc, this.template, this.canvasRef.current);
     }
-    
 
-    let imageData = this.canvasRef.current.toDataURL('image/png')
+    let imageData = this.canvasRef.current.toDataURL('image/png');
 
-    pdf.addImage(imageData, 'png', 0, 0, this.template.canvasWidth, this.template.canvasHeight)
+    pdf.addImage(imageData, 'png', 0, 0, this.template.canvasWidth, this.template.canvasHeight);
 
-    this.deliveryChanged(pdf)
-  }
-
-  async createWalletVc(vc) {
-    console.log("Inside function", this)
-    const data = await this.paperWallet.core.get(this.props.resultLink);
-    let qr = await QRCode.toDataURL(stringify(data))
-    let ver = (await QRCode.create(stringify(data))).version
-    return {
-        claimData: vc.claimData,
-        qr: qr,
-        version: ver
-    }
+    this.deliveryChanged(pdf);
   }
 
   render() {

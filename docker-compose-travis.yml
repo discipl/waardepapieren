@@ -11,8 +11,8 @@ services:
       - 3233:3233
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose-travis.json
-      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
-      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      - ULA_SERVER_ENDPOINT=https://0xvvmwxd6e.execute-api.eu-west-1.amazonaws.com/dev/sessions
+      - ULA_BASIC_AUTH=aWN0dTp2NzdzaHZ6Z2VQeVpwUm9pQ3dhTzNETXljZlVVN0xNcGM4SG03bjlt
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
 
@@ -24,8 +24,8 @@ services:
     build: waardepapieren-service/.
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
-      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
-      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      - ULA_SERVER_ENDPOINT=https://0xvvmwxd6e.execute-api.eu-west-1.amazonaws.com/dev/sessions
+      - ULA_BASIC_AUTH=aWN0dTp2NzdzaHZ6Z2VQeVpwUm9pQ3dhTzNETXljZlVVN0xNcGM4SG03bjlt
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
 
@@ -33,7 +33,7 @@ services:
     build:
       context: haarlem-frontend/
       args:
-        - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
+        - CERTIFICATE_HOST=http://192.168.192.63:8880
         - IPV8_HOST=http://$CERT_HOST_IP
     depends_on:
       - waardepapieren-service
