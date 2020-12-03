@@ -1,9 +1,6 @@
 import React from 'react';
 import * as jsPDF from 'jspdf'
 import { PaperWallet } from '@discipl/paper-wallet'
-import QRCode from 'qrcode'
-
-import stringify from 'json-stable-stringify'
 
 class ConfirmStep extends React.Component {
   constructor(props) {
@@ -54,8 +51,7 @@ class ConfirmStep extends React.Component {
     this.canvasRef.current.height = this.template.canvasHeight;
     if (this.props.walletVc) {
       console.log("Before walletVc", this);
-      const resultLink = this.props.resultLink;
-      const walletVc = await this.paperWallet.createWalletVc(vc, resultLink);
+      const walletVc = await this.paperWallet.walletIssue(vc.claimData, this.props.walletLink);
       await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current);
     }
     else {

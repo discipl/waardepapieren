@@ -9,7 +9,7 @@
     "@discipl/core-ephemeral": "^0.11.3",
     "@discipl/core-ipv8": "0.0.3",
     "@discipl/core-ula-server": "0.0.1-alpha.3",
-    "@discipl/paper-wallet": "file:discipl-paper-wallet-0.8.0.tgz",
+    "@discipl/paper-wallet": "file:discipl-paper-wallet-0.8.3.tgz",
     "eslint": "^7.12.1",
     "json-stable-stringify": "^1.0.1",
     "jspdf": "^1.5.3",
