@@ -1,0 +1,31 @@
+{
+  "EPHEMERAL_START" : false,
+  "EPHEMERAL_ENDPOINT" : "https://waardepapieren-service:3232",
+  "EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://waardepapieren-service:3232",
+  "EPHEMERAL_CERT": "/ephemeral-certs/org.crt",
+  "EPHEMERAL_KEY": "/ephemeral-certs/org.key",
+  "NLX_OUTWAY_ENDPOINT" : "http://mock-belastingdienst:80",
+  "NLX_CERT": "/certs/org.crt",
+  "NLX_KEY": "/certs/org.key",
+  "LOG_LEVEL": "info",
+  "EPHEMERAL_RETENTION_TIME": 86400,
+  "PRODUCT_NEED" : "BELASTINGDIENST_NEED",
+  "SOURCE_NLX_PATH" : "/belastingdienst/bsn/{BSN}",
+  "SOURCE_ARGUMENT" : "BSN",
+  "PRODUCT_ACCEPT" : "BELASTINGDIENST_ACCEPT",
+  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde gegevens bij de Belastingdienst",
+  "PRODUCT_DESCRIPTION" : "Uittreksel Belastingdienst gegevens",
+  "PRODUCT_PURPOSE" : "Overzicht gegevens Belastingdienst",
+  "SOURCE_DATA_SELECTION" : [
+    { "Voorletters": "_embedded.gegevensbelastingdienst[0].naam.voorletters" },
+    { "Voornamen": "_embedded.gegevensbelastingdienst[0].naam.voornamen" },
+    { "Geslachtsnaam": "_embedded.gegevensbelastingdienst[0].naam.geslachtsnaam" },
+    { "Geboortedatum": "_embedded.gegevensbelastingdienst[0].geboortedatum" },
+    { "Alimentatieverplichtingen": "_embedded.gegevensbelastingdienst[0].alimentatieverplichtingen" },
+    { "Verplichtingen anders dan al bekend bij BKR, dus onderhands DUO": "_embedded.gegevensbelastingdienst[0].verplichtingenAndersDanBekendBijBKR" },
+    { "Inkomen uit onderneming (naast loondienst)": "_embedded.gegevensbelastingdienst[0].datumAanvangAdreshouding.inkomenUitOnderneming" },
+    { "Woning en andere onroerende zaken": "_embedded.gegevensbelastingdienst[0].woningEnAndereOnroerendeZaken" },
+    { "Fiscaal partner": "_embedded.gegevensbelastingdienst[0].fiscaalPartner" },
+    { "Eigen bijdrage pension": "_embedded.gegevensbelastingdienst[0].eigenBijdragePensioen" }
+  ]
+}
