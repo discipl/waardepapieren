@@ -13,8 +13,8 @@
   "SOURCE_NLX_PATH" : "/belastingdienst/bsn/{BSN}",
   "SOURCE_ARGUMENT" : "BSN",
   "PRODUCT_ACCEPT" : "BELASTINGDIENST_ACCEPT",
-  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde gegevens bij de Belastingdienst",
-  "PRODUCT_DESCRIPTION" : "Uittreksel Belastingdienst gegevens",
+  "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de gegevens bij de Belastingdienst",
+  "PRODUCT_DESCRIPTION" : "Uittreksel Belastingdienst",
   "PRODUCT_PURPOSE" : "Overzicht gegevens Belastingdienst",
   "SOURCE_DATA_SELECTION" : [
     { "Voorletters": "_embedded.gegevensbelastingdienst[0].naam.voorletters" },
@@ -23,7 +23,7 @@
     { "Geboortedatum": "_embedded.gegevensbelastingdienst[0].geboortedatum" },
     { "Alimentatieverplichtingen": "_embedded.gegevensbelastingdienst[0].alimentatieverplichtingen" },
     { "Verplichtingen anders dan al bekend bij BKR, dus onderhands DUO": "_embedded.gegevensbelastingdienst[0].verplichtingenAndersDanBekendBijBKR" },
-    { "Inkomen uit onderneming (naast loondienst)": "_embedded.gegevensbelastingdienst[0].datumAanvangAdreshouding.inkomenUitOnderneming" },
+    { "Inkomen uit onderneming (naast loondienst)": "_embedded.gegevensbelastingdienst[0].inkomenUitOnderneming" },
     { "Woning en andere onroerende zaken": "_embedded.gegevensbelastingdienst[0].woningEnAndereOnroerendeZaken" },
     { "Fiscaal partner": "_embedded.gegevensbelastingdienst[0].fiscaalPartner" },
     { "Eigen bijdrage pension": "_embedded.gegevensbelastingdienst[0].eigenBijdragePensioen" }

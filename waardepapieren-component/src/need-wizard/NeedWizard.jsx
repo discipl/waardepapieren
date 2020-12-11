@@ -141,8 +141,10 @@ class NeedWizard extends React.Component {
       case 1:
         return <NeedStep config={this.props.config} needChanged={this.needChanged}/>
       case 2:
+        console.log('walletlinkchagned', this.walletLinkChanged)
         return <ConfirmStep config={this.props.config} core={this.core} bsn={this.state.bsn} need={this.state.need} ssidsChanged={this.ssidsChanged} resultLinkChanged={this.resultLinkChanged} walletLinkChanged={this.walletLinkChanged} qrMetadataChanged={this.qrMetadataChanged} />
       case 3:
+        console.log('walletLink renderstep', this.state.walletLink)
         return <DeliveryStep config={this.props.config} core={this.core} walletVc={this.state.walletVc} personalDid={this.state.personalDid} myPrivateSsid={this.state.myPrivateSsid} resultLink={this.state.resultLink} walletLink={this.state.walletLink} qrMetadata={this.state.qrMetadata} deliveryChanged={this.deliveryChanged} />
       default:
         console.log('Unsupported step')
