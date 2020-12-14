@@ -27,5 +27,6 @@
     { "Woning en andere onroerende zaken": "_embedded.gegevensbelastingdienst[0].woningEnAndereOnroerendeZaken" },
     { "Fiscaal partner": "_embedded.gegevensbelastingdienst[0].fiscaalPartner" },
     { "Eigen bijdrage pension": "_embedded.gegevensbelastingdienst[0].eigenBijdragePensioen" }
-  ]
+  ],
+  "ENABLE_ULA_SERVER_ATTESTATION": true
 }

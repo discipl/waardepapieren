@@ -51,10 +51,7 @@ class ConfirmStep extends React.Component {
     this.canvasRef.current.height = this.template.canvasHeight
     if (this.props.walletVc) {
       console.log("Before walletVc", this);
-        console.log('vcClaimData', vc.claimData)
-        console.log('walletLink', this.props.walletLink)
       const walletVc = await this.paperWallet.walletIssue(vc.claimData, this.props.walletLink)
-        console.log("After walletVc")
       await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current)
     }
     else {
