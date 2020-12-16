@@ -22,6 +22,16 @@
             "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
             "PRODUCT_DESCRIPTION": "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
             "PRODUCT_PURPOSE": "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
+        },
+        {
+            "PRODUCT_NEED":  "BELASTINGDIENST_NEED"
+        },
+        {
+            "PRODUCT_NEED": "UWV_NEED",
+            "PRODUCT_ACCEPT": "UWV_ACCEPT",
+            "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de gegevens bij UWV",
+            "PRODUCT_DESCRIPTION": "Uittreksel UWV",
+            "PRODUCT_PURPOSE": "Overzicht gegevens UWV"
         }
     ],
     "EXPORT_TYPES": {
