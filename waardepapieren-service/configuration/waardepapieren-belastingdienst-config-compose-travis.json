@@ -19,6 +19,7 @@
   "SOURCE_DATA_SELECTION" : [
     { "Voorletters": "_embedded.gegevensbelastingdienst[0].naam.voorletters" },
     { "Voornamen": "_embedded.gegevensbelastingdienst[0].naam.voornamen" },
+    { "Voorvoegsel": "_embedded.gegevensbelastingdienst[0].naam.voorvoegsel" },
     { "Geslachtsnaam": "_embedded.gegevensbelastingdienst[0].naam.geslachtsnaam" },
     { "Geboortedatum": "_embedded.gegevensbelastingdienst[0].geboortedatum" },
     { "Alimentatieverplichtingen": "_embedded.gegevensbelastingdienst[0].alimentatieverplichtingen" },
