@@ -9,6 +9,7 @@ services:
     ports:
       - 3232:3232
       - 3233:3233
+      - 3234:3234
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose-travis.json
       - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
@@ -28,6 +29,21 @@ services:
       - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
+    restart: unless-stopped
+
+  waardepapieren-belastingdienst-service:
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-service/configuration/:/app/configuration:ro
+    build: waardepapieren-service/.
+    environment:
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-belastingdienst-config-compose-travis.json
+      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
+      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      # Ignore self-signed ephemeral cert issues
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    restart: unless-stopped
 
   haarlem-frontend:
     build:
@@ -49,6 +65,11 @@ services:
     build: mock-nlx/
     ports:
       - 80:80
+
+  mock-belastingdienst:
+    build: mock-belastingdienst/
+    ports:
+      - 81:80
 
 networks:
   default:
