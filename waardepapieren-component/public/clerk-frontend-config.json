@@ -24,7 +24,11 @@
             "PRODUCT_PURPOSE": "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
         },
         {
-            "PRODUCT_NEED":  "BELASTINGDIENST_NEED"
+            "PRODUCT_NEED": "BELASTINGDIENST_NEED",
+            "PRODUCT_ACCEPT": "BELASTINGDIENST_ACCEPT",
+            "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de gegevens bij de Belastingdienst",
+            "PRODUCT_DESCRIPTION": "Uittreksel Belastingdienst",
+            "PRODUCT_PURPOSE": "Overzicht gegevens Belastingdienst"
         },
         {
             "PRODUCT_NEED": "UWV_NEED",

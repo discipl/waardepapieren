@@ -15,7 +15,7 @@ class NeedStep extends Component {
       },
       {
         predicate: this.props.config.PRODUCTS[2].PRODUCT_NEED,
-        description: 'Uittreksel Belastingdienst (nog niet gemerged)'
+        description: 'Uittreksel Belastingdienst'
         },
       {
         predicate: this.props.config.PRODUCTS[3].PRODUCT_NEED,

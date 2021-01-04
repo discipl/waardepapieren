@@ -1,0 +1,17 @@
+{
+  "name": "mock-belastingdienst",
+  "version": "0.1.0",
+  "description": "Mock outway for belastingdienst",
+  "repository": "https://github.com/discipl/waardenpapieren",
+  "main": "index.js",
+  "scripts": {
+    "start-local": "BELASTINGDIENST_MOCK_PORT=8081 node index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zoë Dalmijn",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
