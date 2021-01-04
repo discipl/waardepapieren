@@ -1,21 +1,21 @@
-var express = require('express')
+﻿var express = require('express')
 var app = express()
 
-app.get('/uwv/bsn/999852147', (req, res) => {
+app.get('/uwv/bsn/999994669', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(JSON.stringify({
     "_embedded": {
         "gegevensuwv": [
             {
-                "burgerservicenummer": "999852147",
+                "burgerservicenummer": "999994669",
                 "naam": {
-                    "volledigeNaam": "Tyra Andersson",
-                    "voornamen": "Tyra",
-                    "voorletters": "T",
-                    "geslachtsnaam": "Andersson",
-                    "voorvoegsel": ""
+                    "volledigeNaam": "Żáïŀëñøŕ Åłéèç Đëļŧå 'S Streeveld",
+                    "voornamen": "Żáïŀëñøŕ Åłéèç Đëļŧå",
+                    "voorletters": "Ż.Å.Đ.",
+                    "geslachtsnaam": "Streeveld",
+                    "voorvoegsel": "'S"
                 },
-                "geboortedatum": "05-11-1977",
+                "geboortedatum": "30-12-1961",
                 "aantalUurAfgelopenMaandMeerDanNul": "Ja",
                 "aantalUurAfgelopenDrieMaanden": "480",
                 "aantalUurAfgelopenTwaalfMaanden": "1920",
