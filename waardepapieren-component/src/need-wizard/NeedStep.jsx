@@ -12,7 +12,11 @@ class NeedStep extends Component {
       {
         predicate: this.props.config.PRODUCTS[1].PRODUCT_NEED,
         description: 'Uittreksel Basis Registratie Verblijfplaatshistorie'
-      }
+      },
+      {
+        predicate: this.props.config.PRODUCTS[2].PRODUCT_NEED,
+        description: 'Uittreksel Belastingdienst'
+	  }
     ]
 
     this.state = {

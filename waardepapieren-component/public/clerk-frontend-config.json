@@ -22,6 +22,13 @@
             "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
             "PRODUCT_DESCRIPTION": "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
             "PRODUCT_PURPOSE": "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
+        },
+        {
+            "PRODUCT_NEED": "BELASTINGDIENST_NEED",
+            "PRODUCT_ACCEPT": "BELASTINGDIENST_ACCEPT",
+            "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de gegevens bij de Belastingdienst",
+            "PRODUCT_DESCRIPTION": "Uittreksel Belastingdienst",
+            "PRODUCT_PURPOSE": "Overzicht gegevens Belastingdienst"
         }
     ],
     "EXPORT_TYPES": {
