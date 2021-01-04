@@ -11,8 +11,8 @@ app.get('/belastingdienst/bsn/995671239', (req, res) => {
                     "naam": {
                         "voornamen": "Jan Hendrik",
                         "voorletters": "J.H.",
-                        "geslachtsnaam": "de Jong",
-                        "voorvoegsel": ""
+                        "geslachtsnaam": "Jong",
+                        "voorvoegsel": "de"
                     },
                     "geboortedatum": "17-06-1989",
                     "alimentatieverplichtingen": "geen",

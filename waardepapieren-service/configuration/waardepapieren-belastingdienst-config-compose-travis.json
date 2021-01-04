@@ -19,6 +19,7 @@
   "SOURCE_DATA_SELECTION" : [
     { "Voorletters": "_embedded.gegevensbelastingdienst[0].naam.voorletters" },
     { "Voornamen": "_embedded.gegevensbelastingdienst[0].naam.voornamen" },
+    { "Voorvoegsel": "_embedded.gegevensbelastingdienst[0].naam.voorvoegsel" },
     { "Geslachtsnaam": "_embedded.gegevensbelastingdienst[0].naam.geslachtsnaam" },
     { "Geboortedatum": "_embedded.gegevensbelastingdienst[0].geboortedatum" },
     { "Alimentatieverplichtingen": "_embedded.gegevensbelastingdienst[0].alimentatieverplichtingen" },
@@ -26,7 +27,7 @@
     { "Inkomen uit onderneming (naast loondienst)": "_embedded.gegevensbelastingdienst[0].inkomenUitOnderneming" },
     { "Woning en andere onroerende zaken": "_embedded.gegevensbelastingdienst[0].woningEnAndereOnroerendeZaken" },
     { "Fiscaal partner": "_embedded.gegevensbelastingdienst[0].fiscaalPartner" },
-    { "Eigen bijdrage pension": "_embedded.gegevensbelastingdienst[0].eigenBijdragePensioen" }
+    { "Eigen bijdrage pensioen": "_embedded.gegevensbelastingdienst[0].eigenBijdragePensioen" }
   ],
   "ENABLE_ULA_SERVER_ATTESTATION": true
 }
