@@ -1,20 +1,20 @@
-var express = require('express')
+﻿var express = require('express')
 var app = express()
 
-app.get('/belastingdienst/bsn/995671239', (req, res) => {
+app.get('/belastingdienst/bsn/999994669', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.write(JSON.stringify({
         "_embedded": {
             "gegevensbelastingdienst": [
                 {
-                    "burgerservicenummer": "995671239",
+                    "burgerservicenummer": "999994669",
                     "naam": {
-                        "voornamen": "Jan Hendrik",
-                        "voorletters": "J.H.",
-                        "geslachtsnaam": "Jong",
-                        "voorvoegsel": "de"
+                        "voornamen": "Żáïŀëñøŕ Åłéèç Đëļŧå",
+                        "voorletters": "Ż.Å.Đ.",
+                        "geslachtsnaam": "Streeveld",
+                        "voorvoegsel": "'S"
                     },
-                    "geboortedatum": "17-06-1989",
+                    "geboortedatum": "10-12-1961",
                     "alimentatieverplichtingen": "geen",
                     "verplichtingenAndersDanBekendBijBKR": "geen",
                     "inkomenUitOnderneming": "geen",
