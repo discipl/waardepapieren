@@ -26,7 +26,7 @@ app.get('/uwv/bsn/999852147', (req, res) => {
                 "SVLoonPerMaand": "20.700 euro",
                 "werkgever": "UWV",
                 "proeftijdVerstreken": "Ja",
-                "autoVanZaak": "Nee"                
+                "autoVanZaak": "Nee" 
             }
         ]
     }
