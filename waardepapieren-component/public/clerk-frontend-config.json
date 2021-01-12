@@ -42,7 +42,7 @@
         "@discipl/paper-wallet": {
             "template": {
                 "backgroundImage": "form-assets/another_pdf_template.png",
-                "logoImage": "form-assets/logo.png",
+                "logoImage": "form-assets/logo_Haarlem.png",
                 "logoWidth": 210,
                 "logoHeight": 160,
                 "logoOffsetX": 0,

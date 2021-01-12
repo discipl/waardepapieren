@@ -52,10 +52,10 @@ class ConfirmStep extends React.Component {
     if (this.props.walletVc) {
       console.log("Before walletVc", this);
       const walletVc = await this.paperWallet.walletIssue(vc.claimData, this.props.walletLink)
-      await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current)
+      await this.paperWallet.toCanvas(walletVc, this.template, this.canvasRef.current, this.props.need)
     }
     else {
-      await this.paperWallet.toCanvas(vc, this.template, this.canvasRef.current);
+      await this.paperWallet.toCanvas(vc, this.template, this.canvasRef.current, this.props.need);
     }
 
     let imageData = this.canvasRef.current.toDataURL('image/png')
