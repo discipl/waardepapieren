@@ -27,7 +27,7 @@ services:
     environment:
       - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
       - ULA_SERVER_ENDPOINT=https://0xvvmwxd6e.execute-api.eu-west-1.amazonaws.com/dev/sessions
-      - ULA_BASIC_AUTH=aWN0dTp2NzdzaHZ6Z2VQeVpwUm9pQ3dhTzNETXljZlVVN0xNcGM4SG03bjlt
+      - ULA_BASIC_AUTH=$aWN0dTp2NzdzaHZ6Z2VQeVpwUm9pQ3dhTzNETXljZlVVN0xNcGM4SG03bjlt
       # Ignore self-signed ephemeral cert issues
       - NODE_TLS_REJECT_UNAUTHORIZED=0
     restart: unless-stopped
@@ -60,6 +60,23 @@ services:
       - NODE_TLS_REJECT_UNAUTHORIZED=0
     restart: unless-stopped
 
+
+
+  belastingdienst-frontend:
+    build:
+      context: belastingdienst-frontend/
+      args:
+        - CERTIFICATE_HOST=http://192.168.178.33:8880
+        - IPV8_HOST=http://$CERT_HOST_IP
+    depends_on:
+      - waardepapieren-service
+    ports:
+      - 443:443
+      - 8880:8880
+    healthcheck:
+      test: service nginx status
+    volumes:
+      - ./belastingdienst-frontend/nginx/certs:/etc/nginx/certs:ro
 
   mock-nlx:
     build: mock-nlx/

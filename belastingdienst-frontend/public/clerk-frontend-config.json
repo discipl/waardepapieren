@@ -1,0 +1,73 @@
+{
+  "CONTAINER_ID": "root",
+  "DEFAULT_EPHEMERAL_ENDPOINT" : "https://localhost:443/api/eph",
+  "DEFAULT_EPHEMERAL_WEBSOCKET_ENDPOINT" : "wss://localhost:443/api/eph-ws",
+  "DEFAULT_CERTIFICATE_URL": "http://10.10.5.75:3000/certs/org.crt",
+  "SOURCE_ARGUMENT" : "BSN",
+  "ENABLE_IPV8_ATTESTATION": false,
+  "IPV8_SERVICE_DID": "did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=",
+  "IPV8_SITE_DID": "did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI=",
+  "IPV8_APP_DID": "did:discipl:ipv8:TGliTmFDTFBLOnj5S5VTowiIEV3QELnWusYPUBoiJ4vXtjeznhUUHdF6CbkMsP7H4PZwESO4LPHByqZHyEkjnM986nRQ2Bit76U=",
+  "PRODUCTS" : [
+        {
+            "PRODUCT_NEED": "BELASTINGDIENST_NEED",
+            "PRODUCT_ACCEPT": "BELASTINGDIENST_ACCEPT",
+            "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de gegevens bij de Belastingdienst",
+            "PRODUCT_DESCRIPTION": "Uittreksel Belastingdienst",
+            "PRODUCT_PURPOSE": "Overzicht gegevens Belastingdienst"
+        }
+   ],
+  "EXPORT_TYPES" : {
+    "@discipl/paper-wallet" : {
+      "template" : {
+        "backgroundImage": "form-assets/another_pdf_template.png",
+
+        "logoImage": "form-assets/logo.png",
+        "logoWidth": 210,
+        "logoHeight": 160,
+        "logoOffsetX": 0,
+        "logoOffsetY": 0,
+
+        "disciplImage": "form-assets/discipl.png",
+        "disciplWidth": 90,
+        "disciplHeight": 90,
+        "disciplOffsetX": 460,
+        "disciplOffsetY": 35,
+
+        "canvasWidth": 595,
+        "canvasHeight": 838,
+
+        "productHeaderFont": "bold 11.5px helvetica",
+        "productHeaderText": "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+        "productHeaderOffsetX": 40,
+        "productHeaderOffsetY": 190,
+
+        "subheaderFont": "11.5px helvetica",
+        "subheaderText": "Onderstaande gegevens zijn vastgesteld door de Belastingdienst",
+        "subheaderOffsetX": 40,
+        "subheaderOffsetY": 210,
+
+        "claimDataFont": "11.5px helvetica",
+        "prefixAttributes": true,
+        "claimDataOffsetX": 40,
+        "claimDataOffsetY": 255,
+        "claimDataLineSpacing": 15,
+
+        "qrOffsetX": 320,
+        "qrOffsetY": 520,
+        "qrWidth": 150,
+        "qrHeight": 150,
+        "qrOffsetXright": 550,
+        "qrOffsetYbottom": 700,
+        "qrSizeMin": 150,
+
+        "footerFont": "10px helvetica",
+        "footerText": "Dit is een automatisch gegenereerd document en daarom niet ondertekend. De gegevens zijn verkregen via NLX en geborgd in de QR-code. U kunt de echtheid van dit document controleren via een bijbehorende app of online",
+        "footerWidth": 400,
+        "footerHeight": 200,
+        "footerOffsetX": 90,
+        "footerOffsetY": 730
+      }
+    }
+  }
+}
