@@ -8,29 +8,43 @@
   "IPV8_SERVICE_DID": "did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=",
   "IPV8_SITE_DID": "did:discipl:ipv8:TGliTmFDTFBLOpd7y5Yd9NDKxelDmsACx9I6Go2cK4v8fKBIKzp0KiEjStqcAfSHFfk7KkqbUodAH0iX3nljnd7Y+bj8b0oFUCI=",
   "IPV8_APP_DID": "did:discipl:ipv8:TGliTmFDTFBLOnj5S5VTowiIEV3QELnWusYPUBoiJ4vXtjeznhUUHdF6CbkMsP7H4PZwESO4LPHByqZHyEkjnM986nRQ2Bit76U=",
-  "PRODUCTS" : [
+  "PRODUCTS": [
     {
-      "PRODUCT_NEED" : "BRP_UITTREKSEL_NEED",
-      "PRODUCT_ACCEPT" : "BRP_UITTREKSEL_ACCEPT",
-      "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
-      "PRODUCT_DESCRIPTION" : "Uittreksel Basis Registratie Persoonsgegevens",
-      "PRODUCT_PURPOSE" : "Bewijs leveren voor verblijfadres in woonplaats"
-     },
-     {
-      "PRODUCT_NEED" : "BRP_VERBLIJFPLAATSHISTORIE_NEED",
-      "PRODUCT_ACCEPT" : "BRP_VERBLIJFPLAATSHISTORIE_ACCEPT",
-      "PRODUCT_NAME" : "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
-      "PRODUCT_DESCRIPTION" : "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
-      "PRODUCT_PURPOSE" : "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
-     }
-   ],
+        "PRODUCT_NEED": "BRP_UITTREKSEL_NEED",
+        "PRODUCT_ACCEPT": "BRP_UITTREKSEL_ACCEPT",
+        "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van gegevens uit de basisregistratie personen (BRP)",
+        "PRODUCT_DESCRIPTION": "Uittreksel Basis Registratie Persoonsgegevens",
+        "PRODUCT_PURPOSE": "Bewijs leveren voor verblijfadres in woonplaats"
+    },
+    {
+        "PRODUCT_NEED": "BRP_VERBLIJFPLAATSHISTORIE_NEED",
+        "PRODUCT_ACCEPT": "BRP_VERBLIJFPLAATSHISTORIE_ACCEPT",
+        "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de geregistreerde verblijfplaatshistorie uit de basisregistratie personen (BRP)",
+        "PRODUCT_DESCRIPTION": "Uittreksel Verblijfplaatshistorie Basis Registratie Persoonsgegevens",
+        "PRODUCT_PURPOSE": "Overzicht geregistreerde verblijfplaatshistorie van een ingeschreven persoon"
+    },
+    {
+        "PRODUCT_NEED": "BELASTINGDIENST_NEED",
+        "PRODUCT_ACCEPT": "BELASTINGDIENST_ACCEPT",
+        "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de gegevens bij de Belastingdienst",
+        "PRODUCT_DESCRIPTION": "Uittreksel Belastingdienst",
+        "PRODUCT_PURPOSE": "Overzicht gegevens Belastingdienst"
+    },
+    {
+        "PRODUCT_NEED": "UWV_NEED",
+        "PRODUCT_ACCEPT": "UWV_ACCEPT",
+        "PRODUCT_NAME": "Gewaarmerkt digitaal afschrift van de gegevens bij UWV",
+        "PRODUCT_DESCRIPTION": "Uittreksel UWV",
+        "PRODUCT_PURPOSE": "Overzicht gegevens UWV"
+    }
+  ],
   "EXPORT_TYPES" : {
     "@discipl/paper-wallet" : {
       "template" : {
 
         "backgroundImage" : "form-assets/another_pdf_template.png",
 
-        "logoImage": "form-assets/logo.png",
+        "logoImage": "form-assets/logo_Haarlem.png",
         "logoWidth": 210,
         "logoHeight": 160,
         "logoOffsetX": 0,

@@ -1,0 +1,96 @@
+version: '3.5'
+services:
+  waardepapieren-service:
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-service/configuration/:/app/configuration:ro
+    build: waardepapieren-service/.
+    ports:
+      - 3232:3232
+      - 3233:3233
+      - 3234:3234
+      - 3235:3235
+    environment:
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-config-compose-travis.json
+      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
+      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      # Ignore self-signed ephemeral cert issues
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+
+  waardepapieren-verblijfplaatshistorie-service:
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-service/configuration/:/app/configuration:ro
+    build: waardepapieren-service/.
+    environment:
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-verblijfplaatshistorie-config-compose-travis.json
+      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
+      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      # Ignore self-signed ephemeral cert issues
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    restart: unless-stopped
+
+  waardepapieren-belastingdienst-service:
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-service/configuration/:/app/configuration:ro
+    build: waardepapieren-service/.
+    environment:
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-belastingdienst-config-compose-travis.json
+      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
+      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      # Ignore self-signed ephemeral cert issues
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    restart: unless-stopped
+
+  waardepapieren-uwv-service:
+    volumes:
+      - ./waardepapieren-service/system-test/certs:/certs:ro
+      - ./waardepapieren-service/system-test/ephemeral-certs:/ephemeral-certs:ro
+      - ./waardepapieren-service/configuration/:/app/configuration:ro
+    build: waardepapieren-service/.
+    environment:
+      - WAARDEPAPIEREN_CONFIG=/app/configuration/waardepapieren-uwv-config-compose-travis.json
+      - ULA_SERVER_ENDPOINT=$ULA_ENDPOINT
+      - ULA_BASIC_AUTH=$ULA_BASIC_AUTH
+      # Ignore self-signed ephemeral cert issues
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    restart: unless-stopped
+
+  haarlem-frontend:
+    build:
+      context: haarlem-frontend/
+      args:
+        - CERTIFICATE_HOST=http://$CERT_HOST_IP:8880
+        - IPV8_HOST=http://$CERT_HOST_IP
+    depends_on:
+      - waardepapieren-service
+    ports:
+      - 443:443
+      - 8880:8880
+    healthcheck:
+      test: service nginx status
+    volumes:
+      - ./haarlem-frontend/nginx/certs:/etc/nginx/certs:ro
+
+  mock-nlx:
+    build: mock-nlx/
+    ports:
+      - 80:80
+
+  mock-belastingdienst:
+    build: mock-belastingdienst/
+    ports:
+      - 81:80
+
+  mock-uwv:
+    build: mock-uwv/
+    ports:
+      - 82:80
+
+networks:
+  default:
+    name: waardepapieren

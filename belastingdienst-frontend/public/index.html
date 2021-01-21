@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="belastingdienst.css">
     <link href="./css/main.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+          integrity="sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="belastingdienst.css">
     <script>window.waardepapierenConfigUrl = "./clerk-frontend-config.json"</script>
     <script src="./js/main.js"></script>
 
@@ -18,22 +21,22 @@
                     <div class="row">
 
                         <div class="col-xs-12">
-                            <a tabindex="-1" title="logo" data-action="click: " data-metrix="[bld-dv-content]top-logo,click:,/wps/wcm/connect/nl/home">
-                                <img id="bld-img-logo" src="./assets/bld_logo.png" alt="Logo Belastingdienst">
+                            <a tabindex="-1" title="logo">
+                                <img id="bld-img-logo" src="./assets/logo_bd.png" alt="Logo Belastingdienst">
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
-            <nav class="bld-navbar navbar navbar-static affix-top" role="navigation" data-metrix-category="header:navbar">
+            <nav class="bld-navbar navbar navbar-static affix-top" role="navigation">
                 <div class="container level0">
                     <ul class="bld-navbar-nav nav navbar-nav pull-left">
                         <li class="pull-left">
-                            <a tabindex="10" data-action="click: Home" data-metrix="[bld-dv-content]header:navbar,click: Home,/wps/wcm/connect/nl/home/home"><span class="glyphicon glyphicon-home"></span><span class="hidden-xs"> Home</span></a>
+                            <a tabindex="10"><span class="glyphicon glyphicon-home"></span><span class="hidden-xs"> Home</span></a>
                         </li>
 
-                        <li class="dropdown pull-left" data-metrix-category="header:megamenu">
-                            <a tabindex="20" class="dropdown-toggle" data-toggle="dropdown" data-count=".bld-mega-menu-close.navbar" data-action="click: Menu Sluiten " data-metrix="[bld-dv-content]header:megamenu,click: Menu Sluiten,#">
+                        <li class="dropdown pull-left">
+                            <a tabindex="20" class="dropdown-toggle" data-toggle="dropdown" data-count=".bld-mega-menu-close.navbar">
                                 <span class="bld-hamburger"><span></span></span>
                                 <span class="bld-mega-menu-open">Menu</span>
                                 <span class="bld-mega-menu-close hidden">Sluiten</span>
@@ -53,21 +56,21 @@
                     </ul>
 
                     <ul class="bld-navbar-nav nav navbar-nav pull-right">
-                        <li class="hidden-xs searchDesktop pull-left" data-metrix-category="header:search">
+                        <li class="hidden-xs searchDesktop pull-left">
                             <form role="search" method="get">
                                 <fieldset>
                                     <legend class="hidden">Waar bent u naar op zoek?</legend>
                                     <label for="bldSearchInput" class="sr-only">Waar bent u naar op zoek?</label>
-                                    <input id="bldSearchInput" tabindex="120" type="text" value="" maxlength="256" class="input-md bld-search ui-autocomplete-input" name="q" placeholder="Waar bent u naar op zoek?" autocomplete="off" data-action="click" data-metrix="[bld-dv-content]header:search,click,">
-                                    <button disabled tabindex="121" title="Zoek" type="submit" class="bld-btn-search" data-action="button" data-metrix="[bld-dv-content]header:search,button,">
+                                    <input readonly="readonly" id="bldSearchInput" tabindex="120" type="text" value="" maxlength="256" class="input-md bld-search ui-autocomplete-input" name="q" placeholder="Waar bent u naar op zoek?" autocomplete="off" data-action="click" data-metrix="[bld-dv-content]header:search,click,">
+                                    <button disabled tabindex="121" title="Zoek" type="submit" class="bld-btn-search">
                                         <i class="fa fa-search"></i>
                                         <span class="label hidden">Zoek</span>
                                     </button>
                                 </fieldset>
                             </form>
                         </li>
-                        <li class="dropdown visible-xs pull-left" data-metrix-category="header:megamenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-action="click: " data-metrix="[bld-dv-content]header:megamenu,click:,#">
+                        <li class="dropdown visible-xs pull-left">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-search bld-mega-menu-open"></span>
                                 <span class="bld-hamburger open bld-mega-menu-close hidden">
                                     <span></span>
@@ -84,7 +87,7 @@
                                                             <legend class="hidden">Waar bent u naar op zoek?</legend>
                                                             <label for="bldSearchInputMobile" class="sr-only">Waar bent u naar op zoek?</label>
                                                             <input id="bldSearchInputMobile" tabindex="120" type="text" value="" maxlength="256" class="input-md bld-search ui-autocomplete-input" name="q" placeholder="Waar bent u naar op zoek?" autocomplete="off" data-action="click" data-metrix="[bld-dv-content]header:search,click,">
-                                                            <button tabindex="121" title="Zoek" type="submit" class="bld-btn-search" data-action="button" data-metrix="[bld-dv-content]header:search,button,">
+                                                            <button tabindex="121" title="Zoek" type="submit" class="bld-btn-search">
                                                                 <i class="fa fa-search"></i>
                                                                 <span class="label hidden">Zoek</span>
                                                             </button>
@@ -98,16 +101,18 @@
                             </div>
                         </li>
 
-                        <li class="dropdown pull-left" data-metrix-category="header:login">
-                            <a tabindex="130" class="dropdown-toggle" data-targetid="bld-login" data-toggle="dropdown" data-count=".bldto.inloggen.navbar.button" data-action="click: Inloggen " data-metrix="[bld-dv-content]header:login,click: Inloggen,#"><span class="glyphicon glyphicon-user"></span><span class="hidden-xs"> Inloggen</span>      </a>
+                        <li class="dropdown pull-left">
+                            <a tabindex="130" class="dropdown-toggle" data-targetid="bld-login" data-toggle="dropdown" data-count=".bldto.inloggen.navbar.button">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span class="hidden-xs"> Inloggen</span>
+                            </a>
                             <div class="dropdown-menu arrow-right">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-offset-8 col-sm-4 push col-md-offset-9 col-md-3 bld-load-menu bld-login-margin nav-pills-container" 
-                                                     data-url="/wps/wcm/connect/nl/layouts/megamenu/megamenu_nl.json" data-targetid="login">
-                                                    <ul class="nav nav-pills nav-stacked">  <li><a tabindex="131" data-action="click:Mijn Belastingdienst" data-metrix="[bld-dv-content]header:login,click:Mijn Belastingdienst,/wps/wcm/connect/nl/home/content/inloggen-mijn-belastingdienst">Mijn Belastingdienst</a></li><li><a tabindex="132" data-action="click:Mijn toeslagen" data-metrix="[bld-dv-content]header:login,click:Mijn toeslagen,/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/inloggen_op_mijn_toeslagen">Mijn toeslagen</a></li><li><a tabindex="133" data-action="click:Voor ondernemers" data-metrix="[bld-dv-content]header:login,click:Voor ondernemers,/wps/wcm/connect/nl/ondernemers/content/inloggen-voor-ondernemers">Voor ondernemers</a></li><li><a tabindex="134" data-action="click:Voor douanezaken" data-metrix="[bld-dv-content]header:login,click:Voor douanezaken,/wps/wcm/connect/nl/douane_voor_bedrijven/content/douaneportalen">Voor douanezaken</a></li></ul>
+                                                     data-targetid="login">
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +126,7 @@
                 <div class="container level1 hidden-xs hidden-sm hidden-md hidden-lg">
                     <ul class="bld-navbar-nav nav navbar-nav pull-left">
                         <li class="bld-menu-back pull-left">
-                            <a title="" data-action="click" data-metrix="[bld-dv-content]header:navbar,click,#"><i class="fa fa-angle-left"></i></a>
+                            <a title=""><i class="fa fa-angle-left"></i></a>
                         </li>
                         <li class="dropdown pull-left open">
                             <div class="dropdown-menu">
@@ -144,7 +149,7 @@
                     </div>
                     <ul class="bld-navbar-nav nav navbar-nav pull-right">
                         <li class="pull-right open">
-                            <a class="bld-mega-dropdown-close" data-count=".bld-mega-menu-close.navbar" data-action="click: " data-metrix="[bld-dv-content]header:navbar,click:,#">
+                            <a class="bld-mega-dropdown-close" data-count=".bld-mega-menu-close.navbar">
                                 <span class="bld-hamburger">
                                     <span></span>
                                 </span>
@@ -159,7 +164,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <ul class="list-inline">
-                                    <li><a tabindex="140" data-action="click:Home" data-metrix="[bld-dv-content]breadcrumb:breadcrumb,click:Home,/wps/wcm/connect/nl/home/home">Home</a></li>
+                                    <li><a tabindex="140">Home</a></li>
                                     <li>Inloggen op Mijn Belastingdienst</li>
                                 </ul>
                             </div>
@@ -190,24 +195,24 @@
                             <h2>Over de Belastingdienst</h2>
 
                             <ul class="hyperlinks">
-                                <li><a data-action="click:Contact" data-metrix="[bld-dv-content]footer,click:Contact,/wps/wcm/connect/nl/contact/contact">Contact</a></li>
+                                <li><a>Contact</a></li>
 
-                                <li><a data-action="click:Over ons" data-metrix="[bld-dv-content]footer,click:Over ons,https://over-ons.belastingdienst.nl/">Over ons</a></li>
-                                <li><a data-action="click:Privacyverklaring" data-metrix="[bld-dv-content]footer,click:Privacyverklaring,/wps/wcm/connect/bldcontentnl/niet_in_enig_menu/prive/privacy"><span>Privacyverklaring</span></a><br></li>
+                                <li><a>Over ons</a></li>
+                                <li><a><span>Privacyverklaring</span></a><br></li>
 
-                                <li><a data-action="click:Werken bij de Belastingdienst" data-metrix="[bld-dv-content]footer,click:Werken bij de Belastingdienst,https://werken.belastingdienst.nl/">Werken bij de Belastingdienst</a></li>
+                                <li><a>Werken bij de Belastingdienst</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-3 col-xs-12">
                             <h2>Inloggen</h2>
 
                             <ul class="bld-hyperlink">
-                                <li><a data-action="click:Inloggen op Mijn Belastingdienst" data-metrix="[bld-dv-content]footer,click:Inloggen op Mijn Belastingdienst,/wps/wcm/connect/nl/home/content/inloggen-mijn-belastingdienst">Inloggen op Mijn Belastingdienst</a></li>
+                                <li><a>Inloggen op Mijn Belastingdienst</a></li>
 
-                                <li><a data-action="click:Inloggen op Mijn toeslagen" data-metrix="[bld-dv-content]footer,click:Inloggen op Mijn toeslagen,/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/inloggen_op_mijn_toeslagen">Inloggen op Mijn toeslagen</a></li>
+                                <li><a>Inloggen op Mijn toeslagen</a></li>
 
-                                <li><a data-action="click:Inloggen voor ondernemers" data-metrix="[bld-dv-content]footer,click:Inloggen voor ondernemers,/wps/wcm/connect/nl/ondernemers/content/inloggen-voor-ondernemers">Inloggen voor ondernemers</a></li>
-                                <li><a data-action="click:Inloggen voor douanezaken" data-metrix="[bld-dv-content]footer,click:Inloggen voor douanezaken,/wps/wcm/connect/nl/douane_voor_bedrijven/content/douaneportalen">Inloggen voor douanezaken</a><br></li>
+                                <li><a>Inloggen voor ondernemers</a></li>
+                                <li><a>Inloggen voor douanezaken</a><br></li>
                             </ul>
 
                         </div>
@@ -215,14 +220,14 @@
                             <h2>Over deze site</h2>
 
                             <ul class="bld-hyperlink">
-                                <li><a data-action="click:Sitemap" data-metrix="[bld-dv-content]footer,click:Sitemap,/wps/wcm/connect/bldcontentnl/niet_in_enig_menu/sitemap/sitemap">Sitemap</a></li>
+                                <li><a>Sitemap</a></li>
 
-                                <li><a data-action="click:Copyright" data-metrix="[bld-dv-content]footer,click:Copyright,/wps/wcm/connect/bldcontentnl/niet_in_enig_menu/prive/copyright">Copyright</a></li>
+                                <li><a>Copyright</a></li>
 
-                                <li><a data-action="click:Cookies" data-metrix="[bld-dv-content]footer,click:Cookies,/wps/wcm/connect/bldcontentnl/niet_in_enig_menu/prive/cookies">Cookies</a></li>
+                                <li><a>Cookies</a></li>
 
-                                <li><a data-action="click:Toegankelijkheid" data-metrix="[bld-dv-content]footer,click:Toegankelijkheid,/wps/wcm/connect/bldcontentnl/niet_in_enig_menu/prive/digitale_toegankelijkheid/digitale-toegankelijkheid">Toegankelijkheid</a></li>
-                                <li><a data-action="click:Help" data-metrix="[bld-dv-content]footer,click:Help,/wps/wcm/connect/bldcontentnl/standaard_functies/prive/help/help">Help</a><br></li>
+                                <li><a>Toegankelijkheid</a></li>
+                                <li><a>Help</a><br></li>
                             </ul>
 
 
@@ -232,16 +237,16 @@
 
                             <ul class="bld-hyperlink">
                                 <li>
-                                    <a data-action="click:English site" data-metrix="[bld-dv-content]footer,click:English site,/wps/wcm/connect/en/individuals/individuals">English site</a>
+                                    <a>English site</a>
                                     <ul>
-                                        <li><a data-action="click:Individuals" data-metrix="[bld-dv-content]footer,click:Individuals,/wps/wcm/connect/en/individuals/individuals">Individuals</a></li>
-                                        <li><a data-action="click:Business" data-metrix="[bld-dv-content]footer,click:Business,/wps/wcm/connect/bldcontenten/belastingdienst/business/business">Business</a><br></li>
+                                        <li><a>Individuals</a></li>
+                                        <li><a>Business</a><br></li>
 
-                                        <li><a data-metrix="[bld-dv-content]footer,click:Customs,/wps/wcm/connect/en/customs/customs">Customs</a></li>
+                                        <li><a>Customs</a></li>
                                     </ul>
                                 </li>
 
-                                <li><a data-action="click:Deutsche Seite" data-metrix="[bld-dv-content]footer,click:Deutsche Seite,/wps/wcm/connect/bldcontentde/belastingdienst/privatpersonen/privatpersonen">Deutsche Seite</a></li>
+                                <li><a>Deutsche Seite</a></li>
                             </ul>
                         </div>
 

@@ -8,6 +8,10 @@ ENV REACT_APP_IPV8_HOST=${IPV8_HOST}
 RUN mkdir /app
 WORKDIR /app
 
+COPY discipl-paper-wallet-0.8.3.tgz /app/discipl-paper-wallet-0.8.3.tgz
+COPY discipl-waardepapieren-component-0.3.1-alpha.2.tgz /app/discipl-waardepapieren-component-0.3.1-alpha.2.tgz
+COPY discipl-waardepapieren-component-0.3.1-alpha.2.tgz /discipl-waardepapieren-component-0.3.1-alpha.2.tgz
+
 COPY package.json package-lock.json /app/
 RUN npm install --unsafe-perm
 

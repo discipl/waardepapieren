@@ -78,15 +78,15 @@ app.get('/brp/basisregistratie/natuurlijke_personen/bsn/999994669', (req, res) =
                     "functieAdres": "woonadres",
                     "identificatiecodeNummeraanduiding": "0599200000316239",
                     "identificatiecodeAdresseerbaarObject": "0599010000287986",
-                    "huisnummer": 4,
-                    "woonplaatsnaam": "Rotterdam",
-                    "naamOpenbareRuimte": "Johan in 't Veltstraat",
-                    "postcode": "3078JG",
-                    "straatnaam": "Johan in 't Veltstraat",
+                    "huisnummer": 146,
+                    "woonplaatsnaam": "Haarlem",
+                    "naamOpenbareRuimte": "Leidsevaart",
+                    "postcode": "2014 HE",
+                    "straatnaam": "Leidsevaart",
                     "indicatieVestigingVanuitBuitenland": true,
                     "gemeenteVanInschrijving": {
-                        "code": "0599",
-                        "omschrijving": "Rotterdam"
+                        "code": "0392",
+                        "omschrijving": "Haarlem"
                     },
                     "datumVestigingInNederland": {
                         "datum": "1993-09-10",
@@ -190,15 +190,15 @@ app.get('/brp/basisregistratie/verblijfplaatshistorie/bsn/999994669', (req, res)
                 "functieAdres": "woonadres",
                 "identificatiecodeNummeraanduiding": "0599200000316239",
                 "identificatiecodeAdresseerbaarObject": "0599010000287986",
-                "huisnummer": 4,
-                "woonplaatsnaam": "Rotterdam",
-                "naamOpenbareRuimte": "Johan in 't Veltstraat",
-                "postcode": "3078JG",
-                "straatnaam": "Johan in 't Veltstraat",
+                "huisnummer": 146,
+                "woonplaatsnaam": "Haarlem",
+                "naamOpenbareRuimte": "Leidsevaart",
+                "postcode": "2014 HE",
+                "straatnaam": "Leidsevaart",
                 "indicatieVestigingVanuitBuitenland": true,
                 "gemeenteVanInschrijving": {
-                    "code": "0599",
-                    "omschrijving": "Rotterdam"
+                    "code": "0392",
+                    "omschrijving": "Haarlem"
                 },
                 "datumVestigingInNederland": {
                     "datum": "1993-09-10",

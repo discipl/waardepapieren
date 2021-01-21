@@ -23,7 +23,10 @@
     { "Geslachtsnaam": "_embedded.ingeschrevenpersonen[0].naam.geslachtsnaam" },
     { "Geboortedatum": "_embedded.ingeschrevenpersonen[0].geboorte.datum.datum" },
     { "Huwelijkse staat": "_embedded.ingeschrevenpersonen[0].partner.soortVerbintenis" },
-    { "Woonplaats verblijfadres": "_embedded.ingeschrevenpersonen[0].verblijfplaats.gemeenteVanInschrijving.omschrijving" }
+    { "Straatnaam verblijfadres": "_embedded.ingeschrevenpersonen[0].verblijfplaats.straatnaam" },
+    { "Huisnummer verblijfadres": "_embedded.ingeschrevenpersonen[0].verblijfplaats.huisnummer" },
+    { "Postcode verblijfadres": "_embedded.ingeschrevenpersonen[0].verblijfplaats.postcode" },
+    { "Woonplaats verblijfadres": "_embedded.ingeschrevenpersonen[0].verblijfplaats.woonplaatsnaam" }
   ],
   "ENABLE_IPV8_ATTESTATION": false,
   "IPV8_SERVICE_DID": "did:discipl:ipv8:TGliTmFDTFBLOs9RF8NUdlFdHcJaSZlNH4F0vuwSB3epF8s8ns1NcB4fWcKSQcuWuqj3C/RQIk3fEEwSwpodkfNmJW54loFalTI=",

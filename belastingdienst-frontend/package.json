@@ -13,6 +13,7 @@
     "cypress": "^5.6.0"
   },
   "dependencies": {
-    "@discipl/waardepapieren-component": "^0.3.1-alpha.2"
+    "@discipl/paper-wallet": "file:discipl-paper-wallet-0.8.3.tgz",
+    "@discipl/waardepapieren-component": "file:discipl-waardepapieren-component-0.3.1-alpha.2.tgz"
   }
 }

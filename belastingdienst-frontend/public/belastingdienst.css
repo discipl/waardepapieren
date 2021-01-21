@@ -9,9 +9,11 @@ button {
     cursor: not-allowed;
 }
 
-/*
- * Belastingdienst styling
-*/ 
+/*!
+ * Belastingdienst v1.03.05 (//belastingdienst.nl)
+ * Copyright 2016 Belastingdienst
+*/
+
 .animation-element.slide-left {
     opacity: 0;
     -moz-transition: all 800ms linear;
@@ -1390,11 +1392,10 @@ a {
 
     a:hover, a:focus {
         color: #091d32;
-        text-decoration: underline
     }
 
     a:focus {
-        outline: thin dotted;
+        outline: none;
         outline-offset: -2px
     }
 
@@ -2970,7 +2971,7 @@ select[multiple], select[size] {
 }
 
 input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
-    outline: thin dotted;
+    outline: none;
     outline-offset: -2px
 }
 
@@ -3458,7 +3459,7 @@ select.input-lg, .input-group-lg > select.form-control, .input-group-lg > select
 }
 
     .btn:focus, .bld-knop-secundair:focus, .bld-knop-algemeen:focus, .bld-knop-bellen:focus, .bld-knop-downloaden:focus, .bld-knop-extern:focus, .bld-knop-inloggen:focus, #checklist_nabestaanden .submit:focus, section.bld-featured .packery .item p > a.bld-knop-algemeen:focus, section.bld-featured .packery .item p > a.bld-uitgelicht-knop:focus, section.bld-featured .packery .item li > a.bld-knop-algemeen:focus, section.bld-featured .packery .item li > a.bld-uitgelicht-knop:focus, .btn.focus, .focus.bld-knop-secundair, .focus.bld-knop-algemeen, .focus.bld-knop-bellen, .focus.bld-knop-downloaden, .focus.bld-knop-extern, .focus.bld-knop-inloggen, #checklist_nabestaanden .focus.submit, section.bld-featured .packery .item p > a.focus.bld-knop-algemeen, section.bld-featured .packery .item p > a.focus.bld-uitgelicht-knop, section.bld-featured .packery .item li > a.focus.bld-knop-algemeen, section.bld-featured .packery .item li > a.focus.bld-uitgelicht-knop, .btn:active:focus, .bld-knop-secundair:active:focus, .bld-knop-algemeen:active:focus, .bld-knop-bellen:active:focus, .bld-knop-downloaden:active:focus, .bld-knop-extern:active:focus, .bld-knop-inloggen:active:focus, #checklist_nabestaanden .submit:active:focus, section.bld-featured .packery .item p > a.bld-knop-algemeen:active:focus, section.bld-featured .packery .item p > a.bld-uitgelicht-knop:active:focus, section.bld-featured .packery .item li > a.bld-knop-algemeen:active:focus, section.bld-featured .packery .item li > a.bld-uitgelicht-knop:active:focus, .btn:active.focus, .bld-knop-secundair:active.focus, .bld-knop-algemeen:active.focus, .bld-knop-bellen:active.focus, .bld-knop-downloaden:active.focus, .bld-knop-extern:active.focus, .bld-knop-inloggen:active.focus, #checklist_nabestaanden .submit:active.focus, section.bld-featured .packery .item p > a.bld-knop-algemeen:active.focus, section.bld-featured .packery .item p > a.bld-uitgelicht-knop:active.focus, section.bld-featured .packery .item li > a.bld-knop-algemeen:active.focus, section.bld-featured .packery .item li > a.bld-uitgelicht-knop:active.focus, .btn.active:focus, .active.bld-knop-secundair:focus, .active.bld-knop-algemeen:focus, .active.bld-knop-bellen:focus, .active.bld-knop-downloaden:focus, .active.bld-knop-extern:focus, .active.bld-knop-inloggen:focus, #checklist_nabestaanden .active.submit:focus, section.bld-featured .packery .item p > a.active.bld-knop-algemeen:focus, section.bld-featured .packery .item p > a.active.bld-uitgelicht-knop:focus, section.bld-featured .packery .item li > a.active.bld-knop-algemeen:focus, section.bld-featured .packery .item li > a.active.bld-uitgelicht-knop:focus, .btn.active.focus, .active.focus.bld-knop-secundair, .active.focus.bld-knop-algemeen, .active.focus.bld-knop-bellen, .active.focus.bld-knop-downloaden, .active.focus.bld-knop-extern, .active.focus.bld-knop-inloggen, #checklist_nabestaanden .active.focus.submit, section.bld-featured .packery .item p > a.active.focus.bld-knop-algemeen, section.bld-featured .packery .item p > a.active.focus.bld-uitgelicht-knop, section.bld-featured .packery .item li > a.active.focus.bld-knop-algemeen, section.bld-featured .packery .item li > a.active.focus.bld-uitgelicht-knop {
-        outline: thin dotted;
+        outline: none;
         outline-offset: -2px
     }
 
@@ -3768,7 +3769,6 @@ a.btn.disabled, a.disabled.bld-knop-secundair, a.disabled.bld-knop-algemeen, a.d
 
             .btn-link:hover, .btn-link:focus {
                 color: #091d32;
-                text-decoration: underline;
                 background-color: transparent
             }
 
@@ -7674,10 +7674,6 @@ p > a, li > a {
         text-decoration: none
     }
 
-        .bld-topic-items a:hover h2, .bld-news-items a:hover h2, .bld-news-layer a:hover h2 {
-            text-decoration: underline
-        }
-
 .bld-collapse {
     text-decoration: none
 }
@@ -7792,7 +7788,7 @@ p > a, li > a {
     box-shadow: none;
     border-radius: 0;
     border: none;
-    cursor: pointer;
+    cursor: not-allowed;
     transition: background .3s
 }
 
@@ -8599,7 +8595,7 @@ body::before {
         }
 
         .bld-navbar-nav > li > a.dropdown-toggle:focus {
-            outline: thin dotted;
+            outline: none;
             outline-offset: -2px
         }
 
@@ -8608,7 +8604,7 @@ body::before {
         }
 
         .bld-navbar-nav > li > a:hover, .bld-navbar-nav > li > a.active {
-            background-color: #ddeff8
+            background-color: #8fcae7
         }
 
     .bld-navbar-nav .open > a, .bld-navbar-nav .open > a:focus {
@@ -8616,7 +8612,7 @@ body::before {
     }
 
         .bld-navbar-nav .open > a:hover {
-            background-color: #ddeff8
+            background-color: #8fcae7
         }
 
     .bld-navbar-nav .dropdown {
@@ -8710,6 +8706,7 @@ body::before {
     }
 
     .bld-navbar-nav .bld-search {
+        cursor: not-allowed;
         border: solid 1px #e6e6e6;
         border-radius: 0;
         box-shadow: none;
@@ -8732,7 +8729,7 @@ body::before {
         }
 
         .bld-navbar-nav .bld-search:focus {
-            outline: thin dotted
+            outline: none
         }
 
     .bld-navbar-nav .bld-btn-search {
@@ -8743,11 +8740,11 @@ body::before {
         height: 100%;
         background-color: transparent;
         border: 0;
-        cursor: pointer
+        cursor: not-allowed
     }
 
         .bld-navbar-nav .bld-btn-search:focus {
-            outline: thin dotted
+            outline: none
         }
 
     .bld-navbar-nav .bld-main-margin {
@@ -8941,10 +8938,6 @@ body::before {
         .bld-navbar-nav .bld-mega-dropdown-close > span:not(:first-child) {
             padding-left: 2px
         }
-
-    .bld-navbar-nav .bld-search:focus {
-        width: 350px
-    }
 
     .bld-navbar-nav .bld-search:lang(en):focus, .bld-navbar-nav .bld-search:lang(de):focus {
         width: 278px
@@ -9362,10 +9355,6 @@ section.bld-featured-v2 .bld-hyperlink > a, section.bld-featured-v2 .bld-fp .hyp
     text-decoration: none
 }
 
-    section.bld-featured-v2 .bld-hyperlink > a:hover, section.bld-featured-v2 .bld-fp .hyperlinks > a:hover, .bld-fp section.bld-featured-v2 .hyperlinks > a:hover, section.bld-featured-v2 section.bld-more ul > a:hover, section.bld-more section.bld-featured-v2 ul > a:hover, section.bld-featured-v2 section.bld-more .hyperlinks > a:hover, section.bld-more section.bld-featured-v2 .hyperlinks > a:hover, section.bld-featured-v2 section.bld-footer ul > a:hover, section.bld-footer section.bld-featured-v2 ul > a:hover, section.bld-featured-v2 section.bld-footer .hyperlinks > a:hover, section.bld-footer section.bld-featured-v2 .hyperlinks > a:hover, section.bld-featured-v2 .bld-content .hyperlinks > a:hover, .bld-content section.bld-featured-v2 .hyperlinks > a:hover, section.bld-featured-v2 section.bld-news-list ul > a:hover, section.bld-news-list section.bld-featured-v2 ul > a:hover, section.bld-featured-v2 .bld-hyperlink li a:hover, section.bld-featured-v2 .bld-fp .hyperlinks li a:hover, .bld-fp section.bld-featured-v2 .hyperlinks li a:hover, section.bld-featured-v2 section.bld-more ul li a:hover, section.bld-more section.bld-featured-v2 ul li a:hover, section.bld-featured-v2 section.bld-more .hyperlinks li a:hover, section.bld-more section.bld-featured-v2 .hyperlinks li a:hover, section.bld-featured-v2 section.bld-footer ul li a:hover, section.bld-footer section.bld-featured-v2 ul li a:hover, section.bld-featured-v2 section.bld-footer .hyperlinks li a:hover, section.bld-footer section.bld-featured-v2 .hyperlinks li a:hover, section.bld-featured-v2 .bld-content .hyperlinks li a:hover, .bld-content section.bld-featured-v2 .hyperlinks li a:hover, section.bld-featured-v2 section.bld-news-list ul li a:hover, section.bld-news-list section.bld-featured-v2 ul li a:hover {
-        text-decoration: underline
-    }
-
 section.bld-featured-v2 #countdown-ucc {
     margin-top: .25em;
     width: 73px;
@@ -9418,10 +9407,6 @@ section.bld-campagne {
             color: #fff;
             text-decoration: none
         }
-
-            section.bld-campagne .bld-campagne-image a:hover {
-                text-decoration: underline
-            }
 
 section.bld-mbd-busy {
     padding-bottom: 0
@@ -9586,10 +9571,6 @@ section.bld-content-items .panel ul, section.bld-topic-items .panel ul {
         padding-bottom: 3px
     }
 
-    section.bld-content-items .panel ul a:hover, section.bld-topic-items .panel ul a:hover {
-        text-decoration: underline
-    }
-
 section.bld-content-items .panel .bld-hyperlink, section.bld-content-items .panel .bld-fp .hyperlinks, .bld-fp section.bld-content-items .panel .hyperlinks, section.bld-content-items .panel section.bld-more ul, section.bld-more section.bld-content-items .panel ul, section.bld-content-items .panel section.bld-more .hyperlinks, section.bld-more section.bld-content-items .panel .hyperlinks, section.bld-content-items .panel section.bld-footer ul, section.bld-footer section.bld-content-items .panel ul, section.bld-content-items .panel section.bld-footer .hyperlinks, section.bld-footer section.bld-content-items .panel .hyperlinks, section.bld-content-items .panel .bld-content .hyperlinks, .bld-content section.bld-content-items .panel .hyperlinks, section.bld-content-items .panel section.bld-news-list ul, section.bld-news-list section.bld-content-items .panel ul, section.bld-topic-items .panel .bld-hyperlink, section.bld-topic-items .panel .bld-fp .hyperlinks, .bld-fp section.bld-topic-items .panel .hyperlinks, section.bld-topic-items .panel section.bld-more ul, section.bld-more section.bld-topic-items .panel ul, section.bld-topic-items .panel section.bld-more .hyperlinks, section.bld-more section.bld-topic-items .panel .hyperlinks, section.bld-topic-items .panel section.bld-footer ul, section.bld-footer section.bld-topic-items .panel ul, section.bld-topic-items .panel section.bld-footer .hyperlinks, section.bld-footer section.bld-topic-items .panel .hyperlinks, section.bld-topic-items .panel .bld-content .hyperlinks, .bld-content section.bld-topic-items .panel .hyperlinks, section.bld-topic-items .panel section.bld-news-list ul, section.bld-news-list section.bld-topic-items .panel ul {
     padding-left: 6px;
     margin-left: 0
@@ -9647,10 +9628,6 @@ section.bld-news-items a, section.bld-news-layer a {
     color: #000
 }
 
-    section.bld-news-items a:hover h2, section.bld-news-layer a:hover h2 {
-        text-decoration: underline
-    }
-
 @media (max-width: 768px) {
     section.bld-news-items .bld-news-item, section.bld-news-items .bld-read-more, section.bld-news-layer .bld-news-item, section.bld-news-layer .bld-read-more {
         padding: 0 10px
@@ -9676,10 +9653,6 @@ section.bld-news-items .bld-list-news .bld-rss-padding, section.bld-news-layer .
 section.bld-news-items .bld-list-news p > a, section.bld-news-layer .bld-list-news p > a {
     text-decoration: none
 }
-
-    section.bld-news-items .bld-list-news p > a:hover, section.bld-news-layer .bld-list-news p > a:hover {
-        text-decoration: underline
-    }
 
 section.bld-news-items .bld-list-outages h2, section.bld-news-layer .bld-list-outages h2 {
     line-height: 2;
@@ -9860,10 +9833,6 @@ section.bld-more {
     border-bottom-color: #01689b
 }
 
-section.bld-more ul a:hover {
-    text-decoration: underline
-}
-
 section.bld-feedback {
     background: #e6e6e6;
     padding-top: 0;
@@ -9946,14 +9915,6 @@ section.bld-footer {
 
     section.bld-footer a {
         color: #535353
-    }
-
-        section.bld-footer a:hover {
-            text-decoration: underline
-        }
-
-    section.bld-footer .hyperlinks a:hover {
-        text-decoration: underline
     }
 
 .bld-content {
@@ -10621,7 +10582,7 @@ section.bld-academy-items .bld-panel.col-xs-12 {
 }
 
     .bld-zoeken .bld-search:focus {
-        outline: thin dotted
+        outline: none
     }
 
     .bld-zoeken .bld-search::-ms-clear {

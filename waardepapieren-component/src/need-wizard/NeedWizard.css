@@ -11,6 +11,11 @@
     margin: 10px;
 }
 
+.NeedWizard h2 {
+    font-size: xx-large;
+    margin-bottom: 20pt;
+}
+
 .NeedWizard button {
     background-color: #2277ff;
     font-size: 14pt;
@@ -18,8 +23,23 @@
     margin: 15px;
 }
 
+    .NeedWizard button:hover {
+        background-color: #79aaff;
+        color: #ffffff;
+    }
+
+    .NeedWizard button:focus {
+        background-color: #2277ff;
+        color: #000000;
+    }
+
+.NeedWizard label {
+    font-weight: 100;
+    font-size: 15pt;
+}
+
 .NeedWizard select {
-    font-size: 16pt;
+    font-size: 15pt;
     padding: 10px;
     margin: 10px;
 }

@@ -17,10 +17,7 @@
     "PRODUCT_DESCRIPTION": "Uittreksel Belastingdienst gegevens",
     "PRODUCT_PURPOSE": "Overzicht gegevens Belastingdienst",
     "SOURCE_DATA_SELECTION": [
-        { "Voorletters": "_embedded.gegevensbelastingdienst[0].naam.voorletters" },
-        { "Voornamen": "_embedded.gegevensbelastingdienst[0].naam.voornamen" },
-        { "Geslachtsnaam": "_embedded.gegevensbelastingdienst[0].naam.geslachtsnaam" },
-        { "Geboortedatum": "_embedded.gegevensbelastingdienst[0].geboortedatum" },
+        { "Burgerservicenummer": "_embedded.gegevensbelastingdienst[0].burgerservicenummer" },
         { "Alimentatieverplichtingen": "_embedded.gegevensbelastingdienst[0].alimentatieverplichtingen" },
         { "Verplichtingen anders dan al bekend bij BKR, dus onderhands DUO": "_embedded.gegevensbelastingdienst[0].verplichtingenAndersDanBekendBijBKR" },
         { "Inkomen uit onderneming (naast loondienst)": "_embedded.gegevensbelastingdienst[0].datumAanvangAdreshouding.inkomenUitOnderneming" },
