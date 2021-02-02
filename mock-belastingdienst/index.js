@@ -12,7 +12,7 @@ app.get('/belastingdienst/bsn/999994669', (req, res) => {
                     "verplichtingenAndersDanBekendBijBKR": "geen",
                     "inkomenUitOnderneming": "geen",
                     "woningEnAndereOnroerendeZaken": "geen",
-                    "fiscaalPartner": "geen",
+                    "fiscaalPartner": "ja",
                     "eigenBijdragePensioen": "56,73 euro"
                 }]
         }

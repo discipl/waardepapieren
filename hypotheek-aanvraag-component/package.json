@@ -1,0 +1,45 @@
+{
+  "name": "@discipl/hypotheek-aanvraag-component",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@discipl/core-ephemeral": "^0.11.3",
+    "@discipl/core-ipv8": "0.0.3",
+    "@discipl/core-ula-server": "0.0.1-alpha.3",
+    "eslint": "^7.18.0",
+    "jquery": "^3.5.1",
+    "json-stable-stringify": "^1.0.1",
+    "qrcode": "^1.4.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "^4.0.1",
+    "rxjs": "^6.6.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "prepack": "node ./scripts/build-non-split.js",
+    "build": "node ./scripts/build-non-split.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "files": [
+    "src/",
+    "public/",
+    "build/"
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.6",
+    "rewire": "^5.0.0"
+  }
+}

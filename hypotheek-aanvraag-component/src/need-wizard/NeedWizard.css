@@ -1,0 +1,101 @@
+.NeedWizard {
+    text-align: left;
+    margin: auto;
+    width: 50%;
+    font-size: 16pt;
+}
+
+.NeedWizard input {
+    font-size: 16pt;
+    padding: 10px;
+    margin: 10px;
+}
+
+.NeedWizard h2 {
+    font-size: xx-large;
+    margin-bottom: 20pt;
+}
+
+.NeedWizard button {
+    background-color: #2277ff;
+    font-size: 14pt;
+    padding: 15px;
+    margin: 15px;
+}
+
+    .NeedWizard button:hover {
+        background-color: #79aaff;
+        color: #ffffff;
+    }
+
+    .NeedWizard button:focus {
+        background-color: #2277ff;
+        color: #000000;
+    }
+
+.NeedWizard label {
+    font-weight: 100;
+    font-size: 15pt;
+}
+
+.NeedWizard select {
+    font-size: 15pt;
+    padding: 10px;
+    margin: 10px;
+}
+
+.NeedWizard table {
+    margin: auto;
+    width: 70%;
+}
+
+.hidden {
+    display: none;
+}
+
+.start {
+    padding-bottom: 20px;
+}
+
+.scanned {
+    padding-bottom: 20px;
+}
+
+.organization {
+    padding-bottom: 20px;
+}
+
+.end-application {
+    padding: 20px 0 30px 0;
+}
+
+.loader {
+    border: 12px solid #b400c8;
+    border-radius: 50%;
+    border-top: 12px solid #507aff;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 1.1s linear infinite; /* Safari */
+    animation: spin 1.1s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

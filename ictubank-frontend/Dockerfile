@@ -8,6 +8,9 @@ ENV REACT_APP_IPV8_HOST=${IPV8_HOST}
 RUN mkdir /app
 WORKDIR /app
 
+COPY discipl-hypotheek-aanvraag-component-0.0.1.tgz /app/discipl-hypotheek-aanvraag-component-0.0.1.tgz
+COPY discipl-hypotheek-aanvraag-component-0.0.1.tgz /discipl-hypotheek-aanvraag-component-0.0.1.tgz
+
 COPY package.json package-lock.json /app/
 RUN npm install --unsafe-perm
 
