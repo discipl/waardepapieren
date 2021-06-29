@@ -63,7 +63,7 @@ class ConfirmStep extends React.Component {
     return (
       <div className="delivery-data">
         <canvas id="delivery-canvas" className="responsive" ref={this.canvasRef} />
-        <p>Base64 encoding of the VC QR code is:</p>
+        <p>Baase64 encoding of the VC QR code is:</p>
         <img src={this.state.base64}></img>
         <p>Jolocom JWT:</p>
         <img src={this.state.jwt}></img>
