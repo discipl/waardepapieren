@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, View, Alert } from 'react-native';
+import { StyleSheet, Button, FlatList, Text, View, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner'
-import * as Permissions from 'expo-permissions'
-import { createStackNavigator } from 'react-navigation'
+//import * as Permissions from 'expo-permissions'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AsyncStorage } from 'react-native'
 import { PaperWallet } from '@discipl/paper-wallet'
 import Ipv8Connector from '@discipl/core-ipv8'
@@ -79,7 +79,6 @@ import forge from 'node-forge'
 
 import EphemeralConnector from '@discipl/core-ephemeral'
 import { Octicons } from '@expo/vector-icons';
-import {NavigationEvents} from 'react-navigation';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
@@ -91,75 +90,28 @@ i18n.translations = { nl, en };
 i18n.locale = Localization.locale;
 
 export default class App extends React.Component {
-  static navigationOptions = {
-    header: null,
-  }
   render() {
-    return <ScanStack />;
+    return <MyScannerStack />;
   }
 }
 
 class ScanScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  }
 
   constructor (props) {
     super(props)
     this.state = {
       hasCameraPermission: null,
+      scanned: false
     }
   }
 
   async componentDidMount() {
-    const cameraPermissionStorage = await this._getCameraPermissions()
-
-    if (cameraPermissionStorage !== "granted") {
-      Alert.alert(
-        i18n.t("permissionHeader"),
-        i18n.t("permissionMessage"),
-        [
-          { text: 'OK', onPress: () => this.askPermissions() },
-        ],
-        { cancelable: false }
-      )
-    }
-    else {
-      this.askPermissions()
-    }
-    const { navigation } = this.props;
-    navigation.addListener('willFocus', () =>
-      this.setState({ focusedScreen: true })
-    );
-    navigation.addListener('willBlur', () =>
-      this.setState({ focusedScreen: false })
-    );
-  }
-
-  _getCameraPermissions = async () => {
-    try {
-      return await AsyncStorage.getItem("cameraPermissions");
-    } catch (error) {
-      console.log('Error when retreiving the camera permissions', error)
-    }
-  }
-
-  _storeCameraPermissions = async (data) => {
-    try {
-      await AsyncStorage.setItem("cameraPermissions", data);
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  async askPermissions() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await BarCodeScanner.requestPermissionsAsync();
     this.setState({ hasCameraPermission: status === 'granted' });
-    this._storeCameraPermissions("granted");
   }
 
   render() {
-    const { hasCameraPermission, focusedScreen } = this.state;
+    const { hasCameraPermission, scanned } = this.state;
 
     if (hasCameraPermission === null) {
       return <Text>Requesting for camera permission</Text>;
@@ -167,21 +119,20 @@ class ScanScreen extends React.Component {
     if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     }
-    if (focusedScreen === false) {
-      return <Text>Screen is currently not active</Text>
-    }
 
     return (
       <View style={{ flex: 1 }}>
         <BarCodeScanner
-          onBarCodeScanned={this.handleBarCodeScanned}
-          style={StyleSheet.absoluteFill}
+          onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
+          style={StyleSheet.absoluteFillObject}
         />
       </View>
     );
   }
 
   handleBarCodeScanned = ({ type, data }) => {
+    this.setState({scanned:true})
+    console.log('qrdata: '+data)
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
@@ -200,6 +151,14 @@ class ValidatingScreen extends React.Component {
     console.log('StrictValidation', strictValidation)
     this.rootCA = (strictValidation === "true") ? realRootCA : demoRootCA
     console.log('rootCA', this.rootCA);
+    this.wrapperFunction();
+    this._unsubscribe = this.props.navigation.getParent().getParent().addListener('tabPress', () => {
+      this.props.navigation.navigate('Scan');
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
   }
 
   static navigationOptions = {
@@ -226,8 +185,9 @@ class ValidatingScreen extends React.Component {
     this.paperWallet = new PaperWallet()
     console.log('Instantiated paper wallet', this.paperWallet)
 
-    const { navigation } = this.props;
-    const qrString = await navigation.getParam('qrString', 'String not found');
+    const { navigation, route } = this.props;
+    const qrString = route.params?.qrString ?? 'String not found';
+    console.log('_checkQR() : '+qrString)
 
     try {
       let certEndpoint = JSON.parse(qrString).metadata.cert
@@ -287,8 +247,9 @@ class ValidatingScreen extends React.Component {
   }
 
   async _checkIpv8QR() {
-    const { navigation } = this.props;
-    const qrString = await navigation.getParam('qrString', 'String not found');
+    const { navigation, route } = this.props;
+    const qrString = route.params?.qrString ?? 'String not found';
+    console.log('_checkIpv8QR() : '+qrString)
     const core = new PaperWallet().getCore()
     core.registerConnector('ipv8', new Ipv8Connector())
     const ipv8Connector = await core.getConnector('ipv8')
@@ -331,6 +292,7 @@ class ValidatingScreen extends React.Component {
 
     if (!validationResult || !ipv8ValidationResult){
       this.setState({ validatingState: "denied" })
+      console.log('Validation did not pass!')
     }
     else {
       this.setState({ validatingState: "verified" })
@@ -359,6 +321,8 @@ class ValidatingScreen extends React.Component {
     let issuerText;
     let validationMethodsText;
 
+console.log('render() validating screen')
+
     if (this.state.validatingState === "waiting") {
       validatingIcon = waiting;
       validatingText = i18n.t("checkingQR");
@@ -377,7 +341,6 @@ class ValidatingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.validateState}>
-          <NavigationEvents onDidFocus={payload => this.wrapperFunction()}/>
           <Text style ={styles.key}>{validatingText}</Text>
           {validatingIcon}
 
@@ -402,10 +365,16 @@ class ValidatingScreen extends React.Component {
   }
 }
 
-const ScanStack = createStackNavigator({
-  Scan: ScanScreen,
-  Validating: ValidatingScreen
-});
+const ScanStack = createNativeStackNavigator();
+
+function MyScannerStack() {
+  return (
+    <ScanStack.Navigator>
+      <ScanStack.Screen name="Scan" component={ScanScreen} options={{ headerShown: false }}/>
+      <ScanStack.Screen name="Validating" component={ValidatingScreen} options={{ headerShown: false }}/>
+    </ScanStack.Navigator>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
