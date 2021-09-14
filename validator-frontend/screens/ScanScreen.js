@@ -108,6 +108,13 @@ class ScanScreen extends React.Component {
   async componentDidMount() {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
     this.setState({ hasCameraPermission: status === 'granted' });
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      this.setState({scanned:false});
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
   }
 
   render() {
@@ -132,7 +139,6 @@ class ScanScreen extends React.Component {
 
   handleBarCodeScanned = ({ type, data }) => {
     this.setState({scanned:true})
-    console.log('qrdata: '+data)
     this.props.navigation.navigate('Validating', {qrString: data})
   }
 }
