@@ -4,7 +4,6 @@
     "description": "A very interesting project.",
     "slug": "waardepapieren_app",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android"
